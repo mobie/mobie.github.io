@@ -2,3 +2,8 @@
 ---
 
 @import "{{ site.theme }}";
+#logo{
+  border:0;
+  padding: 0;
+  margin: 0;
+}
