@@ -1,0 +1,16 @@
+---
+---
+
+@import "{{ site.theme }}";
+.logo_header img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.logo_header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}

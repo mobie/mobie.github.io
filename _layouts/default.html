@@ -15,7 +15,10 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
+		<div class="logo_header">
+			<img src="assets/mobie_logo_black_background.png" alt="logo" />
+			<h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
+		</div>
         <p class="header">{{ site.description | default: site.github.project_tagline }}</p>
 
         <ul>
