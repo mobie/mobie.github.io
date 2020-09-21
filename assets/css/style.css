@@ -2,14 +2,14 @@
 ---
 
 @import "{{ site.theme }}";
-.logo_header img {
+logo_header img {
   float: left;
   width: 10px;
   height: 10px;
   background: #555;
 }
 
-.logo_header h1 {
+logo_header h1 {
   position: relative;
   top: 18px;
   left: 10px;
