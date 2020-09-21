@@ -1,6 +1,6 @@
 ## Operation
 
-<img width="220" alt="image" src="./tutorial_images/ui.png">
+<img width="800" alt="image" src="./tutorial_images/ui.png">
 
 ### Buttons in main panel
 - [ info ] Please select an item from the drop-down and click the button. A corresponding info page will appear.
