@@ -1,3 +1,5 @@
 theme: jekyll-theme-dinky
 title: MoBIE
 description: MultiModal Big Image Data Sharing and Exploration
+github:
+    owner_url: https://github.com/mobie/mobie-viewer-fiji
