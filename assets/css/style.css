@@ -2,7 +2,7 @@
 ---
 
 @import "{{ site.theme }}";
-#img.mobie-logo{
+img.mobie-logo{
   border:0;
   padding: 0;
   margin: 0;
