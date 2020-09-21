@@ -4,8 +4,8 @@
 @import "{{ site.theme }}";
 .logo_header img {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 10px;
+  height: 10px;
   background: #555;
 }
 
