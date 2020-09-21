@@ -15,7 +15,6 @@
   <body>
     <div class="wrapper">
       <header>
-		<img src="assets/mobie_logo_black_background.png" alt="logo" height="50" />
 		<h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
         <p class="header">{{ site.description | default: site.github.project_tagline }}</p>
 
@@ -29,9 +28,10 @@
         {% if site.github.is_project_page %}
           <p class="header">This project is maintained by <a class="header name" href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
-
+		
         {% if site.github.is_user_page %}
           <ul>
+			<li><img src="assets/mobie_logo_black_background.png" alt="logo" height="50" /></li>
             <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
           </ul>
         {% endif %}
