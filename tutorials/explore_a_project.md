@@ -27,6 +27,7 @@ viewer.
 
 <img width="460" alt="image" src="./tutorial_images/viewer_browsing.gif">  
 The most important controls are:   
+
 * **[Left click + drag]** Rotate view
 * **[Middle click + drag, or right click + drag]** Pan in xy
 * **[Scroll]** Move along z axis
