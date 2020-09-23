@@ -1,10 +1,10 @@
 # Welcome to the tutorials for MoBIE!
 
-The MoBIE Fiji viewer is a [Fiji] (https://imagej.net/Fiji) plugin allowing easy exploration
+The MoBIE Fiji viewer is a [Fiji](https://imagej.net/Fiji) plugin allowing easy exploration
 of big multi-modal images and associated tabular data.
 
 **Main Features:**
-- Smooth browsing of large image data thanks to [BigDataViewer] (https://imagej.net/BigDataViewer)
+- Smooth browsing of large image data thanks to [BigDataViewer](https://imagej.net/BigDataViewer)
 - Overlay many types of images in the same coordinate system (e.g. electron microscopy, light microscopy,
 segmentations...)
 - Explore tabular data interactively alongside the images they're derived from
@@ -13,7 +13,7 @@ segmentations...)
 views, images and tables for your colleagues to explore
 - ... and more!
 
-Get started with the tutorials below:
+**Get started with the tutorials below:**
 
 ## Getting Started
 - Installation tutorial?
