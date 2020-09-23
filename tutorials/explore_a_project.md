@@ -44,7 +44,9 @@ after rounds of segmentation proofreading.
 
 <img width="460" alt="image" src="./tutorial_images/mobie_control.png">  
 
-- **[ info ] Get information / help on a certain topic.** Select an item from the drop-down and click the button.
+**Descriptions of buttons:**  
+
+- **[ show ] Get information / help on a certain topic.** Select an item from the drop-down and click the button.
 - **[ switch ] Switch dataset.** Select a dataset from the drop-down and click the button.
 - **[ add ] Add an image source to the view.** Select an image source from the drop-downs and click the button. If the image source is a segmentation, also a corresponding objects table will appear. 
 **Note:** the categories available here are specific to the project! e.g. in this example project, two categories 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
