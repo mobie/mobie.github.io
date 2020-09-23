@@ -9,7 +9,7 @@ Once the MoBIE plugin has been installed (see instructions [here](https://github
 you can open a project:
 
 1. In the Fiji search bar, type: "mobie"<br> <img width="460" alt="image" src="./tutorial_images/mobie_command.png"> <br> 
-...select 'Open MoBIE Project..' and click [ Run ]
+...select 'Open MoBIE Project..' and click [ Run ]  
 2. Enter the location of the project (a github repository).  
 We will use the published 'Platybrowser' project as an example (location: https://github.com/mobie/platybrowser-datasets)
  <br><img width="300" alt="image" src="./tutorial_images/project_location.png">
@@ -45,9 +45,9 @@ after rounds of segmentation proofreading.
 <img width="460" alt="image" src="./tutorial_images/mobie_control.png">  
 
 - **[ info ] Get information / help on a certain topic.** Select an item from the drop-down and click the button.
-- **[ switch ] Switch dataset.** Select a datset from the drop-down and click the button.
+- **[ switch ] Switch dataset.** Select a dataset from the drop-down and click the button.
 - **[ add ] Add an image source to the view.** Select an image source from the drop-downs and click the button. If the image source is a segmentation, also a corresponding objects table will appear. 
-Note: the categories available here are specific to the project! e.g. in this example project, two categories 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
+**Note:** the categories available here are specific to the project! e.g. in this example project, two categories 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
 - **[ view ] View a bookmark.** Select a bookmark from the drop-down and click the button. The corresponding bookmarked view will appear. See bookmarks tutorial for more...
 - **[ move ] Move to a particular position or view.** See tutorial for more...
 
@@ -66,7 +66,7 @@ To control the image sources appearance, there are several buttons...
 - **[ X ] V**  Check to show source in **v**olume viewer
 - **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer) 
 
-<img width="460" alt="image" src="./tutorial_images/sourcesPanel.gif"> 
+<img width="800" alt="image" src="./tutorial_images/sourcesPanel.gif"> 
 
 
 
