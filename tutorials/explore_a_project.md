@@ -33,6 +33,40 @@ The most important controls are:
 * **[Scroll]** Move along z axis
 * **[Up / Down arrow keys]** Zoom in and out
 
+### MoBIE Controls
+
+Each MoBIE Project is made up of a number of **Datasets**. Each dataset is a combination of images that can be
+displayed together in the same physical coordinate system.
+e.g. datasets could be images from different samples, timepoints, or entirely separate experiments!
+
+In our example project, the Datasets are used to represent different versions of the data e.g.
+after rounds of segmentation proofreading.
+
+<img width="460" alt="image" src="./tutorial_images/mobie_control.png">  
+
+- **[ info ] Get information / help on a certain topic.** Select an item from the drop-down and click the button.
+- **[ switch ] Switch dataset.** Select a datset from the drop-down and click the button.
+- **[ add ] Add an image source to the view.** Select an image source from the drop-downs and click the button. If the image source is a segmentation, also a corresponding objects table will appear. 
+Note: the categories available here are specific to the project! e.g. in this example project, two categories 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
+- **[ view ] View a bookmark.** Select a bookmark from the drop-down and click the button. The corresponding bookmarked view will appear. See bookmarks tutorial for more...
+- **[ move ] Move to a particular position or view.** See tutorial for more...
+
+### Sources Panel
+As you add more images to the viewer, they will appear in the **sources panel**, like below:
+<img width="460" alt="image" src="./tutorial_images/sources_buttons.png">  
+
+To control the image sources appearance, there are several buttons...
+
+- **[ C ]**  Change the color
+- **[ B ]**  Change the brightness settings
+- **[ X ]**  Remove from viewer and sources panel
+
+...and checkboxes:
+
+- **[ X ] V**  Check to show source in **v**olume viewer
+- **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer) 
+
+<img width="460" alt="image" src="./tutorial_images/sourcesPanel.gif"> 
 
 
 
