@@ -16,7 +16,7 @@ by None (for categorical data) or NaN (for numeric data).
 
 e.g. the table below would be a valid table (but you could add as many additional columns
 as you'd like):
-<img width="300" alt="image" src="./tutorial_images/exampleUserTable.png"> 
+<img width="200" alt="image" src="./tutorial_images/exampleUserTable.png"> 
 
 Save your table as a .csv file (both comma-separated and tab-separated are suitable).
 
@@ -24,7 +24,7 @@ Save your table as a .csv file (both comma-separated and tab-separated are suita
 
 To view your table select Table > Load Columns..., then Load Columns from **File System** in the dropdown.
 
-<img width="200" alt="image" src="./tutorial_images/loadColumnFromFileSystem.png"> 
+<img width="300" alt="image" src="./tutorial_images/loadColumnFromFileSystem.png"> 
 
 This will create a file browser, where you can select your .csv file.
 
