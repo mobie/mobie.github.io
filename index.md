@@ -15,6 +15,13 @@ views, images and tables for your colleagues to explore
 
 **Get started with the tutorials below:**
 
-## Getting Started
-- Installation tutorial?
-- [introductory tutorial](./tutorials/getting_started.html)
+## Exploring existing projects
+- [Getting Started](./tutorials/explore_a_project.html)
+- [Exploring segmentations and tables](./tutorials/exploring_segmentations.html)
+- [Locations and bookmarks](./tutorials/bookmarks_and_locations.html)
+- [Viewing your own tables](./tutorials/viewing_your_own_tables.html)
+- Annotation tutorial
+
+## Expert mode usage
+
+## Making your own projects
