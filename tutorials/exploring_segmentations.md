@@ -73,6 +73,8 @@ Colouring Modes:
 For the palettes designed for numerical data, a popup will appear allowing you to change the minimum and maximum
 values for the colour palette. This is useful if you want to focus on / see differences in a smaller range of values.
 
+<img width="900" alt="image" src="./tutorial_images/colourByColumn.gif"> 
+
 ### Saving tables
 
 Tables can be saved by using Table > Save Table as... in the menu at the top of the table. 
