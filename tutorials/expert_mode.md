@@ -11,21 +11,21 @@ You can control three aspects:
 
 ### Common use cases
 
-** I'm using an existing project (remote), but want to modify the tables **
+**I'm using an existing project (remote), but want to modify the tables**
 
 - Project Location: project github repository
 - Image Data Location: project github repository
 - Table Data Location: your own fork of that repository, or a local clone of it (where you've added or modified tables)
 
 
-** I'm using an existing project (remote), but want to modify tables, and bookmarks **
+**I'm using an existing project (remote), but want to modify tables, and bookmarks**
 
 - Project Location: your own fork of that repository, or a local clone of it (where you've changed bookmarks and tables)
 - Image Data Location: project github repository
 - Table Data Location: your own fork of that repository, or a local clone of it (where you've changed bookmarks and tables)
 
 
-** I'm working with a local project on my file system, but want separate control of all metadata / tables **
+**I'm working with a local project on my file system, but want separate control of all metadata / tables**
 - Project Location: project github repository
 - Image Data Location: local project location
 - Table Data Location: project github repository
@@ -37,15 +37,15 @@ You can control three aspects:
 To open expert mode, type **mobie** in the Fiji search bar, and select 
 **Open MoBIE Project Expert Mode...**
 
-<img width="500" alt="image" src="./tutorial_images/mobie_expert_command.png">
+<img width="600" alt="image" src="./tutorial_images/mobie_expert_command.png">
 
 This will bring up a dialog, as below:
 
  <img width="300" alt="image" src="./tutorial_images/expertModeDialog.png">
  
- **Project Location** - github repository, or local file path
- **Project Branch** - which git branch to load data from
- **Image Data Storage Modality** - s3 for remote images, FileSystem for local images
- **Image Data Location** - github repository (will load from remote), or local file path
- **Table Data Location** - github repository, or local file path
- **Table Data Branch** - which git branch to load data from
+ - **Project Location** - github repository, or local file path
+ - **Project Branch** - which git branch to load data from
+ - **Image Data Storage Modality** - s3 for remote images, FileSystem for local images
+ - **Image Data Location** - github repository (will load from remote), or local file path
+ - **Table Data Location** - github repository, or local file path
+ - **Table Data Branch** - which git branch to load data from
