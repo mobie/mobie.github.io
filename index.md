@@ -16,18 +16,18 @@ views, images and tables for your colleagues to explore
 **Get started with the tutorials below:**
 
 ## Exploring existing projects
-- [Getting Started](./tutorials/explore_a_project.html)
-- [Exploring segmentations and tables](./tutorials/exploring_segmentations.html)
-- [Locations and bookmarks](./tutorials/bookmarks_and_locations.html)
-- [Viewing your own tables](./tutorials/viewing_your_own_tables.html)
+- [Getting Started](./tutorials/explore_a_project.md)
+- [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
+- [Locations and bookmarks](./tutorials/bookmarks_and_locations.md)
+- [Viewing your own tables](./tutorials/viewing_your_own_tables.md)
 - Annotation tutorial
 
 ## Expert mode usage
-- [Expert Mode](./tutorials/expert_mode.html)
+- [Expert Mode](./tutorials/expert_mode.md)
 
 
 ## Making your own projects
 - The structure of a project?
 - For python users...
 - For non-python users...
-- [Making Bookmarks](./tutorials/bookmarks.html)
+- [Making Bookmarks](./tutorials/bookmarks.md)
