@@ -32,6 +32,6 @@ Your new columns should now be added to the right side of the table - scroll wit
 at the bottom of the table to see them.
 
 If you want more control over your tables / want to add many at once, you will have to use
-**Expert Mode** - see tutorial X
+**Expert Mode** - see tutorial [here](./expert_mode.md)
 
 

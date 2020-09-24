@@ -18,7 +18,7 @@ We will use the published 'Platybrowser' project as an example (location: https:
 The left window contains all the controls for MoBIE, and the right is a [BigDataViewer](https://imagej.net/BigDataViewer)
 window allowing you to browse images.
 
-Note: It is also possible to open projects from your local file system (see advanced tutorial)
+Note: It is also possible to open projects from your local file system.
 
 ### Browsing in the viewer
 
@@ -50,8 +50,8 @@ after rounds of segmentation proofreading.
 - **[ switch ] Switch dataset.** Select a dataset from the drop-down and click the button.
 - **[ add ] Add an image source to the view.** Select an image source from the drop-downs and click the button. If the image source is a segmentation, also a corresponding objects table will appear. 
 **Note:** the categories available here are specific to the project! e.g. in this example project, two categories 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
-- **[ view ] View a bookmark.** Select a bookmark from the drop-down and click the button. The corresponding bookmarked view will appear. See bookmarks tutorial for more...
-- **[ move ] Move to a particular position or view.** See tutorial for more...
+- **[ view ] View a bookmark.** Select a bookmark from the drop-down and click the button. The corresponding bookmarked view will appear. See [here](./bookmarks_and_locations.md) for more information.
+- **[ move ] Move to a particular position or view.** See [here](./bookmarks_and_locations.md) for more information.
 
 ### Sources Panel
 As you add more images to the viewer, they will appear in the **sources panel**, like below:

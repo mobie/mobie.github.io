@@ -50,7 +50,7 @@ e.g. in the example Platybrowser project there are tables for morphology statist
 New columns will be added to the right of table, and can be viewed by scrolling horizontally on the bar at the bottom of the
 table.
 
-You can also add tables from your File System (see advanced tutorial...)
+You can also add tables from your File System (see tutorial [here](./viewing_your_own_tables.md))
 
 ### Colour by column...
 
@@ -68,7 +68,7 @@ Colouring Modes:
 - **BlueWhiteRed** For numerical data - colour objects from blue (low value) to red (high value)
 - **Viridis** For numerical data - colour objects based on viridis colour scale.
 - **Glasbey** For categorical data - colour objects from Glasbey colour palette.
-- **A-R-G-B Column** Used for custom colour schemes - needs a particular column layout (see advanced tutorial)
+- **A-R-G-B Column** Used for custom colour schemes - needs a selected column where each entry is of the format A-R-G-B, specifying the colour for that row
 
 For the palettes designed for numerical data, a popup will appear allowing you to change the minimum and maximum
 values for the colour palette. This is useful if you want to focus on / see differences in a smaller range of values.

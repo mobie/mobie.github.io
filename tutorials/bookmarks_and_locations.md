@@ -48,5 +48,5 @@ quickly and easily. Selecting a bookmark will take you to the exact location and
 saved, with the same images added to the viewer, and the same tables and colour scheme.
 
 To access a bookmark, simply select it's name from the dropdown menu and select 'view'.
-To create your own bookmarks - see tutorial X...
+To create your own bookmarks - see the Making bookmarks tutorial [here](./bookmarks.md).
 

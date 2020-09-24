@@ -39,14 +39,14 @@ it will keep the user's currently displayed images.
 
 Within each image's {}, you can adjust various settings, described below.
 
-Position / view are as specified by **Log Current Location** - see that tutorial...
+Position / view are as specified by **Log Current Location** - see the location and bookmark tutorial [here](./bookmarks_and_locations.md)
 
 ### Settings
 
 - **contrastLimits** [min, max] Minimum and maximum values for contrast.
 - **selectedLabelIds** [label_id_1, label_id_2] Which label ids to show as selected.
 - **showSelectedSegmentsIn3d** true; false Whether to show selected objects in 3D viewer.
-- **color** "colourName" Name of a solid colour e.g. magenta, or name of a colour look up tables (see tutorial...)
+- **color** "colourName" Name of a solid colour e.g. magenta, or name of a colour look up table (see the 'Colour by column..' section of this [tutorial](./exploring_segmentations) for options)
 - **colorByColumn** "columnName" Name of column to colour by
 - **tables** ["nameOfTable1", "nameofTable2"] Names of further tables to add to the default.
 
