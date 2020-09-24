@@ -16,12 +16,7 @@ by None (for categorical data) or NaN (for numeric data).
 
 e.g. the table below would be a valid table (but you could add as many additional columns
 as you'd like):
-label_id | my_feature
---- | --- 
-1 | A
-2 | A
-3 | B
-4 | B
+<img width="300" alt="image" src="./tutorial_images/exampleUserTable.png"> 
 
 Save your table as a .csv file (both comma-separated and tab-separated are suitable).
 
