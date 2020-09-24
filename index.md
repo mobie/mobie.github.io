@@ -23,5 +23,11 @@ views, images and tables for your colleagues to explore
 - Annotation tutorial
 
 ## Expert mode usage
+- [Expert Mode](./tutorials/expert_mode.html)
+
 
 ## Making your own projects
+- The structure of a project?
+- For python users...
+- For non-python users...
+- [Making Bookmarks](./tutorials/bookmarks.html)
