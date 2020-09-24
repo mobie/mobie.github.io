@@ -58,7 +58,7 @@ Selecting Color > Color By Column... from the table menu will allow you to colou
 based on the values in a certain column.
 e.g. you could colour based on the value of a calculated statistic, or based on membership to different clusters.
 
-<img width="400" alt="image" src="./tutorial_images/colourByColumnDialog.png"> 
+<img width="300" alt="image" src="./tutorial_images/colourByColumnDialog.png"> 
 
 The dialog allows you to select the Column you want to colour based on, and a colouring mode. The final
 checkbox **Paint Zero Transparent** controls whether 0 values are transparent in the viewer or not.
