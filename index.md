@@ -8,7 +8,7 @@ of big multi-modal images and associated tabular data.
 - Overlay many types of images in the same coordinate system (e.g. electron microscopy, light microscopy,
 segmentations...)
 - Explore tabular data interactively alongside the images they're derived from
-- Easy sharing with colleagues (no need to download the raw images!) 
+- Easy sharing with colleagues (no need to download the raw images!)
 - Easy sharing of points of interest in your data e.g. create bookmarks showing selected
 views, images and tables for your colleagues to explore
 - ... and more!
@@ -20,7 +20,7 @@ views, images and tables for your colleagues to explore
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
 - [Locations and bookmarks](./tutorials/bookmarks_and_locations.md)
 - [Viewing your own tables](./tutorials/viewing_your_own_tables.md)
-- Annotation tutorial
+- [Annotation tutorial](./tutorials/annotation_tutorial.md)
 
 ## Expert mode usage
 - [Expert Mode](./tutorials/expert_mode.md)
