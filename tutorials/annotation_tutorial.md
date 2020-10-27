@@ -28,7 +28,8 @@ To start with, we add two categories: muscles and neurons. The button **C** next
 
 ## Part II. Correcting or extending an existing annotation
 
-You can open any annotation of a segmentation image, which was either annotated and saved as described in the previous part, or created as described [here](https://mobie.github.io/tutorials/viewing_your_own_tables.html)
+You can open any annotation of a segmentation image, which was either annotated and saved as described in the previous part, or created as described [here](https://mobie.github.io/tutorials/viewing_your_own_tables.html).
+
 Important to note that the objects that don't have a label (missing values) can be either excluded from the table (by not including the respective label_ids),
 or filled with None or NaN values for categorical and numeric data respectively.
 
