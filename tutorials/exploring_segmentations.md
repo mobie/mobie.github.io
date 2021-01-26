@@ -34,6 +34,7 @@ More options are available if you right click in the viewer:
 ### Interacting with segmentation table
 
 Clicking on a row in the table, will move you to the location of that object in the viewer.
+Ctrl + clicking on a row, will also select that object.  
 The first column 'label_id' states the id of each segmented object from the image.
 
 <img width="900" alt="image" src="./tutorial_images/segmentInteraction.gif"> 

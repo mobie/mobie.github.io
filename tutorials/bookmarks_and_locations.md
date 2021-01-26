@@ -47,6 +47,12 @@ Bookmarks are a way to save the current setup of your viewer, so anyone can brow
 quickly and easily. Selecting a bookmark will take you to the exact location and orientation
 saved, with the same images added to the viewer, and the same tables and colour scheme.
 
-To access a bookmark, simply select it's name from the dropdown menu and select 'view'.
-To create your own bookmarks - see the Making bookmarks tutorial [here](./bookmarks.md).
+To access a bookmark, simply select it's name from the dropdown menu and select 'view'.  
+Only a subset of bookmarks are shown in this dropdown by default. To view other bookmarks, right click
+in the mobie viewer and select **Load Additional Bookmarks**, and then Load from **Project**.
+
+<img width="500" alt="image" src="./tutorial_images/loadAdditionalBookmarks.png"> 
+
+You can also load your own bookmarks from the file system. To create your own bookmarks 
+- see the Making bookmarks tutorial [here](./bookmarks.md).
 
