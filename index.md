@@ -20,6 +20,7 @@ views, images and tables for your colleagues to explore
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
 - [Locations and bookmarks](./tutorials/bookmarks_and_locations.md)
 - [Viewing your own tables](./tutorials/viewing_your_own_tables.md)
+- [Viewing your own bookmarks] (./tutorials/viewing_your_own_bookmarks.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 
 ## Expert mode usage
