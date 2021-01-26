@@ -62,7 +62,7 @@ It will appear in the image dropdown.
 - Click **Add** on the image row and select **bdv format image**
 - Select the xml file of the chosen image
 - Select the Add method, image type and bdv format. (see **Image type** and **bdv format** below for
-more details)
+more details)  
 <img width="300" alt="image" src="./tutorial_images/addBdvFormat.png"> 
 
 - The image will be added to the project, and appear in the image dropdown. If the image was a segmentation,
