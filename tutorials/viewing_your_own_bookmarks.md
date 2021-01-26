@@ -10,7 +10,7 @@ the location, orientation, open images, colouring schemes etc are saved.
 To make a bookmark, right click in the MoBIE viewer and select **Save Current Settings As Bookmark**.
 Then, name your bookmark, and select save to **File_system**. 
 
-<img width="150" alt="image" src="./tutorial_images/saveBookmark.png"> 
+<img width="200" alt="image" src="./tutorial_images/saveBookmark.png"> 
 
 A filebrowser will open. Bookmarks are stored in **.json** files. If you already have a bookmark .json file, 
 you can select it now to add your new bookmark. If not, simply provide a name for your .json, and 
