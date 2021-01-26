@@ -1,6 +1,6 @@
 ## MoBIE Project Creator
 
-For making projects on your local file system, you can use the MoBIE Project Creator within Fiji.
+For making projects on your local file system, you can use the MoBIE Project Creator within Fiji.  
 **Note**: if your images are particularly large, or you want more control over your project, you can
 create your project with this [python library](https://github.com/mobie/mobie-utils-python). See
 [here](https://github.com/mobie/mobie) for details of project structure.
@@ -92,7 +92,7 @@ Different options will be shown dependent on the type of the image.
 Note: the first image you add to a dataset, is automatically set to **show by default**. This can be changed
 by unchecking this box in the Edit window. At least one image must be shown by default.
 
-For details of what these settings control, see the **settings** section of this [tutorial](./tutorials/bookmarks.md)
+For details of what these settings control, see the **settings** section of this [tutorial](./bookmarks.md)
 
 ### Open your local project
 
