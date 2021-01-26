@@ -14,7 +14,7 @@ This will create a new project, and open the **Edit MoBIE Project** dialog.
 
 <img width="500" alt="image" src="./tutorial_images/editMobieProject.png"> 
 
-Note: you can open this at any time by typing MoBIE in the search bar and selecting **Edit MoBIE Project**.
+**Note:** you can open this at any time by typing MoBIE in the search bar and selecting **Edit MoBIE Project**.
 
 ### Creating datasets
 
@@ -89,7 +89,7 @@ To change how the images are displayed by default, click **Edit** in the image r
 Different options will be shown dependent on the type of the image.  
 <img width="500" alt="image" src="./tutorial_images/editImage.png"> 
 
-Note: the first image you add to a dataset, is automatically set to **show by default**. This can be changed
+**Note:** the first image you add to a dataset, is automatically set to **show by default**. This can be changed
 by unchecking this box in the Edit window. At least one image must be shown by default.
 
 For details of what these settings control, see the **settings** section of this [tutorial](./bookmarks.md)
