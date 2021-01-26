@@ -1,6 +1,9 @@
 ## MoBIE Project Creator
 
-For making projects on your local file system, you can use the MoBIE Project Creator.
+For making projects on your local file system, you can use the MoBIE Project Creator within Fiji.
+**Note**: if your images are particularly large, or you want more control over your project, you can
+create your project with this [python library](https://github.com/mobie/mobie-utils-python). See
+[here](https://github.com/mobie/mobie) for details of project structure.
 
 Type MoBIE in the search bar, and select the **Create new MoBIE Project** command.  
 
@@ -40,7 +43,7 @@ Then follow the directions below for either **open current image** (to add image
 **Note**: if your images are particularly large, it will be more efficient to convert your images outside of
 imageJ. e.g. using this [python library](https://github.com/mobie/mobie-utils-python)
 
-#### current open image
+#### Current open image
 
 - Open the image you want to add, as you normally would, in imageJ. Make sure the pixel size and unit
 are set under Image > Properties...
@@ -89,7 +92,7 @@ Different options will be shown dependent on the type of the image.
 Note: the first image you add to a dataset, is automatically set to **show by default**. This can be changed
 by unchecking this box in the Edit window. At least one image must be shown by default.
 
-For details of what these settings control, see the bookmark tutorial...
+For details of what these settings control, see the **settings** section of this [tutorial](./tutorials/bookmarks.md)
 
 ### Open your local project
 

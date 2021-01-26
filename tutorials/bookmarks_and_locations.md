@@ -53,5 +53,5 @@ in the mobie viewer and select **Load Additional Bookmarks**, and then Load from
 
 <img width="500" alt="image" src="./tutorial_images/loadAdditionalBookmarks.png"> 
 
-You can also load your own bookmarks from the file system. To create your own bookmarks, see the Making bookmarks tutorial [here](./bookmarks.md).
+You can also load your own bookmarks from the file system. To create your own bookmarks, see the **Viewing your own bookmarks** tutorial [here](./viewing_your_own_bookmarks.md).
 

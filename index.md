@@ -28,7 +28,5 @@ views, images and tables for your colleagues to explore
 
 
 ## Making your own projects
-- The structure of a project?
-- For python users...
-- For non-python users...
-- [Making Bookmarks](./tutorials/bookmarks.md)
+- [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
+- [Bookmark structure](./tutorials/bookmarks.md)
