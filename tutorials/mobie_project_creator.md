@@ -2,12 +2,12 @@
 
 For making projects on your local file system, you can use the MoBIE Project Creator.
 
-Type MoBIE in the search bar, and select the **Create new MoBIE Project** command.
-<img width="200" alt="image" src="./tutorial_images/createMobieProject.png"> 
+Type MoBIE in the search bar, and select the **Create new MoBIE Project** command.  
+<img width="400" alt="image" src="./tutorial_images/createMobieProject.png"> 
 
 Navigate to a folder, and provide a project name.
-This will create a new project, and open the **Edit MoBIE Project** dialog.
-<img width="200" alt="image" src="./tutorial_images/editMobieProject.png"> 
+This will create a new project, and open the **Edit MoBIE Project** dialog.  
+<img width="400" alt="image" src="./tutorial_images/editMobieProject.png"> 
 
 Note: you can open this at any time by typing MoBIE in the search bar and selecting **Edit MoBIE Project**.
 
@@ -17,12 +17,12 @@ A dataset is a combination of images that can be displayed in the same physical 
 you might make this images from different samples, or timepoints, or separate experiments.
 
 Click **Add** on the dataset row, and provide a name for your dataset. Clicking **OK** will create the dataset,
-and add it to the dataset dropdown.
+and add it to the dataset dropdown.  
 <img width="200" alt="image" src="./tutorial_images/createDataset.png"> 
 
 The first dataset you create will automatically become the default i.e. the one you see when you first
 open that MoBIE Project. To make another dataset the default, select it in the dataset dropdown, then 
-click **Edit**, and tick the checkbox next to **Make default dataset**.
+click **Edit**, and tick the checkbox next to **Make default dataset**.  
 <img width="200" alt="image" src="./tutorial_images/defaultDataset.png"> 
 
 This Edit menu also allows you to rename datasets.
@@ -44,7 +44,7 @@ are set under Image > Properties...
 - Give your image a name, and select the image type and format. (see **Image type** and **bdv format** below for
 more details)
 
-<img width="200" alt="image" src="./tutorial_images/addCurrentImage.png"> 
+<img width="300" alt="image" src="./tutorial_images/addCurrentImage.png"> 
 
 - The image will be converted to your chosen image format and saved to the project with the appropriate metadata.
 It will appear in the image dropdown.
@@ -56,7 +56,7 @@ It will appear in the image dropdown.
 - Select the xml file of the chosen image
 - Select the Add method, image type and bdv format. (see **Image type** and **bdv format** below for
 more details)
-<img width="200" alt="image" src="./tutorial_images/addBdvFormat.png"> 
+<img width="300" alt="image" src="./tutorial_images/addBdvFormat.png"> 
 
 - The image will be added to the project, and appear in the image dropdown. If the image was a segmentation,
 it will also calculate a corresponding table. This can take some time, especially for large images.
@@ -79,8 +79,8 @@ its original location.
 
 ### Editing image metadata
 To change how the images are displayed by default, click **Edit** in the image row.
-Different options will be shown dependent on the type of the image.
-<img width="200" alt="image" src="./tutorial_images/editImage.png"> 
+Different options will be shown dependent on the type of the image.  
+<img width="400" alt="image" src="./tutorial_images/editImage.png"> 
 
 Note: the first image you add to a dataset, is automatically set to **show by default**. This can be changed
 by unchecking this box in the Edit window. At least one image must be shown by default.
