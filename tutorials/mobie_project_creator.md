@@ -49,7 +49,10 @@ imageJ. e.g. using this [python library](https://github.com/mobie/mobie-utils-py
 are set under Image > Properties...
 - Click **Add** on the image row and select **current open image**
 - Give your image a name, and select the image type and format. (see **Image type** and **bdv format** below for
-more details)
+more details).
+- You can also enter an affine transform for your image. These should be the 'top' three rows of a 4x4 affine
+matrix, in row major order.
+- If you deselect 'Use default export settings' you can set the downsampling, chunksize etc manually.
 
 <img width="300" alt="image" src="./tutorial_images/addCurrentImage.png"> 
 
