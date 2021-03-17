@@ -38,13 +38,15 @@ zebrafish-lm/
 
 ## Dataset
 
-Each dataset consits of a root directory with subdirectories `images`, containing the image (meta)data, `tables`, containing the table data and `misc`, containing
-additional data associated with this dataset.
+Each dataset consists of a root directory, which must include the file `sources.json` listing the available image sources for this dataset according to the [source metadata specification](TODO proper link).
+It should contain the subdirectories `images`, containing the image (meta)data, `tables`, containing the table data and must contain the directory `misc`, containing additional data associated with this dataset.
+Note that the location of image and table data is determined in `sources.json` and it is thus possible to choose a different directory structure than `images/` and `tables/` to store them,
+but the `images/`, `tables/` layout is recommended for consistency with other MoBIE projects and assumed throughout this specification.
 
-The `images` directory must contain the file `sources.json`, that lists the available sources according to the [source metadata specification](TODO proper link).
-It may contain additional subdirectories to organise the image data; by convention the metadata specifying local and remote image sources is often separated into `images/local` and `images/remote`.
+The `images` directory contains the xml files specifying image sources, see [Image Data specification](TODO link) for details.
+It may contain additional subdirectories to organise these files; by convention the files specifying local and remote image sources are often separated into `images/local` and `images/remote`.
 
-The `tables` directory contains all data for tables assoicated with segmentations or grid views. All tables associated with one object (segmentation or grid view), must be located in the same subdirectory
+The `tables` directory contains all data for tables assoicated with segmentations or grid views. All tables associated with one segmentation or view, must be located in the same subdirectory.
 and this directory must contain a table `default.tsv`, which is the table loaded by default for this object. It may contain additional tables. 
 See the [table data specification](TODO proper link) for the table data format.
 
@@ -54,8 +56,8 @@ It may contain the file `leveling.json`, which specifies the "natural" orientati
 See an example dataset structure for one of the zebrafish-lm project's dataset below.
 ```
 actin/
+├── sources.json
 ├── images
-│   ├── sources.json
 │   ├── local
 │   └── remote
 ├── misc
