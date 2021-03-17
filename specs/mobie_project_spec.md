@@ -10,9 +10,7 @@ This directory must contain a `datasets.json` file, which lists the available da
 which will be opened when starting the MoBIE viewer for this project. The project must contain at least one dataset directory.
 The dataset directory names and the names in `datasets.json` must be identical.
 
-Below you can find an example directory structure and the corresponding `datasets.json`.
-This example was slightly adapted from the [zebrafish-lm project](https://github.com/mobie/zebrafish-lm-datasets).
-
+See an example project structure, slightly adapted from the [zebrafish-lm project](https://github.com/mobie/zebrafish-lm-datasets), and the corresponding `datasets.json` below.
 ```
 zebrafish-lm/
 ├── datasets.json  # contains list of available datasets and the default dataset
@@ -40,27 +38,34 @@ zebrafish-lm/
 
 ## Dataset
 
-TODO add spec once changes to views / bookmarks are done
-explain the difference between image sources and metadata
+Each dataset consits of a root directory with subdirectories `images`, containing the image (meta)data, `tables`, containing the table data and `misc`, containing
+additional data associated with this dataset.
 
-TODO this will partly change now with the changes discussed for the bookmark / view layout,
-which will be relevant for images.json and bookmarks
+The `images` directory must contain the file `sources.json`, that lists the available sources according to the [source metadata specification](TODO proper link).
+It may contain additional subdirectories to organise the image data; by convention the metadata specifying local and remote image sources is often separated into `images/local` and `images/remote`.
 
+The `tables` directory contains all data for tables assoicated with segmentations or grid views. All tables associated with one object (segmentation or grid view), must be located in the same subdirectory
+and this directory must contain a table `default.tsv`, which is the table loaded by default for this object. It may contain additional tables. 
+See the [table data specification](TODO proper link) for the table data format.
+
+The `misc` directory must contain the subdirectory `bookmarks` with the file `default.json`, which specifies the default view according to the [view metadata specification](TODO proper link).
+It may contain the file `leveling.json`, which specifies the "natural" orientation of the dataset and other subdirectories or files that are associated with the dataset.
+
+See an example dataset structure for one of the zebrafish-lm project's dataset below.
 ```
 actin/
 ├── images
-│   ├── images.json
+│   ├── sources.json
 │   ├── local
 │   └── remote
 ├── misc
 │   └── bookmarks
+│   └── leveling.json
 └── tables
     ├── membrane-00E41C184C_lynEGFP_seg
     ├── membrane-2BDB74A7D6_lynEGFP_seg
     └── membrane-F80ACE04D5_lynEGFP_seg
 ```
-
-The specification for metadata and tables [can be found here](./metadata_and tables).
 
 ## Local & remote storage
 
