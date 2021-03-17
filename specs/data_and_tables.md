@@ -5,7 +5,6 @@
 MoBIE supports three different types of image data:
 - `image`: intensity images corresponding to the "primary" data, e.g. electron microscopy or light microscopy images
 - `segmentation`: label masks corresponding to segmented objects labeled by integer ids, e.g. cell or ultrastructure segmentations
-- `mask`: binary masks, e.g. foreground background mask or a mask for a region of interest
 
 The image data is stored in a multi-dimensionl, chunked data format.
 MoBIE primarily supports the [n5](https://github.com/saalfeldlab/n5) data format, using the [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md) to represent timepoints and multi-scale image pyramids.
@@ -62,7 +61,7 @@ the source names acting as keys and the following values:
     - `remote`:  xml file for opening this image source from object store
 - `menuItem`: name of the dropdown menu in GUI for this source. This field must be present and must have the form `"menu-name/source-name"`.
 - `tableRootLocation`: root directory for the tables associated for this source. This field may be present for segmentation and must not be present for other types of sources.
-- `type`: type of the source. This field must be present and must be one of `image` or `segmentation` (`mask`?)
+- `type`: type of the source. This field must be present and must be one of `image` or `segmentation`.
 - `view`: the default view for this source, specified according to the view metadata format (see below). This field must be present.
 
 All locations are relative to the dataset root directory.
@@ -94,25 +93,17 @@ See example for a `sources.json` with an image and segmentation source, ommiting
 
 **displayGroups:**
 
-tentative
-
 - `imageDisplayGroup`
     - `color`
     - `contrastLimits`
     - `name`
     - `sources`: the list of sources always uses the keys used in `sources` of json as names
-    - `timepoint`
-- `maskDisplayGroup` (do we keep it or get rid of it?)
-    - `color`
-    - `contrastLimits`
-    - `name`
-    - `sources`
-    - `timepoint`
+    - `timepoint`: the initial timepoint that will be loaded with the view, optional
 - `segmentationDisplayGroup`
     - `alpha`
     - `color` (incl. multi-color LUTs such as "Glasbey")
     - `colorByColumn`
-    - `selectedSegmentIds`
+    - `selectedSegmentIds`: format is ["sourceName-timepoint-labelId", ...]
     - `showSelectedSegmentsIn3d`
     - `name`
     - `sources`
@@ -121,6 +112,25 @@ tentative
 
 ```json
 {
+    "displayGroups": [
+        {
+            "imageDisplayGroup": {
+                "color": "white",
+                "contrastLimits": [0.0, 255.0],
+                "name": "imageGroup1",
+                "sources": ["myImage1", "myImage2"],
+                "timepoint": 0
+            }
+        },
+        {
+            "segmentationDisplayGroup": {
+                "alpha": 0.75,
+                "color": "glasbey",
+                "name": "segGroup1",
+                "sources": ["mySegmentation"]
+            }
+        }
+    ]
 }
 ```
 
@@ -146,5 +156,7 @@ tentative
 
 ```json
 {
+    "transformGroups": {
+    }
 }
 ```
