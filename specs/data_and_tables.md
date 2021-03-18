@@ -91,15 +91,14 @@ See example for a `sources.json` with an image and segmentation source, ommiting
 
 ### View Metadata
 
-**displayGroups:**
+**sourceDisplays:**
 
-- `imageDisplayGroup`
+- `imageDisplays`
     - `color`
     - `contrastLimits`
     - `name`
     - `sources`: the list of sources always uses the keys used in `sources` of json as names
-    - `timepoint`: the initial timepoint that will be loaded with the view, optional
-- `segmentationDisplayGroup`
+- `segmentationDisplays`
     - `alpha`
     - `color` (incl. multi-color LUTs such as "Glasbey")
     - `colorByColumn`
@@ -108,22 +107,20 @@ See example for a `sources.json` with an image and segmentation source, ommiting
     - `name`
     - `sources`
     - `tables` (currently only additional tables, to be added to the default table)
-    - `timepoint`
 
 ```json
 {
-    "displayGroups": [
+    "sourceDisplays": [
         {
-            "imageDisplayGroup": {
+            "imageDisplays": {
                 "color": "white",
                 "contrastLimits": [0.0, 255.0],
                 "name": "imageGroup1",
-                "sources": ["myImage1", "myImage2"],
-                "timepoint": 0
+                "sources": ["myImage1", "myImage2"]
             }
         },
         {
-            "segmentationDisplayGroup": {
+            "segmentationDisplays": {
                 "alpha": 0.75,
                 "color": "glasbey",
                 "name": "segGroup1",
@@ -134,20 +131,13 @@ See example for a `sources.json` with an image and segmentation source, ommiting
 }
 ```
 
-**transformGroups:**
-
-tentative
+**sourceTransforms:**
 
 - `affine`
     - `name`
     - `parameters`
     - `sources`
     - `timepoint`: if no timepoint is specified, this transformation is valid for all timepoints (same for other transformations)
-- `normalizedAffine`
-    - `name`
-    - `parameters`
-    - `sources`
-    - `timepoint`
 - `autoGrid`
     - `name`
     - `sources`
@@ -156,7 +146,37 @@ tentative
 
 ```json
 {
-    "transformGroups": {
+    "sourceTransforms": [
+        {
+            "affine": {
+                "name": "myAffineTransform0",
+                "parameters": [10.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+                "sources": ["myImage1", "mySegmentation"],
+                "timepoint": 0
+            },
+            "affine": {
+                "name": "myAffineTransform1",
+                "parameters": [8.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+                "sources": ["myImage1", "mySegmentation"],
+                "timepoint": 1
+            }
+        }
+    ]
+}
+```
+
+**viewerTransform:**
+
+- `normalizedAffine`
+    - `name`
+    - `parameters`
+- `position`
+- `timepoint`
+
+```json
+{
+    "viewerTransform": {
+        "timepoint": 0
     }
 }
 ```
