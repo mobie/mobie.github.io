@@ -6,9 +6,10 @@ A `dataset` contains data that can be explored *jointly* in the MoBIE viewer.
 ## Project
 
 The `project` and its associated `datasets` are stored in a directory structure with the project corresponding to the root directory.
-This directory must contain a `datasets.json` file, which lists the available datasets and specifies the default dataset, 
-which will be opened when starting the MoBIE viewer for this project. The project must contain at least one dataset directory.
-The dataset directory names and the names in `datasets.json` must be identical.
+This directory must contain a `datasets.json` file, with the following fields:
+- `datasets`: list of the available datasets. The dataset directory names must match the names in the list. A project must at least contain one dataset.
+- `defaultDataset`: the dataset that will be opened when the MoBIE viewer is started for this project.
+- `specVersion`: The version of the MoBIE specification for this dataset.
 
 See an example project structure, slightly adapted from the [zebrafish-lm project](https://github.com/mobie/zebrafish-lm-datasets), and the corresponding `datasets.json` below.
 ```
@@ -32,7 +33,8 @@ zebrafish-lm/
     "nuclei",
     "trans_golgi"
   ],
-  "defaultDataset": "membrane"
+  "defaultDataset": "membrane",
+  "specVersion": "0.2.0"
 }
 ```
 
