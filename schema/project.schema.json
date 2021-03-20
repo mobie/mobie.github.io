@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://github.com/mobie/mobie.github.io/schema/project.schema.json",
+    "title": "MoBIEProjectSchema",
+    "description": "Schema describing a MoBIE project",
+    "properties": {
+        "datasets": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1
+        },
+        "defaultDataset": {
+            "type": "string"
+        },
+        "specVersion": {
+            "type": "string",
+            "description": "TODO pattern for version string"
+        }
+    },
+    "required": ["datasets", "defaultDataset", "specVersion"],
+    "additionalProperties": false
+}

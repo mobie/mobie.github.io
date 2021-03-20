@@ -1,0 +1,81 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://github.com/mobie/mobie.github.io/schema/source.schema.json",
+    "title": "MoBIESourceSchema",
+    "description": "Schema describing a MoBIE source",
+
+    "definitions": {
+        "sourceLocations": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "local": {
+                    "description": "TODO regex for xml path",
+                    "type": "string"
+                },
+                "remote": {
+                    "description": "TODO regex for xml path",
+                    "type": "string"
+                }
+            },
+            "required": ["local"],
+            "additionalProperties": false
+        },
+
+        "imageSource": {
+            "type": "object",
+            "properties": {
+                "sourceLocations": {"$ref": "#/definitions/sourceLocations"},
+                "menuItem": {
+                    "description": "TODO regex for 'menu/item'",
+                    "type": "string"
+                },
+                "view": {
+                    "description": "",
+                    "$ref": "https://github.com/mobie/mobie.github.io/schema/view.schema.json"
+                }
+            },
+            "required": ["sourceLocations", "menuItem", "view"],
+            "additionalProperties": false
+        },
+
+        "segmentationSource": {
+            "type": "object",
+            "properties": {
+                "sourceLocations": {"$ref": "#/definitions/sourceLocations"},
+                "menuItem": {
+                    "description": "TODO regex for 'menu/item'",
+                    "type": "string"
+                },
+                "tableRootLocation": {
+                    "description": "",
+                    "type": "string"
+                },
+                "view": {
+                    "description": "",
+                    "$ref": "https://github.com/mobie/mobie.github.io/schema/view.schema.json"
+                }
+            },
+            "required": ["sourceLocations", "menuItem", "view"],
+            "additionalProperties": false
+        }
+    },
+
+    "type": "object",
+    "oneOf": [
+        {
+            "properties": {
+                "image": {"$ref": "#/definitions/imageSource"}
+            },
+            "required": ["image"],
+            "additionalProperties": false
+        },
+        {
+            "properties": {
+                "segmentation": {"$ref": "#/definitions/segmentationSource"}
+            },
+            "required": ["segmentation"],
+            "additionalProperties": false
+        }
+    ]
+}
