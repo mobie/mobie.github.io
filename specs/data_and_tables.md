@@ -153,7 +153,9 @@ See example for a `sources.json` with an image and segmentation source, ommiting
                 "parameters": [10.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
                 "sources": ["myImage1", "mySegmentation"],
                 "timepoint": 0
-            },
+            }
+        },
+        {
             "affine": {
                 "name": "myAffineTransform1",
                 "parameters": [8.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
