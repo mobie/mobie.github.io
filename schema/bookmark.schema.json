@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://github.com/mobie/mobie.github.io/schema/bookmark.schema.json",
+    "title": "MoBIEBookmarkSchema",
+    "description": "Additional MoBIE bookmarks",
+    "properties": {
+        "bookmarks": {
+            "description": "",
+            "type": "object",
+            "additionalProperties": {"$ref": "https://github.com/mobie/mobie.github.io/schema/view.schema.json"}
+        }
+    },
+    "required": ["bookmarks"],
+    "additionalProperties": false
+}

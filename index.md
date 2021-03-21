@@ -33,7 +33,4 @@ views, images and tables for your colleagues to explore
 
 
 **MoBIE specification:**
-
-MoBIE projects are stored according to the following specifications:
-- [MoBIE project & dataset specification](./specs/mobie_project_spec.md)
-- [MoBIE image data, metadata & table specification](./specs/metadata_and_tables.md)
+- [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md)

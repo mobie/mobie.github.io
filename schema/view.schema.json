@@ -229,8 +229,8 @@
             "description": "",
             "type": "array",
             "items": {"anyOf": [
-                {"$ref": "#definitions/affine"},
-                {"$ref": "#definitions/autoGrid"}
+                {"$ref": "#/definitions/affine"},
+                {"$ref": "#/definitions/autoGrid"}
             ]}
         },
         "viewerTransform": {

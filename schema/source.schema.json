@@ -6,15 +6,15 @@
 
     "definitions": {
         "sourceLocations": {
-            "description": "",
+            "description": "Location of the bdv.xml files for this source, relative to the dataset root directory.",
             "type": "object",
             "properties": {
                 "local": {
-                    "description": "TODO regex for xml path",
+                    "description": "",
                     "type": "string"
                 },
                 "remote": {
-                    "description": "TODO regex for xml path",
+                    "description": "",
                     "type": "string"
                 }
             },
@@ -27,7 +27,7 @@
             "properties": {
                 "sourceLocations": {"$ref": "#/definitions/sourceLocations"},
                 "menuItem": {
-                    "description": "TODO regex for 'menu/item'",
+                    "description": "'",
                     "type": "string"
                 },
                 "view": {
@@ -44,11 +44,11 @@
             "properties": {
                 "sourceLocations": {"$ref": "#/definitions/sourceLocations"},
                 "menuItem": {
-                    "description": "TODO regex for 'menu/item'",
+                    "description": "",
                     "type": "string"
                 },
                 "tableRootLocation": {
-                    "description": "",
+                    "description": "Location of the table root directory for this segmentation source, relativeto the dataset root directory.",
                     "type": "string"
                 },
                 "view": {
