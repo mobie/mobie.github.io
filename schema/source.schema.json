@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://github.com/mobie/mobie.github.io/schema/source.schema.json",
+    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json",
     "title": "MoBIESourceSchema",
     "description": "Schema describing a MoBIE source",
 
