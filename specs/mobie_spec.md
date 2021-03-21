@@ -173,7 +173,7 @@ The metadata for the sources of a dataset is specified in the field `sources` of
 `sources` contains a mapping of source names to [source metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/source.schema.json).
 The metadata entries have the following structure (see below for an example json file):
 - `image`:  The fields `sourceLocations`, `menuItem` and `view` are required.
-	- `menuItem`: '.
+	- `menuItem`: 
 	- `sourceLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.. The field `local` is required.
 		- `local`: 
 		- `remote`: 
@@ -187,7 +187,154 @@ The metadata entries have the following structure (see below for an example json
 	- `view`: Contains a [view](#view-metadata).
 
 ```json
-
+{
+  "segmentation": {
+    "sourceLocations": {
+      "local": "consectetur eiusmod culpa velit",
+      "remote": "deserunt laboris pariatur reprehenderit aliquip"
+    },
+    "menuItem": "nulla eiusmod cupidatat velit",
+    "view": {
+      "sourceDisplays": [
+        {
+          "imageDisplays": {
+            "color": "blue",
+            "contrastLimits": [
+              20854.722248546757,
+              23179.805502157516
+            ],
+            "name": "esse",
+            "sources": [
+              "sunt minim",
+              "Duis veniam fugiat Excepteur",
+              "minim ullamco reprehenderit",
+              "Excepteur occaecat commodo voluptate",
+              "dolore laboris deserunt"
+            ]
+          }
+        },
+        {
+          "segmentationDisplays": {
+            "alpha": 0.5892016230784269,
+            "color": "glasbey",
+            "name": "nulla laborum",
+            "sources": [
+              "laboris velit ea officia",
+              "reprehenderit do",
+              "deserunt aliquip aliqua quis eiusmod"
+            ],
+            "showSelectedSegmentsIn3d": false,
+            "tables": [
+              "non"
+            ],
+            "colorByColumn": "laboris adipisicing eu dolore commodo"
+          }
+        },
+        {
+          "imageDisplays": {
+            "color": "green",
+            "contrastLimits": [
+              4355.890400537213,
+              22823.314818917297
+            ],
+            "name": "Duis ad dolor",
+            "sources": [
+              "ad sunt nulla",
+              "dolor quis dolore aliqua",
+              "sed pariatur sint laborum",
+              "ut",
+              "Excepteur dolore"
+            ]
+          }
+        },
+        {
+          "imageDisplays": {
+            "color": "blue",
+            "contrastLimits": [
+              25393.782832566016,
+              28155.690341384296
+            ],
+            "name": "ipsum laborum eiusmod",
+            "sources": [
+              "cupidatat minim ex",
+              "incididunt adipisicing eiusmod sit consectetur"
+            ]
+          }
+        },
+        {
+          "segmentationDisplays": {
+            "alpha": 0.8222493840854954,
+            "color": "qtsv",
+            "name": "nisi velit",
+            "sources": [
+              "ut exercitation incididunt mollit",
+              "eu"
+            ],
+            "colorByColumn": "adipisicing ut velit dolore in"
+          }
+        }
+      ],
+      "viewerTransform": {
+        "timepoint": 73448172
+      },
+      "sourceTransforms": [
+        {
+          "affine": {
+            "name": "elit nisi id qui",
+            "parameters": [
+              40673098.69758567,
+              5083433.972053304,
+              54444076.70910397,
+              -50974702.65043391,
+              70980503.8441099,
+              90405826.51297942,
+              -53286430.751557656,
+              49405919.71504417,
+              -49159758.593016624,
+              -46646958.770478085,
+              55011182.6691221,
+              -65260370.75337325
+            ],
+            "sources": [
+              "deserunt ullamco cupidatat",
+              "in ipsum commodo",
+              "consequat culpa occaecat pariatur Ut"
+            ]
+          }
+        },
+        {
+          "affine": {
+            "name": "laborum",
+            "parameters": [
+              -63370279.84919401,
+              12472864.772620395,
+              -44193939.28373485,
+              -57458150.33417756,
+              36042636.69194698,
+              -53833944.44479852,
+              -56544569.971604906,
+              -52630728.39097816,
+              -23411056.211046815,
+              80919260.01650375,
+              69854409.97228375,
+              29116099.040212616
+            ],
+            "sources": [
+              "ut"
+            ],
+            "timepoints": [
+              31376708,
+              95230583,
+              39678291,
+              47821641
+            ]
+          }
+        }
+      ]
+    },
+    "tableRootLocation": "pariatur Excepteur"
+  }
+}
 ```
 
 ## <a name="view"></a>View
@@ -261,66 +408,152 @@ The metadata entries have the following structure (see below for an example json
 {
   "sourceDisplays": [
     {
-      "segmentationDisplays": {
-        "alpha": 0.3495820434501582,
-        "color": "ytsv",
-        "name": "cupidatat elit",
-        "sources": [
-          "ullamco",
-          "incididunt ut adipisicing Ut deserunt",
-          "velit sit reprehenderit ex",
-          "fugiat laborum"
+      "imageDisplays": {
+        "color": "red",
+        "contrastLimits": [
+          31889.799139162267,
+          15608.06437595846
         ],
-        "colorByColumn": "ut nulla do qui proident",
-        "showSelectedSegmentsIn3d": false
+        "name": "sed ut",
+        "sources": [
+          "sit proident id exercitation",
+          "sed eu",
+          "Ut consectetur",
+          "laboris mollit anim"
+        ]
       }
     },
     {
       "segmentationDisplays": {
-        "alpha": 0.2529627832678105,
-        "color": "glasbey",
-        "name": "aliqua enim",
+        "alpha": 0.17806568822080537,
+        "color": "Btsv",
+        "name": "magna ex aliquip veniam",
         "sources": [
-          "ea Excepteur commodo eu elit",
-          "ea",
-          "pariatur id proident qui anim"
+          "sunt labore",
+          "laboris non Lorem amet",
+          "amet"
+        ]
+      }
+    },
+    {
+      "segmentationDisplays": {
+        "alpha": 0.592591661852107,
+        "color": "viridis",
+        "name": "in cillum enim non Duis",
+        "sources": [
+          "fugiat Lorem aute et consectetur",
+          "mollit pariatur nisi cillum",
+          "aliquip ipsum est sint ut",
+          "mollit adipisicing",
+          "nisi"
         ],
+        "showSelectedSegmentsIn3d": false,
         "selectedSegmentIds": [
           "-",
           "-",
           "-",
           "-"
         ],
-        "showSelectedSegmentsIn3d": false,
-        "colorByColumn": "ut esse",
         "tables": [
-          "in proident anim elit"
+          "nostrud exercitation elit",
+          "ut pariatur"
         ]
       }
     },
     {
-      "imageDisplays": {
-        "color": "green",
-        "contrastLimits": [
-          17486.4492322466,
-          5436.900371517001
-        ],
-        "name": "ut in sit minim aliqua",
+      "segmentationDisplays": {
+        "alpha": 0.5724443649722741,
+        "color": "etsv",
+        "name": "veniam nostrud proident eiusmod",
         "sources": [
-          "ea non",
-          "in et sunt",
-          "magna adipisicing"
+          "incididunt aliquip",
+          "elit pariatur ipsum occaecat",
+          "commodo minim adipisicing labore",
+          "officia ut sed commodo consequat"
+        ],
+        "showSelectedSegmentsIn3d": false
+      }
+    },
+    {
+      "segmentationDisplays": {
+        "alpha": 0.9298903549796809,
+        "color": "glasbey",
+        "name": "nulla irure esse",
+        "sources": [
+          "proident magna sint reprehenderit"
+        ],
+        "colorByColumn": "ut reprehenderit proident sunt pariatur",
+        "selectedSegmentIds": [
+          "-"
+        ],
+        "showSelectedSegmentsIn3d": true,
+        "tables": [
+          "nisi occaecat ea sunt",
+          "officia",
+          "nulla fugiat Ut sit",
+          "labore dolore",
+          "Lorem in sed"
         ]
       }
     }
   ],
-  "viewerTransform": {
-    "position": [
-      459691.42608008883,
-      24040332.88482228,
-      56750889.48500215
-    ]
-  }
+  "sourceTransforms": [
+    {
+      "affine": {
+        "name": "ipsum",
+        "parameters": [
+          42708820.6182023,
+          96546850.91607761,
+          98622947.00477472,
+          10685885.173135683,
+          -28112547.780238107,
+          32492061.73311378,
+          782627.8595144451,
+          -86043315.47978425,
+          -95635476.01528385,
+          -48441179.39527557,
+          85845084.56054845,
+          -11463136.25961399
+        ],
+        "sources": [
+          "ex",
+          "veniam",
+          "dolore ex sint culpa",
+          "sit dolore dolore",
+          "in dolor sit"
+        ]
+      }
+    },
+    {
+      "affine": {
+        "name": "amet consectetur cupidatat",
+        "parameters": [
+          -5700347.266641885,
+          89946588.76648042,
+          88631451.67197701,
+          31230577.59615007,
+          74050985.4135746,
+          60885397.71174371,
+          -60306499.271508016,
+          -64299684.502146184,
+          73547225.4501814,
+          93975233.12644419,
+          10326493.716791108,
+          -70993625.2019629
+        ],
+        "sources": [
+          "dolor cillum enim officia occaecat",
+          "commodo quis veniam dolore dolor",
+          "velit nostrud",
+          "nostrud veniam irure velit aliquip",
+          "amet"
+        ],
+        "timepoints": [
+          84233536
+        ]
+      }
+    }
+  ]
 }
 ```
 

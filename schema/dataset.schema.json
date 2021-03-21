@@ -29,17 +29,17 @@
         "sources": {
             "description": "",
             "type": "object",
-            "additionalProperties": {"$ref": "https://github.com/mobie/mobie.github.io/schema/source.schema.json"},
+            "additionalProperties": {"$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json"},
             "minProperties": 1
         },
         "views": {
             "description": "",
             "type": "object",
             "properties": {
-                "default": {"$ref": "https://github.com/mobie/mobie.github.io/schema/view.schema.json"}
+                "default": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
             },
             "required": ["default"],
-            "additionalProperties": {"$ref": "https://github.com/mobie/mobie.github.io/schema/view.schema.json"}
+            "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
         }
     },
     "required": ["dataset", "sources", "views"],

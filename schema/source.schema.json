@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json",
+    "$id": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json",
     "title": "MoBIESourceSchema",
     "description": "Schema describing a MoBIE source",
 
@@ -27,12 +27,12 @@
             "properties": {
                 "sourceLocations": {"$ref": "#/definitions/sourceLocations"},
                 "menuItem": {
-                    "description": "'",
+                    "description": "",
                     "type": "string"
                 },
                 "view": {
                     "description": "",
-                    "$ref": "https://github.com/mobie/mobie.github.io/schema/view.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
             "required": ["sourceLocations", "menuItem", "view"],
@@ -53,7 +53,7 @@
                 },
                 "view": {
                     "description": "",
-                    "$ref": "https://github.com/mobie/mobie.github.io/schema/view.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
             "required": ["sourceLocations", "menuItem", "view"],
