@@ -1,0 +1,310 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://github.com/mobie/mobie.github.io/schema/view.schema.yaml",
+    "title": "MoBIEViewSchema",
+    "description": "Schema for serializing the MoBIE viewer state",
+    "definitions": {
+
+        "imageDisplays": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "imageDisplays": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "color": {
+                            "description": "",
+                            "type": "string",
+                            "enum": ["red", "green", "blue", "white"]
+                        },
+                        "contrastLimits": {
+                            "description": "",
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 32767
+                                },
+                                {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 32767
+                                }
+                            ],
+                            "additionalItems": false
+                        },
+                        "name": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "sources": {
+                            "description": "Image sources",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1
+                        }
+                    },
+                    "required": ["color", "contrastLimits", "name", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["imageDisplays"],
+            "additionalProperties": false
+        },
+
+        "segmentationDisplays": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "segmentationDisplays": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "alpha": {
+                            "description": "",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "color": {
+                            "description": "",
+                            "type": "string",
+                            "oneOf": [
+                                {"enum": ["glasbey", "viridis"]},
+                                {"pattern": ".tsv$"}
+                            ]
+                        },
+                        "colorByColumn": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "selectedSegmentIds": {
+                            "description": "",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^-"
+                            }
+                        },
+                        "showSelectedSegmentsIn3d": {
+                            "description": "",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "description": "Segmentation sources",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1
+                        },
+                        "tables": {
+                            "description": "",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1
+                        }
+                    },
+                    "required": ["alpha", "color", "name", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["segmentationDisplays"],
+            "additionalProperties": false
+        },
+
+        "affine": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "affine": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "parameters": {
+                            "description": "",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "sources": {
+                            "description": "Affine transform sources",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1
+                        },
+                        "timepoints": {
+                            "description": "",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "minItems": 1
+                        }
+                    },
+                    "required": ["name", "parameters", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["affine"],
+            "additionalProperties": false
+        },
+
+        "autoGrid": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "autoGrid": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "sources": {
+                            "description": "Autogrid sources",
+                            "type": "array",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "minItems": 2
+                        },
+                        "tableRootLocation": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "timepoints": {
+                            "description": "",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 1
+                        }
+                    },
+                    "required": ["name", "sources", "tableRootLocation"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["autoGrid"],
+            "additionalProperties": false
+        }
+    },
+
+    "type": "object",
+    "properties": {
+        "sourceDisplays": {
+            "description": "",
+            "type": "array",
+            "items": {"anyOf": [
+                {"$ref": "#/definitions/imageDisplays"},
+                {"$ref": "#/definitions/segmentationDisplays"}
+            ]}
+        },
+        "sourceTransforms": {
+            "description": "",
+            "type": "array",
+            "items": {"anyOf": [
+                {"$ref": "#/definitions/affine"},
+                {"$ref": "#/definitions/autoGrid"}
+            ]}
+        },
+        "viewerTransform": {
+            "description": "",
+            "type": "object",
+            "oneOf": [
+                {
+                    "properties": {
+                        "timepoint": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["timepoint"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "affine": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "timepoint": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                },
+                "required": ["affine"],
+                "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "normalizedAffine": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "timepoint": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["normalizedAffine"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "position": {
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "timepoint": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["position"],
+                    "additionalProperties": false
+                }
+            ]
+        }
+    },
+    "required": ["sourceDisplays"],
+    "additionalProperties": false
+}
