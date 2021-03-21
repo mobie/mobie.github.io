@@ -81,7 +81,7 @@ The `tables` directory contains all tabular data assoicated with segmentations o
 All tables associated with one segmentation or view, must be located in the same subdirectory, which must a table `default.tsv` and may contain additional tables. 
 See the [table data specification](#tables) for details on how tables are stored.
 
-The `misc` directory may contain the subdirectory `bookmarks` with additional views stored in json files according to the [bookmark spec](https://github.com/mobie/mobie.github.io/tree/master/schema/bookmark.schema.json).
+The `misc` directory may contain the subdirectory `bookmarks` with additional views stored in json files according to the [bookmarks spec](https://github.com/mobie/mobie.github.io/tree/master/schema/bookmarks.schema.json).
 It may also contain the file `leveling.json`, which specifies the "natural" orientation of the dataset and other subdirectories and other files that are associated with this dataset.
 
 
@@ -261,193 +261,66 @@ The metadata entries have the following structure (see below for an example json
 {
   "sourceDisplays": [
     {
-      "imageDisplays": {
-        "color": "blue",
-        "contrastLimits": [
-          7147.360762249819,
-          32258.546818423794
-        ],
-        "name": "dolore ex et",
+      "segmentationDisplays": {
+        "alpha": 0.3495820434501582,
+        "color": "ytsv",
+        "name": "cupidatat elit",
         "sources": [
-          "officia consequat non aliqua quis",
-          "ullamco labore in Excepteur",
-          "anim dolor sunt Excepteur eiusmod"
+          "ullamco",
+          "incididunt ut adipisicing Ut deserunt",
+          "velit sit reprehenderit ex",
+          "fugiat laborum"
+        ],
+        "colorByColumn": "ut nulla do qui proident",
+        "showSelectedSegmentsIn3d": false
+      }
+    },
+    {
+      "segmentationDisplays": {
+        "alpha": 0.2529627832678105,
+        "color": "glasbey",
+        "name": "aliqua enim",
+        "sources": [
+          "ea Excepteur commodo eu elit",
+          "ea",
+          "pariatur id proident qui anim"
+        ],
+        "selectedSegmentIds": [
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
+        "showSelectedSegmentsIn3d": false,
+        "colorByColumn": "ut esse",
+        "tables": [
+          "in proident anim elit"
         ]
       }
     },
     {
       "imageDisplays": {
-        "color": "white",
+        "color": "green",
         "contrastLimits": [
-          17441.79611400504,
-          29203.53330276783
+          17486.4492322466,
+          5436.900371517001
         ],
-        "name": "eu in",
+        "name": "ut in sit minim aliqua",
         "sources": [
-          "adipisicing aute",
-          "est cupidatat",
-          "magna aute dolore ad",
-          "adipisicing sit nulla pariatur"
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "red",
-        "contrastLimits": [
-          8656.98873980596,
-          9984.009190023251
-        ],
-        "name": "minim non voluptate pariatur anim",
-        "sources": [
-          "esse laboris non"
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "white",
-        "contrastLimits": [
-          26841.0875327361,
-          10628.638219196862
-        ],
-        "name": "eiusmod",
-        "sources": [
-          "laboris aliqua",
-          "sunt elit dolor"
+          "ea non",
+          "in et sunt",
+          "magna adipisicing"
         ]
       }
     }
   ],
   "viewerTransform": {
-    "timepoint": 14652049
-  },
-  "sourceTransforms": [
-    {
-      "affine": {
-        "name": "do ad cillum",
-        "parameters": [
-          38544373.34018472,
-          24095643.85721694,
-          77731176.04762965,
-          68659053.68629265,
-          82513426.20752373,
-          92873165.46921903,
-          56060945.372844934,
-          -5376948.738000169,
-          -50624976.97306969,
-          -39814294.05074155,
-          -86862684.14754643,
-          2515643.8785541207
-        ],
-        "sources": [
-          "eu ut adipisicing in sint",
-          "Duis nisi",
-          "incididunt non proident veniam",
-          "dolore irure exercitation culpa"
-        ],
-        "timepoints": [
-          30783667,
-          41826844,
-          64976210,
-          76331574,
-          47233231
-        ]
-      }
-    },
-    {
-      "autoGrid": {
-        "name": "reprehenderit proident aute fugiat",
-        "sources": [
-          [
-            "eiusmod occaecat in ea",
-            "sed dolor nisi",
-            "culpa proident reprehenderit"
-          ],
-          [
-            "proident in",
-            "ut",
-            "deserunt eu pariatur",
-            "ipsum",
-            "adipisicing nisi do minim"
-          ],
-          [
-            "ut fugiat dolore Duis proident",
-            "elit reprehenderit minim"
-          ],
-          [
-            "proident quis anim",
-            "irure aliqua sunt laboris nulla",
-            "est exercitation commodo id",
-            "proident dolor id ex",
-            "consequat voluptate"
-          ]
-        ],
-        "tableRootLocation": "adipisicing fugiat eiusmod ut pariatur",
-        "timepoints": [
-          -78332244,
-          -28234237,
-          -85845043
-        ]
-      }
-    },
-    {
-      "autoGrid": {
-        "name": "ipsum sunt magna",
-        "sources": [
-          [
-            "Excepteur commodo",
-            "mollit",
-            "culpa in"
-          ],
-          [
-            "dolor tempor",
-            "adipisicing cupidatat nulla in id",
-            "ullamco ut velit"
-          ],
-          [
-            "voluptate elit qui non"
-          ],
-          [
-            "dolor sint aliqua adipisicing ex"
-          ]
-        ],
-        "tableRootLocation": "aute in laborum aliquip eu",
-        "timepoints": [
-          78950543,
-          21205665
-        ]
-      }
-    },
-    {
-      "autoGrid": {
-        "name": "sunt in Ut",
-        "sources": [
-          [
-            "sunt",
-            "deserunt proident adipisicing aliquip sed",
-            "reprehenderit et irure cupidatat nulla",
-            "cupidatat",
-            "eu sit ea"
-          ],
-          [
-            "minim enim in nostrud"
-          ],
-          [
-            "eiusmod Duis mollit",
-            "enim laborum esse ex laboris"
-          ],
-          [
-            "laboris sunt veniam"
-          ]
-        ],
-        "tableRootLocation": "labore cillum",
-        "timepoints": [
-          80237418
-        ]
-      }
-    }
-  ]
+    "position": [
+      459691.42608008883,
+      24040332.88482228,
+      56750889.48500215
+    ]
+  }
 }
 ```
 
