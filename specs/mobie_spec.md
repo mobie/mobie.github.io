@@ -177,14 +177,14 @@ The metadata entries have the following structure (see below for an example json
 	- `sourceLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.. The field `local` is required.
 		- `local`: 
 		- `remote`: 
-	- `view`: Contains a `[view](#view-metadata)`.
+	- `view`: Contains a [view](#view-metadata).
 - `segmentation`:  The fields `sourceLocations`, `menuItem` and `view` are required.
 	- `menuItem`: 
 	- `sourceLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.. The field `local` is required.
 		- `local`: 
 		- `remote`: 
 	- `tableRootLocation`: Location of the table root directory for this segmentation source, relativeto the dataset root directory..
-	- `view`: Contains a `[view](#view-metadata)`.
+	- `view`: Contains a [view](#view-metadata).
 
 ```json
 
@@ -261,25 +261,33 @@ The metadata entries have the following structure (see below for an example json
 {
   "sourceDisplays": [
     {
-      "segmentationDisplays": {
-        "alpha": 0.018838351968303302,
-        "color": "viridis",
-        "name": "in mollit sunt est",
+      "imageDisplays": {
+        "color": "blue",
+        "contrastLimits": [
+          7147.360762249819,
+          32258.546818423794
+        ],
+        "name": "dolore ex et",
         "sources": [
-          "officia ea dolor consequat sit"
+          "officia consequat non aliqua quis",
+          "ullamco labore in Excepteur",
+          "anim dolor sunt Excepteur eiusmod"
+        ]
+      }
+    },
+    {
+      "imageDisplays": {
+        "color": "white",
+        "contrastLimits": [
+          17441.79611400504,
+          29203.53330276783
         ],
-        "colorByColumn": "consectetur ullamco",
-        "showSelectedSegmentsIn3d": true,
-        "selectedSegmentIds": [
-          "-",
-          "-",
-          "-",
-          "-",
-          "-"
-        ],
-        "tables": [
-          "eiusmod aliqua cillum",
-          "pariatur sint"
+        "name": "eu in",
+        "sources": [
+          "adipisicing aute",
+          "est cupidatat",
+          "magna aute dolore ad",
+          "adipisicing sit nulla pariatur"
         ]
       }
     },
@@ -287,78 +295,155 @@ The metadata entries have the following structure (see below for an example json
       "imageDisplays": {
         "color": "red",
         "contrastLimits": [
-          26313.53173244662,
-          29419.884810599528
+          8656.98873980596,
+          9984.009190023251
         ],
-        "name": "reprehenderit occaecat sit",
+        "name": "minim non voluptate pariatur anim",
         "sources": [
-          "nostrud exercitation",
-          "Excepteur",
-          "adipisicing nulla sint"
+          "esse laboris non"
+        ]
+      }
+    },
+    {
+      "imageDisplays": {
+        "color": "white",
+        "contrastLimits": [
+          26841.0875327361,
+          10628.638219196862
+        ],
+        "name": "eiusmod",
+        "sources": [
+          "laboris aliqua",
+          "sunt elit dolor"
         ]
       }
     }
   ],
   "viewerTransform": {
-    "timepoint": 46953406
+    "timepoint": 14652049
   },
   "sourceTransforms": [
     {
-      "autoGrid": {
-        "name": "cillum consequat labore",
-        "sources": [
-          [
-            "eu dolore pariatur",
-            "laborum magna ut sed dolore",
-            "labore sit occaecat adipisicing",
-            "eu aliquip in irure dolor",
-            "laboris"
-          ],
-          [
-            "Lorem aute proident",
-            "labore deserunt magna",
-            "mollit sed enim"
-          ]
+      "affine": {
+        "name": "do ad cillum",
+        "parameters": [
+          38544373.34018472,
+          24095643.85721694,
+          77731176.04762965,
+          68659053.68629265,
+          82513426.20752373,
+          92873165.46921903,
+          56060945.372844934,
+          -5376948.738000169,
+          -50624976.97306969,
+          -39814294.05074155,
+          -86862684.14754643,
+          2515643.8785541207
         ],
-        "tableRootLocation": "esse consectetur",
+        "sources": [
+          "eu ut adipisicing in sint",
+          "Duis nisi",
+          "incididunt non proident veniam",
+          "dolore irure exercitation culpa"
+        ],
         "timepoints": [
-          37953054,
-          -7922347,
-          -47088779,
-          5017608,
-          -22600910
+          30783667,
+          41826844,
+          64976210,
+          76331574,
+          47233231
         ]
       }
     },
     {
       "autoGrid": {
-        "name": "minim do mollit non proident",
+        "name": "reprehenderit proident aute fugiat",
         "sources": [
           [
-            "ex incididunt dolor aliqua culpa",
-            "nulla ipsum veniam consequat laboris"
+            "eiusmod occaecat in ea",
+            "sed dolor nisi",
+            "culpa proident reprehenderit"
           ],
           [
-            "ex laborum ullamco in",
-            "velit deserunt quis exercitation Excepteur",
-            "in cillum irure in amet",
-            "nisi"
+            "proident in",
+            "ut",
+            "deserunt eu pariatur",
+            "ipsum",
+            "adipisicing nisi do minim"
           ],
           [
-            "in elit do sint",
-            "incididunt in ipsum sint in",
-            "veniam qui occaecat fugiat",
-            "magna enim"
+            "ut fugiat dolore Duis proident",
+            "elit reprehenderit minim"
           ],
           [
-            "deserunt",
-            "consectetur pariatur cillum"
+            "proident quis anim",
+            "irure aliqua sunt laboris nulla",
+            "est exercitation commodo id",
+            "proident dolor id ex",
+            "consequat voluptate"
           ]
         ],
-        "tableRootLocation": "dolore elit",
+        "tableRootLocation": "adipisicing fugiat eiusmod ut pariatur",
         "timepoints": [
-          -5410992,
-          -13410794
+          -78332244,
+          -28234237,
+          -85845043
+        ]
+      }
+    },
+    {
+      "autoGrid": {
+        "name": "ipsum sunt magna",
+        "sources": [
+          [
+            "Excepteur commodo",
+            "mollit",
+            "culpa in"
+          ],
+          [
+            "dolor tempor",
+            "adipisicing cupidatat nulla in id",
+            "ullamco ut velit"
+          ],
+          [
+            "voluptate elit qui non"
+          ],
+          [
+            "dolor sint aliqua adipisicing ex"
+          ]
+        ],
+        "tableRootLocation": "aute in laborum aliquip eu",
+        "timepoints": [
+          78950543,
+          21205665
+        ]
+      }
+    },
+    {
+      "autoGrid": {
+        "name": "sunt in Ut",
+        "sources": [
+          [
+            "sunt",
+            "deserunt proident adipisicing aliquip sed",
+            "reprehenderit et irure cupidatat nulla",
+            "cupidatat",
+            "eu sit ea"
+          ],
+          [
+            "minim enim in nostrud"
+          ],
+          [
+            "eiusmod Duis mollit",
+            "enim laborum esse ex laboris"
+          ],
+          [
+            "laboris sunt veniam"
+          ]
+        ],
+        "tableRootLocation": "labore cillum",
+        "timepoints": [
+          80237418
         ]
       }
     }

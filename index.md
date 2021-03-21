@@ -26,11 +26,9 @@ views, images and tables for your colleagues to explore
 ## Expert mode usage
 - [Expert Mode](./tutorials/expert_mode.md)
 
-
 ## Making your own projects
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
 - [Bookmark structure](./tutorials/bookmarks.md)
 
-
-**MoBIE specification:**
+## MoBIE specification:
 - [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md)

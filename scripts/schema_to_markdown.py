@@ -63,7 +63,7 @@ def follow_reference(name, reference, md, indent, schema):
     # don't follow external references
     if reference[0].startswith('http'):
         reference = reference[-1].split('.')[0]
-        line = f"{indent}- `{name}`: Contains a `[{reference}](#{reference}-metadata)`.\n"
+        line = f"{indent}- `{name}`: Contains a [{reference}](#{reference}-metadata).\n"
         md += line
         return md
 
@@ -127,7 +127,7 @@ def add_obj(name, obj, md, indent, schema):
     if isinstance(additional, dict):
         additional_type = get_external_link(additional["$ref"])
         assert additional_type is not None
-        line += f" Contains fields of type `[{additional_type}](#{additional_type}-metadata)`."
+        line += f" Contains fields of type [{additional_type}](#{additional_type}-metadata)."
 
     if required:
         required = [f'`{req}`' for req in required]
