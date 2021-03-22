@@ -189,89 +189,278 @@ The color scheme used to display the segmentation can also be loaded from a tabl
 The metadata for the sources of a dataset is specified in the field `sources` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `sources` contains a mapping of source names to [source metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/source.schema.json).
 The metadata entries have the following structure (see below for an example json file):
-- `image`: An image source.. The fields `imageDataLocations`, `menuItem` and `view` are required.
-	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.. The field `local` is required.
-		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem..
-		- `remote`: Location of the bdv.xml file for reading the source image data from an object store..
-	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name..
+- `image`: An image source. The fields `imageDataLocations`, `menuItem` and `view` are required.
+	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
+		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
+		- `remote`: Location of the bdv.xml file for reading the source image data from an object store.
+	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name.
 	- `view`: Contains a [view](#view-metadata).
 - `segmentation`: A segmentation source. The fields `imageDataLocations`, `menuItem` and `view` are required.
-	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.. The field `local` is required.
-		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem..
-		- `remote`: Location of the bdv.xml file for reading the source image data from an object store..
-	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name..
-	- `tableDataRootLocation`: Location of the table root directory for this segmentation source, relative to the dataset root directory..
+	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
+		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
+		- `remote`: Location of the bdv.xml file for reading the source image data from an object store.
+	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name.
+	- `tableDataRootLocation`: Location of the table root directory for this segmentation source, relative to the dataset root directory.
 	- `view`: Contains a [view](#view-metadata).
 
 ```json
 {
-  "segmentation": {
+  "image": {
     "imageDataLocations": {
-      "local": ",z.xml"
+      "local": "IvSy.xml",
+      "remote": "C99T)Q.xml"
     },
-    "menuItem": "!a<kkY/[2Z{bde",
+    "menuItem": "8ED/\"6",
     "view": {
       "sourceDisplays": [
         {
           "segmentationDisplays": {
-            "alpha": 0.238404436099513,
-            "color": "glasbey",
-            "name": ",'dw)1nji\\f",
+            "alpha": 0.445285462526257,
+            "color": "argbColumn",
+            "name": "B",
             "sources": [
-              "sHOjJizQNg",
-              "yO=Y|:E"
+              "GRtGU\\%O-9Y"
             ],
-            "showSelectedSegmentsIn3d": true,
-            "colorByColumn": "in",
-            "valueLimits": [
-              38106402.61704439,
-              -53566203.45417617
-            ],
-            "resolution3dView": [
-              10182736.97209318,
-              -20493327.90620646,
-              32522199.896690696
-            ],
+            "showSelectedSegmentsIn3d": false,
             "tables": [
-              "-?\\1LlH0",
-              "kx?xIX*VIr|",
-              "V"
+              ",SIW~",
+              "I|ouNi`",
+              "9_~<r<K:c{u"
             ],
-            "selectedSegmentIds": [
-              "CXU.z-b;996;7",
-              "at6^ap\\;607;516020628",
-              "z)[Gz;20;02537451120",
-              ".2;29164584983;112",
-              "zG.U@3at;776;570113"
+            "valueLimits": [
+              -24289904.316836312,
+              68558154.7853218
             ]
           }
         },
         {
           "imageDisplays": {
-            "color": "r=5,g=95,b=576077,a=58786",
+            "color": "r=9,g=79873,b=47354,a=150",
             "contrastLimits": [
-              49081.455405724584,
-              44961.86508519593
+              6569.2145984661065,
+              47072.58304748612
             ],
-            "name": "g3Ya'",
+            "name": "fL8'LN:CZlf",
             "sources": [
-              "*y%J'xeD&",
-              "]ngTv3de",
-              "u<{\\c$L",
-              "pFfTgP`x",
-              "_"
+              "b=EDe",
+              ":cd",
+              "p",
+              "Sp2M\"mtE"
             ],
             "resolution3dView": [
-              -62034533.371665426,
-              -42561102.63717616,
-              26991069.874406606
+              37583394.772331715,
+              66081150.82232827,
+              -52579332.109049745
             ],
             "showImagesIn3d": false
           }
+        },
+        {
+          "segmentationDisplays": {
+            "alpha": 0.03397021527587385,
+            "color": "blueWhiteRed",
+            "name": "d&9T`",
+            "sources": [
+              "5epGK}iw"
+            ],
+            "colorByColumn": "velit sunt in anim",
+            "valueLimits": [
+              -28829896.61220257,
+              43219869.53700715
+            ],
+            "tables": [
+              "|~nzo]G<YWQ",
+              ".{jsc<",
+              "893",
+              "M4~5_",
+              "Q%a.{U6"
+            ],
+            "resolution3dView": [
+              -35783526.217144914,
+              -84888145.69256404,
+              -14620347.43114096
+            ],
+            "showSelectedSegmentsIn3d": false
+          }
+        },
+        {
+          "segmentationDisplays": {
+            "alpha": 0.03625326902958603,
+            "color": "viridis",
+            "name": "@kd",
+            "sources": [
+              "8!-?4F[!4#z",
+              "!LF&"
+            ],
+            "resolution3dView": [
+              -79424777.15520631,
+              46430857.4452807,
+              20278500.613668367
+            ],
+            "valueLimits": [
+              -66035453.981338724,
+              41102168.37095758
+            ],
+            "colorByColumn": "nulla",
+            "tables": [
+              "n0>Vk",
+              "ODi+Xi"
+            ],
+            "showSelectedSegmentsIn3d": true,
+            "selectedSegmentIds": [
+              "unX;563;69"
+            ]
+          }
         }
-      ]
-    },
-    "tableDataRootLocation": "J_Dr-"
+      ],
+      "sourceTransforms": [
+        {
+          "autoGrid": {
+            "name": "#yBLu8T0#n",
+            "sources": [
+              [
+                "0+ri:"
+              ],
+              [
+                "VG7{c0S%mc",
+                "pFBs",
+                "@-:",
+                "TW6K",
+                "1RX>?f"
+              ],
+              [
+                "5",
+                "t'(rTeQ&XUk",
+                "-3`m$\\+a4}",
+                "|4"
+              ],
+              [
+                "$",
+                "JC?",
+                "&KC",
+                ">G1.",
+                "sq`!f<#>RB"
+              ],
+              [
+                ";CAmGdaY\\i",
+                "q$[w2\\&(?>u"
+              ]
+            ],
+            "tableDataRootLocation": "@yi^mj",
+            "timepoints": [
+              94256998,
+              -6808597,
+              -7671738,
+              -23983517
+            ]
+          }
+        },
+        {
+          "autoGrid": {
+            "name": "&L",
+            "sources": [
+              [
+                "k?",
+                "k{"
+              ],
+              [
+                "f.vgjwfF",
+                "o)Q!ky[js~=",
+                "iwX9T]HhG",
+                "jdw",
+                "=:C\"Z"
+              ],
+              [
+                ":%a;"
+              ],
+              [
+                "9$N}i21';6",
+                "epsF4!LN_;l",
+                "`9",
+                "H[d",
+                "D&]M;*G"
+              ],
+              [
+                "Wahi#j8?R",
+                "e-|)$",
+                "w<$_`dW&y",
+                "kf"
+              ]
+            ],
+            "tableDataRootLocation": "v:wiRDAkn",
+            "timepoints": [
+              -29480319,
+              -43662292,
+              93381066,
+              -57348004,
+              9649043
+            ]
+          }
+        },
+        {
+          "autoGrid": {
+            "name": "+~Z",
+            "sources": [
+              [
+                "H#3.]}"
+              ],
+              [
+                "PLsyLu#|#jj",
+                "Omg=KptY",
+                "6U}@?X6p",
+                "S",
+                "-:?gb"
+              ]
+            ],
+            "tableDataRootLocation": "{sak&|%c2:j",
+            "timepoints": [
+              17982519,
+              -78983489,
+              99049461,
+              5900463,
+              80927578
+            ]
+          }
+        },
+        {
+          "affine": {
+            "name": "H352nXS",
+            "parameters": [
+              39526944.51953617,
+              -87866836.66333106,
+              -93883241.6768252,
+              -97747586.56816097,
+              -22202834.109448016,
+              19891446.741705373,
+              48968445.58035985,
+              -77558183.37919514,
+              -35258934.66318064,
+              -59460925.20164426,
+              84440251.33259797,
+              96711939.22613698
+            ],
+            "sources": [
+              "k]",
+              "xg2l~IP",
+              "O{",
+              "lGLMH"
+            ],
+            "timepoints": [
+              16177844,
+              69430890,
+              58377719
+            ]
+          }
+        }
+      ],
+      "viewerTransform": {
+        "position": [
+          67540598.53808205,
+          53898537.365473524,
+          48653419.040678725
+        ]
+      }
+    }
   }
 }
 ```
@@ -304,262 +493,107 @@ The metadata for the views of a dataset is specified in the field `views` of `da
 Additional views can be stored as json files with the field `bookmarks` mapping view names to metadata in the folder `misc/bookmarks`
 
 The metadata entries have the following structure (see below for an example json file):
-- `sourceDisplays`: The display groups of this view.. Contains a list with items:
-	- `imageDisplays`: Viewer state for a group of image sources.. The fields `color`, `contrastLimits`, `name` and `sources` are required.
-		- `color`: The color map..
-		- `contrastLimits`: The contrast limits.. Contains a tuple of [number, number].
+- `sourceDisplays`: The display groups of this view. Contains a list with items:
+	- `imageDisplays`: Viewer state for a group of image sources. The fields `color`, `contrastLimits`, `name` and `sources` are required.
+		- `color`: The color map.
+		- `contrastLimits`: The contrast limits. Contains a tuple of [number, number].
 		- `name`: 
-		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.. Contains a list of numbers.
-		- `showImagesIn3d`: Whether to show the images in the 3d viewer..
-		- `sources`: The image sources that are part of this display group.. Contains a list of strings.
+		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
+		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
+		- `sources`: The image sources that are part of this display group. Contains a list of strings.
 	- `segmentationDisplays`:  The fields `alpha`, `color`, `name` and `sources` are required.
-		- `alpha`: The alpha value used for blending segmentation and image data in the viewer..
-		- `color`: The segmentation color map..
-		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used..
+		- `alpha`: The alpha value used for blending segmentation and image data in the viewer.
+		- `color`: The segmentation color map.
+		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
 		- `name`: 
-		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified.. Contains a list of numbers.
-		- `selectedSegmentIds`: List of selected segment ids.. Contains a list of strings.
-		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer..
-		- `sources`: The segmentation sources that are part of this display group.. Contains a list of strings.
-		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here.. Contains a list of strings.
-		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'.. Contains a tuple of [number, number].
-- `sourceTransforms`: The source transformations of this view.. Contains a list with items:
-	- `affine`: Affine transformation applied to a list of sources.. The fields `name`, `parameters` and `sources` are required.
+		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
+		- `selectedSegmentIds`: List of selected segment ids. Contains a list of strings.
+		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
+		- `sources`: The segmentation sources that are part of this display group. Contains a list of strings.
+		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here. Contains a list of strings.
+		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
+- `sourceTransforms`: The source transformations of this view. Contains a list with items:
+	- `affine`: Affine transformation applied to a list of sources. The fields `name`, `parameters` and `sources` are required.
 		- `name`: 
-		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention.. Contains a list of numbers.
-		- `sources`: The sources this transformation is applied to.. Contains a list of strings.
-		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.. Contains a list of integers.
-	- `autoGrid`: Arange a list of soures in grid.. The fields `name`, `sources` and `tableDataRootLocation` are required.
+		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
+		- `sources`: The sources this transformation is applied to. Contains a list of strings.
+		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
+	- `autoGrid`: Arange a list of soures in grid. The fields `name`, `sources` and `tableDataRootLocation` are required.
 		- `name`: 
-		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position.. Contains a list of arrays.
-		- `tableDataRootLocation`: Location of the table root directory for this grid view, relative to the dataset root directory..
-		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.. Contains a list of integers.
-- `viewerTransform`: The viewer transformation of this view..Must contain exactly one of the following items:
+		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
+		- `tableDataRootLocation`: Location of the table root directory for this grid view, relative to the dataset root directory.
+		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
+- `viewerTransform`: The viewer transformation of this view.Must contain exactly one of the following items:
 	- 
-		- `timepoint`: The initial timepoint shown in the viewer..
+		- `timepoint`: The initial timepoint shown in the viewer.
 	- 
-		- `affine`: Affine transformation applied by the viewer.. Contains a list of numbers.
-		- `timepoint`: The initial timepoint shown in the viewer..
+		- `affine`: Affine transformation applied by the viewer. Contains a list of numbers.
+		- `timepoint`: The initial timepoint shown in the viewer.
 	- 
-		- `normalizedAffine`: Normalized affine transformation applied by the viewer.. Contains a list of numbers.
-		- `timepoint`: The initial timepoint shown in the viewer..
+		- `normalizedAffine`: Normalized affine transformation applied by the viewer. Contains a list of numbers.
+		- `timepoint`: The initial timepoint shown in the viewer.
 	- 
-		- `position`: Position that will be centered in the viewer.. Contains a list of numbers.
-		- `timepoint`: The initial timepoint shown in the viewer..
+		- `position`: Position that will be centered in the viewer. Contains a list of numbers.
+		- `timepoint`: The initial timepoint shown in the viewer.
 
 ```json
 {
   "sourceDisplays": [
     {
       "segmentationDisplays": {
-        "alpha": 0.08421050053830847,
+        "alpha": 0.27489773104291726,
+        "color": "argbColumn",
+        "name": "1\\",
+        "sources": [
+          ":",
+          "$B0\\,~FH7",
+          "2t9$WWuyn<g",
+          "kfNg!h*"
+        ]
+      }
+    },
+    {
+      "segmentationDisplays": {
+        "alpha": 0.9729189182903835,
         "color": "viridis",
-        "name": "d>I#V!",
+        "name": "T%}",
         "sources": [
-          "%7)2:\"7"
+          "B-~~D6W5",
+          "&D~qd>p="
         ],
-        "valueLimits": [
-          -25958112.243235126,
-          -47324558.97129233
-        ],
-        "showSelectedSegmentsIn3d": false,
+        "showSelectedSegmentsIn3d": true,
         "resolution3dView": [
-          9211455.885129377,
-          19549785.14271462,
-          -20173314.373023167
+          -94319491.86139014,
+          -57005808.75372095,
+          87767248.91915458
         ],
-        "colorByColumn": "laborum adipisicing do ut nulla",
         "selectedSegmentIds": [
-          "qE$A=)%}R;0092;94882733",
-          "&~z[';4;1110595",
-          "'3;4149880342;0",
-          "Z83A!Y;3;796365256"
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "glasbeyFromRandom",
-        "contrastLimits": [
-          23807.83338656263,
-          13330.582834161185
+          "Z;92313896;0395",
+          "g?FB<sAM;665694;001108",
+          "`9WHl;6;712499428"
         ],
-        "name": "%>yW2+w?\\4~",
-        "sources": [
-          "S!}\"\\e$\\",
-          "Y@FSeQ[",
-          "?Eq",
-          "(L"
-        ],
-        "resolution3dView": [
-          -85581146.35301104,
-          85984386.96246475,
-          91362289.23954964
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "magenta",
-        "contrastLimits": [
-          40006.100871378374,
-          32158.583646508938
-        ],
-        "name": "+:8sKw3yk5-",
-        "sources": [
-          "R]0"
-        ],
-        "showImagesIn3d": true,
-        "resolution3dView": [
-          -60290584.329927064,
-          -61394846.45059285,
-          -82099198.37872341
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "red",
-        "contrastLimits": [
-          10041.629458522459,
-          19463.351072466226
-        ],
-        "name": "1*Dc\"'6v@p",
-        "sources": [
-          "DO@<)AyK<",
-          "X#Gt#_73"
-        ],
-        "showImagesIn3d": false
-      }
-    }
-  ],
-  "sourceTransforms": [
-    {
-      "autoGrid": {
-        "name": "d{",
-        "sources": [
-          [
-            "w",
-            "jCW]03TS27",
-            "3",
-            "u@lBf.r"
-          ],
-          [
-            "8jk",
-            "yK\"",
-            "$2LoQ{'W",
-            "O_c3:p_9_)Z"
-          ],
-          [
-            "bmKm"
-          ],
-          [
-            "NYC1)|Ep$GO",
-            "UVFyN5fj",
-            "nC8h)",
-            ";G`g<cs1=",
-            "A"
-          ],
-          [
-            "IAt)-]",
-            "Yx=0#P\"&J)",
-            "|zx"
-          ]
-        ],
-        "tableDataRootLocation": "r=w+AJJ`f|N",
-        "timepoints": [
-          3359705,
-          -26840367,
-          -82248924,
-          -55359996
-        ]
-      }
-    },
-    {
-      "autoGrid": {
-        "name": "emKEyz`dh",
-        "sources": [
-          [
-            "!2PS3aP7<9A",
-            "p:.7nPvI",
-            "h]:U_'&}A8t",
-            "wNB6<^",
-            "TbeSPu;YH"
-          ],
-          [
-            "i9S8g~AS)*w",
-            "q9`PECF3",
-            "TZb"
-          ]
-        ],
-        "tableDataRootLocation": "rc=ou4",
-        "timepoints": [
-          16755729,
-          31579057,
-          45090143
-        ]
-      }
-    },
-    {
-      "autoGrid": {
-        "name": "vf",
-        "sources": [
-          [
-            "[A:A'Z",
-            "UV",
-            ")!7(<'",
-            "q]l5"
-          ],
-          [
-            "zSj#fyH",
-            "$Si;=eO+s{|",
-            "sx"
-          ],
-          [
-            "lUe"
-          ],
-          [
-            "|M:kK",
-            "KeoiA",
-            "3B",
-            "<NZ"
-          ]
-        ],
-        "tableDataRootLocation": "1zavO=I",
-        "timepoints": [
-          -52365993,
-          -59581333
-        ]
-      }
-    },
-    {
-      "affine": {
-        "name": "]bl&HwIi#v",
-        "parameters": [
-          -54820097.03256581,
-          60881937.94397706,
-          -70312130.19502576,
-          86858691.75094637,
-          33196231.781764045,
-          -7405621.09580867,
-          -81793869.94297709,
-          -51515837.7802551,
-          48215851.54651809,
-          -81018748.48851845,
-          56892190.50988892,
-          -73508678.79698883
-        ],
-        "sources": [
-          "c"
+        "colorByColumn": "deserunt tempor aute occaecat nostrud",
+        "tables": [
+          "|*|>nHg~C9",
+          "j-EF<old?c"
         ]
       }
     }
   ],
   "viewerTransform": {
-    "position": [
-      59767528.45476001,
-      73750180.12645009,
-      92633292.23736124
+    "normalizedAffine": [
+      36119726.82193446,
+      45045364.64110154,
+      -69799688.34583396,
+      35486000.71491626,
+      -33027763.386793293,
+      90994673.3224628,
+      57738378.15508479,
+      12613194.752068907,
+      5454593.914464518,
+      -65008479.936837025,
+      -26221423.364874497,
+      -68519448.40024236
     ]
   }
 }

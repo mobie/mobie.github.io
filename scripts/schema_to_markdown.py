@@ -2,7 +2,7 @@ import json
 
 
 def require_dot(descr):
-    if descr != "" and not descr.startswith("."):
+    if descr != "" and not descr.endswith("."):
         descr += "."
     return descr
 
