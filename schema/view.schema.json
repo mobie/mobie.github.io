@@ -33,12 +33,12 @@
                                 {
                                     "type": "number",
                                     "minimum": 0,
-                                    "maximum": 32767
+                                    "maximum": 65535
                                 },
                                 {
                                     "type": "number",
                                     "minimum": 0,
-                                    "maximum": 32767
+                                    "maximum": 65535
                                 }
                             ],
                             "additionalItems": false
