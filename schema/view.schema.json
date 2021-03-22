@@ -10,16 +10,16 @@
             "type": "object",
             "properties": {
                 "imageDisplays": {
-                    "description": "",
+                    "description": "Viewer state for a group of image sources.",
                     "type": "object",
                     "properties": {
                         "color": {
-                            "description": "",
+                            "description": "The color map.",
                             "type": "string",
                             "enum": ["red", "green", "blue", "white"]
                         },
                         "contrastLimits": {
-                            "description": "",
+                            "description": "The contrast limits.",
                             "type": "array",
                             "items": [
                                 {
@@ -36,11 +36,25 @@
                             "additionalItems": false
                         },
                         "name": {
-                            "description": "",
+                            "description": "The name of this display group.",
                             "type": "string"
                         },
+                        "resolution3dView": {
+                            "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "showImagesIn3d": {
+                            "description": "Whether to show the images in the 3d viewer.",
+                            "type": "boolean"
+                        },
                         "sources": {
-                            "description": "Image sources",
+                            "description": "The image sources that are part of this display group.",
                             "type": "array",
                             "items": {
                                 "type": "string"
@@ -57,7 +71,7 @@
         },
 
         "segmentationDisplays": {
-            "description": "",
+            "description": "Viewer state for a group of segmentation sources.",
             "type": "object",
             "properties": {
                 "segmentationDisplays": {
@@ -65,29 +79,36 @@
                     "type": "object",
                     "properties": {
                         "alpha": {
-                            "description": "",
+                            "description": "The alpha value used for blending segmentation and image data in the viewer.",
                             "type": "number",
                             "minimum": 0,
                             "maximum": 1
                         },
                         "color": {
-                            "description": "",
+                            "description": "The segmentation color map.",
                             "type": "string",
-                            "oneOf": [
-                                {"enum": ["glasbey", "viridis"]},
-                                {"pattern": ".tsv$"}
-                            ]
+                            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "viridis"]
                         },
                         "colorByColumn": {
-                            "description": "",
+                            "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
                             "type": "string"
                         },
                         "name": {
-                            "description": "",
+                            "description": "The name of this display group.",
                             "type": "string"
                         },
+                        "resolution3dView": {
+                            "description": "Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified.",
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
                         "selectedSegmentIds": {
-                            "description": "",
+                            "description": "List of selected segment ids.",
                             "type": "array",
                             "items": {
                                 "type": "string",
@@ -95,11 +116,11 @@
                             }
                         },
                         "showSelectedSegmentsIn3d": {
-                            "description": "",
+                            "description": "Whether to show the selected segments in the 3d viewer.",
                             "type": "boolean"
                         },
                         "sources": {
-                            "description": "Segmentation sources",
+                            "description": "The segmentation sources that are part of this display group.",
                             "type": "array",
                             "items": {
                                 "type": "string"
@@ -107,12 +128,25 @@
                             "minItems": 1
                         },
                         "tables": {
-                            "description": "",
+                            "description": "Additional tables to load. If present, the default table will always be loaded and should not be specified here.",
                             "type": "array",
                             "items": {
                                 "type": "string"
                             },
                             "minItems": 1
+                        },
+                        "valueLimits": {
+                            "description": "Value limits for numerical color maps like 'blueWhiteRed'.",
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "additionalItems": false
                         }
                     },
                     "required": ["alpha", "color", "name", "sources"],
@@ -128,15 +162,15 @@
             "type": "object",
             "properties": {
                 "affine": {
-                    "description": "",
+                    "description": "Affine transformation applied to a list of sources.",
                     "type": "object",
                     "properties": {
                         "name": {
-                            "description": "",
+                            "description": "Name of this transformation.",
                             "type": "string"
                         },
                         "parameters": {
-                            "description": "",
+                            "description": "Parameters of the affine transformation, using the BigDataViewer convention.",
                             "type": "array",
                             "items": {
                                 "type": "number"
@@ -145,7 +179,7 @@
                             "maxItems": 12
                         },
                         "sources": {
-                            "description": "Affine transform sources",
+                            "description": "The sources this transformation is applied to.",
                             "type": "array",
                             "items": {
                                 "type": "string"
@@ -153,7 +187,7 @@
                             "minItems": 1
                         },
                         "timepoints": {
-                            "description": "",
+                            "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
                             "type": "array",
                             "items": {
                                 "type": "integer",
@@ -175,30 +209,31 @@
             "type": "object",
             "properties": {
                 "autoGrid": {
-                    "description": "",
+                    "description": "Arange a list of soures in grid.",
                     "type": "object",
                     "properties": {
                         "name": {
-                            "description": "",
+                            "description": "Name of the grid.",
                             "type": "string"
                         },
                         "sources": {
-                            "description": "Autogrid sources",
+                            "description": "The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position.",
                             "type": "array",
                             "items": {
                                 "type": "array",
                                 "items": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "minItems": 1
                                 }
                             },
                             "minItems": 2
                         },
-                        "tableRootLocation": {
-                            "description": "",
+                        "tableDataRootLocation": {
+                            "description": "Location of the table root directory for this grid view, relative to the dataset root directory.",
                             "type": "string"
                         },
                         "timepoints": {
-                            "description": "",
+                            "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
                             "type": "array",
                             "items": {
                                 "type": "integer"
@@ -206,7 +241,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["name", "sources", "tableRootLocation"],
+                    "required": ["name", "sources", "tableDataRootLocation"],
                     "additionalProperties": false
                 }
             },
@@ -218,7 +253,7 @@
     "type": "object",
     "properties": {
         "sourceDisplays": {
-            "description": "",
+            "description": "The display groups of this view.",
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/imageDisplays"},
@@ -226,7 +261,7 @@
             ]}
         },
         "sourceTransforms": {
-            "description": "",
+            "description": "The source transformations of this view.",
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/affine"},
@@ -234,12 +269,13 @@
             ]}
         },
         "viewerTransform": {
-            "description": "",
+            "description": "The viewer transformation of this view.",
             "type": "object",
             "oneOf": [
                 {
                     "properties": {
                         "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
                             "type": "integer",
                             "minimum": 0
                         }
@@ -250,6 +286,7 @@
                 {
                     "properties": {
                         "affine": {
+                            "description": "Affine transformation applied by the viewer.",
                             "type": "array",
                             "items": {
                                 "type": "number"
@@ -258,6 +295,7 @@
                             "maxItems": 12
                         },
                         "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
                             "type": "integer",
                             "minimum": 0
                         }
@@ -268,6 +306,7 @@
                 {
                     "properties": {
                         "normalizedAffine": {
+                            "description": "Normalized affine transformation applied by the viewer.",
                             "type": "array",
                             "items": {
                                 "type": "number"
@@ -276,6 +315,7 @@
                             "maxItems": 12
                         },
                         "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
                             "type": "integer",
                             "minimum": 0
                         }
@@ -286,6 +326,7 @@
                 {
                     "properties": {
                         "position": {
+                            "description": "Position that will be centered in the viewer.",
                             "type": "array",
                             "items": {
                                 "type": "number",
@@ -295,6 +336,7 @@
                             "maxItems": 3
                         },
                         "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
                             "type": "integer",
                             "minimum": 0
                         }

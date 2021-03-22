@@ -22,16 +22,19 @@
             "additionalProperties": false
         },
 
+        "menuItem": {
+            "description": "Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name.",
+            "type": "string"
+        },
+
         "imageSource": {
+            "description": "An image source.",
             "type": "object",
             "properties": {
                 "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"},
-                "menuItem": {
-                    "description": "",
-                    "type": "string"
-                },
+                "menuItem": {"$ref": "#/definitions/menuItem"},
                 "view": {
-                    "description": "",
+                    "description": "The default view for this image source.",
                     "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
@@ -40,19 +43,17 @@
         },
 
         "segmentationSource": {
+            "description": "A segmentation source",
             "type": "object",
             "properties": {
                 "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"},
-                "menuItem": {
-                    "description": "",
-                    "type": "string"
-                },
+                "menuItem": {"$ref": "#/definitions/menuItem"},
                 "tableDataRootLocation": {
-                    "description": "Location of the table root directory for this segmentation source, relativeto the dataset root directory.",
+                    "description": "Location of the table root directory for this segmentation source, relative to the dataset root directory.",
                     "type": "string"
                 },
                 "view": {
-                    "description": "",
+                    "description": "The default view for this segmentation source.",
                     "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
