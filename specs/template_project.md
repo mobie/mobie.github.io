@@ -7,10 +7,13 @@ The MoBIE specification describes a valid configuration for the MoBIE viewer. Th
 - A `view`, which describes the viewer state.
 
 The specification is defined via [jsonschema](https://json-schema.org/) and the schema files are located [here](https://github.com/mobie/mobie.github.io/tree/master/schema).
-It is versioned, following [the semantic versioning convention](). The current version is `0.2.0`
+It is versioned, following [the semantic versioning convention](https://semver.org/). The current version is `0.2.0`.
 
 **Using jsonschema:**
 
+The jsonschema files can be used in the following ways:
+- Static validation against the schema: using e.g. [jsonschema-python](https://python-jsonschema.readthedocs.io/en/stable/) `jsonschema -i my-dataset-schema.json schema/dataset.schema.json`. See also the [full project validation script](https://github.com/mobie/mobie.github.io/blob/master/scripts/validate_project.py).
+- Generate example data from the schema with [fake-schema-cli](https://github.com/atomsfat/fake-schema-cli): `fake-schema schema/dataset.schema.json `
 
 ## <a name="project"></a>Project 
 

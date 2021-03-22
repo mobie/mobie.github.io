@@ -7,10 +7,13 @@ The MoBIE specification describes a valid configuration for the MoBIE viewer. Th
 - A `view`, which describes the viewer state.
 
 The specification is defined via [jsonschema](https://json-schema.org/) and the schema files are located [here](https://github.com/mobie/mobie.github.io/tree/master/schema).
-It is versioned, following [the semantic versioning convention](). The current version is `0.2.0`
+It is versioned, following [the semantic versioning convention](https://semver.org/). The current version is `0.2.0`.
 
 **Using jsonschema:**
 
+The jsonschema files can be used in the following ways:
+- Static validation against the schema: using e.g. [jsonschema-python](https://python-jsonschema.readthedocs.io/en/stable/) `jsonschema -i my-dataset-schema.json schema/dataset.schema.json`. See also the [full project validation script](https://github.com/mobie/mobie.github.io/blob/master/scripts/validate_project.py).
+- Generate example data from the schema with [fake-schema-cli](https://github.com/atomsfat/fake-schema-cli): `fake-schema schema/dataset.schema.json `
 
 ## <a name="project"></a>Project 
 
@@ -202,37 +205,73 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "image": {
+  "segmentation": {
     "imageDataLocations": {
-      "local": "iF'NtIs.xml"
+      "local": ",z.xml"
     },
-    "menuItem": "[`T@g/+JMSLok25",
+    "menuItem": "!a<kkY/[2Z{bde",
     "view": {
       "sourceDisplays": [
         {
           "segmentationDisplays": {
-            "alpha": 0.5452737060606585,
-            "color": "viridis",
-            "name": "X''gY",
+            "alpha": 0.238404436099513,
+            "color": "glasbey",
+            "name": ",'dw)1nji\\f",
             "sources": [
-              "]~oqd",
-              "gPs=skF%I",
-              "UoE,5*Kj"
+              "sHOjJizQNg",
+              "yO=Y|:E"
             ],
             "showSelectedSegmentsIn3d": true,
-            "colorByColumn": "mollit sed Excepteur proident ut",
-            "selectedSegmentIds": [
-              "c^wkqD;67099611;4155",
-              "l;6871710642;7917284175"
-            ],
+            "colorByColumn": "in",
             "valueLimits": [
-              51051833.44809276,
-              25074747.152068436
+              38106402.61704439,
+              -53566203.45417617
+            ],
+            "resolution3dView": [
+              10182736.97209318,
+              -20493327.90620646,
+              32522199.896690696
+            ],
+            "tables": [
+              "-?\\1LlH0",
+              "kx?xIX*VIr|",
+              "V"
+            ],
+            "selectedSegmentIds": [
+              "CXU.z-b;996;7",
+              "at6^ap\\;607;516020628",
+              "z)[Gz;20;02537451120",
+              ".2;29164584983;112",
+              "zG.U@3at;776;570113"
             ]
+          }
+        },
+        {
+          "imageDisplays": {
+            "color": "r=5,g=95,b=576077,a=58786",
+            "contrastLimits": [
+              49081.455405724584,
+              44961.86508519593
+            ],
+            "name": "g3Ya'",
+            "sources": [
+              "*y%J'xeD&",
+              "]ngTv3de",
+              "u<{\\c$L",
+              "pFfTgP`x",
+              "_"
+            ],
+            "resolution3dView": [
+              -62034533.371665426,
+              -42561102.63717616,
+              26991069.874406606
+            ],
+            "showImagesIn3d": false
           }
         }
       ]
-    }
+    },
+    "tableDataRootLocation": "J_Dr-"
   }
 }
 ```
@@ -313,188 +352,214 @@ The metadata entries have the following structure (see below for an example json
   "sourceDisplays": [
     {
       "segmentationDisplays": {
-        "alpha": 0.7657095969840289,
-        "color": "blueWhiteRed",
-        "name": "?C0xM7m$\"]",
+        "alpha": 0.08421050053830847,
+        "color": "viridis",
+        "name": "d>I#V!",
         "sources": [
-          "m)",
-          ":",
-          "vl",
-          "a]$~He"
-        ],
-        "colorByColumn": "Duis eiusmod",
-        "selectedSegmentIds": [
-          "8BZDH<.EB\"[;2;03649281",
-          "Ii`3^\"qcO_;0896232;8256924044"
-        ],
-        "resolution3dView": [
-          29126513.020856664,
-          25686636.264782786,
-          34398504.190276295
-        ],
-        "tables": [
-          "-wy",
-          "`"
-        ],
-        "showSelectedSegmentsIn3d": true,
-        "valueLimits": [
-          -30541898.45192243,
-          51431888.89139435
-        ]
-      }
-    },
-    {
-      "segmentationDisplays": {
-        "alpha": 0.22432875973987376,
-        "color": "argbColumn",
-        "name": "r&(!Ns<p",
-        "sources": [
-          ":|)P",
-          "i",
-          "I|",
-          "Hj<,F",
-          "Oc"
-        ],
-        "selectedSegmentIds": [
-          "_kNwfd`FU;61700686536;61",
-          "J);052600;748984",
-          "z`f;35938;938",
-          "=SJkzBG;84;16212158"
+          "%7)2:\"7"
         ],
         "valueLimits": [
-          9469089.6505782,
-          8121051.088617563
-        ],
-        "tables": [
-          "Du",
-          "=",
-          "|",
-          "!_lU(0",
-          "7:|D\"{9."
-        ]
-      }
-    },
-    {
-      "segmentationDisplays": {
-        "alpha": 0.4988912965697814,
-        "color": "blueWhiteRed",
-        "name": "hLgp$\"\\",
-        "sources": [
-          "q+625wYbIf",
-          "va]'a@2Ov",
-          "UNjtm_$EA2",
-          "X8R)"
+          -25958112.243235126,
+          -47324558.97129233
         ],
         "showSelectedSegmentsIn3d": false,
-        "selectedSegmentIds": [
-          "t;7;590",
-          "5-vp,;6980136822;3457673529",
-          "_{]|T;697918876;5331",
-          "LrAt\\{_81;177;19"
-        ],
-        "tables": [
-          "?,QwDg*",
-          "?\\FM|*kNm`"
-        ],
-        "colorByColumn": "reprehenderit ullamco elit",
-        "valueLimits": [
-          53464459.90132317,
-          74704462.06064782
-        ],
         "resolution3dView": [
-          -75615883.67543437,
-          -25795395.34442307,
-          -98370153.50780885
+          9211455.885129377,
+          19549785.14271462,
+          -20173314.373023167
+        ],
+        "colorByColumn": "laborum adipisicing do ut nulla",
+        "selectedSegmentIds": [
+          "qE$A=)%}R;0092;94882733",
+          "&~z[';4;1110595",
+          "'3;4149880342;0",
+          "Z83A!Y;3;796365256"
         ]
       }
     },
     {
       "imageDisplays": {
-        "color": "gray",
+        "color": "glasbeyFromRandom",
         "contrastLimits": [
-          29242.854018867194,
-          4609.307146599942
+          23807.83338656263,
+          13330.582834161185
         ],
-        "name": "\\H#@)yX5",
+        "name": "%>yW2+w?\\4~",
         "sources": [
-          "vQ1%z"
+          "S!}\"\\e$\\",
+          "Y@FSeQ[",
+          "?Eq",
+          "(L"
         ],
-        "showImagesIn3d": true
+        "resolution3dView": [
+          -85581146.35301104,
+          85984386.96246475,
+          91362289.23954964
+        ]
       }
     },
     {
       "imageDisplays": {
-        "color": "yellow",
+        "color": "magenta",
         "contrastLimits": [
-          22835.848540937284,
-          28220.165712724905
+          40006.100871378374,
+          32158.583646508938
         ],
-        "name": "PWka44Z",
+        "name": "+:8sKw3yk5-",
         "sources": [
-          "#\\2s",
-          "x"
+          "R]0"
         ],
+        "showImagesIn3d": true,
         "resolution3dView": [
-          -4535682.104643121,
-          77138412.91813663,
-          80001456.52439907
+          -60290584.329927064,
+          -61394846.45059285,
+          -82099198.37872341
+        ]
+      }
+    },
+    {
+      "imageDisplays": {
+        "color": "red",
+        "contrastLimits": [
+          10041.629458522459,
+          19463.351072466226
         ],
-        "showImagesIn3d": true
+        "name": "1*Dc\"'6v@p",
+        "sources": [
+          "DO@<)AyK<",
+          "X#Gt#_73"
+        ],
+        "showImagesIn3d": false
       }
     }
   ],
   "sourceTransforms": [
     {
       "autoGrid": {
-        "name": "DR",
+        "name": "d{",
         "sources": [
           [
-            "&D",
-            "\"]B~k8",
-            "i<0E&q*z-C_",
-            "P?`uW%X;G\\q"
+            "w",
+            "jCW]03TS27",
+            "3",
+            "u@lBf.r"
           ],
           [
-            "0",
-            "=",
-            "I",
-            "||YY;",
-            "^EK?e?fn"
+            "8jk",
+            "yK\"",
+            "$2LoQ{'W",
+            "O_c3:p_9_)Z"
           ],
           [
-            "yfgA(pj_",
-            "[m",
-            "we6XJW1",
-            "d.tr~LY+"
+            "bmKm"
           ],
           [
-            "|Cp",
-            "Kh=q|{*&:a4",
-            "`z#tWkE]",
-            "z7l+3rK"
+            "NYC1)|Ep$GO",
+            "UVFyN5fj",
+            "nC8h)",
+            ";G`g<cs1=",
+            "A"
+          ],
+          [
+            "IAt)-]",
+            "Yx=0#P\"&J)",
+            "|zx"
           ]
         ],
-        "tableDataRootLocation": "~H",
+        "tableDataRootLocation": "r=w+AJJ`f|N",
         "timepoints": [
-          84334833
+          3359705,
+          -26840367,
+          -82248924,
+          -55359996
+        ]
+      }
+    },
+    {
+      "autoGrid": {
+        "name": "emKEyz`dh",
+        "sources": [
+          [
+            "!2PS3aP7<9A",
+            "p:.7nPvI",
+            "h]:U_'&}A8t",
+            "wNB6<^",
+            "TbeSPu;YH"
+          ],
+          [
+            "i9S8g~AS)*w",
+            "q9`PECF3",
+            "TZb"
+          ]
+        ],
+        "tableDataRootLocation": "rc=ou4",
+        "timepoints": [
+          16755729,
+          31579057,
+          45090143
+        ]
+      }
+    },
+    {
+      "autoGrid": {
+        "name": "vf",
+        "sources": [
+          [
+            "[A:A'Z",
+            "UV",
+            ")!7(<'",
+            "q]l5"
+          ],
+          [
+            "zSj#fyH",
+            "$Si;=eO+s{|",
+            "sx"
+          ],
+          [
+            "lUe"
+          ],
+          [
+            "|M:kK",
+            "KeoiA",
+            "3B",
+            "<NZ"
+          ]
+        ],
+        "tableDataRootLocation": "1zavO=I",
+        "timepoints": [
+          -52365993,
+          -59581333
+        ]
+      }
+    },
+    {
+      "affine": {
+        "name": "]bl&HwIi#v",
+        "parameters": [
+          -54820097.03256581,
+          60881937.94397706,
+          -70312130.19502576,
+          86858691.75094637,
+          33196231.781764045,
+          -7405621.09580867,
+          -81793869.94297709,
+          -51515837.7802551,
+          48215851.54651809,
+          -81018748.48851845,
+          56892190.50988892,
+          -73508678.79698883
+        ],
+        "sources": [
+          "c"
         ]
       }
     }
   ],
   "viewerTransform": {
-    "normalizedAffine": [
-      -88706239.5893742,
-      -63130157.136136144,
-      -6918185.320930719,
-      -51485419.93094713,
-      5472224.716589972,
-      -44267249.410666846,
-      86473302.18502405,
-      17828129.05313316,
-      -33619030.54366251,
-      67839682.58196288,
-      -45432681.196573995,
-      -1863945.1120483428
+    "position": [
+      59767528.45476001,
+      73750180.12645009,
+      92633292.23736124
     ]
   }
 }
