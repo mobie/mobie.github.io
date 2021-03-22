@@ -38,6 +38,8 @@ label_id    anchor_x    anchor_y    anchor_z    bb_min_x    bb_min_y    bb_min_z
 8.0 35.57   43.39   10. 30.55   40.676225381210635  4.93    40.676  46.03   16.16   104961.0
 ```
 
+The color scheme used to display the segmentation can also be loaded from a table, see `colorByColumn` in the [source metadata](#source-metadta). In order to set an explicit color map, the field `color` may be set to `argbColumn`. In this case, the values in the column must follow the format `alpha-red-green-blue`, e.g. `255-0-0-255`.
+
 ### <a name="source-metadata"></a>Source Metadata
 
 The metadata for the sources of a dataset is specified in the field `sources` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).

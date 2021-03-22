@@ -179,136 +179,60 @@ label_id    anchor_x    anchor_y    anchor_z    bb_min_x    bb_min_y    bb_min_z
 8.0 35.57   43.39   10. 30.55   40.676225381210635  4.93    40.676  46.03   16.16   104961.0
 ```
 
+The color scheme used to display the segmentation can also be loaded from a table, see `colorByColumn` in the [source metadata](#source-metadta). In order to set an explicit color map, the field `color` may be set to `argbColumn`. In this case, the values in the column must follow the format `alpha-red-green-blue`, e.g. `255-0-0-255`.
+
 ### <a name="source-metadata"></a>Source Metadata
 
 The metadata for the sources of a dataset is specified in the field `sources` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `sources` contains a mapping of source names to [source metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/source.schema.json).
 The metadata entries have the following structure (see below for an example json file):
-- `image`:  The fields `imageDataLocations`, `menuItem` and `view` are required.
+- `image`: An image source.. The fields `imageDataLocations`, `menuItem` and `view` are required.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.. The field `local` is required.
 		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem..
 		- `remote`: Location of the bdv.xml file for reading the source image data from an object store..
-	- `menuItem`: 
+	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name..
 	- `view`: Contains a [view](#view-metadata).
-- `segmentation`:  The fields `imageDataLocations`, `menuItem` and `view` are required.
+- `segmentation`: A segmentation source. The fields `imageDataLocations`, `menuItem` and `view` are required.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.. The field `local` is required.
 		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem..
 		- `remote`: Location of the bdv.xml file for reading the source image data from an object store..
-	- `menuItem`: 
-	- `tableDataRootLocation`: Location of the table root directory for this segmentation source, relativeto the dataset root directory..
+	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name..
+	- `tableDataRootLocation`: Location of the table root directory for this segmentation source, relative to the dataset root directory..
 	- `view`: Contains a [view](#view-metadata).
 
 ```json
 {
-  "segmentation": {
+  "image": {
     "imageDataLocations": {
-      "local": "esse",
-      "remote": "non id"
+      "local": "iF'NtIs.xml"
     },
-    "menuItem": "laborum",
+    "menuItem": "[`T@g/+JMSLok25",
     "view": {
       "sourceDisplays": [
         {
           "segmentationDisplays": {
-            "alpha": 0.8405784059739572,
-            "color": "etsv",
-            "name": "veniam est magna reprehenderit commodo",
+            "alpha": 0.5452737060606585,
+            "color": "viridis",
+            "name": "X''gY",
             "sources": [
-              "et Lorem cupidatat esse id",
-              "Excepteur",
-              "est Duis Lorem nostrud proident"
+              "]~oqd",
+              "gPs=skF%I",
+              "UoE,5*Kj"
             ],
+            "showSelectedSegmentsIn3d": true,
+            "colorByColumn": "mollit sed Excepteur proident ut",
             "selectedSegmentIds": [
-              "-",
-              "-",
-              "-",
-              "-",
-              "-"
+              "c^wkqD;67099611;4155",
+              "l;6871710642;7917284175"
+            ],
+            "valueLimits": [
+              51051833.44809276,
+              25074747.152068436
             ]
-          }
-        }
-      ],
-      "viewerTransform": {
-        "affine": [
-          -93307953.79841544,
-          -88828890.00908726,
-          99395013.43420249,
-          97356842.22654238,
-          58205632.21712026,
-          34212913.5903769,
-          18335441.236960337,
-          95628095.91328141,
-          98094477.38472185,
-          -90422557.85672455,
-          95958308.57584238,
-          -47661093.8331544
-        ]
-      },
-      "sourceTransforms": [
-        {
-          "affine": {
-            "name": "sint dolor",
-            "parameters": [
-              -56931530.258426696,
-              -43142430.794025265,
-              -87476468.1594638,
-              53123688.82692143,
-              32836959.5483831,
-              56222094.85363582,
-              64667993.090072125,
-              10263884.358207375,
-              91242498.14684,
-              -76159746.33964449,
-              -37812159.14833851,
-              63035455.002851754
-            ],
-            "sources": [
-              "ex",
-              "eu ex minim voluptate"
-            ],
-            "timepoints": [
-              86304205,
-              13895273,
-              94629379,
-              60904954,
-              19272560
-            ]
-          }
-        },
-        {
-          "autoGrid": {
-            "name": "elit id aute",
-            "sources": [
-              [
-                "officia reprehenderit sunt pariatur voluptate",
-                "id",
-                "est eu irure nostrud",
-                "Lorem"
-              ],
-              [
-                "dolore Lorem",
-                "deserunt enim"
-              ],
-              [
-                "culpa irure",
-                "ut esse",
-                "reprehenderit amet"
-              ],
-              [
-                "reprehenderit quis sunt anim amet",
-                "enim Ut",
-                "commodo irure"
-              ],
-              [
-                "dolore minim aute dolor"
-              ]
-            ],
-            "tableRootLocation": "occaecat laboris aute labore"
           }
         }
       ]
-    },
-    "tableDataRootLocation": "mollit proident est"
+    }
   }
 }
 ```
@@ -341,195 +265,238 @@ The metadata for the views of a dataset is specified in the field `views` of `da
 Additional views can be stored as json files with the field `bookmarks` mapping view names to metadata in the folder `misc/bookmarks`
 
 The metadata entries have the following structure (see below for an example json file):
-- `sourceDisplays`:  Contains a list with items:
-	- `imageDisplays`:  The fields `color`, `contrastLimits`, `name` and `sources` are required.
-		- `color`: 
-		- `contrastLimits`:  Contains a tuple of [number, number].
+- `sourceDisplays`: The display groups of this view.. Contains a list with items:
+	- `imageDisplays`: Viewer state for a group of image sources.. The fields `color`, `contrastLimits`, `name` and `sources` are required.
+		- `color`: The color map..
+		- `contrastLimits`: The contrast limits.. Contains a tuple of [number, number].
 		- `name`: 
-		- `sources`: Image sources. Contains a list of strings.
+		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.. Contains a list of numbers.
+		- `showImagesIn3d`: Whether to show the images in the 3d viewer..
+		- `sources`: The image sources that are part of this display group.. Contains a list of strings.
 	- `segmentationDisplays`:  The fields `alpha`, `color`, `name` and `sources` are required.
-		- `alpha`: 
-		- `color`: 
-		- `colorByColumn`: 
+		- `alpha`: The alpha value used for blending segmentation and image data in the viewer..
+		- `color`: The segmentation color map..
+		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used..
 		- `name`: 
-		- `selectedSegmentIds`:  Contains a list of strings.
-		- `showSelectedSegmentsIn3d`: 
-		- `sources`: Segmentation sources. Contains a list of strings.
-		- `tables`:  Contains a list of strings.
-- `sourceTransforms`:  Contains a list with items:
-	- `affine`:  The fields `name`, `parameters` and `sources` are required.
+		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified.. Contains a list of numbers.
+		- `selectedSegmentIds`: List of selected segment ids.. Contains a list of strings.
+		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer..
+		- `sources`: The segmentation sources that are part of this display group.. Contains a list of strings.
+		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here.. Contains a list of strings.
+		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'.. Contains a tuple of [number, number].
+- `sourceTransforms`: The source transformations of this view.. Contains a list with items:
+	- `affine`: Affine transformation applied to a list of sources.. The fields `name`, `parameters` and `sources` are required.
 		- `name`: 
-		- `parameters`:  Contains a list of numbers.
-		- `sources`: Affine transform sources. Contains a list of strings.
-		- `timepoints`:  Contains a list of integers.
-	- `autoGrid`:  The fields `name`, `sources` and `tableRootLocation` are required.
+		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention.. Contains a list of numbers.
+		- `sources`: The sources this transformation is applied to.. Contains a list of strings.
+		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.. Contains a list of integers.
+	- `autoGrid`: Arange a list of soures in grid.. The fields `name`, `sources` and `tableDataRootLocation` are required.
 		- `name`: 
-		- `sources`: Autogrid sources. Contains a list of arrays.
-		- `tableRootLocation`: 
-		- `timepoints`:  Contains a list of integers.
-- `viewerTransform`: Must contain exactly one of the following items:
+		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position.. Contains a list of arrays.
+		- `tableDataRootLocation`: Location of the table root directory for this grid view, relative to the dataset root directory..
+		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.. Contains a list of integers.
+- `viewerTransform`: The viewer transformation of this view..Must contain exactly one of the following items:
 	- 
-		- `timepoint`: 
+		- `timepoint`: The initial timepoint shown in the viewer..
 	- 
-		- `affine`:  Contains a list of numbers.
-		- `timepoint`: 
+		- `affine`: Affine transformation applied by the viewer.. Contains a list of numbers.
+		- `timepoint`: The initial timepoint shown in the viewer..
 	- 
-		- `normalizedAffine`:  Contains a list of numbers.
-		- `timepoint`: 
+		- `normalizedAffine`: Normalized affine transformation applied by the viewer.. Contains a list of numbers.
+		- `timepoint`: The initial timepoint shown in the viewer..
 	- 
-		- `position`:  Contains a list of numbers.
-		- `timepoint`: 
+		- `position`: Position that will be centered in the viewer.. Contains a list of numbers.
+		- `timepoint`: The initial timepoint shown in the viewer..
 
 ```json
 {
   "sourceDisplays": [
     {
       "segmentationDisplays": {
-        "alpha": 0.17610288856238832,
-        "color": "glasbey",
-        "name": "in nostrud consectetur cupidatat",
+        "alpha": 0.7657095969840289,
+        "color": "blueWhiteRed",
+        "name": "?C0xM7m$\"]",
         "sources": [
-          "sunt eiusmod",
-          "id",
-          "eu fugiat occaecat Excepteur",
-          "consectetur nostrud et dolore"
+          "m)",
+          ":",
+          "vl",
+          "a]$~He"
+        ],
+        "colorByColumn": "Duis eiusmod",
+        "selectedSegmentIds": [
+          "8BZDH<.EB\"[;2;03649281",
+          "Ii`3^\"qcO_;0896232;8256924044"
+        ],
+        "resolution3dView": [
+          29126513.020856664,
+          25686636.264782786,
+          34398504.190276295
         ],
         "tables": [
-          "dolore tempor ipsum dolor",
-          "ea esse",
-          "esse ipsum dolor nulla",
-          "consequat culpa"
+          "-wy",
+          "`"
         ],
-        "showSelectedSegmentsIn3d": false,
-        "colorByColumn": "eiusmod",
-        "selectedSegmentIds": [
-          "-",
-          "-"
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "white",
-        "contrastLimits": [
-          11680.758332035484,
-          27846.639778629684
-        ],
-        "name": "eu exercitation aute",
-        "sources": [
-          "qui ut officia laboris",
-          "ipsum",
-          "ut magna aliquip fugiat sunt",
-          "ut"
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "white",
-        "contrastLimits": [
-          17408.094017426974,
-          19528.306266761243
-        ],
-        "name": "aute enim ad id",
-        "sources": [
-          "dolor aute ex eu",
-          "veniam amet",
-          "quis laboris voluptate deserunt commodo",
-          "est commodo",
-          "consequat tempor ea mollit occaecat"
-        ]
-      }
-    },
-    {
-      "imageDisplays": {
-        "color": "red",
-        "contrastLimits": [
-          14443.670428864703,
-          22747.38631988331
-        ],
-        "name": "ut",
-        "sources": [
-          "deserunt dolore ut in exercitation"
+        "showSelectedSegmentsIn3d": true,
+        "valueLimits": [
+          -30541898.45192243,
+          51431888.89139435
         ]
       }
     },
     {
       "segmentationDisplays": {
-        "alpha": 0.5291696036581044,
-        "color": "viridis",
-        "name": "cillum incididunt",
+        "alpha": 0.22432875973987376,
+        "color": "argbColumn",
+        "name": "r&(!Ns<p",
         "sources": [
-          "minim amet ea",
-          "in Lorem proident"
+          ":|)P",
+          "i",
+          "I|",
+          "Hj<,F",
+          "Oc"
+        ],
+        "selectedSegmentIds": [
+          "_kNwfd`FU;61700686536;61",
+          "J);052600;748984",
+          "z`f;35938;938",
+          "=SJkzBG;84;16212158"
+        ],
+        "valueLimits": [
+          9469089.6505782,
+          8121051.088617563
+        ],
+        "tables": [
+          "Du",
+          "=",
+          "|",
+          "!_lU(0",
+          "7:|D\"{9."
         ]
+      }
+    },
+    {
+      "segmentationDisplays": {
+        "alpha": 0.4988912965697814,
+        "color": "blueWhiteRed",
+        "name": "hLgp$\"\\",
+        "sources": [
+          "q+625wYbIf",
+          "va]'a@2Ov",
+          "UNjtm_$EA2",
+          "X8R)"
+        ],
+        "showSelectedSegmentsIn3d": false,
+        "selectedSegmentIds": [
+          "t;7;590",
+          "5-vp,;6980136822;3457673529",
+          "_{]|T;697918876;5331",
+          "LrAt\\{_81;177;19"
+        ],
+        "tables": [
+          "?,QwDg*",
+          "?\\FM|*kNm`"
+        ],
+        "colorByColumn": "reprehenderit ullamco elit",
+        "valueLimits": [
+          53464459.90132317,
+          74704462.06064782
+        ],
+        "resolution3dView": [
+          -75615883.67543437,
+          -25795395.34442307,
+          -98370153.50780885
+        ]
+      }
+    },
+    {
+      "imageDisplays": {
+        "color": "gray",
+        "contrastLimits": [
+          29242.854018867194,
+          4609.307146599942
+        ],
+        "name": "\\H#@)yX5",
+        "sources": [
+          "vQ1%z"
+        ],
+        "showImagesIn3d": true
+      }
+    },
+    {
+      "imageDisplays": {
+        "color": "yellow",
+        "contrastLimits": [
+          22835.848540937284,
+          28220.165712724905
+        ],
+        "name": "PWka44Z",
+        "sources": [
+          "#\\2s",
+          "x"
+        ],
+        "resolution3dView": [
+          -4535682.104643121,
+          77138412.91813663,
+          80001456.52439907
+        ],
+        "showImagesIn3d": true
       }
     }
   ],
   "sourceTransforms": [
     {
       "autoGrid": {
-        "name": "sunt",
+        "name": "DR",
         "sources": [
           [
-            "sint eiusmod",
-            "adipisicing",
-            "Excepteur",
-            "consectetur"
+            "&D",
+            "\"]B~k8",
+            "i<0E&q*z-C_",
+            "P?`uW%X;G\\q"
           ],
           [
-            "anim",
-            "eu dolore cillum",
-            "quis voluptate",
-            "culpa aliquip"
+            "0",
+            "=",
+            "I",
+            "||YY;",
+            "^EK?e?fn"
           ],
           [
-            "ex sed mollit",
-            "enim veniam",
-            "minim ut ut id"
+            "yfgA(pj_",
+            "[m",
+            "we6XJW1",
+            "d.tr~LY+"
           ],
           [
-            "dolor minim anim",
-            "dolor"
+            "|Cp",
+            "Kh=q|{*&:a4",
+            "`z#tWkE]",
+            "z7l+3rK"
           ]
         ],
-        "tableRootLocation": "commodo ea in",
+        "tableDataRootLocation": "~H",
         "timepoints": [
-          -41427752,
-          75918881,
-          -52220115
+          84334833
         ]
       }
-    },
-    {
-      "autoGrid": {
-        "name": "deserunt qui",
-        "sources": [
-          [
-            "Ut veniam",
-            "proident in non",
-            "dolor nostrud in ut"
-          ],
-          [
-            "aute anim dolore in",
-            "Duis aliqua",
-            "ullamco laboris consequat eiusmod"
-          ],
-          [
-            "sed incididunt",
-            "veniam incididunt minim ex",
-            "et ut in ipsum"
-          ],
-          [
-            "in sit proident ex non",
-            "in",
-            "dolor in exercitation cupidatat eiusmod"
-          ]
-        ],
-        "tableRootLocation": "esse elit aute"
-      }
     }
-  ]
+  ],
+  "viewerTransform": {
+    "normalizedAffine": [
+      -88706239.5893742,
+      -63130157.136136144,
+      -6918185.320930719,
+      -51485419.93094713,
+      5472224.716589972,
+      -44267249.410666846,
+      86473302.18502405,
+      17828129.05313316,
+      -33619030.54366251,
+      67839682.58196288,
+      -45432681.196573995,
+      -1863945.1120483428
+    ]
+  }
 }
 ```
 

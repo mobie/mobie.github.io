@@ -12,27 +12,37 @@ def add_array(name, prop, md, indent, schema):
     descr = prop.get("description", "")
     descr = require_dot(descr)
     if isinstance(items, dict):  # case dict
-        if 'type' in items:
-            type_ = items['type']
-            if type_ in ('boolean', 'string', 'number', 'integer', 'object', 'array'):
-                line = f"{indent}- `{name}`: {descr} Contains a list of {items['type']}s.\n"
+
+        def _add_items(items, md):
+            if 'type' in items:
+                type_ = items['type']
+                if type_ in ('boolean', 'string', 'number', 'integer', 'object', 'array'):
+                    line = f"{indent}- `{name}`: {descr} Contains a list of {items['type']}s.\n"
+                    md += line
+                else:
+                    assert False, f"Giving up for items {items}"
+            elif "oneOf" in items:
+                assert len(items) == 1
+                line = f"{indent}- `{name}`: {descr} Contains a list with items of exactly one of:\n"
                 md += line
+                one_of = items["oneOf"]
+                md = add_one_of(one_of, md, indent, schema)
+            elif "anyOf" in items:
+                assert len(items) == 1
+                line = f"{indent}- `{name}`: {descr} Contains a list with items:\n"
+                md += line
+                any_of = items["anyOf"]
+                md = add_any_of(any_of, md, indent + "\t", schema)
             else:
                 assert False, f"Giving up for items {items}"
-        elif "oneOf" in items:
-            assert len(items) == 1
-            line = f"{indent}- `{name}`: {descr} Contains a list with items of exactly one of:\n"
-            md += line
-            one_of = items["oneOf"]
-            md = add_one_of(one_of, md, indent, schema)
-        elif "anyOf" in items:
-            assert len(items) == 1
-            line = f"{indent}- `{name}`: {descr} Contains a list with items:\n"
-            md += line
-            any_of = items["anyOf"]
-            md = add_any_of(any_of, md, indent + "\t", schema)
+            return md
+
+        if "$ref" in items:
+            items = get_reference(items['$ref'], schema)
+            md = _add_items(items, md)
         else:
-            assert False, f"Giving up for items {items}"
+            md = _add_items(items, md)
+
     else:  # case list
         tuple_ = ", ".join(item["type"] for item in items)
         line = f"{indent}- `{name}`: {descr} Contains a tuple of [{tuple_}].\n"
@@ -52,6 +62,17 @@ def get_external_link(reference):
     else:
         reference = None
     return reference
+
+
+def get_reference(reference, schema):
+    reference = reference.lstrip("#")
+    reference = reference.split("/")
+    if reference[0] == '':
+        reference = reference[1:]
+    link = schema
+    for ref in reference:
+        link = link[ref]
+    return link
 
 
 def follow_reference(name, reference, md, indent, schema):
