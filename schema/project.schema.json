@@ -36,7 +36,8 @@
         },
         "specVersion": {
             "description": "The MoBIE spec version of this project.",
-            "type": "string"
+            "type": "string",
+            "pattern": "0\\.2\\.\\d+"
         }
     },
     "required": ["datasets", "defaultDataset", "specVersion"],

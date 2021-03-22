@@ -11,11 +11,13 @@
             "properties": {
                 "local": {
                     "description": "Location of the bdv.xml file for reading the source image data from the local filesystem.",
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^\\S+\\.(xml)$"
                 },
                 "remote": {
                     "description": "Location of the bdv.xml file for reading the source image data from an object store.",
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^\\S+\\.(xml)$"
                 }
             },
             "required": ["local"],
@@ -24,7 +26,8 @@
 
         "menuItem": {
             "description": "Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name.",
-            "type": "string"
+            "type": "string",
+            "pattern": "^[^\\/]+\\/[^\\/]+$" 
         },
 
         "imageSource": {
@@ -50,7 +53,8 @@
                 "menuItem": {"$ref": "#/definitions/menuItem"},
                 "tableDataRootLocation": {
                     "description": "Location of the table root directory for this segmentation source, relative to the dataset root directory.",
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^\\S+$"
                 },
                 "view": {
                     "description": "The default view for this segmentation source.",

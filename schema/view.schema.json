@@ -16,7 +16,10 @@
                         "color": {
                             "description": "The color map.",
                             "type": "string",
-                            "enum": ["red", "green", "blue", "white"]
+                            "oneOf": [
+                                {"pattern": "^r=(\\d+),g=(\\d+),b=(\\d+),a=(\\d+)$"},
+                                {"enum": ["black", "blue", "cyan", "darkGray", "glasbeyFromRandom", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "white", "yellow"]}
+                            ]
                         },
                         "contrastLimits": {
                             "description": "The contrast limits.",
@@ -37,7 +40,8 @@
                         },
                         "name": {
                             "description": "The name of this display group.",
-                            "type": "string"
+                            "type": "string",
+                            "pattern": "^[^,\\/ ]+$"
                         },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
@@ -57,7 +61,8 @@
                             "description": "The image sources that are part of this display group.",
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "type": "string",
+                                "pattern": "^[^,\\/ ]+$"
                             },
                             "minItems": 1
                         }
@@ -95,6 +100,7 @@
                         },
                         "name": {
                             "description": "The name of this display group.",
+                            "pattern": "^[^,\\/ ]+$",
                             "type": "string"
                         },
                         "resolution3dView": {
@@ -112,7 +118,7 @@
                             "type": "array",
                             "items": {
                                 "type": "string",
-                                "pattern": "^-"
+                                "pattern": "^[^, \\/]+,\\d+,\\d+$"
                             }
                         },
                         "showSelectedSegmentsIn3d": {
@@ -123,7 +129,8 @@
                             "description": "The segmentation sources that are part of this display group.",
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "type": "string",
+                                "pattern": "^[^,\\/ ]+$"
                             },
                             "minItems": 1
                         },
@@ -167,6 +174,7 @@
                     "properties": {
                         "name": {
                             "description": "Name of this transformation.",
+                            "pattern": "^[^,\\/ ]+$",
                             "type": "string"
                         },
                         "parameters": {
@@ -182,7 +190,8 @@
                             "description": "The sources this transformation is applied to.",
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "type": "string",
+                                "pattern": "^[^,\\/ ]+$"
                             },
                             "minItems": 1
                         },
@@ -214,6 +223,7 @@
                     "properties": {
                         "name": {
                             "description": "Name of the grid.",
+                            "pattern": "^[^,\\/ ]+$",
                             "type": "string"
                         },
                         "sources": {
@@ -223,14 +233,16 @@
                                 "type": "array",
                                 "items": {
                                     "type": "string",
-                                    "minItems": 1
-                                }
+                                    "pattern": "^[^,\\/ ]+$"
+                                },
+                                "minItems": 1
                             },
                             "minItems": 2
                         },
                         "tableDataRootLocation": {
                             "description": "Location of the table root directory for this grid view, relative to the dataset root directory.",
-                            "type": "string"
+                            "type": "string",
+                            "pattern": "^\\S+$"
                         },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
