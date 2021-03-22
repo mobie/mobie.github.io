@@ -5,6 +5,11 @@
     "description": "Schema for serializing the MoBIE viewer state",
     "definitions": {
 
+        "name": {
+            "type": "string",
+            "pattern": "^[^;\\/ ]+$"
+        },
+
         "imageDisplays": {
             "description": "",
             "type": "object",
@@ -40,8 +45,7 @@
                         },
                         "name": {
                             "description": "The name of this display group.",
-                            "type": "string",
-                            "pattern": "^[^,\\/ ]+$"
+                            "$ref": "#/definitions/name"
                         },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
@@ -100,8 +104,7 @@
                         },
                         "name": {
                             "description": "The name of this display group.",
-                            "pattern": "^[^,\\/ ]+$",
-                            "type": "string"
+                            "$ref": "#/definitions/name"
                         },
                         "resolution3dView": {
                             "description": "Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified.",
@@ -118,7 +121,7 @@
                             "type": "array",
                             "items": {
                                 "type": "string",
-                                "pattern": "^[^, \\/]+,\\d+,\\d+$"
+                                "pattern": "^[^; \\/]+;\\d+;\\d+$"
                             }
                         },
                         "showSelectedSegmentsIn3d": {
@@ -129,8 +132,7 @@
                             "description": "The segmentation sources that are part of this display group.",
                             "type": "array",
                             "items": {
-                                "type": "string",
-                                "pattern": "^[^,\\/ ]+$"
+                                "$ref": "#/definitions/name"
                             },
                             "minItems": 1
                         },
@@ -138,7 +140,7 @@
                             "description": "Additional tables to load. If present, the default table will always be loaded and should not be specified here.",
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "$ref": "#/definitions/name"
                             },
                             "minItems": 1
                         },
@@ -174,8 +176,7 @@
                     "properties": {
                         "name": {
                             "description": "Name of this transformation.",
-                            "pattern": "^[^,\\/ ]+$",
-                            "type": "string"
+                            "$ref": "#/definitions/name"
                         },
                         "parameters": {
                             "description": "Parameters of the affine transformation, using the BigDataViewer convention.",
@@ -190,8 +191,7 @@
                             "description": "The sources this transformation is applied to.",
                             "type": "array",
                             "items": {
-                                "type": "string",
-                                "pattern": "^[^,\\/ ]+$"
+                                "$ref": "#/definitions/name"
                             },
                             "minItems": 1
                         },
@@ -223,8 +223,7 @@
                     "properties": {
                         "name": {
                             "description": "Name of the grid.",
-                            "pattern": "^[^,\\/ ]+$",
-                            "type": "string"
+                            "$ref": "#/definitions/name"
                         },
                         "sources": {
                             "description": "The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position.",
