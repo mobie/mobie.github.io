@@ -5,16 +5,16 @@
     "description": "Schema describing a MoBIE source",
 
     "definitions": {
-        "sourceLocations": {
+        "imageDataLocations": {
             "description": "Location of the bdv.xml files for this source, relative to the dataset root directory.",
             "type": "object",
             "properties": {
                 "local": {
-                    "description": "",
+                    "description": "Location of the bdv.xml file for reading the source image data from the local filesystem.",
                     "type": "string"
                 },
                 "remote": {
-                    "description": "",
+                    "description": "Location of the bdv.xml file for reading the source image data from an object store.",
                     "type": "string"
                 }
             },
@@ -25,7 +25,7 @@
         "imageSource": {
             "type": "object",
             "properties": {
-                "sourceLocations": {"$ref": "#/definitions/sourceLocations"},
+                "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"},
                 "menuItem": {
                     "description": "",
                     "type": "string"
@@ -35,19 +35,19 @@
                     "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
-            "required": ["sourceLocations", "menuItem", "view"],
+            "required": ["imageDataLocations", "menuItem", "view"],
             "additionalProperties": false
         },
 
         "segmentationSource": {
             "type": "object",
             "properties": {
-                "sourceLocations": {"$ref": "#/definitions/sourceLocations"},
+                "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"},
                 "menuItem": {
                     "description": "",
                     "type": "string"
                 },
-                "tableRootLocation": {
+                "tableDataRootLocation": {
                     "description": "Location of the table root directory for this segmentation source, relativeto the dataset root directory.",
                     "type": "string"
                 },
@@ -56,7 +56,7 @@
                     "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
-            "required": ["sourceLocations", "menuItem", "view"],
+            "required": ["imageDataLocations", "menuItem", "view"],
             "additionalProperties": false
         }
     },

@@ -7,6 +7,10 @@ The MoBIE specification describes a valid configuration for the MoBIE viewer. Th
 - A `view`, which describes the viewer state.
 
 The specification is defined via [jsonschema](https://json-schema.org/) and the schema files are located [here](https://github.com/mobie/mobie.github.io/tree/master/schema).
+It is versioned, following [the semantic versioning convention](). The current version is `0.2.0`
+
+**Using jsonschema:**
+
 
 ## <a name="project"></a>Project 
 
@@ -29,6 +33,9 @@ zebrafish-lm/
 The project metadata, stored in `project.json`, has the following structure:
 - `datasets`: List of the available datasets. The dataset directory names must match the names in the list. It must contain at least one dataset.
 - `defaultDataset`: The dataset that will be opened when the MoBIE viewer is started for this project.
+- `project`: Additional project metadata.
+    - `description`: Description of this project.
+    - `references`: List of references for this project.
 - `specVersion`: The MoBIE specification version of this project.
 
 For the zebrafish-lm project the `project.json` looks like this:
@@ -43,6 +50,10 @@ For the zebrafish-lm project the `project.json` looks like this:
     "trans_golgi"
   ],
   "defaultDataset": "membrane",
+  "project": {
+    "description": "A quantitative atlas of the cellular architecture for the zebrafish posterior lateral line primoridum.",
+    "references": ["https://doi.org/10.7554/eLife.55913"]
+  },
   "specVersion": "0.2.0"
 }
 ```

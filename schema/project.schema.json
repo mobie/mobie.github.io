@@ -5,6 +5,7 @@
     "description": "Schema describing a MoBIE project",
     "properties": {
         "datasets": {
+            "description": "The list of datasets available in this project.",
             "type": "array",
             "items": {
                 "type": "string"
@@ -12,11 +13,30 @@
             "minItems": 1
         },
         "defaultDataset": {
+            "description": "The default dataset for this project.",
             "type": "string"
         },
+        "project": {
+            "type": "object",
+            "description": "Additional project metadata.",
+            "properties": {
+                "description": {
+                    "desription": "The description.",
+                    "type": "string"
+                },
+                "references": {
+                    "description": "Publication or other references for this project",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
         "specVersion": {
-            "type": "string",
-            "description": "TODO pattern for version string"
+            "description": "The MoBIE spec version of this project.",
+            "type": "string"
         }
     },
     "required": ["datasets", "defaultDataset", "specVersion"],

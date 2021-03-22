@@ -5,38 +5,35 @@
     "description": "Schema describing a MoBIE dataset",
     "properties": {
         "dataset": {
-            "description": "TODO what other properties do we need?",
+            "description": "Additional dataset metadata.",
             "type": "object",
             "properties": {
-                "dimensions": {
-                    "type": "array",
-                    "description": "TODO what dimensions do we have here",
-                    "items": {
-                        "type": "integer",
-                        "enum": [2, 3]
-                    }
+                "description": {
+                    "description": "Description of the dataset",
+                    "type": "string"
                 },
-                "references": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
+                "is2d": {
+                    "desription": "Are all image sources in this dataset two-dimensional?",
+                    "type": "boolean"
                 }
             },
-            "required": ["dimensions"],
+            "required": ["is2d"],
             "additionalProperties": false
         },
         "sources": {
-            "description": "",
+            "description": "The list of sources in this dataset.",
             "type": "object",
             "additionalProperties": {"$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json"},
             "minProperties": 1
         },
         "views": {
-            "description": "",
+            "description": "The list of views in this dataset.",
             "type": "object",
             "properties": {
-                "default": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
+                "default": {
+                    "description": "The default view for this dataset.",
+                    "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
+                }
             },
             "required": ["default"],
             "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
