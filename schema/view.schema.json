@@ -43,6 +43,10 @@
                             ],
                             "additionalItems": false
                         },
+                        "name": {
+                            "description": "Name of this image display.",
+                            "$ref": "#/definitions/name"
+                        },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
                             "type": "array",
@@ -67,7 +71,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["color", "contrastLimits", "sources"],
+                    "required": ["color", "contrastLimits", "name", "sources"],
                     "additionalProperties": false
                 }
             },
@@ -107,6 +111,10 @@
                             },
                             "minItems": 3,
                             "maxItems": 3
+                        },
+                        "name": {
+                            "description": "Name of this segmentation display.",
+                            "$ref": "#/definitions/name"
                         },
                         "selectedSegmentIds": {
                             "description": "List of selected segment ids.",
@@ -150,7 +158,7 @@
                             "additionalItems": false
                         }
                     },
-                    "required": ["alpha", "color", "sources"],
+                    "required": ["alpha", "color", "name", "sources"],
                     "additionalProperties": false
                 }
             },

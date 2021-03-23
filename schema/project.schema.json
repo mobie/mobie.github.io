@@ -8,7 +8,8 @@
             "description": "The list of datasets available in this project.",
             "type": "array",
             "items": {
-                "type": "string"
+                "type": "string",
+                "$ref": "view.schema.json#/definitions/name"
             },
             "minItems": 1
         },

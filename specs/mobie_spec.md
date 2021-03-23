@@ -13,7 +13,7 @@ It is versioned, following [the semantic versioning convention](https://semver.o
 
 The jsonschema files can be used in the following ways:
 - Static validation against the schema: using e.g. [jsonschema-python](https://python-jsonschema.readthedocs.io/en/stable/) `jsonschema -i my-dataset-schema.json schema/dataset.schema.json`. See also the [full project validation script](https://github.com/mobie/mobie.github.io/blob/master/scripts/validate_project.py).
-- Generate example data from the schema with [fake-schema-cli](https://github.com/atomsfat/fake-schema-cli): `fake-schema schema/dataset.schema.json `
+- Generate example data from the schema with [fake-schema-cli](https://github.com/atomsfat/fake-schema-cli): `fake-schema schema/dataset.schema.json`
 
 ## <a name="project"></a>Project 
 
@@ -89,7 +89,7 @@ The `images` directory contains the xml files describing the image data, see [da
 It may contain additional subdirectories to organise these files; by convention the files for local and remote image sources are separated into `images/local` and `images/remote`.
 
 The `tables` directory contains all tabular data assoicated with segmentations or grid views (see [data specification](#data) and [view specification](#view) for details)
-All tables associated with one segmentation or view, must be located in the same subdirectory, which must a table `default.tsv` and may contain additional tables. 
+All tables associated with one segmentation or view, must be located in the same subdirectory, which must contain a table `default.tsv` and may contain additional tables. 
 See the [table data specification](#tables) for details on how tables are stored.
 
 The `misc` directory may contain the subdirectory `bookmarks` with additional views stored in json files according to the [bookmarks spec](https://github.com/mobie/mobie.github.io/tree/master/schema/bookmarks.schema.json).
@@ -199,57 +199,104 @@ The metadata entries have the following structure (see below for an example json
 {
   "image": {
     "imageDataLocations": {
-      "local": "r%X'.xml",
-      "remote": "l9lH.xml"
+      "local": "f,[Jw^.xml"
     },
     "view": {
+      "menuItem": "$wd.)$^n]/hw=",
       "sourceDisplays": [
         {
-          "segmentationDisplays": {
-            "alpha": 0.4026449837937589,
-            "color": "blueWhiteRed",
-            "name": "2|ip",
+          "imageDisplay": {
+            "color": "white",
+            "contrastLimits": [
+              42793.43612723211,
+              46286.89491251391
+            ],
             "sources": [
-              "4qu.q\\8y:kl",
-              "g2x0%+jbI'E",
-              "#{j~WG=",
-              ":zBLC:",
-              "?\"{^=)"
+              "mQx66=B",
+              "d=d"
             ],
-            "valueLimits": [
-              -13720478.610611498,
-              -70319072.28996018
-            ],
+            "showImagesIn3d": true,
             "resolution3dView": [
-              83839539.8408292,
-              -94032266.9080123,
-              -35098270.819775835
+              684671.5820067078,
+              -86922837.88484931,
+              17955537.227412984
             ]
           }
         },
         {
-          "segmentationDisplays": {
-            "alpha": 0.19395728841231374,
-            "color": "blueWhiteRed",
-            "name": "i+IX\\OU",
+          "segmentationDisplay": {
+            "alpha": 0.06229088727810783,
+            "color": "argbColumn",
             "sources": [
-              "@k\\H!^",
-              "wjwW[",
-              "O3",
-              "hT9I!~p&"
+              "x",
+              "JY",
+              "R7T",
+              "E1Y8S",
+              ")4>2"
             ],
-            "showSelectedSegmentsIn3d": true,
             "resolution3dView": [
-              41518665.42594424,
-              46642033.79752028,
-              56874603.49185777
+              597901.2173559964,
+              -83209275.00234379,
+              63410087.721131206
             ]
           }
+        },
+        {
+          "imageDisplay": {
+            "color": "green",
+            "contrastLimits": [
+              64304.015941262965,
+              42139.27875624948
+            ],
+            "sources": [
+              "L",
+              "0IBmNkt}W`",
+              "<m})",
+              "'",
+              "Jkl8X;'']"
+            ],
+            "showImagesIn3d": false,
+            "resolution3dView": [
+              74330549.66009784,
+              79271207.08581975,
+              -76804337.95038666
+            ]
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "alpha": 0.11319442397794854,
+            "color": "glasbey",
+            "sources": [
+              "T>'aJ6|(S>",
+              "$rOD<ytN}:",
+              "%p"
+            ],
+            "selectedSegmentIds": [
+              "Y4;66631780056;095",
+              "roQ;98037;63778135541",
+              "JM_F:i;27;951119"
+            ],
+            "valueLimits": [
+              76224233.36224958,
+              -94111318.40000895
+            ],
+            "colorByColumn": "Excepteur ipsum",
+            "resolution3dView": [
+              88771216.34597239,
+              -1796449.9925724417,
+              36909911.44870269
+            ],
+            "tables": [
+              "%\"1N-]o",
+              "00",
+              "nw@-UF",
+              "a%=p"
+            ],
+            "showSelectedSegmentsIn3d": false
+          }
         }
-      ],
-      "viewerTransform": {
-        "timepoint": 49287088
-      }
+      ]
     }
   }
 }
@@ -288,6 +335,7 @@ The metadata entries have the following structure (see below for an example json
 	- `imageDisplay`: Viewer state for a group of image sources. The fields `color`, `contrastLimits` and `sources` are required.
 		- `color`: The color map.
 		- `contrastLimits`: The contrast limits. Contains a tuple of [number, number].
+		- `name`: 
 		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
 		- `sources`: The image sources that are part of this display group. Contains a list of strings.
@@ -295,6 +343,7 @@ The metadata entries have the following structure (see below for an example json
 		- `alpha`: The alpha value used for blending segmentation and image data in the viewer.
 		- `color`: The segmentation color map.
 		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
+		- `name`: 
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `selectedSegmentIds`: List of selected segment ids. Contains a list of strings.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
@@ -325,115 +374,29 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "menuItem": "g/?",
+  "menuItem": "\"v)tRlx#td/m$R{~6",
   "sourceDisplays": [
     {
-      "segmentationDisplay": {
-        "alpha": 0.7248734741059224,
-        "color": "argbColumn",
-        "sources": [
-          "P:X",
-          "IobZcmWb",
-          "AI",
-          "G`&",
-          "NT)5=4]>"
-        ],
-        "resolution3dView": [
-          85053560.13656744,
-          3912748.462437451,
-          18086529.452488527
-        ],
-        "tables": [
-          "XeFk",
-          "5L\\|",
-          "vjJE\""
-        ],
-        "colorByColumn": "sit aliquip ipsum fugiat ea"
-      }
-    },
-    {
       "imageDisplay": {
-        "color": "r=1454635680,g=1803,b=920,a=97",
+        "color": "r=65,g=034412,b=12069,a=6988",
         "contrastLimits": [
-          22692.977520294728,
-          56468.94079971661
+          35733.80257793236,
+          12638.921710521676
         ],
         "sources": [
-          ")b",
-          "{VWkv",
-          "*e"
+          "?CfEr@<0}-",
+          "$vvL<i2",
+          "zPkf5bTe'<q",
+          "y;O=J<[",
+          "C!3E-H"
         ],
-        "showImagesIn3d": true,
+        "name": "v?z{O",
         "resolution3dView": [
-          -61091241.41187725,
-          -71887783.04110569,
-          48288600.61283663
-        ]
-      }
-    }
-  ],
-  "sourceTransforms": [
-    {
-      "autoGrid": {
-        "sources": [
-          [
-            "`%f>vQ'w4Y`",
-            "h.nqAt3",
-            "nd3",
-            "G5M9zPS"
-          ],
-          [
-            "\"XdAoe`",
-            "4I6u9@TN\"1",
-            "n`2[y]sX1V*"
-          ],
-          [
-            "9c",
-            "?LGVu7t"
-          ],
-          [
-            "Rh$ug"
-          ],
-          [
-            "-(96lbQ"
-          ]
+          -22332065.208476454,
+          49653281.56541929,
+          88697419.8909199
         ],
-        "tableDataLocation": "%F58b0x",
-        "timepoints": [
-          60184792,
-          94497890,
-          70640426
-        ]
-      }
-    },
-    {
-      "autoGrid": {
-        "sources": [
-          [
-            "x-",
-            "[X"
-          ],
-          [
-            "<F;\"",
-            "Y",
-            "'5H",
-            "a"
-          ],
-          [
-            "@Nq{$Ee?jge",
-            "'Mx#g'E]m9",
-            "jg",
-            "p\"GnF"
-          ]
-        ],
-        "tableDataLocation": "e-Q",
-        "timepoints": [
-          53099542,
-          7411464,
-          -66202220,
-          52366629,
-          -67092218
-        ]
+        "showImagesIn3d": true
       }
     }
   ]
