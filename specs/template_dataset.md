@@ -34,19 +34,16 @@ actin/
 ### <a name="dataset-metadata"></a>Dataset Metadata
 
 The dataset metadata, stored in `dataset.json`, has the following structure:
-- `dataset`: Additional information for this dataset.
-    - `description`: Description of this dataset.
-    - `is2d`: Are all images in this dataset two dimensional?
+- `description`: Description of this dataset.
+- `is2d`: Are all images in this dataset two dimensional?
 - `sources`: Mapping source names to their [specification](#source-metadata).
 - `views`: Mapping of view names for to their [specification](#view-metadata). Must contain the `default` view.
 
 For the zebrafish-lm dataset the `dataset.json` looks like this (source and view metadata omitted for brevity):
 ```json
 {
-    "dataset": {
-        "description": "Zebrafish primordium with actin staining.",
-        "is2d": False
-    },
+    "description": "Zebrafish primordium with actin staining.",
+    "is2d": False,
     "sources": {
         "membrane_sample1": {"..."},
         "membrane_sample2": {"..."},

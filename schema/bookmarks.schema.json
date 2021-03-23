@@ -7,7 +7,10 @@
         "bookmarks": {
             "description": "",
             "type": "object",
-            "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
+            "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"},
+            "propertyNames": {
+                "$ref": "view.schema.json#/definitions/name"
+            }
         }
     },
     "required": ["bookmarks"],

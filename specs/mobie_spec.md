@@ -36,9 +36,8 @@ zebrafish-lm/
 The project metadata, stored in `project.json`, has the following structure:
 - `datasets`: List of the available datasets. The dataset directory names must match the names in the list. It must contain at least one dataset.
 - `defaultDataset`: The dataset that will be opened when the MoBIE viewer is started for this project.
-- `project`: Additional project metadata.
-    - `description`: Description of this project.
-    - `references`: List of references for this project.
+- `description`: Description of this project.
+- `references`: List of references for this project.
 - `specVersion`: The MoBIE specification version of this project.
 
 For the zebrafish-lm project the `project.json` looks like this:
@@ -53,10 +52,8 @@ For the zebrafish-lm project the `project.json` looks like this:
     "trans_golgi"
   ],
   "defaultDataset": "membrane",
-  "project": {
-    "description": "A quantitative atlas of the cellular architecture for the zebrafish posterior lateral line primoridum.",
-    "references": ["https://doi.org/10.7554/eLife.55913"]
-  },
+  "description": "A quantitative atlas of the cellular architecture for the zebrafish posterior lateral line primoridum.",
+  "references": ["https://doi.org/10.7554/eLife.55913"],
   "specVersion": "0.2.0"
 }
 ```
@@ -117,19 +114,16 @@ actin/
 ### <a name="dataset-metadata"></a>Dataset Metadata
 
 The dataset metadata, stored in `dataset.json`, has the following structure:
-- `dataset`: Additional information for this dataset.
-    - `description`: Description of this dataset.
-    - `is2d`: Are all images in this dataset two dimensional?
+- `description`: Description of this dataset.
+- `is2d`: Are all images in this dataset two dimensional?
 - `sources`: Mapping source names to their [specification](#source-metadata).
 - `views`: Mapping of view names for to their [specification](#view-metadata). Must contain the `default` view.
 
 For the zebrafish-lm dataset the `dataset.json` looks like this (source and view metadata omitted for brevity):
 ```json
 {
-    "dataset": {
-        "description": "Zebrafish primordium with actin staining.",
-        "is2d": False
-    },
+    "description": "Zebrafish primordium with actin staining.",
+    "is2d": False,
     "sources": {
         "membrane_sample1": {"..."},
         "membrane_sample2": {"..."},
@@ -189,276 +183,72 @@ The color scheme used to display the segmentation can also be loaded from a tabl
 The metadata for the sources of a dataset is specified in the field `sources` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `sources` contains a mapping of source names to [source metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/source.schema.json).
 The metadata entries have the following structure (see below for an example json file):
-- `image`: An image source. The fields `imageDataLocations`, `menuItem` and `view` are required.
+- `image`: An image source. The fields `imageDataLocations` and `view` are required.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
 		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
 		- `remote`: Location of the bdv.xml file for reading the source image data from an object store.
-	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name.
 	- `view`: Contains a [view](#view-metadata).
-- `segmentation`: A segmentation source. The fields `imageDataLocations`, `menuItem` and `view` are required.
+- `segmentation`: A segmentation source. The fields `imageDataLocations` and `view` are required.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
 		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
 		- `remote`: Location of the bdv.xml file for reading the source image data from an object store.
-	- `menuItem`: Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name.
-	- `tableDataRootLocation`: Location of the table root directory for this segmentation source, relative to the dataset root directory.
+	- `tableDataLocation`: Location of the table directory for this segmentation source, relative to the dataset root directory.
 	- `view`: Contains a [view](#view-metadata).
 
 ```json
 {
   "image": {
     "imageDataLocations": {
-      "local": "IvSy.xml",
-      "remote": "C99T)Q.xml"
+      "local": "r%X'.xml",
+      "remote": "l9lH.xml"
     },
-    "menuItem": "8ED/\"6",
     "view": {
       "sourceDisplays": [
         {
           "segmentationDisplays": {
-            "alpha": 0.445285462526257,
-            "color": "argbColumn",
-            "name": "B",
+            "alpha": 0.4026449837937589,
+            "color": "blueWhiteRed",
+            "name": "2|ip",
             "sources": [
-              "GRtGU\\%O-9Y"
-            ],
-            "showSelectedSegmentsIn3d": false,
-            "tables": [
-              ",SIW~",
-              "I|ouNi`",
-              "9_~<r<K:c{u"
+              "4qu.q\\8y:kl",
+              "g2x0%+jbI'E",
+              "#{j~WG=",
+              ":zBLC:",
+              "?\"{^=)"
             ],
             "valueLimits": [
-              -24289904.316836312,
-              68558154.7853218
+              -13720478.610611498,
+              -70319072.28996018
+            ],
+            "resolution3dView": [
+              83839539.8408292,
+              -94032266.9080123,
+              -35098270.819775835
             ]
           }
         },
         {
-          "imageDisplays": {
-            "color": "r=9,g=79873,b=47354,a=150",
-            "contrastLimits": [
-              6569.2145984661065,
-              47072.58304748612
-            ],
-            "name": "fL8'LN:CZlf",
-            "sources": [
-              "b=EDe",
-              ":cd",
-              "p",
-              "Sp2M\"mtE"
-            ],
-            "resolution3dView": [
-              37583394.772331715,
-              66081150.82232827,
-              -52579332.109049745
-            ],
-            "showImagesIn3d": false
-          }
-        },
-        {
           "segmentationDisplays": {
-            "alpha": 0.03397021527587385,
+            "alpha": 0.19395728841231374,
             "color": "blueWhiteRed",
-            "name": "d&9T`",
+            "name": "i+IX\\OU",
             "sources": [
-              "5epGK}iw"
-            ],
-            "colorByColumn": "velit sunt in anim",
-            "valueLimits": [
-              -28829896.61220257,
-              43219869.53700715
-            ],
-            "tables": [
-              "|~nzo]G<YWQ",
-              ".{jsc<",
-              "893",
-              "M4~5_",
-              "Q%a.{U6"
-            ],
-            "resolution3dView": [
-              -35783526.217144914,
-              -84888145.69256404,
-              -14620347.43114096
-            ],
-            "showSelectedSegmentsIn3d": false
-          }
-        },
-        {
-          "segmentationDisplays": {
-            "alpha": 0.03625326902958603,
-            "color": "viridis",
-            "name": "@kd",
-            "sources": [
-              "8!-?4F[!4#z",
-              "!LF&"
-            ],
-            "resolution3dView": [
-              -79424777.15520631,
-              46430857.4452807,
-              20278500.613668367
-            ],
-            "valueLimits": [
-              -66035453.981338724,
-              41102168.37095758
-            ],
-            "colorByColumn": "nulla",
-            "tables": [
-              "n0>Vk",
-              "ODi+Xi"
+              "@k\\H!^",
+              "wjwW[",
+              "O3",
+              "hT9I!~p&"
             ],
             "showSelectedSegmentsIn3d": true,
-            "selectedSegmentIds": [
-              "unX;563;69"
-            ]
-          }
-        }
-      ],
-      "sourceTransforms": [
-        {
-          "autoGrid": {
-            "name": "#yBLu8T0#n",
-            "sources": [
-              [
-                "0+ri:"
-              ],
-              [
-                "VG7{c0S%mc",
-                "pFBs",
-                "@-:",
-                "TW6K",
-                "1RX>?f"
-              ],
-              [
-                "5",
-                "t'(rTeQ&XUk",
-                "-3`m$\\+a4}",
-                "|4"
-              ],
-              [
-                "$",
-                "JC?",
-                "&KC",
-                ">G1.",
-                "sq`!f<#>RB"
-              ],
-              [
-                ";CAmGdaY\\i",
-                "q$[w2\\&(?>u"
-              ]
-            ],
-            "tableDataRootLocation": "@yi^mj",
-            "timepoints": [
-              94256998,
-              -6808597,
-              -7671738,
-              -23983517
-            ]
-          }
-        },
-        {
-          "autoGrid": {
-            "name": "&L",
-            "sources": [
-              [
-                "k?",
-                "k{"
-              ],
-              [
-                "f.vgjwfF",
-                "o)Q!ky[js~=",
-                "iwX9T]HhG",
-                "jdw",
-                "=:C\"Z"
-              ],
-              [
-                ":%a;"
-              ],
-              [
-                "9$N}i21';6",
-                "epsF4!LN_;l",
-                "`9",
-                "H[d",
-                "D&]M;*G"
-              ],
-              [
-                "Wahi#j8?R",
-                "e-|)$",
-                "w<$_`dW&y",
-                "kf"
-              ]
-            ],
-            "tableDataRootLocation": "v:wiRDAkn",
-            "timepoints": [
-              -29480319,
-              -43662292,
-              93381066,
-              -57348004,
-              9649043
-            ]
-          }
-        },
-        {
-          "autoGrid": {
-            "name": "+~Z",
-            "sources": [
-              [
-                "H#3.]}"
-              ],
-              [
-                "PLsyLu#|#jj",
-                "Omg=KptY",
-                "6U}@?X6p",
-                "S",
-                "-:?gb"
-              ]
-            ],
-            "tableDataRootLocation": "{sak&|%c2:j",
-            "timepoints": [
-              17982519,
-              -78983489,
-              99049461,
-              5900463,
-              80927578
-            ]
-          }
-        },
-        {
-          "affine": {
-            "name": "H352nXS",
-            "parameters": [
-              39526944.51953617,
-              -87866836.66333106,
-              -93883241.6768252,
-              -97747586.56816097,
-              -22202834.109448016,
-              19891446.741705373,
-              48968445.58035985,
-              -77558183.37919514,
-              -35258934.66318064,
-              -59460925.20164426,
-              84440251.33259797,
-              96711939.22613698
-            ],
-            "sources": [
-              "k]",
-              "xg2l~IP",
-              "O{",
-              "lGLMH"
-            ],
-            "timepoints": [
-              16177844,
-              69430890,
-              58377719
+            "resolution3dView": [
+              41518665.42594424,
+              46642033.79752028,
+              56874603.49185777
             ]
           }
         }
       ],
       "viewerTransform": {
-        "position": [
-          67540598.53808205,
-          53898537.365473524,
-          48653419.040678725
-        ]
+        "timepoint": 49287088
       }
     }
   }
@@ -493,19 +283,18 @@ The metadata for the views of a dataset is specified in the field `views` of `da
 Additional views can be stored as json files with the field `bookmarks` mapping view names to metadata in the folder `misc/bookmarks`
 
 The metadata entries have the following structure (see below for an example json file):
+- `menuItem`: Menu item created for this view in the GUI. The value leading the / determines the menu name, the value trailing it the item name.
 - `sourceDisplays`: The display groups of this view. Contains a list with items:
-	- `imageDisplays`: Viewer state for a group of image sources. The fields `color`, `contrastLimits`, `name` and `sources` are required.
+	- `imageDisplay`: Viewer state for a group of image sources. The fields `color`, `contrastLimits` and `sources` are required.
 		- `color`: The color map.
 		- `contrastLimits`: The contrast limits. Contains a tuple of [number, number].
-		- `name`: 
 		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
 		- `sources`: The image sources that are part of this display group. Contains a list of strings.
-	- `segmentationDisplays`:  The fields `alpha`, `color`, `name` and `sources` are required.
+	- `segmentationDisplay`:  The fields `alpha`, `color` and `sources` are required.
 		- `alpha`: The alpha value used for blending segmentation and image data in the viewer.
 		- `color`: The segmentation color map.
 		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
-		- `name`: 
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `selectedSegmentIds`: List of selected segment ids. Contains a list of strings.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
@@ -513,15 +302,13 @@ The metadata entries have the following structure (see below for an example json
 		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here. Contains a list of strings.
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
 - `sourceTransforms`: The source transformations of this view. Contains a list with items:
-	- `affine`: Affine transformation applied to a list of sources. The fields `name`, `parameters` and `sources` are required.
-		- `name`: 
+	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-	- `autoGrid`: Arange a list of soures in grid. The fields `name`, `sources` and `tableDataRootLocation` are required.
-		- `name`: 
+	- `autoGrid`: Arange a list of soures in grid. The fields `sources` and `tableDataLocation` are required.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
-		- `tableDataRootLocation`: Location of the table root directory for this grid view, relative to the dataset root directory.
+		- `tableDataLocation`: Location of the table directory for this grid view, relative to the dataset root directory.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 - `viewerTransform`: The viewer transformation of this view.Must contain exactly one of the following items:
 	- 
@@ -538,64 +325,118 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
+  "menuItem": "g/?",
   "sourceDisplays": [
     {
-      "segmentationDisplays": {
-        "alpha": 0.27489773104291726,
+      "segmentationDisplay": {
+        "alpha": 0.7248734741059224,
         "color": "argbColumn",
-        "name": "1\\",
         "sources": [
-          ":",
-          "$B0\\,~FH7",
-          "2t9$WWuyn<g",
-          "kfNg!h*"
-        ]
+          "P:X",
+          "IobZcmWb",
+          "AI",
+          "G`&",
+          "NT)5=4]>"
+        ],
+        "resolution3dView": [
+          85053560.13656744,
+          3912748.462437451,
+          18086529.452488527
+        ],
+        "tables": [
+          "XeFk",
+          "5L\\|",
+          "vjJE\""
+        ],
+        "colorByColumn": "sit aliquip ipsum fugiat ea"
       }
     },
     {
-      "segmentationDisplays": {
-        "alpha": 0.9729189182903835,
-        "color": "viridis",
-        "name": "T%}",
+      "imageDisplay": {
+        "color": "r=1454635680,g=1803,b=920,a=97",
+        "contrastLimits": [
+          22692.977520294728,
+          56468.94079971661
+        ],
         "sources": [
-          "B-~~D6W5",
-          "&D~qd>p="
+          ")b",
+          "{VWkv",
+          "*e"
         ],
-        "showSelectedSegmentsIn3d": true,
+        "showImagesIn3d": true,
         "resolution3dView": [
-          -94319491.86139014,
-          -57005808.75372095,
-          87767248.91915458
-        ],
-        "selectedSegmentIds": [
-          "Z;92313896;0395",
-          "g?FB<sAM;665694;001108",
-          "`9WHl;6;712499428"
-        ],
-        "colorByColumn": "deserunt tempor aute occaecat nostrud",
-        "tables": [
-          "|*|>nHg~C9",
-          "j-EF<old?c"
+          -61091241.41187725,
+          -71887783.04110569,
+          48288600.61283663
         ]
       }
     }
   ],
-  "viewerTransform": {
-    "normalizedAffine": [
-      36119726.82193446,
-      45045364.64110154,
-      -69799688.34583396,
-      35486000.71491626,
-      -33027763.386793293,
-      90994673.3224628,
-      57738378.15508479,
-      12613194.752068907,
-      5454593.914464518,
-      -65008479.936837025,
-      -26221423.364874497,
-      -68519448.40024236
-    ]
-  }
+  "sourceTransforms": [
+    {
+      "autoGrid": {
+        "sources": [
+          [
+            "`%f>vQ'w4Y`",
+            "h.nqAt3",
+            "nd3",
+            "G5M9zPS"
+          ],
+          [
+            "\"XdAoe`",
+            "4I6u9@TN\"1",
+            "n`2[y]sX1V*"
+          ],
+          [
+            "9c",
+            "?LGVu7t"
+          ],
+          [
+            "Rh$ug"
+          ],
+          [
+            "-(96lbQ"
+          ]
+        ],
+        "tableDataLocation": "%F58b0x",
+        "timepoints": [
+          60184792,
+          94497890,
+          70640426
+        ]
+      }
+    },
+    {
+      "autoGrid": {
+        "sources": [
+          [
+            "x-",
+            "[X"
+          ],
+          [
+            "<F;\"",
+            "Y",
+            "'5H",
+            "a"
+          ],
+          [
+            "@Nq{$Ee?jge",
+            "'Mx#g'E]m9",
+            "jg",
+            "p\"GnF"
+          ]
+        ],
+        "tableDataLocation": "e-Q",
+        "timepoints": [
+          53099542,
+          7411464,
+          -66202220,
+          52366629,
+          -67092218
+        ]
+      }
+    }
+  ]
 }
 ```
 

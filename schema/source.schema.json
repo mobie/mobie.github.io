@@ -24,24 +24,17 @@
             "additionalProperties": false
         },
 
-        "menuItem": {
-            "description": "Menu item created for this source in the viewer GUI. The value leading the / determines the menu name, the value trailing it the item name.",
-            "type": "string",
-            "pattern": "^[^\\/]+\\/[^\\/]+$" 
-        },
-
         "imageSource": {
             "description": "An image source.",
             "type": "object",
             "properties": {
                 "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"},
-                "menuItem": {"$ref": "#/definitions/menuItem"},
                 "view": {
                     "description": "The default view for this image source.",
                     "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
-            "required": ["imageDataLocations", "menuItem", "view"],
+            "required": ["imageDataLocations", "view"],
             "additionalProperties": false
         },
 
@@ -50,9 +43,8 @@
             "type": "object",
             "properties": {
                 "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"},
-                "menuItem": {"$ref": "#/definitions/menuItem"},
-                "tableDataRootLocation": {
-                    "description": "Location of the table root directory for this segmentation source, relative to the dataset root directory.",
+                "tableDataLocation": {
+                    "description": "Location of the table directory for this segmentation source, relative to the dataset root directory.",
                     "type": "string",
                     "pattern": "^\\S+$"
                 },
@@ -61,7 +53,7 @@
                     "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
-            "required": ["imageDataLocations", "menuItem", "view"],
+            "required": ["imageDataLocations", "view"],
             "additionalProperties": false
         }
     },

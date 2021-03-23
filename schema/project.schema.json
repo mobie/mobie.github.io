@@ -16,23 +16,16 @@
             "description": "The default dataset for this project.",
             "type": "string"
         },
-        "project": {
-            "type": "object",
-            "description": "Additional project metadata.",
-            "properties": {
-                "description": {
-                    "desription": "The description.",
-                    "type": "string"
-                },
-                "references": {
-                    "description": "Publication or other references for this project",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "additionalProperties": false
+        "description": {
+            "desription": "The description.",
+            "type": "string"
+        },
+        "references": {
+            "description": "Publication or other references for this project",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         },
         "specVersion": {
             "description": "The MoBIE spec version of this project.",

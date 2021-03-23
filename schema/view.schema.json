@@ -10,11 +10,11 @@
             "pattern": "^[^;\\/ ]+$"
         },
 
-        "imageDisplays": {
+        "imageDisplay": {
             "description": "",
             "type": "object",
             "properties": {
-                "imageDisplays": {
+                "imageDisplay": {
                     "description": "Viewer state for a group of image sources.",
                     "type": "object",
                     "properties": {
@@ -43,10 +43,6 @@
                             ],
                             "additionalItems": false
                         },
-                        "name": {
-                            "description": "The name of this display group.",
-                            "$ref": "#/definitions/name"
-                        },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
                             "type": "array",
@@ -71,19 +67,19 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["color", "contrastLimits", "name", "sources"],
+                    "required": ["color", "contrastLimits", "sources"],
                     "additionalProperties": false
                 }
             },
-            "required": ["imageDisplays"],
+            "required": ["imageDisplay"],
             "additionalProperties": false
         },
 
-        "segmentationDisplays": {
+        "segmentationDisplay": {
             "description": "Viewer state for a group of segmentation sources.",
             "type": "object",
             "properties": {
-                "segmentationDisplays": {
+                "segmentationDisplay": {
                     "description": "",
                     "type": "object",
                     "properties": {
@@ -101,10 +97,6 @@
                         "colorByColumn": {
                             "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
                             "type": "string"
-                        },
-                        "name": {
-                            "description": "The name of this display group.",
-                            "$ref": "#/definitions/name"
                         },
                         "resolution3dView": {
                             "description": "Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified.",
@@ -158,11 +150,11 @@
                             "additionalItems": false
                         }
                     },
-                    "required": ["alpha", "color", "name", "sources"],
+                    "required": ["alpha", "color", "sources"],
                     "additionalProperties": false
                 }
             },
-            "required": ["segmentationDisplays"],
+            "required": ["segmentationDisplay"],
             "additionalProperties": false
         },
 
@@ -174,10 +166,6 @@
                     "description": "Affine transformation applied to a list of sources.",
                     "type": "object",
                     "properties": {
-                        "name": {
-                            "description": "Name of this transformation.",
-                            "$ref": "#/definitions/name"
-                        },
                         "parameters": {
                             "description": "Parameters of the affine transformation, using the BigDataViewer convention.",
                             "type": "array",
@@ -205,7 +193,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["name", "parameters", "sources"],
+                    "required": ["parameters", "sources"],
                     "additionalProperties": false
                 }
             },
@@ -221,10 +209,6 @@
                     "description": "Arange a list of soures in grid.",
                     "type": "object",
                     "properties": {
-                        "name": {
-                            "description": "Name of the grid.",
-                            "$ref": "#/definitions/name"
-                        },
                         "sources": {
                             "description": "The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position.",
                             "type": "array",
@@ -238,8 +222,8 @@
                             },
                             "minItems": 2
                         },
-                        "tableDataRootLocation": {
-                            "description": "Location of the table root directory for this grid view, relative to the dataset root directory.",
+                        "tableDataLocation": {
+                            "description": "Location of the table directory for this grid view, relative to the dataset root directory.",
                             "type": "string",
                             "pattern": "^\\S+$"
                         },
@@ -252,7 +236,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["name", "sources", "tableDataRootLocation"],
+                    "required": ["sources", "tableDataLocation"],
                     "additionalProperties": false
                 }
             },
@@ -263,12 +247,17 @@
 
     "type": "object",
     "properties": {
+        "menuItem": {
+            "description": "Menu item created for this view in the GUI. The value leading the / determines the menu name, the value trailing it the item name.",
+            "type": "string",
+            "pattern": "^[^\\/ ;]+\\/[^\\/ ;]+$" 
+        },
         "sourceDisplays": {
             "description": "The display groups of this view.",
             "type": "array",
             "items": {"anyOf": [
-                {"$ref": "#/definitions/imageDisplays"},
-                {"$ref": "#/definitions/segmentationDisplays"}
+                {"$ref": "#/definitions/imageDisplay"},
+                {"$ref": "#/definitions/segmentationDisplay"}
             ]}
         },
         "sourceTransforms": {
@@ -358,6 +347,6 @@
             ]
         }
     },
-    "required": ["sourceDisplays"],
+    "required": ["menuItem", "sourceDisplays"],
     "additionalProperties": false
 }
