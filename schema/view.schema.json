@@ -172,7 +172,7 @@
                             "additionalItems": false
                         }
                     },
-                    "required": ["alpha", "color", "name", "sources"],
+                    "required": ["alpha", "lut", "name", "sources"],
                     "additionalProperties": false
                 }
             },
