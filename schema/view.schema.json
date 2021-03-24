@@ -93,14 +93,14 @@
                             "minimum": 0,
                             "maximum": 1
                         },
-                        "color": {
-                            "description": "The segmentation color map.",
+                        "lut": {
+                            "description": "The segmentation look-up-table for the segmentation coloring.",
                             "type": "string",
                             "enum": ["argbColumn", "blueWhiteRed", "glasbey", "viridis"]
                         },
                         "colorByColumn": {
                             "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
-                            "type": "string"
+                            "$ref": "#/definitions/name"
                         },
                         "resolution3dView": {
                             "description": "Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified.",
@@ -116,6 +116,16 @@
                             "description": "Name of this segmentation display.",
                             "$ref": "#/definitions/name"
                         },
+                        "scatterPlotAxes": {
+                            "description": "The names of columns which should be used for the scatter plot.",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[^; \\/]+;[^; \\/]+$" 
+                            },
+                            "maxItems": 2,
+                            "minItems": 2
+                        },
                         "selectedSegmentIds": {
                             "description": "List of selected segment ids.",
                             "type": "array",
@@ -123,6 +133,10 @@
                                 "type": "string",
                                 "pattern": "^[^; \\/]+;\\d+;\\d+$"
                             }
+                        },
+                        "showScatterPlot": {
+                            "description": "Whether to show the scatter plot.",
+                            "type": "boolean"
                         },
                         "showSelectedSegmentsIn3d": {
                             "description": "Whether to show the selected segments in the 3d viewer.",
@@ -255,10 +269,9 @@
 
     "type": "object",
     "properties": {
-        "menuItem": {
-            "description": "Menu item created for this view in the GUI. The value leading the / determines the menu name, the value trailing it the item name.",
-            "type": "string",
-            "pattern": "^[^\\/ ;]+\\/[^\\/ ;]+$" 
+        "uiSelectionGroup": {
+            "description": "Name of the UI from which this view can be selected.",
+            "$ref": "#/definitions/name"
         },
         "sourceDisplays": {
             "description": "The display groups of this view.",
@@ -355,6 +368,6 @@
             ]
         }
     },
-    "required": ["menuItem", "sourceDisplays"],
+    "required": ["uiSelectionGroup"],
     "additionalProperties": false
 }

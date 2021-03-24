@@ -199,104 +199,218 @@ The metadata entries have the following structure (see below for an example json
 {
   "image": {
     "imageDataLocations": {
-      "local": "f,[Jw^.xml"
+      "local": "2J|}yu2.xml",
+      "remote": "0=g.xml"
     },
     "view": {
-      "menuItem": "$wd.)$^n]/hw=",
+      "menuItem": "?cei/qkj>k}E_w",
       "sourceDisplays": [
         {
-          "imageDisplay": {
-            "color": "white",
-            "contrastLimits": [
-              42793.43612723211,
-              46286.89491251391
-            ],
-            "sources": [
-              "mQx66=B",
-              "d=d"
-            ],
-            "showImagesIn3d": true,
-            "resolution3dView": [
-              684671.5820067078,
-              -86922837.88484931,
-              17955537.227412984
-            ]
-          }
-        },
-        {
           "segmentationDisplay": {
-            "alpha": 0.06229088727810783,
-            "color": "argbColumn",
-            "sources": [
-              "x",
-              "JY",
-              "R7T",
-              "E1Y8S",
-              ")4>2"
-            ],
-            "resolution3dView": [
-              597901.2173559964,
-              -83209275.00234379,
-              63410087.721131206
-            ]
-          }
-        },
-        {
-          "imageDisplay": {
-            "color": "green",
-            "contrastLimits": [
-              64304.015941262965,
-              42139.27875624948
-            ],
-            "sources": [
-              "L",
-              "0IBmNkt}W`",
-              "<m})",
-              "'",
-              "Jkl8X;'']"
-            ],
-            "showImagesIn3d": false,
-            "resolution3dView": [
-              74330549.66009784,
-              79271207.08581975,
-              -76804337.95038666
-            ]
-          }
-        },
-        {
-          "segmentationDisplay": {
-            "alpha": 0.11319442397794854,
+            "alpha": 0.27005306919877925,
             "color": "glasbey",
+            "name": "y=xAd_",
             "sources": [
-              "T>'aJ6|(S>",
-              "$rOD<ytN}:",
-              "%p"
+              "Ki'f",
+              "j"
             ],
-            "selectedSegmentIds": [
-              "Y4;66631780056;095",
-              "roQ;98037;63778135541",
-              "JM_F:i;27;951119"
-            ],
-            "valueLimits": [
-              76224233.36224958,
-              -94111318.40000895
-            ],
-            "colorByColumn": "Excepteur ipsum",
             "resolution3dView": [
-              88771216.34597239,
-              -1796449.9925724417,
-              36909911.44870269
+              28156246.09837179,
+              26385687.894863978,
+              -7766548.654950485
             ],
-            "tables": [
-              "%\"1N-]o",
-              "00",
-              "nw@-UF",
-              "a%=p"
+            "colorByColumn": "tempor Lorem dolor nulla",
+            "selectedSegmentIds": [
+              "(\\3e;01775226;9485619"
             ],
             "showSelectedSegmentsIn3d": false
           }
+        },
+        {
+          "segmentationDisplay": {
+            "alpha": 0.4692857036113911,
+            "color": "blueWhiteRed",
+            "name": "IK@",
+            "sources": [
+              "s?~&')8Ov",
+              "cYEN|I\"2g|",
+              "wt(Un_T",
+              "X,B=x*"
+            ],
+            "showSelectedSegmentsIn3d": true,
+            "selectedSegmentIds": [
+              "z{N'L(E2$5;8586;263"
+            ],
+            "valueLimits": [
+              -31541379.541055337,
+              46646445.98664966
+            ],
+            "resolution3dView": [
+              -71520391.9111307,
+              59920196.198866814,
+              -87957728.61205457
+            ],
+            "tables": [
+              "!&v#sdvpE`",
+              "JmAmurpj\\3"
+            ],
+            "colorByColumn": "cillum et non id"
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "alpha": 0.33280154042290055,
+            "color": "argbColumn",
+            "name": "m",
+            "sources": [
+              "HMCxoceP'_U"
+            ],
+            "resolution3dView": [
+              32601926.384777218,
+              16212278.371424153,
+              -63594131.67138266
+            ],
+            "tables": [
+              "Bi4a",
+              "EK_PL4",
+              "2{Q}rEJT",
+              "gspn)",
+              "M?4svm%}Ad<"
+            ],
+            "selectedSegmentIds": [
+              "hF={Aw@E;3588848;47",
+              "45;04265436;2083192",
+              "@8%;91147984;85137",
+              "5I5\\P_;4;7",
+              "8@f;194615752;34172538139"
+            ],
+            "colorByColumn": "et sed deserunt non"
+          }
+        },
+        {
+          "imageDisplay": {
+            "color": "r=21,g=58232,b=811975,a=67531771",
+            "contrastLimits": [
+              48650.95612807671,
+              46828.41729963934
+            ],
+            "name": "!I",
+            "sources": [
+              "%cjZZ#\"",
+              "*e",
+              "U",
+              ":",
+              "Wx6I')&"
+            ],
+            "resolution3dView": [
+              -5196656.331089988,
+              1484966.0222498775,
+              76403001.45874014
+            ],
+            "showImagesIn3d": false
+          }
         }
-      ]
+      ],
+      "sourceTransforms": [
+        {
+          "autoGrid": {
+            "sources": [
+              [
+                "$]t[a{@@",
+                ";*h4Y218$\\?",
+                "uiigIp\\"
+              ],
+              [
+                "We5"
+              ]
+            ],
+            "tableDataLocation": "()I5^qV"
+          }
+        },
+        {
+          "affine": {
+            "parameters": [
+              -42361098.42301672,
+              -63440871.46781563,
+              -70221251.424837,
+              94536853.0464274,
+              98239962.0830737,
+              39540227.43397787,
+              -22130657.95634246,
+              52956084.69991353,
+              -38390658.34929709,
+              -10598778.547171012,
+              -19866282.146334946,
+              -50898318.686544105
+            ],
+            "sources": [
+              "p(",
+              "O6\\e!rV8fSo",
+              "7l(\"W{B~_5p"
+            ],
+            "timepoints": [
+              61790329,
+              40635249,
+              92907508,
+              80214617,
+              75393452
+            ]
+          }
+        },
+        {
+          "autoGrid": {
+            "sources": [
+              [
+                "TV?EIM>"
+              ],
+              [
+                "ko._%",
+                "Lu]EbWr",
+                "aUI<q&$R",
+                "$|IIp#t|t",
+                "Yl|"
+              ],
+              [
+                "CX;+f0`\")cg"
+              ],
+              [
+                "lkUhrmgY7#+",
+                "Cz){3"
+              ],
+              [
+                "bOK$8KwTkT",
+                "Yu29b6SIV[f",
+                "fmy{NAE3T",
+                "n"
+              ]
+            ],
+            "tableDataLocation": "nxHsa",
+            "timepoints": [
+              -79815722,
+              -41214276,
+              1340731,
+              72954433,
+              -25616998
+            ]
+          }
+        }
+      ],
+      "viewerTransform": {
+        "normalizedAffine": [
+          -4250653.086052746,
+          56330471.87869641,
+          6549104.653937027,
+          -26200547.426446125,
+          81461809.56160536,
+          31578185.91173251,
+          -91136913.93817462,
+          -27957702.461276352,
+          -25029803.60898924,
+          53700167.21095213,
+          -14231290.842697322,
+          -10655780.042264953
+        ]
+      }
     }
   }
 }
@@ -330,22 +444,23 @@ The metadata for the views of a dataset is specified in the field `views` of `da
 Additional views can be stored as json files with the field `bookmarks` mapping view names to metadata in the folder `misc/bookmarks`
 
 The metadata entries have the following structure (see below for an example json file):
-- `menuItem`: Menu item created for this view in the GUI. The value leading the / determines the menu name, the value trailing it the item name.
 - `sourceDisplays`: The display groups of this view. Contains a list with items:
-	- `imageDisplay`: Viewer state for a group of image sources. The fields `color`, `contrastLimits` and `sources` are required.
+	- `imageDisplay`: Viewer state for a group of image sources. The fields `color`, `contrastLimits`, `name` and `sources` are required.
 		- `color`: The color map.
 		- `contrastLimits`: The contrast limits. Contains a tuple of [number, number].
 		- `name`: 
 		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
 		- `sources`: The image sources that are part of this display group. Contains a list of strings.
-	- `segmentationDisplay`:  The fields `alpha`, `color` and `sources` are required.
+	- `segmentationDisplay`:  The fields `alpha`, `color`, `name` and `sources` are required.
 		- `alpha`: The alpha value used for blending segmentation and image data in the viewer.
-		- `color`: The segmentation color map.
-		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
+		- `colorByColumn`: 
+		- `lut`: The segmentation look-up-table for the segmentation coloring.
 		- `name`: 
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
+		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
 		- `selectedSegmentIds`: List of selected segment ids. Contains a list of strings.
+		- `showScatterPlot`: Whether to show the scatter plot.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
 		- `sources`: The segmentation sources that are part of this display group. Contains a list of strings.
 		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here. Contains a list of strings.
@@ -359,6 +474,7 @@ The metadata entries have the following structure (see below for an example json
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
 		- `tableDataLocation`: Location of the table directory for this grid view, relative to the dataset root directory.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
+- `uiSelectionGroup`: 
 - `viewerTransform`: The viewer transformation of this view.Must contain exactly one of the following items:
 	- 
 		- `timepoint`: The initial timepoint shown in the viewer.
@@ -374,32 +490,14 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "menuItem": "\"v)tRlx#td/m$R{~6",
-  "sourceDisplays": [
-    {
-      "imageDisplay": {
-        "color": "r=65,g=034412,b=12069,a=6988",
-        "contrastLimits": [
-          35733.80257793236,
-          12638.921710521676
-        ],
-        "sources": [
-          "?CfEr@<0}-",
-          "$vvL<i2",
-          "zPkf5bTe'<q",
-          "y;O=J<[",
-          "C!3E-H"
-        ],
-        "name": "v?z{O",
-        "resolution3dView": [
-          -22332065.208476454,
-          49653281.56541929,
-          88697419.8909199
-        ],
-        "showImagesIn3d": true
-      }
-    }
-  ]
+  "uiSelectionGroup": "Q\"=N~GK+^",
+  "viewerTransform": {
+    "position": [
+      44298289.45397805,
+      97680567.0750037,
+      46968746.73622109
+    ]
+  }
 }
 ```
 
