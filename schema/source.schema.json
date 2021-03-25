@@ -61,7 +61,7 @@
                     "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
-            "required": ["imageDataLocations", "view"],
+            "required": ["imageDataLocations"],
             "additionalProperties": false
         }
     },

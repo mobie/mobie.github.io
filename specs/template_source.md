@@ -10,6 +10,7 @@ Two different types of sources are supported:
 The data is stored in a multi-dimensional, chunked format.
 MoBIE primarily supports the [n5](https://github.com/saalfeldlab/n5) data format, using the [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md) to represent timepoints and multi-scale image pyramids.
 In addition, it supports [HDF5](https://www.hdfgroup.org/solutions/hdf5/), again using the [bdv hdf5 format](https://imagej.net/BigDataViewer.html#About_the_BigDataViewer_data_format); however this format can only be read locally and **does not** support remote access from an object store.
+The `name` saved in the bdv.xml must agree with the name in the [source metadata](#source-metadata).
 There is also experimental support for the emerging [ome ngff](https://ngff.openmicroscopy.org/latest/).
 
 ### <a name="table"></a>Table Data

@@ -273,6 +273,10 @@
             "description": "Name of the UI from which this view can be selected.",
             "$ref": "#/definitions/name"
         },
+        "isExclusive": {
+            "type": "boolean",
+            "description": "Does this view replace the current viewer state (exclusive) or is it added to it (additive)?"
+        },
         "sourceDisplays": {
             "description": "The display groups of this view.",
             "type": "array",
@@ -368,6 +372,6 @@
             ]
         }
     },
-    "required": ["uiSelectionGroup"],
+    "required": ["isExclusive", "uiSelectionGroup"],
     "additionalProperties": false
 }
