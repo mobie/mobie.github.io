@@ -286,7 +286,7 @@
             ]}
         },
         "sourceTransforms": {
-            "description": "The source transformations of this view.",
+            "description": "The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml.",
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/affine"},

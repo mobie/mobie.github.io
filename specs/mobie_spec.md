@@ -184,13 +184,13 @@ The color scheme used to display the segmentation can also be loaded from a tabl
 The metadata for the sources of a dataset is specified in the field `sources` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `sources` contains a mapping of source names to [source metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/source.schema.json).
 The metadata entries have the following structure (see below for an example json file):
-- `image`: An image source. The fields `imageDataLocations` and `view` are required.
+- `image`: An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The fields `imageDataLocations` and `view` are required.
 	- `description`: Description of this image source.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
 		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
 		- `remote`: Location of the bdv.xml file for reading the source image data from an object store.
 	- `view`: Contains a [view](#view-metadata).
-- `segmentation`: A segmentation source. The field `imageDataLocations` is required.
+- `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageDataLocations` is required.
 	- `description`: Description of this segmentation source.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
 		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
@@ -202,82 +202,78 @@ The metadata entries have the following structure (see below for an example json
 {
   "image": {
     "imageDataLocations": {
-      "local": "u!A)&o>y.xml",
-      "remote": "){H_[7~y#.xml"
+      "local": "}s.xml",
+      "remote": "h>0N`a.xml"
     },
     "view": {
-      "uiSelectionGroup": "FAAx",
-      "viewerTransform": {
-        "affine": [
-          -61723004.12939213,
-          -78392689.07427219,
-          -97911549.52428749,
-          31315785.72106099,
-          26022791.64169672,
-          -48226029.33223927,
-          43458244.644177765,
-          36152987.558719516,
-          -34640560.121873245,
-          59490850.66975117,
-          43840246.86116552,
-          14506510.206068456
-        ]
-      },
-      "sourceDisplays": [
+      "isExclusive": false,
+      "uiSelectionGroup": "+T",
+      "sourceTransforms": [
         {
-          "imageDisplay": {
-            "color": "white",
-            "contrastLimits": [
-              33947.181440882596,
-              23723.37472714711
+          "affine": {
+            "parameters": [
+              -91613137.92288372,
+              -24948023.367449716,
+              21957784.58962296,
+              1275200.320043534,
+              91640589.91201228,
+              -90259615.81453247,
+              -56255969.73313378,
+              -90492758.34179324,
+              99760119.69768748,
+              91803455.49274969,
+              51399404.18539229,
+              -30429031.170417935
             ],
-            "name": "9`xkJ'r~f1#",
             "sources": [
-              "W"
-            ],
-            "resolution3dView": [
-              78567022.54440981,
-              6616057.471423879,
-              -53798708.86576028
-            ],
-            "showImagesIn3d": true
-          }
-        },
-        {
-          "imageDisplay": {
-            "color": "yellow",
-            "contrastLimits": [
-              20879.455827580092,
-              4860.653879020007
-            ],
-            "name": "6\\y2~LN'",
-            "sources": [
-              "A~C`|U"
-            ]
-          }
-        },
-        {
-          "imageDisplay": {
-            "color": "orange",
-            "contrastLimits": [
-              52230.01280612193,
-              44994.20833053368
-            ],
-            "name": ">HDNW",
-            "sources": [
-              "-h"
-            ],
-            "showImagesIn3d": false,
-            "resolution3dView": [
-              -48745754.98777771,
-              51213407.61919147,
-              -73423900.40793222
+              "XMAD~zGp",
+              "Gks5jV)",
+              "0v9iV",
+              "5_,uK\\dGv",
+              "+lCCb:'&0"
             ]
           }
         }
-      ]
+      ],
+      "sourceDisplays": [
+        {
+          "imageDisplay": {
+            "color": "r=5790032,g=35,b=7408,a=643",
+            "contrastLimits": [
+              28786.064872527237,
+              54004.24519160221
+            ],
+            "name": "%W\"A}",
+            "sources": [
+              ":%(0{Y';W",
+              "D{@pj)x",
+              "j!ks"
+            ]
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "alpha": 0.8332683206790412,
+            "lut": "argbColumn",
+            "name": "?yraQ",
+            "sources": [
+              "ix8c[jg$i",
+              "sZtk#Vu",
+              "Tj&S43*ZJ.{"
+            ],
+            "scatterPlotAxes": [
+              "]x+zL;}",
+              "o:EgS6;\"o!j"
+            ],
+            "colorByColumn": "Kz+gK{Z"
+          }
+        }
+      ],
+      "viewerTransform": {
+        "timepoint": 25707044
+      }
     },
-    "description": "ipsum fugiat Lorem"
+    "description": "dolore"
   }
 }
 ```
@@ -332,7 +328,7 @@ The metadata entries have the following structure (see below for an example json
 		- `sources`: The segmentation sources that are part of this display group. Contains a list of strings.
 		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here. Contains a list of strings.
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
-- `sourceTransforms`: The source transformations of this view. Contains a list with items:
+- `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
@@ -358,75 +354,33 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": true,
-  "uiSelectionGroup": "-ZR=}]K",
-  "viewerTransform": {
-    "affine": [
-      -80874130.4536571,
-      3996514.405935645,
-      43719548.73246798,
-      -66144014.246877834,
-      51803247.36751914,
-      -67154206.8034693,
-      -34517528.18914362,
-      -71774077.93541737,
-      -145794.36701999605,
-      89713773.71515122,
-      -27859831.82346104,
-      20571459.814965516
-    ]
-  },
-  "sourceDisplays": [
-    {
-      "segmentationDisplay": {
-        "alpha": 0.9856855448733994,
-        "lut": "blueWhiteRed",
-        "name": "f",
-        "sources": [
-          "-Qzb~f_#}=",
-          "M>w}QVVXhJ^"
-        ],
-        "showSelectedSegmentsIn3d": true,
-        "valueLimits": [
-          53127937.34163982,
-          -8573744.828072667
-        ],
-        "tables": [
-          "Moc\\NpO<!",
-          "B"
-        ],
-        "scatterPlotAxes": [
-          "|C##{6m=+B;jHf!%U@.L",
-          "El7K$e=:VoD;THz*-Ki_1"
-        ]
-      }
-    }
-  ],
+  "uiSelectionGroup": "J+D]",
   "sourceTransforms": [
     {
       "autoGrid": {
         "sources": [
           [
-            "?~[\"g@fR",
-            "SX%RXYs$EL8"
+            "\"!yS",
+            ":JPA|n!87hY",
+            "ps",
+            "Jb"
           ],
           [
-            "f"
+            "H}",
+            ".u:%.|)nDt",
+            "5wqH)Bwj"
           ],
           [
-            "wC{7("
-          ],
-          [
-            ")",
-            "tZdQU\\@"
+            "=yXapf",
+            "RV|sl[\"0H8d"
           ]
         ],
-        "tableDataLocation": "l'Evx<b&",
+        "tableDataLocation": "OjE",
         "timepoints": [
-          80811977,
-          -61190612,
-          41698180,
-          -60140284,
-          -35604570
+          91210767,
+          -16279315,
+          -87309919,
+          88868255
         ]
       }
     },
@@ -434,42 +388,131 @@ The metadata entries have the following structure (see below for an example json
       "autoGrid": {
         "sources": [
           [
-            "vtAsHN`m\\",
-            "6tr",
-            "ADz^",
-            "W}j:S^",
-            "$B_s54Nt"
+            "[iN9iOS9&cE"
           ],
           [
-            "O_'CwJ6",
-            "B'0",
-            "*jfyD",
-            "k0@3_r&1@m",
-            "rVsqz;i;{"
-          ],
-          [
-            "hcmbn",
-            "{d4"
-          ],
-          [
-            "(p",
-            "A96f9Gt6",
-            "ZKD;wX&btRX",
-            "S!fM'%",
-            "O"
+            "\\JGG\"l7&:",
+            ")t}\"",
+            "K|",
+            "%m_|Y8@LX",
+            "mZAgV-|gP("
           ]
         ],
-        "tableDataLocation": "M+1t1hkUKNZ",
+        "tableDataLocation": "(e",
         "timepoints": [
-          60371816,
-          47378389,
-          7873902,
-          74030282,
-          -36373854
+          80492368,
+          79692428,
+          -76312277,
+          -17981701
+        ]
+      }
+    },
+    {
+      "autoGrid": {
+        "sources": [
+          [
+            "f1",
+            "WqF;i%F",
+            "i",
+            "2l=<jH<Ig",
+            "R[u"
+          ],
+          [
+            "]zkz0U`U)",
+            ")",
+            "Sgt5X=H",
+            "P|VK",
+            "B<w$"
+          ],
+          [
+            "f&7Cw+RTL8",
+            ")",
+            "xa",
+            "{)b#H=Yoew;"
+          ],
+          [
+            "pE}|iwh8",
+            "G",
+            "X"
+          ]
+        ],
+        "tableDataLocation": "^",
+        "timepoints": [
+          5004544,
+          -32578641,
+          92739154
         ]
       }
     }
-  ]
+  ],
+  "sourceDisplays": [
+    {
+      "imageDisplay": {
+        "color": "r=314959,g=412728,b=58337147,a=20402",
+        "contrastLimits": [
+          6946.808501020083,
+          59574.78386666055
+        ],
+        "name": "sPP8qc:",
+        "sources": [
+          "<?AKssI",
+          "m`XL",
+          "P|(l8hU:",
+          "]wSJ%",
+          "}"
+        ],
+        "showImagesIn3d": true,
+        "resolution3dView": [
+          84208975.38555542,
+          43177838.92140916,
+          51741336.928442776
+        ]
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "alpha": 0.9512961913955884,
+        "lut": "blueWhiteRed",
+        "name": "a-",
+        "sources": [
+          "^9mwB"
+        ],
+        "showSelectedSegmentsIn3d": false,
+        "tables": [
+          "=R~V$",
+          "N",
+          "JyG`o",
+          "(="
+        ],
+        "valueLimits": [
+          -80591687.65759566,
+          -22994627.17408441
+        ],
+        "scatterPlotAxes": [
+          "cu_4u]nT;\\TM\\mt=",
+          "=?:C^;X~#n"
+        ],
+        "selectedSegmentIds": [
+          "@EPx[Fz}CER;53402665;5787",
+          "-J%Q%Nx14q;4;73370"
+        ],
+        "colorByColumn": "dY`",
+        "showScatterPlot": false,
+        "resolution3dView": [
+          -66811001.817251325,
+          -98100949.02324905,
+          54020191.8469834
+        ]
+      }
+    }
+  ],
+  "viewerTransform": {
+    "position": [
+      93686288.45283312,
+      90891879.96861023,
+      69395913.17357543
+    ]
+  }
 }
 ```
 
