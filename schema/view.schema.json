@@ -228,14 +228,26 @@
             "additionalProperties": false
         },
 
-        "autoGrid": {
+        "grid": {
             "description": "",
             "type": "object",
             "properties": {
-                "autoGrid": {
-                    "description": "Arange a list of soures in grid.",
+                "grid": {
+                    "description": "Arrange multiple sources in a grid by offseting sources with a grid spacing.",
                     "type": "object",
                     "properties": {
+                        "positions": {
+                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "maxItems": 2,
+                                    "minItems": 2
+                                }
+                            }
+                        },
                         "sources": {
                             "description": "The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position.",
                             "type": "array",
@@ -267,7 +279,7 @@
                     "additionalProperties": false
                 }
             },
-            "required": ["autoGrid"],
+            "required": ["grid"],
             "additionalProperties": false
         }
     },
@@ -295,7 +307,7 @@
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/affine"},
-                {"$ref": "#/definitions/autoGrid"}
+                {"$ref": "#/definitions/grid"}
             ]}
         },
         "viewerTransform": {
