@@ -202,14 +202,10 @@ The metadata entries have the following structure (see below for an example json
 {
   "segmentation": {
     "imageDataLocations": {
-      "local": "&aglDx4.xml"
+      "local": "$2pz,IU!.xml",
+      "remote": "jUNDh1&M.xml"
     },
-    "view": {
-      "isExclusive": false,
-      "uiSelectionGroup": "M!"
-    },
-    "description": "reprehenderit laboris Duis tempor",
-    "tableDataLocation": "UB.Vr`)0UZY"
+    "tableDataLocation": "Gi}"
   }
 }
 ```
@@ -244,19 +240,20 @@ Additional views can be stored as json files with the field `bookmarks` mapping 
 The metadata entries have the following structure (see below for an example json file):
 - `isExclusive`: Does this view replace the current viewer state (exclusive) or is it added to it (additive)?.
 - `sourceDisplays`: The display groups of this view. Contains a list with items:
-	- `imageDisplay`: Viewer state for a group of image sources. The fields `color`, `contrastLimits`, `name` and `sources` are required.
+	- `imageDisplay`: Viewer state for a group of image sources. The fields `color`, `contrastLimits`, `opacity`, `name` and `sources` are required.
 		- `blendingMode`: The mode for blending multiple image sources.
 		- `color`: The color map.
 		- `contrastLimits`: The contrast limits. Contains a tuple of [number, number].
 		- `name`: 
+		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
 		- `sources`: The image sources that are part of this display group. Contains a list of strings.
-	- `segmentationDisplay`:  The fields `alpha`, `lut`, `name` and `sources` are required.
-		- `alpha`: The alpha value used for blending segmentation and image data in the viewer.
+	- `segmentationDisplay`:  The fields `opacity`, `lut`, `name` and `sources` are required.
 		- `colorByColumn`: 
 		- `lut`: The segmentation look-up-table for the segmentation coloring.
 		- `name`: 
+		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
 		- `selectedSegmentIds`: List of selected segment ids. Contains a list of strings.
@@ -270,7 +267,8 @@ The metadata entries have the following structure (see below for an example json
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-	- `autoGrid`: Arange a list of soures in grid. The fields `sources` and `tableDataLocation` are required.
+	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources` and `tableDataLocation` are required.
+		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
 		- `tableDataLocation`: Location of the table directory for this grid view, relative to the dataset root directory.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
@@ -291,263 +289,120 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": true,
-  "uiSelectionGroup": "{rS_^\\M#A",
+  "uiSelectionGroup": "Y#<S8",
+  "viewerTransform": {
+    "timepoint": 57817595
+  },
   "sourceTransforms": [
     {
-      "affine": {
-        "parameters": [
-          10307746.032596916,
-          58339089.73473957,
-          4141526.9956182092,
-          24377347.001054123,
-          31901370.03006032,
-          -39660591.10464109,
-          -79417170.0087158,
-          -50266592.05914461,
-          -39502195.25757888,
-          72737873.95068818,
-          55589199.87870565,
-          -26017130.10019493
-        ],
-        "sources": [
-          "e'3",
-          "QW!An)Lw0zS",
-          "Y"
-        ],
-        "timepoints": [
-          84835305,
-          71177390,
-          61069843,
-          20914059,
-          76368367
-        ]
-      }
-    },
-    {
-      "autoGrid": {
+      "grid": {
         "sources": [
           [
-            "2($boEe4&s*",
-            "*I<",
-            "eJD?4Am8D;s",
-            "Sokl&"
+            "!+%G>E?nXt",
+            "Jgwq=pQ'(xB",
+            "i",
+            "z8!",
+            "KBRzM0)"
           ],
           [
-            "SW?.\"u%tF",
-            "^J",
-            "BZxhc-(E"
-          ],
-          [
-            "u\"!3"
+            "i",
+            "qjotq_Ed",
+            "v[i^",
+            "AT",
+            "~W'"
           ]
         ],
-        "tableDataLocation": "{$G:G",
+        "tableDataLocation": "30vlk;DfxJ#",
+        "positions": [
+          [
+            -75566394,
+            11029899
+          ],
+          [
+            99085441,
+            -4259072,
+            11437275,
+            -17489082,
+            -2005515
+          ],
+          [
+            78584424
+          ],
+          [
+            -25829776
+          ],
+          [
+            -34197980,
+            -32863962,
+            -11149298
+          ]
+        ],
         "timepoints": [
-          -65967307,
-          88494807,
-          77538654
+          46352707,
+          86763907,
+          -381760,
+          -34332056
         ]
       }
     },
     {
       "affine": {
         "parameters": [
-          83594434.69683015,
-          -49711553.99016292,
-          -59274337.3013386,
-          -37806353.73679648,
-          87058217.41110235,
-          -57713168.341486655,
-          -72735617.24480326,
-          -11744821.162023917,
-          85080483.64057034,
-          -35416510.53669446,
-          -38804390.70829138,
-          96332192.65017158
+          50770931.46689507,
+          -13153829.600148186,
+          92045362.92818633,
+          23650574.16438274,
+          70404626.52384144,
+          -26553770.478502735,
+          -28812703.043982387,
+          -46288270.89919447,
+          -78034896.84626722,
+          75502156.16288677,
+          -97053509.83141705,
+          -65341234.53321872
         ],
         "sources": [
-          "0"
+          "Vir^NQRIuMS",
+          "I&~9"
+        ],
+        "timepoints": [
+          27628678
         ]
       }
     },
     {
-      "autoGrid": {
+      "grid": {
         "sources": [
           [
-            "b",
-            ";;Z^6opk4L8",
-            ";cZ"
+            "6<Rmbwu#9{|"
           ],
           [
-            "AS|",
-            "L5Mh`e#n",
-            "%"
+            "ES",
+            ";\"*LHIWc"
+          ],
+          [
+            "5\"%}=",
+            "kCU$a",
+            "a=PMcO",
+            ";!",
+            "QrE}26^~"
+          ],
+          [
+            "e3bB",
+            "BrF_>z7wY",
+            "=TL#@P@9]",
+            ";-Cu%[",
+            "GbUc}sdS"
           ]
         ],
-        "tableDataLocation": "uqi|iKK",
+        "tableDataLocation": "|[;J5fmJ",
         "timepoints": [
-          63740230,
-          -22742688
+          81101778,
+          -29323249
         ]
       }
     }
-  ],
-  "sourceDisplays": [
-    {
-      "segmentationDisplay": {
-        "alpha": 0.4754795880267433,
-        "lut": "viridis",
-        "name": "ZS_",
-        "sources": [
-          "ttwnc",
-          ")OeY-E",
-          "U",
-          "~'"
-        ],
-        "scatterPlotAxes": [
-          "Z;&]TTq|HvEC",
-          "[CEJ5\")q)Yv;SMh\"wh}"
-        ],
-        "selectedSegmentIds": [
-          "ZP7HP;09562762;52",
-          "?xO^8X6t;3490;4038769"
-        ],
-        "valueLimits": [
-          33685311.10386641,
-          -98017461.6085045
-        ],
-        "resolution3dView": [
-          58751560.394943684,
-          -89871058.72383542,
-          7628113.8524347395
-        ],
-        "tables": [
-          "m7@f,+>xg",
-          "A",
-          "Hf=",
-          "PiV-7|!4Li"
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "alpha": 0.16736241579747801,
-        "lut": "argbColumn",
-        "name": "3a",
-        "sources": [
-          "Kf\"t",
-          ".4c",
-          "UF_z6&",
-          "'MY+A2,fBo^",
-          "?tY"
-        ],
-        "tables": [
-          "*~",
-          "T`p%!hg_",
-          "-s~",
-          "l$![#\"6Ugq",
-          "{Q_0F4"
-        ],
-        "showSelectedSegmentsIn3d": false,
-        "resolution3dView": [
-          55087824.35789609,
-          18002868.311093673,
-          -16438713.887524873
-        ],
-        "scatterPlotAxes": [
-          "vO=gd:n;pBiUMc~",
-          "Tw<;1pG5,S{"
-        ],
-        "showScatterPlot": true,
-        "selectedSegmentIds": [
-          "nX;088;54424",
-          "].gz:$;3180157;744634"
-        ],
-        "valueLimits": [
-          -17231931.43724644,
-          -73083242.5383833
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "alpha": 0.6381878959814713,
-        "lut": "argbColumn",
-        "name": "rj$fNKX0u",
-        "sources": [
-          "t"
-        ],
-        "showScatterPlot": true,
-        "scatterPlotAxes": [
-          "K2;!oyta",
-          "Gu-7iYa;R2$"
-        ],
-        "tables": [
-          "G{g?H%'D#"
-        ],
-        "resolution3dView": [
-          64412606.10551053,
-          -64682751.83468251,
-          12664847.754633605
-        ],
-        "selectedSegmentIds": [
-          "k]TG=]JZ,;651060730;0656",
-          "^rw#HPY+C;1921;68954210335",
-          "%JeTWZ{)(Sb;20078775718;825888",
-          "9oG?n0zG;2712955858;7988014585"
-        ],
-        "colorByColumn": "P$0H",
-        "showSelectedSegmentsIn3d": true,
-        "valueLimits": [
-          410676.39983181655,
-          57166949.62492931
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "alpha": 0.25708932333571344,
-        "lut": "argbColumn",
-        "name": "|Js.",
-        "sources": [
-          "Q*wTWHg",
-          "jM",
-          "%7-bQvW1"
-        ],
-        "valueLimits": [
-          -47644714.65717932,
-          83013133.72444043
-        ],
-        "scatterPlotAxes": [
-          "I~>9=;>\\",
-          "[|s{U%\"c`A;,T}^G_2(F"
-        ],
-        "colorByColumn": "l.c3_VIp",
-        "selectedSegmentIds": [
-          "B'Qn^9;09908;57118123",
-          "RDU5;76793471;4761752517"
-        ],
-        "resolution3dView": [
-          50206885.77134246,
-          49603071.58310974,
-          -37693186.10334795
-        ],
-        "showSelectedSegmentsIn3d": true,
-        "tables": [
-          "hhien",
-          "|)PccKuVQ-"
-        ],
-        "showScatterPlot": true
-      }
-    }
-  ],
-  "viewerTransform": {
-    "position": [
-      53030049.142393135,
-      96001508.08818464,
-      83717567.11520779
-    ]
-  }
+  ]
 }
 ```
 

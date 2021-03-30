@@ -47,6 +47,12 @@
                             "description": "Name of this image display.",
                             "$ref": "#/definitions/name"
                         },
+                        "opacity": {
+                            "description": "The alpha value used for blending segmentation and image data in the viewer.",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
                         "blendingMode": {
                             "description": "The mode for blending multiple image sources.",
                             "type": "string",
@@ -76,7 +82,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["color", "contrastLimits", "name", "sources"],
+                    "required": ["color", "contrastLimits", "opacity", "name", "sources"],
                     "additionalProperties": false
                 }
             },
@@ -92,7 +98,7 @@
                     "description": "",
                     "type": "object",
                     "properties": {
-                        "alpha": {
+                        "opacity": {
                             "description": "The alpha value used for blending segmentation and image data in the viewer.",
                             "type": "number",
                             "minimum": 0,
@@ -177,7 +183,7 @@
                             "additionalItems": false
                         }
                     },
-                    "required": ["alpha", "lut", "name", "sources"],
+                    "required": ["opacity", "lut", "name", "sources"],
                     "additionalProperties": false
                 }
             },
