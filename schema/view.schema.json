@@ -56,7 +56,7 @@
                         "blendingMode": {
                             "description": "The mode for blending multiple image sources.",
                             "type": "string",
-                            "enum": ["avg", "avgOccluding", "sum", "sumOccluding"]
+                            "enum": ["average", "averageOccluding", "sum", "sumOccluding"]
                         },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
