@@ -9,19 +9,19 @@
             "description": "Location of the bdv.xml files for this source, relative to the dataset root directory.",
             "type": "object",
             "properties": {
-                "local": {
-                    "description": "Location of the bdv.xml file for reading the source image data from the local filesystem.",
+                "fileSystem": {
+                    "description": "Location of the bdv.xml for reading the source image data from the local filesystem.",
                     "type": "string",
                     "pattern": "^\\S+\\.(xml)$"
                 },
-                "remote": {
-                    "description": "Location of the bdv.xml file for reading the source image data from an object store.",
+                "s3store": {
+                    "description": "Location of the bdv.xml for reading the source image data from an s3 object store.",
                     "type": "string",
                     "pattern": "^\\S+\\.(xml)$"
                 }
             },
-            "required": ["local"],
-            "additionalProperties": false
+            "additionalProperties": false,
+            "minProperties": 1
         },
 
         "imageSource": {

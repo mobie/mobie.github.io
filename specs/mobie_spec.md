@@ -186,26 +186,29 @@ The metadata for the sources of a dataset is specified in the field `sources` of
 The metadata entries have the following structure (see below for an example json file):
 - `image`: An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The fields `imageDataLocations` and `view` are required.
 	- `description`: Description of this image source.
-	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
-		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
-		- `remote`: Location of the bdv.xml file for reading the source image data from an object store.
+	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.
+		- `fileSystem`: Location of the bdv.xml for reading the source image data from the local filesystem.
+		- `s3store`: Location of the bdv.xml for reading the source image data from an s3 object store.
 	- `view`: Contains a [view](#view-metadata).
 - `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageDataLocations` is required.
 	- `description`: Description of this segmentation source.
-	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory. The field `local` is required.
-		- `local`: Location of the bdv.xml file for reading the source image data from the local filesystem.
-		- `remote`: Location of the bdv.xml file for reading the source image data from an object store.
+	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.
+		- `fileSystem`: Location of the bdv.xml for reading the source image data from the local filesystem.
+		- `s3store`: Location of the bdv.xml for reading the source image data from an s3 object store.
 	- `tableDataLocation`: Location of the table directory for this segmentation source, relative to the dataset root directory.
 	- `view`: Contains a [view](#view-metadata).
 
 ```json
 {
-  "segmentation": {
+  "image": {
     "imageDataLocations": {
-      "local": "$2pz,IU!.xml",
-      "remote": "jUNDh1&M.xml"
+      "s3store": "-Z/V^ZP0`'j.xml"
     },
-    "tableDataLocation": "Gi}"
+    "view": {
+      "isExclusive": true,
+      "uiSelectionGroup": "%nBn"
+    },
+    "description": "non id"
   }
 }
 ```
@@ -288,85 +291,196 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "isExclusive": true,
-  "uiSelectionGroup": "Y#<S8",
+  "isExclusive": false,
+  "uiSelectionGroup": ".J?G,0jvR",
+  "sourceDisplays": [
+    {
+      "imageDisplay": {
+        "color": "white",
+        "contrastLimits": [
+          36790.24356187605,
+          38291.79139602365
+        ],
+        "opacity": 0.7215259595925538,
+        "name": "+iv]PR[D#",
+        "sources": [
+          "v",
+          "AXQ~dUI=;?",
+          "?H>E|",
+          ";|'FNz"
+        ],
+        "resolution3dView": [
+          -16118016.36243397,
+          11062905.499960303,
+          37680186.20775214
+        ],
+        "showImagesIn3d": false
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.4137845538936997,
+        "lut": "blueWhiteRed",
+        "name": "xa-kwHTA+yw",
+        "sources": [
+          ".'yd6b\"<CHS",
+          "-#m(h:Yq",
+          "]Zmrj!",
+          "AEwYsv\"-Q!"
+        ],
+        "valueLimits": [
+          15002229.217210278,
+          -12155547.4674405
+        ]
+      }
+    },
+    {
+      "imageDisplay": {
+        "color": "darkGray",
+        "contrastLimits": [
+          63351.54341280222,
+          8219.25487272183
+        ],
+        "opacity": 0.13176608391867006,
+        "name": "(b)n_",
+        "sources": [
+          "N"
+        ],
+        "resolution3dView": [
+          40522846.649568945,
+          -14118591.38896121,
+          62230517.173282385
+        ],
+        "showImagesIn3d": true,
+        "blendingMode": "average"
+      }
+    },
+    {
+      "imageDisplay": {
+        "color": "cyan",
+        "contrastLimits": [
+          10334.886852121976,
+          29058.567622683233
+        ],
+        "opacity": 0.9544840702729842,
+        "name": "9.~iW\"eI-1",
+        "sources": [
+          "?f[-Upu0;",
+          "dFK-",
+          "hZmgjcdz"
+        ],
+        "resolution3dView": [
+          8000697.641281292,
+          -39805381.86184908,
+          76934906.51767454
+        ],
+        "showImagesIn3d": false
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.5603091470509243,
+        "lut": "blueWhiteRed",
+        "name": "'YgEtQ}",
+        "sources": [
+          "U8M-&[Ii",
+          "_}~]ar"
+        ],
+        "tables": [
+          "Rl"
+        ],
+        "showScatterPlot": false,
+        "colorByColumn": "SE[DeK(^",
+        "resolution3dView": [
+          -37238962.50030214,
+          33452070.05155903,
+          58747564.13702032
+        ]
+      }
+    }
+  ],
   "viewerTransform": {
-    "timepoint": 57817595
+    "timepoint": 17329706
   },
   "sourceTransforms": [
     {
-      "grid": {
-        "sources": [
-          [
-            "!+%G>E?nXt",
-            "Jgwq=pQ'(xB",
-            "i",
-            "z8!",
-            "KBRzM0)"
-          ],
-          [
-            "i",
-            "qjotq_Ed",
-            "v[i^",
-            "AT",
-            "~W'"
-          ]
+      "affine": {
+        "parameters": [
+          17868302.745212093,
+          -65807644.82613142,
+          -50489602.14069957,
+          55107922.28177959,
+          -57994179.67441367,
+          76596270.27084163,
+          -88965574.88408332,
+          70550529.07380053,
+          -53834186.98360858,
+          -73511856.83587031,
+          -98398381.33935976,
+          97379228.85032195
         ],
-        "tableDataLocation": "30vlk;DfxJ#",
-        "positions": [
-          [
-            -75566394,
-            11029899
-          ],
-          [
-            99085441,
-            -4259072,
-            11437275,
-            -17489082,
-            -2005515
-          ],
-          [
-            78584424
-          ],
-          [
-            -25829776
-          ],
-          [
-            -34197980,
-            -32863962,
-            -11149298
-          ]
+        "sources": [
+          "d",
+          "~Q",
+          "VjM^24+J"
         ],
         "timepoints": [
-          46352707,
-          86763907,
-          -381760,
-          -34332056
+          95907506,
+          17487703,
+          71633214,
+          40699829,
+          31350679
         ]
       }
     },
     {
       "affine": {
         "parameters": [
-          50770931.46689507,
-          -13153829.600148186,
-          92045362.92818633,
-          23650574.16438274,
-          70404626.52384144,
-          -26553770.478502735,
-          -28812703.043982387,
-          -46288270.89919447,
-          -78034896.84626722,
-          75502156.16288677,
-          -97053509.83141705,
-          -65341234.53321872
+          -72323094.16761766,
+          47062410.352981746,
+          85486892.69468608,
+          73865018.35519573,
+          -97828813.1114612,
+          -3457315.954731703,
+          -69626607.41972253,
+          -87786809.04763015,
+          -21882810.501956567,
+          -99425254.82310112,
+          46521636.97245544,
+          -29970172.161234736
         ],
         "sources": [
-          "Vir^NQRIuMS",
-          "I&~9"
+          "@<CT+&j_f7",
+          "-",
+          ">n",
+          "nbzr@5}"
         ],
         "timepoints": [
-          27628678
+          72099036,
+          64347233
+        ]
+      }
+    },
+    {
+      "affine": {
+        "parameters": [
+          8058230.700281486,
+          18696261.2126282,
+          -77378605.63614012,
+          12648844.11190547,
+          42198174.59529546,
+          34238470.28756112,
+          -85571476.41321325,
+          -27395144.932888016,
+          2926785.0568092763,
+          14977349.54392147,
+          -19721119.43088177,
+          23837206.836918995
+        ],
+        "sources": [
+          "-rW{t8h",
+          "0tS",
+          "\"("
         ]
       }
     },
@@ -374,31 +488,85 @@ The metadata entries have the following structure (see below for an example json
       "grid": {
         "sources": [
           [
-            "6<Rmbwu#9{|"
+            "XdRKb)DDB",
+            "WOE}f",
+            "*%'J8'16?}",
+            "RfK|",
+            "nsT'lh6.a"
           ],
           [
-            "ES",
-            ";\"*LHIWc"
+            "6osn8N#a\"",
+            "1yR88",
+            "~\\#oIP$p`E",
+            "ugbryilC"
           ],
           [
-            "5\"%}=",
-            "kCU$a",
-            "a=PMcO",
-            ";!",
-            "QrE}26^~"
+            "L:>E<n3@<1S",
+            "]C;KZQZ|Y"
           ],
           [
-            "e3bB",
-            "BrF_>z7wY",
-            "=TL#@P@9]",
-            ";-Cu%[",
-            "GbUc}sdS"
+            "FmO&",
+            "v&=H",
+            "%O)",
+            "a1"
           ]
         ],
-        "tableDataLocation": "|[;J5fmJ",
+        "tableDataLocation": "qFkp",
         "timepoints": [
-          81101778,
-          -29323249
+          96828558,
+          66472443,
+          -26533354,
+          15830219,
+          61201657
+        ],
+        "positions": [
+          [
+            -24294030,
+            -89577861,
+            37862278,
+            92097671
+          ],
+          [
+            -40688324,
+            -14496514
+          ],
+          [
+            60753966,
+            71656282
+          ],
+          [
+            94208990,
+            -66243696,
+            -97291046,
+            94849656
+          ]
+        ]
+      }
+    },
+    {
+      "affine": {
+        "parameters": [
+          60524448.221042424,
+          16809195.9802728,
+          47413869.729408056,
+          35064208.14376563,
+          -19403658.98189369,
+          -87151149.26287013,
+          -64077624.868497774,
+          81815728.12894914,
+          94841080.88516062,
+          -94621659.05537407,
+          -42498916.93633656,
+          54657161.57573125
+        ],
+        "sources": [
+          "T:GRfT",
+          "&3",
+          "cK.#gOTv@"
+        ],
+        "timepoints": [
+          23129643,
+          71325628
         ]
       }
     }
