@@ -107,7 +107,7 @@
                         "lut": {
                             "description": "The segmentation look-up-table for the segmentation coloring.",
                             "type": "string",
-                            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "viridis"]
+                            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis"]
                         },
                         "colorByColumn": {
                             "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
