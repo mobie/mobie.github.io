@@ -202,13 +202,256 @@ The metadata entries have the following structure (see below for an example json
 {
   "image": {
     "imageDataLocations": {
-      "s3store": "-Z/V^ZP0`'j.xml"
+      "fileSystem": "YT.xml"
     },
     "view": {
-      "isExclusive": true,
-      "uiSelectionGroup": "%nBn"
+      "isExclusive": false,
+      "uiSelectionGroup": "=vZG*5",
+      "sourceDisplays": [
+        {
+          "segmentationDisplay": {
+            "opacity": 0.6339031658952454,
+            "lut": "glasbeyZeroTransparent",
+            "name": "GQZ",
+            "sources": [
+              "\"{",
+              ",N*dZu34gt",
+              "a|G-ba#^L",
+              "QAq?><u$fI&"
+            ],
+            "showSelectedSegmentsIn3d": true,
+            "selectedSegmentIds": [
+              "Jd;782684640;69637"
+            ],
+            "colorByColumn": "[00zqg?p&",
+            "resolution3dView": [
+              74349873.45393723,
+              43592822.621136844,
+              91462179.813303
+            ]
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "opacity": 0.3433189239960328,
+            "lut": "glasbeyZeroTransparent",
+            "name": "H1",
+            "sources": [
+              "?qBBk$",
+              "!aIy~n)",
+              "SA",
+              "0?y6B==fO0",
+              "n`>I"
+            ],
+            "showScatterPlot": true,
+            "valueLimits": [
+              -13519223.647686034,
+              -60129278.78701437
+            ],
+            "colorByColumn": "M:Sl}C"
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "opacity": 0.4169635212560101,
+            "lut": "glasbeyZeroTransparent",
+            "name": "G.VME#oa'|",
+            "sources": [
+              "=1,&mZ#fi",
+              "MT`",
+              "23(6*1}s{V",
+              "'"
+            ],
+            "valueLimits": [
+              17272986.85358569,
+              -32144685.90146771
+            ],
+            "colorByColumn": "9<B26my>c",
+            "showSelectedSegmentsIn3d": true
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "opacity": 0.9938733316947221,
+            "lut": "argbColumn",
+            "name": "m!S",
+            "sources": [
+              "$",
+              "B4a!gywwu4",
+              "6?yB"
+            ],
+            "colorByColumn": "$=3Pbv",
+            "valueLimits": [
+              46349990.3327634,
+              57888023.8890855
+            ],
+            "showScatterPlot": false,
+            "selectedSegmentIds": [
+              "J]c(%YI;4341612;9947764226",
+              "|;41;2182636200",
+              "CxMNn+r8#d;64875082;3236",
+              "6BMUSo?faqE;52246;5417402816",
+              "9;4760410;8776032"
+            ],
+            "scatterPlotAxes": [
+              "7FWR~doT;O-xy",
+              "x^R9H;>"
+            ],
+            "resolution3dView": [
+              -6784753.32146959,
+              -5612693.342588544,
+              72514751.77515164
+            ],
+            "tables": [
+              "$$",
+              "Zmh~Ys)&",
+              "5$",
+              "[&f6\\hv6%Kv",
+              "=z_g2$"
+            ],
+            "showSelectedSegmentsIn3d": true
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "opacity": 0.17517965901085808,
+            "lut": "glasbeyZeroTransparent",
+            "name": "n",
+            "sources": [
+              "mL6B#_a!"
+            ],
+            "scatterPlotAxes": [
+              "5;#tE9,M>u",
+              ">;R$ahyznS6"
+            ],
+            "showScatterPlot": true,
+            "resolution3dView": [
+              -68421024.18938816,
+              -25474981.62035589,
+              -29335425.12952511
+            ],
+            "tables": [
+              "yP!XoAy",
+              "VeE24^",
+              "^+lB"
+            ],
+            "selectedSegmentIds": [
+              "*m;3;84178438251"
+            ],
+            "showSelectedSegmentsIn3d": true,
+            "valueLimits": [
+              -26897123.859693646,
+              30890341.76944843
+            ],
+            "colorByColumn": "^ll$j"
+          }
+        }
+      ],
+      "viewerTransform": {
+        "timepoint": 36177778
+      },
+      "sourceTransforms": [
+        {
+          "affine": {
+            "parameters": [
+              -58030196.68331508,
+              -53611002.45928054,
+              10155044.635174006,
+              82864392.05019015,
+              -31446290.123716563,
+              58716145.500630915,
+              -91771303.36743647,
+              77429675.26631227,
+              -63741742.32945218,
+              1226120.5043121725,
+              -90573423.6913684,
+              -61235133.31891264
+            ],
+            "sources": [
+              "~9P"
+            ],
+            "timepoints": [
+              42928883,
+              96593048
+            ]
+          }
+        },
+        {
+          "grid": {
+            "sources": [
+              [
+                "\\PwbHPca",
+                "Q"
+              ],
+              [
+                "kuD4s!",
+                "^DUaj*",
+                "e"
+              ],
+              [
+                "(<C}~J",
+                "cF_oHO6",
+                "U>]5rS-7",
+                "#Q5MN'",
+                "`gyc"
+              ],
+              [
+                "$5<NYVQr+ab"
+              ],
+              [
+                "ZuK\\Yy",
+                "{jQBQSL4us",
+                "q10C3mWQ>h",
+                "`s|_M"
+              ]
+            ],
+            "tableDataLocation": "yoK)wxU:#",
+            "timepoints": [
+              -76144786,
+              -59968250,
+              -86665083,
+              86977793,
+              68683435
+            ]
+          }
+        },
+        {
+          "grid": {
+            "sources": [
+              [
+                "j4Wk9D",
+                "w406"
+              ],
+              [
+                "s+Z`?",
+                "_DJq{~]",
+                "S",
+                "%Bt",
+                "ayrz"
+              ],
+              [
+                "%M8%",
+                "{^=;a",
+                "FJ"
+              ]
+            ],
+            "tableDataLocation": "XJEQ",
+            "positions": [
+              [
+                -95703134,
+                80728017,
+                -50439009
+              ]
+            ],
+            "timepoints": [
+              -73068886,
+              20727092
+            ]
+          }
+        }
+      ]
     },
-    "description": "non id"
+    "description": "qui cupidatat aliqua anim id"
   }
 }
 ```
@@ -219,18 +462,19 @@ A `view` stores all metadata necessary to fully reproduce a MoBIE viewer state.
 
 ### <a name="view-grid"></a>Grid Views
 
-Grid views can be used to arrange sources in a grid automatically. They must have an associated table, that is
+Grid views can be used to arrange sources in a grid automatically. They must have an associated table that is
 used for navigation in the viewer, and can also store additional properties for individual grid positions.
 The table specification is the same as for the [segmentation tables](#tables), except for a different layout required in the default table,
 which must contain the column `grid_id` and may contain additional arbitrary columns.
+The `grid_id` column indexes the 2d grid position with row major convention.
 
 See an example grid view table for 4 grid positions that also gives the presence of different organelles for each position.
 ```tsv
 grid_id mitochondria    vesicles    golgi   er
-0   1   0   1   0   0
-0   1   0   1   1   0
-0   2   0   0   1   1
-0   3   1   0   1   1
+0   1   0   1   0
+1   1   0   1   1
+2   0   0   0   1
+3   0   1   0   1
 ```
 
 ### <a name="view-metadata"></a>View Metadata
@@ -292,195 +536,169 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": ".J?G,0jvR",
+  "uiSelectionGroup": "EEP?",
   "sourceDisplays": [
     {
       "imageDisplay": {
-        "color": "white",
+        "color": "red",
         "contrastLimits": [
-          36790.24356187605,
-          38291.79139602365
+          44698.932470764856,
+          25870.10895789962
         ],
-        "opacity": 0.7215259595925538,
-        "name": "+iv]PR[D#",
+        "opacity": 0.7346415498281704,
+        "name": ">225[M",
         "sources": [
-          "v",
-          "AXQ~dUI=;?",
-          "?H>E|",
-          ";|'FNz"
+          "#"
         ],
+        "blendingMode": "sumOccluding",
         "resolution3dView": [
-          -16118016.36243397,
-          11062905.499960303,
-          37680186.20775214
+          -97427643.3343464,
+          -64524331.64069049,
+          98504326.85914984
         ],
         "showImagesIn3d": false
       }
     },
     {
-      "segmentationDisplay": {
-        "opacity": 0.4137845538936997,
-        "lut": "blueWhiteRed",
-        "name": "xa-kwHTA+yw",
+      "imageDisplay": {
+        "color": "magenta",
+        "contrastLimits": [
+          48094.89283560391,
+          24008.792045012553
+        ],
+        "opacity": 0.5153851613350793,
+        "name": "!sSN@zh)]",
         "sources": [
-          ".'yd6b\"<CHS",
-          "-#m(h:Yq",
-          "]Zmrj!",
-          "AEwYsv\"-Q!"
+          "#zS:Nte|X~"
+        ],
+        "blendingMode": "sumOccluding"
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.39709112454022555,
+        "lut": "glasbeyZeroTransparent",
+        "name": "x-=l",
+        "sources": [
+          "Q#8\\3",
+          "TBRG-r",
+          "<}BiBpA2uG",
+          "e(~TvY6ZT"
+        ],
+        "selectedSegmentIds": [
+          "fcFALQOvi~Q;1566;58424",
+          "+B7;0040473401;72010148",
+          "PN#mMsj%;088;6",
+          "=~+`('`#;556272;9155462"
         ],
         "valueLimits": [
-          15002229.217210278,
-          -12155547.4674405
-        ]
-      }
-    },
-    {
-      "imageDisplay": {
-        "color": "darkGray",
-        "contrastLimits": [
-          63351.54341280222,
-          8219.25487272183
-        ],
-        "opacity": 0.13176608391867006,
-        "name": "(b)n_",
-        "sources": [
-          "N"
-        ],
-        "resolution3dView": [
-          40522846.649568945,
-          -14118591.38896121,
-          62230517.173282385
-        ],
-        "showImagesIn3d": true,
-        "blendingMode": "average"
-      }
-    },
-    {
-      "imageDisplay": {
-        "color": "cyan",
-        "contrastLimits": [
-          10334.886852121976,
-          29058.567622683233
-        ],
-        "opacity": 0.9544840702729842,
-        "name": "9.~iW\"eI-1",
-        "sources": [
-          "?f[-Upu0;",
-          "dFK-",
-          "hZmgjcdz"
-        ],
-        "resolution3dView": [
-          8000697.641281292,
-          -39805381.86184908,
-          76934906.51767454
-        ],
-        "showImagesIn3d": false
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.5603091470509243,
-        "lut": "blueWhiteRed",
-        "name": "'YgEtQ}",
-        "sources": [
-          "U8M-&[Ii",
-          "_}~]ar"
+          8915448.244127646,
+          -93489342.55482386
         ],
         "tables": [
-          "Rl"
+          "]~",
+          "?GCX8-7J",
+          "+~$_u2M7cFh",
+          "3[jYAZx",
+          "h1C'W2#,Y`:"
         ],
-        "showScatterPlot": false,
-        "colorByColumn": "SE[DeK(^",
-        "resolution3dView": [
-          -37238962.50030214,
-          33452070.05155903,
-          58747564.13702032
-        ]
+        "scatterPlotAxes": [
+          "_~lzOu(N;zJ%?wF6oZ",
+          "0,;7drjkgom"
+        ],
+        "showSelectedSegmentsIn3d": false
       }
     }
   ],
   "viewerTransform": {
-    "timepoint": 17329706
+    "normalizedAffine": [
+      -38825602.67937434,
+      60941710.21978161,
+      49358801.94249135,
+      -70724346.11695999,
+      -2117273.871589735,
+      68449891.16090307,
+      -30771589.277686313,
+      -75465020.85257503,
+      -13524780.181047589,
+      -98006184.417063,
+      27488396.427337453,
+      -74177587.39227426
+    ]
   },
   "sourceTransforms": [
     {
-      "affine": {
-        "parameters": [
-          17868302.745212093,
-          -65807644.82613142,
-          -50489602.14069957,
-          55107922.28177959,
-          -57994179.67441367,
-          76596270.27084163,
-          -88965574.88408332,
-          70550529.07380053,
-          -53834186.98360858,
-          -73511856.83587031,
-          -98398381.33935976,
-          97379228.85032195
-        ],
+      "grid": {
         "sources": [
-          "d",
-          "~Q",
-          "VjM^24+J"
+          [
+            "^klMv\"{I",
+            "LOJrUw91O~",
+            "_FyrzR1cW}",
+            "g%8r+Ms:P<Q",
+            "yCt$><"
+          ],
+          [
+            "DO)V",
+            "L",
+            "g'1>^~e",
+            "D("
+          ],
+          [
+            "dlj}",
+            "iMG\\#!kS#",
+            "=",
+            "e:}",
+            "\"(4[i.^h"
+          ]
+        ],
+        "tableDataLocation": "%'Y]fxa",
+        "positions": [
+          [
+            87297406,
+            54954990,
+            -84522313,
+            82814894,
+            26990981
+          ],
+          [
+            -18831660,
+            3950742,
+            -96767613,
+            30498216,
+            -66871298
+          ],
+          [
+            40492741,
+            -38979512
+          ]
         ],
         "timepoints": [
-          95907506,
-          17487703,
-          71633214,
-          40699829,
-          31350679
+          -63188596,
+          19637655,
+          -83601894
         ]
       }
     },
     {
       "affine": {
         "parameters": [
-          -72323094.16761766,
-          47062410.352981746,
-          85486892.69468608,
-          73865018.35519573,
-          -97828813.1114612,
-          -3457315.954731703,
-          -69626607.41972253,
-          -87786809.04763015,
-          -21882810.501956567,
-          -99425254.82310112,
-          46521636.97245544,
-          -29970172.161234736
+          -60294453.75044107,
+          -28017813.459113583,
+          -44248326.8324466,
+          2062692.97983855,
+          40091837.65733954,
+          -64320706.22863249,
+          -46679537.46018449,
+          57262022.72809759,
+          66369943.09025702,
+          4653655.494518414,
+          -9214395.51079373,
+          73664788.66876641
         ],
         "sources": [
-          "@<CT+&j_f7",
-          "-",
-          ">n",
-          "nbzr@5}"
-        ],
-        "timepoints": [
-          72099036,
-          64347233
-        ]
-      }
-    },
-    {
-      "affine": {
-        "parameters": [
-          8058230.700281486,
-          18696261.2126282,
-          -77378605.63614012,
-          12648844.11190547,
-          42198174.59529546,
-          34238470.28756112,
-          -85571476.41321325,
-          -27395144.932888016,
-          2926785.0568092763,
-          14977349.54392147,
-          -19721119.43088177,
-          23837206.836918995
-        ],
-        "sources": [
-          "-rW{t8h",
-          "0tS",
-          "\"("
+          "i",
+          "Y%",
+          "G+7v"
         ]
       }
     },
@@ -488,57 +706,23 @@ The metadata entries have the following structure (see below for an example json
       "grid": {
         "sources": [
           [
-            "XdRKb)DDB",
-            "WOE}f",
-            "*%'J8'16?}",
-            "RfK|",
-            "nsT'lh6.a"
+            "1vq)Uipg3*U",
+            "-p)(7:'}",
+            "++",
+            "^",
+            "WhR$!cG"
           ],
           [
-            "6osn8N#a\"",
-            "1yR88",
-            "~\\#oIP$p`E",
-            "ugbryilC"
-          ],
-          [
-            "L:>E<n3@<1S",
-            "]C;KZQZ|Y"
-          ],
-          [
-            "FmO&",
-            "v&=H",
-            "%O)",
-            "a1"
+            "]H"
           ]
         ],
-        "tableDataLocation": "qFkp",
+        "tableDataLocation": "%gvJ",
         "timepoints": [
-          96828558,
-          66472443,
-          -26533354,
-          15830219,
-          61201657
+          23645041
         ],
         "positions": [
           [
-            -24294030,
-            -89577861,
-            37862278,
-            92097671
-          ],
-          [
-            -40688324,
-            -14496514
-          ],
-          [
-            60753966,
-            71656282
-          ],
-          [
-            94208990,
-            -66243696,
-            -97291046,
-            94849656
+            -46740643
           ]
         ]
       }
@@ -546,27 +730,57 @@ The metadata entries have the following structure (see below for an example json
     {
       "affine": {
         "parameters": [
-          60524448.221042424,
-          16809195.9802728,
-          47413869.729408056,
-          35064208.14376563,
-          -19403658.98189369,
-          -87151149.26287013,
-          -64077624.868497774,
-          81815728.12894914,
-          94841080.88516062,
-          -94621659.05537407,
-          -42498916.93633656,
-          54657161.57573125
+          -94846594.04708174,
+          7845075.218047276,
+          59791605.83655828,
+          -17339507.653189883,
+          96120974.49444005,
+          9655385.62119171,
+          38335773.51335871,
+          66146390.31299916,
+          48522769.15636581,
+          -1101997.1868268251,
+          66692349.94684428,
+          9635951.210210443
         ],
         "sources": [
-          "T:GRfT",
-          "&3",
-          "cK.#gOTv@"
+          "GmG}vP",
+          "\\UU",
+          "85}P5[A0x6S",
+          "+!G+QW",
+          "~x+9-)"
         ],
         "timepoints": [
-          23129643,
-          71325628
+          7949008,
+          69010024,
+          25911313,
+          861293,
+          11942322
+        ]
+      }
+    },
+    {
+      "affine": {
+        "parameters": [
+          82398445.3450951,
+          -14685288.813732728,
+          5896974.187448874,
+          -66328813.66512491,
+          44260336.423409134,
+          -59885169.656030305,
+          -87142684.06676413,
+          -38183845.70617828,
+          -2668792.2002323717,
+          41121398.70868465,
+          90176459.84641156,
+          68907937.57678297
+        ],
+        "sources": [
+          "R",
+          "Qx$,MFX"
+        ],
+        "timepoints": [
+          96844966
         ]
       }
     }
