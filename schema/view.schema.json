@@ -146,7 +146,7 @@
                             }
                         },
                         "showScatterPlot": {
-                            "description": "Whether to show the scatter plot.",
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.",
                             "type": "boolean"
                         },
                         "showSelectedSegmentsIn3d": {

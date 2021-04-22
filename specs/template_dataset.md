@@ -43,7 +43,7 @@ For the zebrafish-lm dataset the `dataset.json` looks like this (source and view
 ```json
 {
     "description": "Zebrafish primordium with actin staining.",
-    "is2d": False,
+    "is2d": false,
     "sources": {
         "membrane_sample1": {"..."},
         "membrane_sample2": {"..."},
