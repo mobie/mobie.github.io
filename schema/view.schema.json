@@ -165,7 +165,16 @@
                             "description": "Additional tables to load. If present, the default table will always be loaded and should not be specified here.",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/name"
+                                "anyOf": [
+                                    {
+                                        "type": "string",
+                                        "pattern": "^[^;\\/ ]+\\.csv$"
+                                    },
+                                    {
+                                        "type": "string",
+                                        "pattern": "^[^;\\/ ]+\\.tsv$"
+                                    }
+                                ]
                             },
                             "minItems": 1
                         },
