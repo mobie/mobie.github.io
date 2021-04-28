@@ -92,7 +92,7 @@ The `tables` directory contains all tabular data assoicated with segmentations o
 All tables associated with one segmentation or view, must be located in the same subdirectory, which must contain a table `default.tsv` and may contain additional tables. 
 See the [table data specification](#tables) for details on how tables are stored.
 
-The `misc` directory may contain the subdirectory `bookmarks` with additional views stored in json files according to the [bookmarks spec](https://github.com/mobie/mobie.github.io/tree/master/schema/bookmarks.schema.json).
+The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
 It may also contain the file `leveling.json`, which specifies the "natural" orientation of the dataset and other subdirectories and other files that are associated with this dataset.
 
 
@@ -104,7 +104,7 @@ actin/
 │   ├── local
 │   └── remote
 ├── misc
-│   └── bookmarks
+│   └── views
 │   └── leveling.json
 └── tables
     ├── segmentation_sample1
@@ -200,41 +200,250 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "segmentation": {
+  "image": {
     "imageDataLocations": {
-      "s3store": "Dur,.xml",
-      "fileSystem": "'^3V*|fEiE*.xml"
+      "fileSystem": "hR}G\">.xml"
     },
-    "description": "nulla quis ad",
     "view": {
-      "isExclusive": false,
-      "uiSelectionGroup": "6c#A&Zg85ZH",
+      "isExclusive": true,
+      "uiSelectionGroup": "w&",
+      "viewerTransform": {
+        "position": [
+          70567191.00478557,
+          91084814.82671389,
+          85558374.10831507
+        ]
+      },
+      "sourceTransforms": [
+        {
+          "grid": {
+            "sources": [
+              [
+                "sQ<yDrAI9^",
+                "rVOK%;p(1j"
+              ],
+              [
+                "mJTE",
+                "2z",
+                "(",
+                "'}",
+                "ZG#vY9m:WBo"
+              ],
+              [
+                "4n]t",
+                "V+[vVX_.\\4",
+                "pU8"
+              ],
+              [
+                "Zyd",
+                "Nx;f`",
+                "Tf4*WTy^",
+                "F(5hSr(",
+                "ZCcru^L#D3"
+              ]
+            ],
+            "tableDataLocation": "/{5Z2Yp(=U",
+            "timepoints": [
+              87182844,
+              39303666,
+              -33540975,
+              -38702609,
+              -80392257
+            ],
+            "positions": [
+              [
+                -88272966,
+                -89630664,
+                35882841
+              ],
+              [
+                -38725174,
+                -18108506,
+                465438,
+                74110346,
+                87322341
+              ],
+              [
+                15055595,
+                -48058060,
+                66057233,
+                -14686493
+              ],
+              [
+                -44634702,
+                19729643,
+                87853519,
+                53293205,
+                -11518367
+              ],
+              [
+                -96166530
+              ]
+            ]
+          }
+        },
+        {
+          "affine": {
+            "parameters": [
+              -2733840.748514995,
+              -87183007.45177285,
+              39482250.866580784,
+              90178181.61182243,
+              -87116835.97447895,
+              -99958279.89247945,
+              -39565906.236626744,
+              10592085.029856905,
+              75609979.21959612,
+              65388024.129115105,
+              62794086.49066666,
+              -21701849.568215743
+            ],
+            "sources": [
+              "C4YXv7",
+              "zBs07!1+D",
+              "c{?DYO#",
+              "(MpQq",
+              "7-Tf!)Pv+Q"
+            ],
+            "timepoints": [
+              36640,
+              27928875,
+              96300815,
+              241050,
+              78478280
+            ]
+          }
+        },
+        {
+          "affine": {
+            "parameters": [
+              43364663.730673015,
+              77068124.2375868,
+              -22597234.814571545,
+              -27717926.585641935,
+              -37821645.34444434,
+              -85420777.99868792,
+              -99148255.6024716,
+              24433262.49654016,
+              -17384894.205954775,
+              2976471.2707737833,
+              -83628797.79273987,
+              -26214976.287324682
+            ],
+            "sources": [
+              "j",
+              "|wX3|'IDx&",
+              "Vr("
+            ],
+            "timepoints": [
+              15615698,
+              26219678,
+              51014300,
+              71802147,
+              69108564
+            ]
+          }
+        },
+        {
+          "affine": {
+            "parameters": [
+              28645561.9353029,
+              23864673.126074806,
+              8069597.185499117,
+              99302836.05621058,
+              10902736.402073294,
+              92986809.06600279,
+              69055427.18988848,
+              27479630.218542323,
+              6173790.909815177,
+              19060706.312537417,
+              -72780201.53012234,
+              -82254492.7710172
+            ],
+            "sources": [
+              "4{ITt",
+              "22f}+Z\"|R",
+              ":pn!",
+              "='}{i*",
+              "DTV"
+            ],
+            "timepoints": [
+              53095839,
+              87777542,
+              39687684,
+              18505792,
+              72034525
+            ]
+          }
+        }
+      ],
       "sourceDisplays": [
         {
-          "segmentationDisplay": {
-            "opacity": 0.7684857101492373,
-            "lut": "glasbey",
-            "name": "smd8}*iOhkA",
-            "sources": [
-              "a\\XyI",
-              ">fT8",
-              "_3UwDE@'t0"
+          "imageDisplay": {
+            "color": "r=1569279,g=8467027017,b=1646897063,a=2087",
+            "contrastLimits": [
+              27221.401073746612,
+              25786.336630927824
             ],
-            "colorByColumn": "+YK-",
-            "scatterPlotAxes": [
-              "HL5C2K~D;Px'*",
-              "PD}~W-lM;S"
+            "opacity": 0.11978213084054445,
+            "name": "*\"",
+            "sources": [
+              "AdF",
+              "(:d{d9rGxh",
+              "KNi",
+              "+KZOf@Ox#f'",
+              "a"
+            ],
+            "resolution3dView": [
+              54132890.646594495,
+              -62689933.1712488,
+              83531176.20483178
+            ],
+            "blendingMode": "sumOccluding"
+          }
+        },
+        {
+          "segmentationDisplay": {
+            "opacity": 0.34063952758926663,
+            "lut": "glasbey",
+            "name": ".h|ju6",
+            "sources": [
+              "SBK",
+              "c>cI#",
+              "o*~yc`}Y&a",
+              "bN",
+              ",qj"
+            ],
+            "valueLimits": [
+              59082334.937710404,
+              57187766.86345336
             ],
             "showScatterPlot": false,
             "selectedSegmentIds": [
-              "}&Ti6i@|t;6;92745715",
-              "J1Qr;13563;604",
-              "T<;694862;936478"
+              "ZcYOJdimvqW;95850064501;70588",
+              "`1MHA){i;4659;44493",
+              "_fg=;8925212;6004387583",
+              "+Lt__xs&;77455;29128272591"
+            ],
+            "scatterPlotAxes": [
+              "\\e;_\\gcZR67)to",
+              "'@ptMNUDS5;3EwsK"
+            ],
+            "colorByColumn": "r#wLs",
+            "showSelectedSegmentsIn3d": true,
+            "resolution3dView": [
+              66641895.01410082,
+              58101985.51634115,
+              17696008.229163468
+            ],
+            "tables": [
+              "CZ%i+~sp*hD.tsv"
             ]
           }
         }
       ]
-    }
+    },
+    "description": "in"
   }
 }
 ```
@@ -265,7 +474,7 @@ grid_id mitochondria    vesicles    golgi   er
 The metadata for the views of a dataset is specified in the field `views` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `views` contains a mapping of view names to [view metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/view.schema.json).
 
-Additional views can be stored as json files with the field `bookmarks` mapping view names to metadata in the folder `misc/bookmarks`
+Additional views can be stored as json files with the field `views` mapping view names to metadata in the folder `misc/views`
 
 The metadata entries have the following structure (see below for an example json file):
 - `isExclusive`: Does this view replace the current viewer state (exclusive) or is it added to it (additive)?.
@@ -290,7 +499,9 @@ The metadata entries have the following structure (see below for an example json
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
 		- `sources`: The segmentation sources that are part of this display group. Contains a list of strings.
-		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here. Contains a list of strings.
+		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here. Contains a list with items:
+			- ``: 
+			- ``: 
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
@@ -319,10 +530,7 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": "{2=?kr}ZK",
-  "viewerTransform": {
-    "timepoint": 52922198
-  }
+  "uiSelectionGroup": "|`1l8"
 }
 ```
 

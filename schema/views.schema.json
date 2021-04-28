@@ -1,15 +1,15 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/bookmarks.schema.json",
-    "title": "MoBIEBookmarkSchema",
-    "description": "Additional MoBIE bookmarks",
+    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/views.schema.json",
+    "title": "MoBIEViewsSchema",
+    "description": "Additional MoBIE viewss",
     "properties": {
-        "bookmarks": {
+        "views": {
             "description": "",
             "type": "object",
             "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
         }
     },
-    "required": ["bookmarks"],
+    "required": ["views"],
     "additionalProperties": false
 }

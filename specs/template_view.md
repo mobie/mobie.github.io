@@ -24,6 +24,6 @@ grid_id mitochondria    vesicles    golgi   er
 The metadata for the views of a dataset is specified in the field `views` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `views` contains a mapping of view names to [view metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/view.schema.json).
 
-Additional views can be stored as json files with the field `bookmarks` mapping view names to metadata in the folder `misc/bookmarks`
+Additional views can be stored as json files with the field `views` mapping view names to metadata in the folder `misc/views`
 
 The metadata entries have the following structure (see below for an example json file):

@@ -12,7 +12,7 @@ The `tables` directory contains all tabular data assoicated with segmentations o
 All tables associated with one segmentation or view, must be located in the same subdirectory, which must contain a table `default.tsv` and may contain additional tables. 
 See the [table data specification](#tables) for details on how tables are stored.
 
-The `misc` directory may contain the subdirectory `bookmarks` with additional views stored in json files according to the [bookmarks spec](https://github.com/mobie/mobie.github.io/tree/master/schema/bookmarks.schema.json).
+The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
 It may also contain the file `leveling.json`, which specifies the "natural" orientation of the dataset and other subdirectories and other files that are associated with this dataset.
 
 
@@ -24,7 +24,7 @@ actin/
 │   ├── local
 │   └── remote
 ├── misc
-│   └── bookmarks
+│   └── views
 │   └── leveling.json
 └── tables
     ├── segmentation_sample1
