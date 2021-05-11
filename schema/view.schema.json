@@ -243,6 +243,58 @@
             "additionalProperties": false
         },
 
+        "crop": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "crop": {
+                    "description": "Crop transformation applied to a list of sources.",
+                    "type": "object",
+                    "properties": {
+                        "min": {
+                            "description": "Minimum coordinates for the crop.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "max": {
+                            "description": "Maximum coordinates for the crop.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "sources": {
+                            "description": "The sources this transformation is applied to.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "timepoints": {
+                            "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "minItems": 1
+                        }
+                    },
+                    "required": ["min", "max", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["crop"],
+            "additionalProperties": false
+        },
+
         "grid": {
             "description": "",
             "type": "object",
@@ -322,7 +374,8 @@
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/affine"},
-                {"$ref": "#/definitions/grid"}
+                {"$ref": "#/definitions/grid"},
+                {"$ref": "#/definitions/crop"}
             ]}
         },
         "viewerTransform": {
