@@ -138,7 +138,7 @@ For the zebrafish-lm dataset the `dataset.json` looks like this (source and view
 
 ## <a name="source"></a>Source
 
-A `source` consists of an image (volume) and associated metadata like viewer state or tables. 
+A `source` consists of an image (volume) and associated metadata like tables. 
 Two different types of sources are supported:
 - `image`: intensity images corresponding to the "primary" data, e.g. electron microscopy or light microscopy images.
 - `segmentation`: label masks corresponding to segmented objects labeled by integer ids, e.g. cell or ultrastructure segmentations.
@@ -184,266 +184,25 @@ The color scheme used to display the segmentation can also be loaded from a tabl
 The metadata for the sources of a dataset is specified in the field `sources` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `sources` contains a mapping of source names to [source metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/source.schema.json).
 The metadata entries have the following structure (see below for an example json file):
-- `image`: An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The fields `imageDataLocations` and `view` are required.
+- `image`: An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageDataLocations` is required.
 	- `description`: Description of this image source.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.
 		- `fileSystem`: Location of the bdv.xml for reading the source image data from the local filesystem.
 		- `s3store`: Location of the bdv.xml for reading the source image data from an s3 object store.
-	- `view`: Contains a [view](#view-metadata).
 - `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageDataLocations` is required.
 	- `description`: Description of this segmentation source.
 	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.
 		- `fileSystem`: Location of the bdv.xml for reading the source image data from the local filesystem.
 		- `s3store`: Location of the bdv.xml for reading the source image data from an s3 object store.
 	- `tableDataLocation`: Location of the table directory for this segmentation source, relative to the dataset root directory.
-	- `view`: Contains a [view](#view-metadata).
 
 ```json
 {
   "image": {
     "imageDataLocations": {
-      "fileSystem": "hR}G\">.xml"
+      "s3store": "=BUpf?~J9K.xml"
     },
-    "view": {
-      "isExclusive": true,
-      "uiSelectionGroup": "w&",
-      "viewerTransform": {
-        "position": [
-          70567191.00478557,
-          91084814.82671389,
-          85558374.10831507
-        ]
-      },
-      "sourceTransforms": [
-        {
-          "grid": {
-            "sources": [
-              [
-                "sQ<yDrAI9^",
-                "rVOK%;p(1j"
-              ],
-              [
-                "mJTE",
-                "2z",
-                "(",
-                "'}",
-                "ZG#vY9m:WBo"
-              ],
-              [
-                "4n]t",
-                "V+[vVX_.\\4",
-                "pU8"
-              ],
-              [
-                "Zyd",
-                "Nx;f`",
-                "Tf4*WTy^",
-                "F(5hSr(",
-                "ZCcru^L#D3"
-              ]
-            ],
-            "tableDataLocation": "/{5Z2Yp(=U",
-            "timepoints": [
-              87182844,
-              39303666,
-              -33540975,
-              -38702609,
-              -80392257
-            ],
-            "positions": [
-              [
-                -88272966,
-                -89630664,
-                35882841
-              ],
-              [
-                -38725174,
-                -18108506,
-                465438,
-                74110346,
-                87322341
-              ],
-              [
-                15055595,
-                -48058060,
-                66057233,
-                -14686493
-              ],
-              [
-                -44634702,
-                19729643,
-                87853519,
-                53293205,
-                -11518367
-              ],
-              [
-                -96166530
-              ]
-            ]
-          }
-        },
-        {
-          "affine": {
-            "parameters": [
-              -2733840.748514995,
-              -87183007.45177285,
-              39482250.866580784,
-              90178181.61182243,
-              -87116835.97447895,
-              -99958279.89247945,
-              -39565906.236626744,
-              10592085.029856905,
-              75609979.21959612,
-              65388024.129115105,
-              62794086.49066666,
-              -21701849.568215743
-            ],
-            "sources": [
-              "C4YXv7",
-              "zBs07!1+D",
-              "c{?DYO#",
-              "(MpQq",
-              "7-Tf!)Pv+Q"
-            ],
-            "timepoints": [
-              36640,
-              27928875,
-              96300815,
-              241050,
-              78478280
-            ]
-          }
-        },
-        {
-          "affine": {
-            "parameters": [
-              43364663.730673015,
-              77068124.2375868,
-              -22597234.814571545,
-              -27717926.585641935,
-              -37821645.34444434,
-              -85420777.99868792,
-              -99148255.6024716,
-              24433262.49654016,
-              -17384894.205954775,
-              2976471.2707737833,
-              -83628797.79273987,
-              -26214976.287324682
-            ],
-            "sources": [
-              "j",
-              "|wX3|'IDx&",
-              "Vr("
-            ],
-            "timepoints": [
-              15615698,
-              26219678,
-              51014300,
-              71802147,
-              69108564
-            ]
-          }
-        },
-        {
-          "affine": {
-            "parameters": [
-              28645561.9353029,
-              23864673.126074806,
-              8069597.185499117,
-              99302836.05621058,
-              10902736.402073294,
-              92986809.06600279,
-              69055427.18988848,
-              27479630.218542323,
-              6173790.909815177,
-              19060706.312537417,
-              -72780201.53012234,
-              -82254492.7710172
-            ],
-            "sources": [
-              "4{ITt",
-              "22f}+Z\"|R",
-              ":pn!",
-              "='}{i*",
-              "DTV"
-            ],
-            "timepoints": [
-              53095839,
-              87777542,
-              39687684,
-              18505792,
-              72034525
-            ]
-          }
-        }
-      ],
-      "sourceDisplays": [
-        {
-          "imageDisplay": {
-            "color": "r=1569279,g=8467027017,b=1646897063,a=2087",
-            "contrastLimits": [
-              27221.401073746612,
-              25786.336630927824
-            ],
-            "opacity": 0.11978213084054445,
-            "name": "*\"",
-            "sources": [
-              "AdF",
-              "(:d{d9rGxh",
-              "KNi",
-              "+KZOf@Ox#f'",
-              "a"
-            ],
-            "resolution3dView": [
-              54132890.646594495,
-              -62689933.1712488,
-              83531176.20483178
-            ],
-            "blendingMode": "sumOccluding"
-          }
-        },
-        {
-          "segmentationDisplay": {
-            "opacity": 0.34063952758926663,
-            "lut": "glasbey",
-            "name": ".h|ju6",
-            "sources": [
-              "SBK",
-              "c>cI#",
-              "o*~yc`}Y&a",
-              "bN",
-              ",qj"
-            ],
-            "valueLimits": [
-              59082334.937710404,
-              57187766.86345336
-            ],
-            "showScatterPlot": false,
-            "selectedSegmentIds": [
-              "ZcYOJdimvqW;95850064501;70588",
-              "`1MHA){i;4659;44493",
-              "_fg=;8925212;6004387583",
-              "+Lt__xs&;77455;29128272591"
-            ],
-            "scatterPlotAxes": [
-              "\\e;_\\gcZR67)to",
-              "'@ptMNUDS5;3EwsK"
-            ],
-            "colorByColumn": "r#wLs",
-            "showSelectedSegmentsIn3d": true,
-            "resolution3dView": [
-              66641895.01410082,
-              58101985.51634115,
-              17696008.229163468
-            ],
-            "tables": [
-              "CZ%i+~sp*hD.tsv"
-            ]
-          }
-        }
-      ]
-    },
-    "description": "in"
+    "description": "adipisicing nostrud in consequat sint"
   }
 }
 ```
@@ -505,13 +264,21 @@ The metadata entries have the following structure (see below for an example json
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
+		- `name`: 
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources` and `tableDataLocation` are required.
+		- `name`: 
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
 		- `tableDataLocation`: Location of the table directory for this grid view, relative to the dataset root directory.
+		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
+	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
+		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
+		- `min`: Minimum coordinates for the crop. Contains a list of numbers.
+		- `name`: 
+		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 - `uiSelectionGroup`: 
 - `viewerTransform`: The viewer transformation of this view.Must contain exactly one of the following items:
@@ -530,7 +297,7 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": "|`1l8"
+  "uiSelectionGroup": "Y6+k@2,:X9\\"
 }
 ```
 

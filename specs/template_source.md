@@ -1,6 +1,6 @@
 ## <a name="source"></a>Source
 
-A `source` consists of an image (volume) and associated metadata like viewer state or tables. 
+A `source` consists of an image (volume) and associated metadata like tables. 
 Two different types of sources are supported:
 - `image`: intensity images corresponding to the "primary" data, e.g. electron microscopy or light microscopy images.
 - `segmentation`: label masks corresponding to segmented objects labeled by integer ids, e.g. cell or ultrastructure segmentations.

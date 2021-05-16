@@ -225,6 +225,10 @@
                             },
                             "minItems": 1
                         },
+                        "name": {
+                            "description": "Optional name for this source transformation. If given, this name will be appended to the source name(s).",
+                            "$ref": "#/definitions/name"
+                        },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
                             "type": "array",
@@ -277,6 +281,10 @@
                             },
                             "minItems": 1
                         },
+                        "name": {
+                            "description": "Optional name for this source transformation. If given, this name will be appended to the source name(s).",
+                            "$ref": "#/definitions/name"
+                        },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
                             "type": "array",
@@ -327,6 +335,10 @@
                                 "minItems": 1
                             },
                             "minItems": 2
+                        },
+                        "name": {
+                            "description": "Optional name for this source transformation. If given, this name will be appended to the source name(s).",
+                            "$ref": "#/definitions/name"
                         },
                         "tableDataLocation": {
                             "description": "Location of the table directory for this grid view, relative to the dataset root directory.",
