@@ -293,6 +293,10 @@
                                 "minimum": 0
                             },
                             "minItems": 1
+                        },
+                        "shiftToOrigin": {
+                            "description": "Whether to shift the source to the coordinate space origin after applying the crop. By default true.",
+                            "type": "boolean"
                         }
                     },
                     "required": ["min", "max", "sources"],
