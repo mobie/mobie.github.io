@@ -225,9 +225,13 @@
                             },
                             "minItems": 1
                         },
-                        "name": {
-                            "description": "Optional name for this source transformation. If given, this name will be appended to the source name(s).",
-                            "$ref": "#/definitions/name"
+                        "names": {
+                            "description": "Optional names the sources after transformation. If given, must have the same number of elements as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
                         },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
@@ -281,9 +285,13 @@
                             },
                             "minItems": 1
                         },
-                        "name": {
-                            "description": "Optional name for this source transformation. If given, this name will be appended to the source name(s).",
-                            "$ref": "#/definitions/name"
+                        "names": {
+                            "description": "Optional names the sources after transformation. If given, must have the same number of elements as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
                         },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
@@ -340,9 +348,13 @@
                             },
                             "minItems": 2
                         },
-                        "name": {
-                            "description": "Optional name for this source transformation. If given, this name will be appended to the source name(s).",
-                            "$ref": "#/definitions/name"
+                        "names": {
+                            "description": "Optional names the sources after transformation. If given, must have the same number of elements as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
                         },
                         "tableDataLocation": {
                             "description": "Location of the table directory for this grid view, relative to the dataset root directory.",
