@@ -31,4 +31,4 @@ views, images and tables for your colleagues to explore
 - [Bookmark structure](./tutorials/bookmarks.md)
 
 ## MoBIE specification:
-- [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md)
+- [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md) (This specification is work in progress and the current MoBIE Fiji plugin does not support it yet. We plan to update this very soon!)
