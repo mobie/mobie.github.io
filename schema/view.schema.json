@@ -131,8 +131,7 @@
                             "description": "The names of columns which should be used for the scatter plot.",
                             "type": "array",
                             "items": {
-                                "type": "string",
-                                "pattern": "^[^; \\/]+;[^; \\/]+$" 
+                                "$ref": "#/definitions/name"
                             },
                             "maxItems": 2,
                             "minItems": 2
