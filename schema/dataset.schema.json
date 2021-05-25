@@ -8,7 +8,7 @@
             "description": "Description of the dataset",
             "type": "string"
         },
-        "is2d": {
+        "is2D": {
             "desription": "Are all image sources in this dataset two-dimensional?",
             "type": "boolean"
         },
@@ -39,6 +39,6 @@
             "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
         }
     },
-    "required": ["is2d", "sources", "views"],
+    "required": ["is2D", "sources", "views"],
     "additionalProperties": false
 }
