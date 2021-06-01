@@ -388,6 +388,10 @@
             "type": "boolean",
             "description": "Does this view replace the current viewer state (exclusive) or is it added to it (additive)?"
         },
+        "description": {
+            "type": "string",
+            "description": "Free text description of this view."
+        },
         "sourceDisplays": {
             "description": "The display groups of this view.",
             "type": "array",
