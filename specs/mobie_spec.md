@@ -193,7 +193,7 @@ The metadata entries have the following structure (see below for an example json
 		- `gitHub`: Source for the image data on github. The fields `format` and `source` are required.
 			- `format`: The image data file format.
 			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.
-		- `s3store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
+		- `s3Store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
 			- `format`: The image data file format.
 			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.
 - `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageData` is required.
@@ -205,7 +205,7 @@ The metadata entries have the following structure (see below for an example json
 		- `gitHub`: Source for the image data on github. The fields `format` and `source` are required.
 			- `format`: The image data file format.
 			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.
-		- `s3store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
+		- `s3Store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
 			- `format`: The image data file format.
 			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.
 	- `tableData`: Description of the table data for this source, including the format and the location of the table data.
@@ -215,7 +215,7 @@ The metadata entries have the following structure (see below for an example json
 		- `gitHub`: Source for the table data on github. The fields `format` and `source` are required.
 			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
 			- `source`: The location of the table data, relative to the dataset location on github.
-		- `s3store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
+		- `s3Store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
 			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
 			- `source`: The location of the table data, full s3 address.
 
@@ -223,29 +223,30 @@ The metadata entries have the following structure (see below for an example json
 {
   "segmentation": {
     "imageData": {
-      "gitHub": {
-        "format": "bdv.n5",
-        "source": "id nostrud ad Duis eu"
+      "s3Store": {
+        "format": "bdv.n5.s3",
+        "source": "deserunt in in dolor consequat"
       },
       "fileSystem": {
-        "format": "bdv.n5.s3",
-        "source": "mollit ut aliquip"
+        "format": "bdv.hdf5",
+        "source": "occaecat incididunt et consectetur Duis"
       }
     },
     "tableData": {
-      "s3store": {
+      "gitHub": {
         "format": "tsv",
-        "source": "laborum cillum"
+        "source": "Ut sed minim"
+      },
+      "s3Store": {
+        "format": "tsv",
+        "source": "culpa est reprehenderit"
       },
       "fileSystem": {
         "format": "tsv",
-        "source": "do elit amet"
-      },
-      "gitHub": {
-        "format": "tsv",
-        "source": "quis in nulla aute culpa"
+        "source": "pariatur labore consequat dolore quis"
       }
-    }
+    },
+    "description": "cupidatat pariatur Excepteur"
   }
 }
 ```
@@ -342,74 +343,233 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": "+\\?>)SSl#",
+  "uiSelectionGroup": "3fySl",
+  "description": "velit nisi ad",
   "sourceTransforms": [
     {
-      "grid": {
+      "crop": {
+        "min": [
+          -4210089.588782132,
+          -68220644.68709669,
+          15318176.781018928
+        ],
+        "max": [
+          62726327.88104254,
+          -99366491.48345701,
+          -28372768.83910729
+        ],
         "sources": [
-          [
-            "k"
-          ],
-          [
-            "Ej;Zu"
-          ],
-          [
-            "WgG@;l",
-            ":0M|gfWN\"",
-            "MA"
-          ]
+          "X"
         ],
-        "tableDataLocation": "~!!yyMR",
         "names": [
-          "du#HXN:34L",
-          "=",
-          "ze@0XV=iTtH",
-          "j\\@",
-          "(UX=$9"
+          "lv"
         ],
-        "positions": [
-          [
-            59061080
-          ]
-        ],
+        "shiftToOrigin": false,
         "timepoints": [
-          52915690,
-          50271628,
-          -32551440,
-          -92223441
+          61610873
         ]
       }
     },
     {
-      "crop": {
-        "min": [
-          -36060875.30668711,
-          23839499.8425449,
-          -86061776.3961106
-        ],
-        "max": [
-          58690555.417156786,
-          -74556508.97633502,
-          35604879.77234352
-        ],
+      "grid": {
         "sources": [
-          "m|>",
-          "#F&e~\\",
-          "{2.pM",
-          "0WD"
+          [
+            "YL;",
+            "692>ZG7SA["
+          ],
+          [
+            "mXATf",
+            "`F",
+            "b_cJi",
+            "uH0N~ZLL",
+            "M96"
+          ],
+          [
+            "E$jC7HH2",
+            "Uh%@#11",
+            "XkUB#.0b+'j",
+            "`:T;^>..wL2"
+          ],
+          [
+            "rN0P\\n6l",
+            "SWtze}="
+          ],
+          [
+            "Qc}",
+            ".r6{ec"
+          ]
+        ],
+        "tableDataLocation": "Z<+",
+        "timepoints": [
+          14637906,
+          -74016228,
+          -6024317,
+          -43655147,
+          -4125987
         ],
         "names": [
-          "$f9A8",
-          "<iH",
-          "YQsGUc7",
-          "|u~ia>"
+          "c\"piAnK.N",
+          "!9F$]lF",
+          "63=Hezm"
         ],
-        "shiftToOrigin": true,
-        "timepoints": [
-          59723420,
-          58384678,
-          28884520,
-          46680558
+        "positions": [
+          [
+            -37498921,
+            -64189977,
+            -37107315,
+            90585203,
+            -3492329
+          ],
+          [
+            -71794970,
+            -85322276,
+            -17435768,
+            38050421,
+            -26379537
+          ]
+        ]
+      }
+    },
+    {
+      "grid": {
+        "sources": [
+          [
+            "JR6;"
+          ],
+          [
+            "RZC(R0v(n",
+            "j[_W",
+            ">#]y",
+            "[)"
+          ]
+        ],
+        "tableDataLocation": "P"
+      }
+    }
+  ],
+  "viewerTransform": {
+    "affine": [
+      75615926.7372503,
+      30214491.024365976,
+      -53909118.32299783,
+      -55373935.897121385,
+      68124737.7476958,
+      -25685006.46915047,
+      -60038857.681553945,
+      -22409283.119013608,
+      4190849.482084632,
+      -95010277.09253523,
+      -69431152.56408867,
+      24246799.78746611
+    ]
+  },
+  "sourceDisplays": [
+    {
+      "imageDisplay": {
+        "color": "cyan",
+        "contrastLimits": [
+          26037.234081710958,
+          34602.09382463078
+        ],
+        "opacity": 0.26292165157853864,
+        "name": "{(|Y7]<q>",
+        "sources": [
+          "[;7BLr1Z"
+        ],
+        "showImagesIn3d": true,
+        "blendingMode": "sumOccluding",
+        "resolution3dView": [
+          -11139479.231796965,
+          56536172.20849815,
+          -228472.27522318065
+        ]
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.5433730534460282,
+        "lut": "argbColumn",
+        "name": "Ra-._zjG%",
+        "sources": [
+          "d>mBR'0pd:",
+          "UAM~P#,"
+        ],
+        "tables": [
+          "|T%V-I.csv",
+          "cJxx&~1CYH.csv",
+          "hKYJ3>WV).csv"
+        ],
+        "selectedSegmentIds": [
+          "IV;84635842;4178684",
+          "YG,(tx;2936991055;5500110329",
+          "Jl;718300;782",
+          "7Nb=Y8*>=;3;3151022"
+        ]
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.4630427111209743,
+        "lut": "argbColumn",
+        "name": "KC(NreJ?MI",
+        "sources": [
+          "gy3\\[$s4"
+        ],
+        "showSelectedSegmentsIn3d": false,
+        "valueLimits": [
+          -53465381.89044803,
+          40017829.78872445
+        ],
+        "resolution3dView": [
+          82554584.17240384,
+          29179696.737790868,
+          7329434.746076301
+        ],
+        "colorByColumn": "wt",
+        "tables": [
+          "CB`2.csv",
+          "P0j.tsv",
+          "0.csv",
+          "%.csv"
+        ]
+      }
+    },
+    {
+      "imageDisplay": {
+        "color": "gray",
+        "contrastLimits": [
+          17841.724260122897,
+          40062.09745922233
+        ],
+        "opacity": 0.09325340443679697,
+        "name": "HT&UgInu^",
+        "sources": [
+          "-&+$e"
+        ],
+        "blendingMode": "sum",
+        "resolution3dView": [
+          85041664.30147037,
+          -64542402.64338784,
+          -20125267.092780024
+        ],
+        "showImagesIn3d": false
+      }
+    },
+    {
+      "imageDisplay": {
+        "color": "black",
+        "contrastLimits": [
+          32254.61807084258,
+          23636.413433219997
+        ],
+        "opacity": 0.807409175647879,
+        "name": ">ta}y",
+        "sources": [
+          "E)",
+          "^Jz(m:EUEg",
+          "`qyd3[&4.",
+          "c;?$P{CE",
+          "~zj+zO4j[.Y"
         ]
       }
     }

@@ -45,7 +45,7 @@
                     },
                     "required": ["format", "source"]
                 },
-                "s3store": {
+                "s3Store": {
                     "description": "Source for the image data on an s3 object store.",
                     "type": "object",
                     "properties": {
@@ -90,7 +90,7 @@
                     },
                     "required": ["format", "source"]
                 },
-                "s3store": {
+                "s3Store": {
                     "description": "Source for the image data on an s3 object store.",
                     "type": "object",
                     "properties": {
