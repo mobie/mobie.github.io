@@ -149,7 +149,7 @@ The data is stored in a multi-dimensional, chunked format.
 MoBIE primarily supports the [n5](https://github.com/saalfeldlab/n5) data format, using the [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md) to represent timepoints and multi-scale image pyramids.
 In addition, it supports [HDF5](https://www.hdfgroup.org/solutions/hdf5/), again using the [bdv hdf5 format](https://imagej.net/BigDataViewer.html#About_the_BigDataViewer_data_format); however this format can only be read locally and **does not** support remote access from an object store.
 The `name` saved in the bdv.xml must agree with the name in the [source metadata](#source-metadata).
-There is also experimental support for the emerging [ome ngff](https://ngff.openmicroscopy.org/latest/).
+There is also experimental support for the emerging [ome ngff](https://ngff.openmicroscopy.org/latest/) and the [open organelle data](https://openorganelle.janelia.org/).
 
 ### <a name="table"></a>Table Data
 
@@ -184,25 +184,68 @@ The color scheme used to display the segmentation can also be loaded from a tabl
 The metadata for the sources of a dataset is specified in the field `sources` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
 `sources` contains a mapping of source names to [source metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/source.schema.json).
 The metadata entries have the following structure (see below for an example json file):
-- `image`: An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageDataLocations` is required.
+- `image`: An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageData` is required.
 	- `description`: Description of this image source.
-	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.
-		- `fileSystem`: Location of the bdv.xml for reading the source image data from the local filesystem.
-		- `s3store`: Location of the bdv.xml for reading the source image data from an s3 object store.
-- `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageDataLocations` is required.
+	- `imageData`: Description of the image data for this source, including the file format and the location of the data.
+		- `fileSystem`: Source for the image data on the local filesystem. The fields `format` and `source` are required.
+			- `format`: The image data file format.
+			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on the filesystem.
+		- `gitHub`: Source for the image data on github. The fields `format` and `source` are required.
+			- `format`: The image data file format.
+			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.
+		- `s3store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
+			- `format`: The image data file format.
+			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.
+- `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageData` is required.
 	- `description`: Description of this segmentation source.
-	- `imageDataLocations`: Location of the bdv.xml files for this source, relative to the dataset root directory.
-		- `fileSystem`: Location of the bdv.xml for reading the source image data from the local filesystem.
-		- `s3store`: Location of the bdv.xml for reading the source image data from an s3 object store.
-	- `tableDataLocation`: Location of the table directory for this segmentation source, relative to the dataset root directory.
+	- `imageData`: Description of the image data for this source, including the file format and the location of the data.
+		- `fileSystem`: Source for the image data on the local filesystem. The fields `format` and `source` are required.
+			- `format`: The image data file format.
+			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on the filesystem.
+		- `gitHub`: Source for the image data on github. The fields `format` and `source` are required.
+			- `format`: The image data file format.
+			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.
+		- `s3store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
+			- `format`: The image data file format.
+			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.
+	- `tableData`: Description of the table data for this source, including the format and the location of the table data.
+		- `fileSystem`: Source for the table data on the local filesystem. The fields `format` and `source` are required.
+			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
+			- `source`: The location of the table data, relative to the dataset location on the filesystem.
+		- `gitHub`: Source for the table data on github. The fields `format` and `source` are required.
+			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
+			- `source`: The location of the table data, relative to the dataset location on github.
+		- `s3store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
+			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
+			- `source`: The location of the table data, full s3 address.
 
 ```json
 {
-  "image": {
-    "imageDataLocations": {
-      "s3store": "=BUpf?~J9K.xml"
+  "segmentation": {
+    "imageData": {
+      "gitHub": {
+        "format": "bdv.n5",
+        "source": "id nostrud ad Duis eu"
+      },
+      "fileSystem": {
+        "format": "bdv.n5.s3",
+        "source": "mollit ut aliquip"
+      }
     },
-    "description": "adipisicing nostrud in consequat sint"
+    "tableData": {
+      "s3store": {
+        "format": "tsv",
+        "source": "laborum cillum"
+      },
+      "fileSystem": {
+        "format": "tsv",
+        "source": "do elit amet"
+      },
+      "gitHub": {
+        "format": "tsv",
+        "source": "quis in nulla aute culpa"
+      }
+    }
   }
 }
 ```
@@ -236,6 +279,7 @@ The metadata for the views of a dataset is specified in the field `views` of `da
 Additional views can be stored as json files with the field `views` mapping view names to metadata in the folder `misc/views`
 
 The metadata entries have the following structure (see below for an example json file):
+- `description`: Free text description of this view.
 - `isExclusive`: Does this view replace the current viewer state (exclusive) or is it added to it (additive)?.
 - `sourceDisplays`: The display groups of this view. Contains a list with items:
 	- `imageDisplay`: Viewer state for a group of image sources. The fields `color`, `contrastLimits`, `opacity`, `name` and `sources` are required.
@@ -264,12 +308,12 @@ The metadata entries have the following structure (see below for an example json
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
-		- `name`: 
+		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources` and `tableDataLocation` are required.
-		- `name`: 
+		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
 		- `tableDataLocation`: Location of the table directory for this grid view, relative to the dataset root directory.
@@ -277,7 +321,8 @@ The metadata entries have the following structure (see below for an example json
 	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
 		- `min`: Minimum coordinates for the crop. Contains a list of numbers.
-		- `name`: 
+		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
+		- `shiftToOrigin`: Whether to shift the source to the coordinate space origin after applying the crop. By default true.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 - `uiSelectionGroup`: 
@@ -297,7 +342,78 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": "Y6+k@2,:X9\\"
+  "uiSelectionGroup": "+\\?>)SSl#",
+  "sourceTransforms": [
+    {
+      "grid": {
+        "sources": [
+          [
+            "k"
+          ],
+          [
+            "Ej;Zu"
+          ],
+          [
+            "WgG@;l",
+            ":0M|gfWN\"",
+            "MA"
+          ]
+        ],
+        "tableDataLocation": "~!!yyMR",
+        "names": [
+          "du#HXN:34L",
+          "=",
+          "ze@0XV=iTtH",
+          "j\\@",
+          "(UX=$9"
+        ],
+        "positions": [
+          [
+            59061080
+          ]
+        ],
+        "timepoints": [
+          52915690,
+          50271628,
+          -32551440,
+          -92223441
+        ]
+      }
+    },
+    {
+      "crop": {
+        "min": [
+          -36060875.30668711,
+          23839499.8425449,
+          -86061776.3961106
+        ],
+        "max": [
+          58690555.417156786,
+          -74556508.97633502,
+          35604879.77234352
+        ],
+        "sources": [
+          "m|>",
+          "#F&e~\\",
+          "{2.pM",
+          "0WD"
+        ],
+        "names": [
+          "$f9A8",
+          "<iH",
+          "YQsGUc7",
+          "|u~ia>"
+        ],
+        "shiftToOrigin": true,
+        "timepoints": [
+          59723420,
+          58384678,
+          28884520,
+          46680558
+        ]
+      }
+    }
+  ]
 }
 ```
 

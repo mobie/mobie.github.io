@@ -5,19 +5,102 @@
     "description": "Schema describing a MoBIE source",
 
     "definitions": {
-        "imageDataLocations": {
-            "description": "Location of the bdv.xml files for this source, relative to the dataset root directory.",
+        "imageFormat": {
+            "description": "The image data file format.",
+            "type": "string",
+            "enum": ["bdv.hdf5", "bdv.n5", "bdv.n5.s3"]
+        },
+
+        "tableFormat": {
+            "description": "The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.",
+            "type": "string",
+            "enum": ["tsv"]
+        },
+
+        "imageData": {
+            "description": "Description of the image data for this source, including the file format and the location of the data.",
             "type": "object",
             "properties": {
                 "fileSystem": {
-                    "description": "Location of the bdv.xml for reading the source image data from the local filesystem.",
-                    "type": "string",
-                    "pattern": "^\\S+\\.(xml)$"
+                    "description": "Source for the image data on the local filesystem.",
+                    "type": "object",
+                    "properties": {
+                        "format": {"$ref": "#/definitions/imageFormat"},
+                        "source": {
+                            "description": "The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on the filesystem.",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["format", "source"]
+                },
+                "gitHub": {
+                    "description": "Source for the image data on github.",
+                    "type": "object",
+                    "properties": {
+                        "format": {"$ref": "#/definitions/imageFormat"},
+                        "source": {
+                            "description": "The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["format", "source"]
                 },
                 "s3store": {
-                    "description": "Location of the bdv.xml for reading the source image data from an s3 object store.",
-                    "type": "string",
-                    "pattern": "^\\S+\\.(xml)$"
+                    "description": "Source for the image data on an s3 object store.",
+                    "type": "object",
+                    "properties": {
+                        "format": {"$ref": "#/definitions/imageFormat"},
+                        "source": {
+                            "description": "The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["format", "source"]
+                }
+            },
+            "additionalProperties": false,
+            "minProperties": 1
+        },
+
+        "tableData": {
+            "description": "Description of the table data for this source, including the format and the location of the table data.",
+            "type": "object",
+            "properties": {
+                "fileSystem": {
+                    "description": "Source for the table data on the local filesystem.",
+                    "type": "object",
+                    "properties": {
+                        "format": {"$ref": "#/definitions/tableFormat"},
+                        "source": {
+                            "description": "The location of the table data, relative to the dataset location on the filesystem.",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["format", "source"]
+                },
+                "gitHub": {
+                    "description": "Source for the table data on github.",
+                    "type": "object",
+                    "properties": {
+                        "format": {"$ref": "#/definitions/tableFormat"},
+                        "source": {
+                            "description": "The location of the table data, relative to the dataset location on github.",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["format", "source"]
+                },
+                "s3store": {
+                    "description": "Source for the image data on an s3 object store.",
+                    "type": "object",
+                    "properties": {
+                        "format": {"$ref": "#/definitions/tableFormat"},
+                        "source": {
+                            "description": "The location of the table data, full s3 address.",
+                            "type": "string"
+                        }
+                    },
+                    "required": ["format", "source"]
                 }
             },
             "additionalProperties": false,
@@ -32,9 +115,9 @@
                     "description": "Description of this image source.",
                     "type": "string"
                 },
-                "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"}
+                "imageData": {"$ref": "#/definitions/imageData"}
             },
-            "required": ["imageDataLocations"],
+            "required": ["imageData"],
             "additionalProperties": false
         },
 
@@ -46,14 +129,10 @@
                     "description": "Description of this segmentation source.",
                     "type": "string"
                 },
-                "imageDataLocations": {"$ref": "#/definitions/imageDataLocations"},
-                "tableDataLocation": {
-                    "description": "Location of the table directory for this segmentation source, relative to the dataset root directory.",
-                    "type": "string",
-                    "pattern": "^\\S+$"
-                }
+                "imageData": {"$ref": "#/definitions/imageData"},
+                "tableData": {"$ref": "#/definitions/tableData"}
             },
-            "required": ["imageDataLocations"],
+            "required": ["imageData"],
             "additionalProperties": false
         }
     },
