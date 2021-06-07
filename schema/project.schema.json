@@ -4,28 +4,6 @@
     "title": "MoBIEProjectSchema",
     "description": "Schema describing a MoBIE project",
 
-    "definitions": {
-        "s3Store":{
-            "type": "object",
-            "properties": {
-                "endpoint": {
-                    "type": "string",
-                    "description": "The endpoint url for the s3 bucket."
-                },
-                "bucket": {
-                    "type": "string",
-                    "description": "The bucket name."
-                },
-                "region": {
-                    "type": "string",
-                    "description": "The region."
-                }
-            },
-            "additionalProperties": false,
-            "required": ["endpoint", "bucket", "region"]
-        }
-    },
-    
     "properties": {
         "datasets": {
             "description": "The list of datasets available in this project.",
@@ -56,15 +34,16 @@
             "type": "string",
             "pattern": "0\\.2\\.\\d+"
         },
-        "s3Root": {
-            "description": "The root s3 bucket for this project. This s3 location is used for accessing the image data when loading a project from github. This is a list so that multiple root stores can be given per project.",
+        "imageDataFormats": {
+            "description": "The available data formats for this project.",
             "type": "array",
             "items": {
-                "$ref": "#/definitions/s3Store"
+                "type": "string",
+                "enum": ["bdv.n5", "bdv.n5.s3", "openOrganelle.s3"]
             },
             "minItems": 1
         }
     },
-    "required": ["datasets", "defaultDataset", "specVersion"],
+    "required": ["datasets", "defaultDataset", "specVersion", "imageDataFormats"],
     "additionalProperties": false
 }

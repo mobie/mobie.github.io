@@ -10,44 +10,66 @@
             "description": "Description of the image data for this source, including the file format and the location of the data.",
             "type": "object",
             "properties": {
-                "format": {
-                    "type": "string",
-                    "enum": ["bdv.n5", "bdv.hdf5"],
-                    "description": "The file format of the image data."
+                "bdv.n5": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.n5 format, i.e. n5 data that is stored on the local fileystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
                 },
-                "relativePath": {
-                    "type": "string",
-                    "description": "The relative path of the image data w.r.t the dataset root location."
+                "bdv.n5.s3": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.n5.s3 format, i.e. n5 data that is stored on a s3 object store.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
                 },
-                "s3Store": {
-                    "type": "string",
-                    "description": "Absolute path to the data stored on s3. If this field is given, it will override the default location when loading this source from s3."
+                "openOrganelle.s3": {
+                    "type": "object",
+                    "description": "Data stored in the openOrganelle file format on a s3 object store.",
+                    "properties": {
+                        "s3Address": {
+                            "type": "string",
+                            "description": "The s3 address for this image data."
+                        }
+                    },
+                    "required": ["s3Address"],
+                    "additionalProperties": false
                 }
             },
             "additionalProperties": false,
-            "required": ["format", "relativePath"]
+            "minProperties": 1
         },
 
         "tableData": {
             "description": "Description of the table data for this source, including the format and the location of the table data.",
             "type": "object",
             "properties": {
-                "format": {
-                    "description": "The table format. Note that for the `tsv` format, the source must point to the root location with all table files.",
-                    "type": "string",
-                    "enum": ["tsv"]
-                },
-                "relativePath": {
-                    "type": "string",
-                    "description": "The relative path of the table data w.r.t the dataset root location."
-                },
-                "s3Store": {
-                    "type": "string",
-                    "description": "Absolute path to the data stored on s3. If this field is given, it will override the default location when loading the tables from s3."
+                "tsv": {
+                    "type": "object",
+                    "description": "Table data in tsv file format, specified as root location for the table data.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The relative path of the table data w.r.t the dataset root location."
+                        },
+                        "additionalProperties": false,
+                        "required": ["relativePath"]
+                    }
                 }
             },
             "additionalProperties": false,
-            "required": ["format", "relativePath"]
+            "required": ["tsv"]
         },
 
         "imageSource": {
