@@ -355,10 +355,8 @@
                             },
                             "minItems": 1
                         },
-                        "tableDataLocation": {
-                            "description": "Location of the table directory for this grid view, relative to the dataset root directory.",
-                            "type": "string",
-                            "pattern": "^\\S+$"
+                        "tableData": {
+                            "$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json#/definitions/tableData"
                         },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
@@ -369,7 +367,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["sources", "tableDataLocation"],
+                    "required": ["sources", "tableData"],
                     "additionalProperties": false
                 }
             },

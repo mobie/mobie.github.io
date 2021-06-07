@@ -5,106 +5,49 @@
     "description": "Schema describing a MoBIE source",
 
     "definitions": {
-        "imageFormat": {
-            "description": "The image data file format.",
-            "type": "string",
-            "enum": ["bdv.hdf5", "bdv.n5", "bdv.n5.s3"]
-        },
-
-        "tableFormat": {
-            "description": "The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.",
-            "type": "string",
-            "enum": ["tsv"]
-        },
 
         "imageData": {
             "description": "Description of the image data for this source, including the file format and the location of the data.",
             "type": "object",
             "properties": {
-                "fileSystem": {
-                    "description": "Source for the image data on the local filesystem.",
-                    "type": "object",
-                    "properties": {
-                        "format": {"$ref": "#/definitions/imageFormat"},
-                        "source": {
-                            "description": "The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on the filesystem.",
-                            "type": "string"
-                        }
-                    },
-                    "required": ["format", "source"]
+                "format": {
+                    "type": "string",
+                    "enum": ["bdv.n5", "bdv.hdf5"],
+                    "description": "The file format of the image data."
                 },
-                "gitHub": {
-                    "description": "Source for the image data on github.",
-                    "type": "object",
-                    "properties": {
-                        "format": {"$ref": "#/definitions/imageFormat"},
-                        "source": {
-                            "description": "The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.",
-                            "type": "string"
-                        }
-                    },
-                    "required": ["format", "source"]
+                "relativePath": {
+                    "type": "string",
+                    "description": "The relative path of the image data w.r.t the dataset root location."
                 },
                 "s3Store": {
-                    "description": "Source for the image data on an s3 object store.",
-                    "type": "object",
-                    "properties": {
-                        "format": {"$ref": "#/definitions/imageFormat"},
-                        "source": {
-                            "description": "The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.",
-                            "type": "string"
-                        }
-                    },
-                    "required": ["format", "source"]
+                    "type": "string",
+                    "description": "Absolute path to the data stored on s3. If this field is given, it will override the default location when loading this source from s3."
                 }
             },
             "additionalProperties": false,
-            "minProperties": 1
+            "required": ["format", "relativePath"]
         },
 
         "tableData": {
             "description": "Description of the table data for this source, including the format and the location of the table data.",
             "type": "object",
             "properties": {
-                "fileSystem": {
-                    "description": "Source for the table data on the local filesystem.",
-                    "type": "object",
-                    "properties": {
-                        "format": {"$ref": "#/definitions/tableFormat"},
-                        "source": {
-                            "description": "The location of the table data, relative to the dataset location on the filesystem.",
-                            "type": "string"
-                        }
-                    },
-                    "required": ["format", "source"]
+                "format": {
+                    "description": "The table format. Note that for the `tsv` format, the source must point to the root location with all table files.",
+                    "type": "string",
+                    "enum": ["tsv"]
                 },
-                "gitHub": {
-                    "description": "Source for the table data on github.",
-                    "type": "object",
-                    "properties": {
-                        "format": {"$ref": "#/definitions/tableFormat"},
-                        "source": {
-                            "description": "The location of the table data, relative to the dataset location on github.",
-                            "type": "string"
-                        }
-                    },
-                    "required": ["format", "source"]
+                "relativePath": {
+                    "type": "string",
+                    "description": "The relative path of the table data w.r.t the dataset root location."
                 },
                 "s3Store": {
-                    "description": "Source for the image data on an s3 object store.",
-                    "type": "object",
-                    "properties": {
-                        "format": {"$ref": "#/definitions/tableFormat"},
-                        "source": {
-                            "description": "The location of the table data, full s3 address.",
-                            "type": "string"
-                        }
-                    },
-                    "required": ["format", "source"]
+                    "type": "string",
+                    "description": "Absolute path to the data stored on s3. If this field is given, it will override the default location when loading the tables from s3."
                 }
             },
             "additionalProperties": false,
-            "minProperties": 1
+            "required": ["format", "relativePath"]
         },
 
         "imageSource": {
