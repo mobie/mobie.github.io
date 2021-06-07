@@ -186,67 +186,34 @@ The metadata for the sources of a dataset is specified in the field `sources` of
 The metadata entries have the following structure (see below for an example json file):
 - `image`: An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageData` is required.
 	- `description`: Description of this image source.
-	- `imageData`: Description of the image data for this source, including the file format and the location of the data.
-		- `fileSystem`: Source for the image data on the local filesystem. The fields `format` and `source` are required.
-			- `format`: The image data file format.
-			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on the filesystem.
-		- `gitHub`: Source for the image data on github. The fields `format` and `source` are required.
-			- `format`: The image data file format.
-			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.
-		- `s3Store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
-			- `format`: The image data file format.
-			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.
+	- `imageData`: Description of the image data for this source, including the file format and the location of the data. The fields `format` and `relativePath` are required.
+		- `format`: The file format of the image data.
+		- `relativePath`: The relative path of the image data w.r.t the dataset root location.
+		- `s3Store`: Absolute path to the data stored on s3. If this field is given, it will override the default location when loading this source from s3.
 - `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageData` is required.
 	- `description`: Description of this segmentation source.
-	- `imageData`: Description of the image data for this source, including the file format and the location of the data.
-		- `fileSystem`: Source for the image data on the local filesystem. The fields `format` and `source` are required.
-			- `format`: The image data file format.
-			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on the filesystem.
-		- `gitHub`: Source for the image data on github. The fields `format` and `source` are required.
-			- `format`: The image data file format.
-			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, relative to the dataset location on github.
-		- `s3Store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
-			- `format`: The image data file format.
-			- `source`: The location of the image data 'entry point', e.g. the xml file for bdv file formats, full s3 address.
-	- `tableData`: Description of the table data for this source, including the format and the location of the table data.
-		- `fileSystem`: Source for the table data on the local filesystem. The fields `format` and `source` are required.
-			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
-			- `source`: The location of the table data, relative to the dataset location on the filesystem.
-		- `gitHub`: Source for the table data on github. The fields `format` and `source` are required.
-			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
-			- `source`: The location of the table data, relative to the dataset location on github.
-		- `s3Store`: Source for the image data on an s3 object store. The fields `format` and `source` are required.
-			- `format`: The table data file format. Note that for the `tsv` format, the source must point to the root location with all table files.
-			- `source`: The location of the table data, full s3 address.
+	- `imageData`: Description of the image data for this source, including the file format and the location of the data. The fields `format` and `relativePath` are required.
+		- `format`: The file format of the image data.
+		- `relativePath`: The relative path of the image data w.r.t the dataset root location.
+		- `s3Store`: Absolute path to the data stored on s3. If this field is given, it will override the default location when loading this source from s3.
+	- `tableData`: Description of the table data for this source, including the format and the location of the table data. The fields `format` and `relativePath` are required.
+		- `format`: The table format. Note that for the `tsv` format, the source must point to the root location with all table files.
+		- `relativePath`: The relative path of the table data w.r.t the dataset root location.
+		- `s3Store`: Absolute path to the data stored on s3. If this field is given, it will override the default location when loading the tables from s3.
 
 ```json
 {
   "segmentation": {
     "imageData": {
-      "s3Store": {
-        "format": "bdv.n5.s3",
-        "source": "deserunt in in dolor consequat"
-      },
-      "fileSystem": {
-        "format": "bdv.hdf5",
-        "source": "occaecat incididunt et consectetur Duis"
-      }
+      "format": "bdv.hdf5",
+      "relativePath": "Ut"
     },
+    "description": "qui",
     "tableData": {
-      "gitHub": {
-        "format": "tsv",
-        "source": "Ut sed minim"
-      },
-      "s3Store": {
-        "format": "tsv",
-        "source": "culpa est reprehenderit"
-      },
-      "fileSystem": {
-        "format": "tsv",
-        "source": "pariatur labore consequat dolore quis"
-      }
-    },
-    "description": "cupidatat pariatur Excepteur"
+      "format": "tsv",
+      "relativePath": "aliquip occaecat veniam aute incididunt",
+      "s3Store": "laboris mollit"
+    }
   }
 }
 ```
@@ -313,11 +280,11 @@ The metadata entries have the following structure (see below for an example json
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources` and `tableDataLocation` are required.
+	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources` and `tableData` are required.
 		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
-		- `tableDataLocation`: Location of the table directory for this grid view, relative to the dataset root directory.
+		- `tableData`: Contains a [tableData](#tableData-metadata).
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
@@ -343,233 +310,247 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": "3fySl",
-  "description": "velit nisi ad",
-  "sourceTransforms": [
-    {
-      "crop": {
-        "min": [
-          -4210089.588782132,
-          -68220644.68709669,
-          15318176.781018928
-        ],
-        "max": [
-          62726327.88104254,
-          -99366491.48345701,
-          -28372768.83910729
-        ],
-        "sources": [
-          "X"
-        ],
-        "names": [
-          "lv"
-        ],
-        "shiftToOrigin": false,
-        "timepoints": [
-          61610873
-        ]
-      }
-    },
-    {
-      "grid": {
-        "sources": [
-          [
-            "YL;",
-            "692>ZG7SA["
-          ],
-          [
-            "mXATf",
-            "`F",
-            "b_cJi",
-            "uH0N~ZLL",
-            "M96"
-          ],
-          [
-            "E$jC7HH2",
-            "Uh%@#11",
-            "XkUB#.0b+'j",
-            "`:T;^>..wL2"
-          ],
-          [
-            "rN0P\\n6l",
-            "SWtze}="
-          ],
-          [
-            "Qc}",
-            ".r6{ec"
-          ]
-        ],
-        "tableDataLocation": "Z<+",
-        "timepoints": [
-          14637906,
-          -74016228,
-          -6024317,
-          -43655147,
-          -4125987
-        ],
-        "names": [
-          "c\"piAnK.N",
-          "!9F$]lF",
-          "63=Hezm"
-        ],
-        "positions": [
-          [
-            -37498921,
-            -64189977,
-            -37107315,
-            90585203,
-            -3492329
-          ],
-          [
-            -71794970,
-            -85322276,
-            -17435768,
-            38050421,
-            -26379537
-          ]
-        ]
-      }
-    },
-    {
-      "grid": {
-        "sources": [
-          [
-            "JR6;"
-          ],
-          [
-            "RZC(R0v(n",
-            "j[_W",
-            ">#]y",
-            "[)"
-          ]
-        ],
-        "tableDataLocation": "P"
-      }
-    }
-  ],
+  "uiSelectionGroup": "Dn0M~N",
+  "description": "dolor",
   "viewerTransform": {
-    "affine": [
-      75615926.7372503,
-      30214491.024365976,
-      -53909118.32299783,
-      -55373935.897121385,
-      68124737.7476958,
-      -25685006.46915047,
-      -60038857.681553945,
-      -22409283.119013608,
-      4190849.482084632,
-      -95010277.09253523,
-      -69431152.56408867,
-      24246799.78746611
+    "position": [
+      34449640.759265065,
+      73020520.9926511,
+      3022429.7948997947
     ]
   },
   "sourceDisplays": [
     {
       "imageDisplay": {
-        "color": "cyan",
+        "color": "r=9546,g=5059,b=5136259,a=818073380",
         "contrastLimits": [
-          26037.234081710958,
-          34602.09382463078
+          27405.09573167488,
+          26566.82952077135
         ],
-        "opacity": 0.26292165157853864,
-        "name": "{(|Y7]<q>",
+        "opacity": 0.6444029371889133,
+        "name": "d\"Bd#F&`p",
         "sources": [
-          "[;7BLr1Z"
-        ],
-        "showImagesIn3d": true,
-        "blendingMode": "sumOccluding",
-        "resolution3dView": [
-          -11139479.231796965,
-          56536172.20849815,
-          -228472.27522318065
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.5433730534460282,
-        "lut": "argbColumn",
-        "name": "Ra-._zjG%",
-        "sources": [
-          "d>mBR'0pd:",
-          "UAM~P#,"
-        ],
-        "tables": [
-          "|T%V-I.csv",
-          "cJxx&~1CYH.csv",
-          "hKYJ3>WV).csv"
-        ],
-        "selectedSegmentIds": [
-          "IV;84635842;4178684",
-          "YG,(tx;2936991055;5500110329",
-          "Jl;718300;782",
-          "7Nb=Y8*>=;3;3151022"
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.4630427111209743,
-        "lut": "argbColumn",
-        "name": "KC(NreJ?MI",
-        "sources": [
-          "gy3\\[$s4"
-        ],
-        "showSelectedSegmentsIn3d": false,
-        "valueLimits": [
-          -53465381.89044803,
-          40017829.78872445
-        ],
-        "resolution3dView": [
-          82554584.17240384,
-          29179696.737790868,
-          7329434.746076301
-        ],
-        "colorByColumn": "wt",
-        "tables": [
-          "CB`2.csv",
-          "P0j.tsv",
-          "0.csv",
-          "%.csv"
-        ]
-      }
-    },
-    {
-      "imageDisplay": {
-        "color": "gray",
-        "contrastLimits": [
-          17841.724260122897,
-          40062.09745922233
-        ],
-        "opacity": 0.09325340443679697,
-        "name": "HT&UgInu^",
-        "sources": [
-          "-&+$e"
+          "H|g>L+%vPKe",
+          "O.2",
+          "xO(K#",
+          "FTnc.%"
         ],
         "blendingMode": "sum",
         "resolution3dView": [
-          85041664.30147037,
-          -64542402.64338784,
-          -20125267.092780024
+          -16365700.784937158,
+          -50256369.24029739,
+          47287013.3453874
         ],
         "showImagesIn3d": false
       }
     },
     {
-      "imageDisplay": {
-        "color": "black",
-        "contrastLimits": [
-          32254.61807084258,
-          23636.413433219997
-        ],
-        "opacity": 0.807409175647879,
-        "name": ">ta}y",
+      "segmentationDisplay": {
+        "opacity": 0.38619326403164056,
+        "lut": "glasbey",
+        "name": "'AQT\"Lo%-",
         "sources": [
-          "E)",
-          "^Jz(m:EUEg",
-          "`qyd3[&4.",
-          "c;?$P{CE",
-          "~zj+zO4j[.Y"
+          "L|9",
+          "&#fYjY'Nxn*"
+        ],
+        "tables": [
+          "rM?SDAyzEiU.tsv",
+          "z9bvQY>Gv.o.csv"
+        ],
+        "resolution3dView": [
+          94899190.51594594,
+          -90615902.56682633,
+          -15010776.733381182
+        ],
+        "scatterPlotAxes": [
+          "hd",
+          "kU0KV!"
+        ],
+        "showSelectedSegmentsIn3d": false,
+        "selectedSegmentIds": [
+          "\"l\"&V1hQ2;1645523636;473",
+          "X?z4ZsF++zn;39658411;8801",
+          "mSoof:*^c}z;731159963;262600"
+        ],
+        "valueLimits": [
+          -71156451.26690567,
+          98436094.07381782
+        ],
+        "showScatterPlot": false,
+        "colorByColumn": "yks2@Qo*"
+      }
+    }
+  ],
+  "sourceTransforms": [
+    {
+      "crop": {
+        "min": [
+          -15601273.46248272,
+          11659080.35440588,
+          66580564.59851065
+        ],
+        "max": [
+          -65166733.45654111,
+          -77892033.31131653,
+          -61807889.20960536
+        ],
+        "sources": [
+          ".CWp:\"F",
+          "Rt*9b",
+          "u27&",
+          ",.H:}j]Wz"
+        ],
+        "shiftToOrigin": true,
+        "names": [
+          "Ls5wYj",
+          "zaym",
+          "^VbFC3",
+          "`!f+KViu"
+        ],
+        "timepoints": [
+          57477534,
+          81994587,
+          98479745
+        ]
+      }
+    },
+    {
+      "grid": {
+        "sources": [
+          [
+            ":P6:2k",
+            "<V>'",
+            "KS*25?lj",
+            "1E|`p<QXzM"
+          ],
+          [
+            "+?4#\\=#S#",
+            "!Y(15_R",
+            "l~'j)vdgj",
+            "i2Yuc=^kqz"
+          ],
+          [
+            "2C@@}7&",
+            "?zHT);9"
+          ],
+          [
+            "{"
+          ]
+        ],
+        "tableData": {
+          "format": "tsv",
+          "relativePath": "commodo sint consequat do",
+          "s3Store": "culpa"
+        },
+        "timepoints": [
+          31708752,
+          54440062,
+          -15267985
+        ],
+        "names": [
+          "B_HJvg_Q(8h",
+          "zK?u",
+          "za"
+        ]
+      }
+    },
+    {
+      "grid": {
+        "sources": [
+          [
+            "pL\"$$:|",
+            "V::%u%=7Xrm",
+            ":^B:d"
+          ],
+          [
+            "YXTw",
+            ">[",
+            "{*Z@c",
+            "EH`\"|mn_"
+          ],
+          [
+            "t{9=",
+            "3yQ*j?",
+            "$<R{_pG}HZ",
+            "PO~"
+          ],
+          [
+            "3+_?\"W",
+            "D8L_vP"
+          ]
+        ],
+        "tableData": {
+          "format": "tsv",
+          "relativePath": "magna dolor do minim ullamco"
+        },
+        "names": [
+          "#R^`qNpZze"
+        ],
+        "timepoints": [
+          32477057,
+          29956969,
+          -58427902,
+          87034559,
+          8459945
+        ]
+      }
+    },
+    {
+      "crop": {
+        "min": [
+          -37906963.2054394,
+          -76119369.47494456,
+          -78129894.6695384
+        ],
+        "max": [
+          -69048780.21403489,
+          37512085.73821944,
+          -47269159.620788634
+        ],
+        "sources": [
+          "ds^JEM#y",
+          "-]0)4b",
+          "phd1@fJJ<y",
+          "|K<",
+          "2qMKt'hs"
+        ],
+        "shiftToOrigin": false,
+        "names": [
+          "dp+@ho7hOL"
+        ],
+        "timepoints": [
+          29636925,
+          80446956
+        ]
+      }
+    },
+    {
+      "crop": {
+        "min": [
+          38135966.327501565,
+          -74708149.7919993,
+          11254599.915718526
+        ],
+        "max": [
+          64571233.73796883,
+          -76920076.47667518,
+          -71685214.03057685
+        ],
+        "sources": [
+          "_(",
+          "]$",
+          "d*4m6vV=bDl"
+        ],
+        "shiftToOrigin": true,
+        "timepoints": [
+          78633422,
+          74654355
+        ],
+        "names": [
+          "C\")",
+          "J5*&1(x}f",
+          "]OCQb=Y'R",
+          "o(Yij9JZ|("
         ]
       }
     }
