@@ -10,6 +10,18 @@
             "description": "Description of the image data for this source, including the file format and the location of the data.",
             "type": "object",
             "properties": {
+                "bdv.hdf5": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.hdf5 format, i.e. hdf5 data that is stored on the local fileystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
                 "bdv.n5": {
                     "type": "object",
                     "description": "Data stored in the bdv.n5 format, i.e. n5 data that is stored on the local fileystem.",
@@ -62,10 +74,10 @@
                         "relativePath": {
                             "type": "string",
                             "description": "The relative path of the table data w.r.t the dataset root location."
-                        },
-                        "additionalProperties": false,
-                        "required": ["relativePath"]
-                    }
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["relativePath"]
                 }
             },
             "additionalProperties": false,

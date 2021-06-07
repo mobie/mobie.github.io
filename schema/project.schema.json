@@ -39,7 +39,7 @@
             "type": "array",
             "items": {
                 "type": "string",
-                "enum": ["bdv.n5", "bdv.n5.s3", "openOrganelle.s3"]
+                "enum": ["bdv.hdf5", "bdv.n5", "bdv.n5.s3", "openOrganelle.s3"]
             },
             "minItems": 1
         }

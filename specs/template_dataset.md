@@ -6,7 +6,7 @@ Note that the location of image and table data is determined in `dataset.json` a
 but the layout using `images/` and `tables/` is recommended for consistency with other MoBIE projects and assumed throughout this document.
 
 The `images` directory contains the xml files describing the image data, see [data specification](#data) for details.
-It may contain additional subdirectories to organise these files; by convention the files for local and remote image sources are separated into `images/local` and `images/remote`.
+It may contain additional subdirectories to organise these files. By convention the files for different data formats are often separated into folders named accordingly, e.g. `images/bdv.n5` and `images/bdv.n5.s3`.
 
 The `tables` directory contains all tabular data assoicated with segmentations or grid views (see [data specification](#data) and [view specification](#view) for details)
 All tables associated with one segmentation or view, must be located in the same subdirectory, which must contain a table `default.tsv` and may contain additional tables. 
@@ -21,8 +21,8 @@ See an example dataset directory structure and `dataset.json` (left incomplete f
 actin/
 ├── sources.json
 ├── images
-│   ├── local
-│   └── remote
+│   ├── bdv.n5
+│   └── bdv.n5.s3
 ├── misc
 │   └── views
 │   └── leveling.json
