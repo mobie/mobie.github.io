@@ -89,7 +89,7 @@ The `images` directory contains the metadata files describing the image data, se
 It may contain additional subdirectories to organise these files. By convention the files for different data formats are often separated into folders named accordingly, e.g. `images/bdv-n5` and `images/bdv-n5-s3`.
 
 The `tables` directory contains all tabular data assoicated with segmentations or grid views (see [data specification](#data) and [view specification](#view) for details)
-All tables associated with one segmentation or view, must be located in the same subdirectory, which must contain a table `default.tsv` and may contain additional tables. 
+All tables associated with a segmentation or view, must be located in the same subdirectory. This subdirectory must contain a default table, which should be called `default.tsv`, and may contain additional tables. 
 See the [table data specification](#tables) for details on how tables are stored.
 
 The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
@@ -159,7 +159,7 @@ For the data formats using a BigDataViewer xml, each xml must only contain a sin
 MoBIE supports tables associated with segmentations, where each row corresponds to some properties of an object in the segmentation.
 The tables should be stored as tab separated values `.tsv` files; they may also be stored as comma separated values `.csv`.
 
-The default segmentation table (which is stored in `default.tsv`, see also [dataset specification](#dataset)) must contain the columns `label_id`, `anchor_x`, `anchor_y`, `anchor_z`,
+The default segmentation table (which should be stored in `default.tsv` in the corresponding table, see also [dataset specification](#dataset)) must contain the columns `label_id`, `anchor_x`, `anchor_y`, `anchor_z`,
 `bb_min_x`, `bb_min_y`, `bb_min_z` and `bb_min_x`, `bb_min_y`, `bb_min_z`. The `anchor` columns specify a reference point for the object corresponding to this row. It will be centered
 when the corresponding obejct is selected. The `bb_min` and `bb_max` columns specify the start and stop of the bounding box for the object. Both anchor and bounding box coordinates must
 be given in phyisical units. It may contain additional columns.
@@ -223,24 +223,25 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "segmentation": {
+  "image": {
     "imageData": {
-      "bdv.ome.zarr": {
-        "relativePath": "cillum"
+      "bdv.hdf5": {
+        "relativePath": "occaecat"
+      },
+      "bdv.n5": {
+        "relativePath": "dolor velit cillum labore"
       },
       "bdv.n5.s3": {
-        "relativePath": "eu"
+        "relativePath": "et proident"
       },
-      "openOrganelle.s3": {
-        "s3Address": "reprehenderit Excepteur ea"
+      "bdv.ome.zarr": {
+        "relativePath": "officia Ut ad minim"
       },
       "bdv.ome.zarr.s3": {
-        "relativePath": "nostrud in nisi"
-      },
-      "bdv.hdf5": {
-        "relativePath": "nisi pariatur dolore"
+        "relativePath": "et nisi ut magna elit"
       }
-    }
+    },
+    "description": "veniam tempor dolor aliquip"
   }
 }
 ```
@@ -251,10 +252,9 @@ A `view` stores all metadata necessary to fully reproduce a MoBIE viewer state.
 
 ### <a name="view-grid"></a>Grid Views
 
-Grid views can be used to arrange sources in a grid automatically. They must have an associated table that is
-used for navigation in the viewer, and can also store additional properties for individual grid positions.
-The table specification is the same as for the [segmentation tables](#tables), except for a different layout required in the default table,
-which must contain the column `grid_id` and may contain additional arbitrary columns.
+Grid views can be used to arrange sources in a grid automatically. They must have at least one associated table. 
+Tables for grid views should be stored as tab separated values, but may also be comma separated. They must contain the column `grid_id`, which is
+used for navigation in the viewer, and must contain at least one more column.
 The `grid_id` column indexes the 2d grid position with row major convention.
 
 See an example grid view table for 4 grid positions that also gives the presence of different organelles for each position.
@@ -297,7 +297,7 @@ The metadata entries have the following structure (see below for an example json
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
 		- `sources`: The segmentation sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer. Contains a list of strings.
-		- `tables`: Additional tables to load. If present, the default table will always be loaded and should not be specified here. Contains a list with items:
+		- `tables`: The tables to be loaded for this view. This must include the default table as the first item. Contains a list with items:
 			- ``: 
 			- ``: 
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
@@ -312,6 +312,9 @@ The metadata entries have the following structure (see below for an example json
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
 		- `tableData`: Contains a [tableData](#tableData-metadata).
+		- `tables`: The tables to be loaded for this grid view. This must include the default table as the first item. Contains a list with items:
+			- ``: 
+			- ``: 
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
@@ -336,135 +339,151 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "isExclusive": true,
-  "uiSelectionGroup": "ea3u",
-  "viewerTransform": {
-    "normalizedAffine": [
-      41017849.27923009,
-      17918838.474168867,
-      -10812699.124627441,
-      25061615.477663323,
-      32089698.639641643,
-      64927094.42880443,
-      72319286.3174003,
-      86170359.58430356,
-      -31294233.531553984,
-      -98764214.39378396,
-      74794096.64476848,
-      -49380555.72894555
-    ]
-  },
-  "description": "eu laboris sed tempor",
+  "isExclusive": false,
+  "uiSelectionGroup": "|6",
+  "sourceDisplays": [
+    {
+      "imageDisplay": {
+        "color": "r=00872657,g=37804307,b=1,a=4",
+        "contrastLimits": [
+          12513.831662274351,
+          853.9080284948777
+        ],
+        "opacity": 0.5844565897150451,
+        "name": "=",
+        "sources": [
+          "s$pbhA#QG>v",
+          "|X!SRZ%AC=",
+          "V7=ZGt*I^1`"
+        ],
+        "showImagesIn3d": false
+      }
+    }
+  ],
   "sourceTransforms": [
     {
       "crop": {
         "min": [
-          88831888.193647,
-          -15559777.465794906,
-          27807442.622189254
+          -24122256.424696878,
+          13074430.173537925,
+          -63657259.6992385
         ],
         "max": [
-          -66579776.74884492,
-          64000958.558743775,
-          -39357901.32495871
+          -75271755.01675853,
+          -19609643.244961858,
+          -96351784.12519538
         ],
         "sources": [
-          ":",
-          "O>UD}?w2+*",
-          "+p<]z",
-          "z"
+          ".zmj9",
+          "+s4^5o",
+          "~WB"
         ],
+        "shiftToOrigin": true,
         "timepoints": [
-          88838169,
-          18889848,
-          43257312
+          49854908,
+          30327626
         ],
         "names": [
-          "Az=XK!^Z",
-          "Jp:$D_"
-        ],
-        "shiftToOrigin": false
-      }
-    }
-  ],
-  "sourceDisplays": [
-    {
-      "imageDisplay": {
-        "color": "randomFromGlasbey",
-        "contrastLimits": [
-          31657.156175567256,
-          48900.60175603501
-        ],
-        "opacity": 0.05390641671433527,
-        "name": "*|5~QHe`}",
-        "sources": [
-          "s:"
-        ],
-        "blendingMode": "averageOccluding"
-      }
-    },
-    {
-      "imageDisplay": {
-        "color": "r=94407361,g=8000126932,b=68766001,a=155",
-        "contrastLimits": [
-          40372.100199245106,
-          24901.716989139935
-        ],
-        "opacity": 0.37706888617046697,
-        "name": "mvc+~Uij?",
-        "sources": [
-          ":57c",
-          "f9I5r",
-          "m-h0V55"
-        ],
-        "showImagesIn3d": false,
-        "blendingMode": "sumOccluding",
-        "resolution3dView": [
-          89873721.14751482,
-          -61526084.44548364,
-          72017648.8097775
+          "jEq+E6=i2m"
         ]
       }
     },
     {
-      "imageDisplay": {
-        "color": "yellow",
-        "contrastLimits": [
-          40803.65529731704,
-          14632.285786300392
+      "crop": {
+        "min": [
+          22864947.343764096,
+          78135248.91880026,
+          -76186587.93581976
         ],
-        "opacity": 0.4809387539001009,
-        "name": "[:(",
+        "max": [
+          47701798.014599234,
+          -7572349.971904576,
+          -82924868.53373942
+        ],
         "sources": [
-          "e$3#Ud",
-          ";r'1TI%Af\"i",
-          "3",
-          "W[MnZ"
+          "Ii`M6F6,x",
+          "?`optT+%&:Y"
         ],
-        "blendingMode": "average",
-        "resolution3dView": [
-          -45302385.59450565,
-          95537741.121402,
-          41434622.53240049
-        ],
-        "showImagesIn3d": true
+        "names": [
+          "Uh@2Y(%",
+          "x0IrO",
+          "1[~A1)"
+        ]
       }
     },
     {
-      "segmentationDisplay": {
-        "opacity": 0.8474409341239166,
-        "lut": "glasbey",
-        "name": "Wr'z",
+      "grid": {
         "sources": [
-          "rI(fK\\",
-          "|~A",
-          "-W$%CeUp=",
-          "%"
+          [
+            "#p1yt<U",
+            ")Ot`6\"Bf",
+            "Yq",
+            "$=Z+q'bl#["
+          ],
+          [
+            "6E=O+}]",
+            "F",
+            "'Q",
+            "{dod}l2",
+            "d#CF7"
+          ],
+          [
+            "6JN--",
+            "`.%r#T+`[}K"
+          ],
+          [
+            "T)9jZf]",
+            "`SA;v(yH_\"F",
+            "y>ZD$+",
+            "atGL9PXW{",
+            "%B9vBucOF"
+          ],
+          [
+            "W",
+            ".h(E<?y=d#"
+          ]
         ],
-        "showScatterPlot": false
+        "tableData": {
+          "tsv": {
+            "relativePath": "enim dolor pariatur qui magna"
+          }
+        }
+      }
+    },
+    {
+      "affine": {
+        "parameters": [
+          80058397.45395115,
+          -55996265.63335463,
+          3232033.8676184714,
+          65481362.789743215,
+          -79908619.50351143,
+          87602820.54058069,
+          7331045.500779703,
+          41559506.041620284,
+          -55387155.983164504,
+          96068298.06032479,
+          -65017971.0147238,
+          29956640.207854286
+        ],
+        "sources": [
+          "nwJRJN",
+          ",wVi=V"
+        ],
+        "timepoints": [
+          25400896,
+          84241298,
+          8421586,
+          94042853
+        ],
+        "names": [
+          "U7D\"",
+          "1Fd,3`RT5N"
+        ]
       }
     }
-  ]
+  ],
+  "description": "ipsum id quis pariatur"
 }
 ```
 

@@ -4,10 +4,9 @@ A `view` stores all metadata necessary to fully reproduce a MoBIE viewer state.
 
 ### <a name="view-grid"></a>Grid Views
 
-Grid views can be used to arrange sources in a grid automatically. They must have an associated table that is
-used for navigation in the viewer, and can also store additional properties for individual grid positions.
-The table specification is the same as for the [segmentation tables](#tables), except for a different layout required in the default table,
-which must contain the column `grid_id` and may contain additional arbitrary columns.
+Grid views can be used to arrange sources in a grid automatically. They must have at least one associated table. 
+Tables for grid views should be stored as tab separated values, but may also be comma separated. They must contain the column `grid_id`, which is
+used for navigation in the viewer, and must contain at least one more column.
 The `grid_id` column indexes the 2d grid position with row major convention.
 
 See an example grid view table for 4 grid positions that also gives the presence of different organelles for each position.

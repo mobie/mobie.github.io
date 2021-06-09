@@ -21,7 +21,7 @@ For the data formats using a BigDataViewer xml, each xml must only contain a sin
 MoBIE supports tables associated with segmentations, where each row corresponds to some properties of an object in the segmentation.
 The tables should be stored as tab separated values `.tsv` files; they may also be stored as comma separated values `.csv`.
 
-The default segmentation table (which is stored in `default.tsv`, see also [dataset specification](#dataset)) must contain the columns `label_id`, `anchor_x`, `anchor_y`, `anchor_z`,
+The default segmentation table (which should be stored in `default.tsv` in the corresponding table, see also [dataset specification](#dataset)) must contain the columns `label_id`, `anchor_x`, `anchor_y`, `anchor_z`,
 `bb_min_x`, `bb_min_y`, `bb_min_z` and `bb_min_x`, `bb_min_y`, `bb_min_z`. The `anchor` columns specify a reference point for the object corresponding to this row. It will be centered
 when the corresponding obejct is selected. The `bb_min` and `bb_max` columns specify the start and stop of the bounding box for the object. Both anchor and bounding box coordinates must
 be given in phyisical units. It may contain additional columns.

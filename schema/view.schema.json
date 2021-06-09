@@ -161,7 +161,7 @@
                             "minItems": 1
                         },
                         "tables": {
-                            "description": "Additional tables to load. If present, the default table will always be loaded and should not be specified here.",
+                            "description": "The tables to be loaded for this view. This must include the default table as the first item.",
                             "type": "array",
                             "items": {
                                 "anyOf": [
@@ -357,6 +357,23 @@
                         },
                         "tableData": {
                             "$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json#/definitions/tableData"
+                        },
+                        "tables": {
+                            "description": "The tables to be loaded for this grid view. This must include the default table as the first item.",
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string",
+                                        "pattern": "^[^;\\/ ]+\\.csv$"
+                                    },
+                                    {
+                                        "type": "string",
+                                        "pattern": "^[^;\\/ ]+\\.tsv$"
+                                    }
+                                ]
+                            },
+                            "minItems": 1
                         },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
