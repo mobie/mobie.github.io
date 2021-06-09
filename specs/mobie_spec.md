@@ -85,8 +85,8 @@ It should contain the subdirectories `images`, containing the image data, `table
 Note that the location of image and table data is determined in `dataset.json` and it is thus possible to choose a different directory structure than `images/` and `tables/` to store them,
 but the layout using `images/` and `tables/` is recommended for consistency with other MoBIE projects and assumed throughout this document.
 
-The `images` directory contains the xml files describing the image data, see [data specification](#data) for details.
-It may contain additional subdirectories to organise these files. By convention the files for different data formats are often separated into folders named accordingly, e.g. `images/bdv.n5` and `images/bdv.n5.s3`.
+The `images` directory contains the metadata files describing the image data, see [data specification](#data) for details.
+It may contain additional subdirectories to organise these files. By convention the files for different data formats are often separated into folders named accordingly, e.g. `images/bdv-n5` and `images/bdv-n5-s3`.
 
 The `tables` directory contains all tabular data assoicated with segmentations or grid views (see [data specification](#data) and [view specification](#view) for details)
 All tables associated with one segmentation or view, must be located in the same subdirectory, which must contain a table `default.tsv` and may contain additional tables. 
@@ -101,8 +101,8 @@ See an example dataset directory structure and `dataset.json` (left incomplete f
 actin/
 ├── sources.json
 ├── images
-│   ├── bdv.n5
-│   └── bdv.n5.s3
+│   ├── bdv-n5
+│   └── bdv-n5-s3
 ├── misc
 │   └── views
 │   └── leveling.json
@@ -145,11 +145,14 @@ Two different types of sources are supported:
 
 ### <a name="data"></a>Image Data
 
-The data is stored in a multi-dimensional, chunked format.
-MoBIE primarily supports the [n5](https://github.com/saalfeldlab/n5) data format, using the [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md) to represent timepoints and multi-scale image pyramids. TODO custom extension for s3
-In addition, it supports [HDF5](https://www.hdfgroup.org/solutions/hdf5/), again using the [bdv hdf5 format](https://imagej.net/BigDataViewer.html#About_the_BigDataViewer_data_format); however this format can only be read locally and **does not** support remote access from an object store.
-The `name` saved in the bdv.xml must agree with the name in the [source metadata](#source-metadata).
-There is also experimental support for the emerging [ome ngff](https://ngff.openmicroscopy.org/latest/) and the [open organelle data](https://openorganelle.janelia.org/).
+The data is stored in a chunked format for multi-dimensional data. Currently MoBIE supports the following data formats:
+- `bdv.n5` and `bdv.n5.s3`: the data is stored in the [n5](https://github.com/saalfeldlab/n5) data format. The [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md) is used to store additional metadata about timepoints, the multi-scale image pyramid and transformations. To support data stored on s3, we extend the xml by custom fields that describe the s3 storage. See an example
+  [here](https://github.com/mobie/plankton-fibsem-project/blob/master/data/emiliania/images/bdv-n5-s3/raw.xml#L27).
+- `bdv.hdf5`: the data is stored in the [HDF5](https://www.hdfgroup.org/solutions/hdf5/) data format, using the [bdv hdf5 format](https://imagej.net/BigDataViewer.html#About_the_BigDataViewer_data_format) to represent image metadata. This format can only be read locally and **does not** support remote access from an object store.
+- `bdv.ome.zarr` and `bdv.ome.zarr.s3`: the data is stored in the [ome zarr file format](https://ngff.openmicroscopy.org/latest/) and uses the same xml format as in the [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md), but using `bdv.ome.zarr` as ImageLoader format. The custom xml fields for `bdv.ome.zarr.s3` are identical to `bdv.n5.s3`. The support for this file format is still experimental.
+- `openOrganelle.s3`: the data is stored in the [open organelle data format](https://openorganelle.janelia.org/), which is based on [n5](https://github.com/saalfeldlab/n5). Currently, this data format can only be streamed from s3 and not opened locally. We have added it to support data made available throuhg the Open Organelle data platform and the support is still experimental.
+
+For the data formats using a BigDataViewer xml, each xml must only contain a single setup id and the value of the field `name` must be the same as the name in the [source metadata](#source-metadata).
 
 ### <a name="table"></a>Table Data
 
@@ -193,6 +196,10 @@ The metadata entries have the following structure (see below for an example json
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
 		- `bdv.n5.s3`: Data stored in the bdv.n5.s3 format, i.e. n5 data that is stored on a s3 object store. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
+		- `bdv.ome.zarr`: Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem. The field `relativePath` is required.
+			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
+		- `bdv.ome.zarr.s3`: Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store. The field `relativePath` is required.
+			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
 		- `openOrganelle.s3`: Data stored in the openOrganelle file format on a s3 object store. The field `s3Address` is required.
 			- `s3Address`: The s3 address for this image data.
 - `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageData` is required.
@@ -204,6 +211,10 @@ The metadata entries have the following structure (see below for an example json
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
 		- `bdv.n5.s3`: Data stored in the bdv.n5.s3 format, i.e. n5 data that is stored on a s3 object store. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
+		- `bdv.ome.zarr`: Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem. The field `relativePath` is required.
+			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
+		- `bdv.ome.zarr.s3`: Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store. The field `relativePath` is required.
+			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
 		- `openOrganelle.s3`: Data stored in the openOrganelle file format on a s3 object store. The field `s3Address` is required.
 			- `s3Address`: The s3 address for this image data.
 	- `tableData`: Description of the table data for this source, including the format and the location of the table data. The field `tsv` is required.
@@ -212,16 +223,22 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "image": {
+  "segmentation": {
     "imageData": {
-      "openOrganelle.s3": {
-        "s3Address": "fugiat proident"
+      "bdv.ome.zarr": {
+        "relativePath": "cillum"
       },
       "bdv.n5.s3": {
-        "relativePath": "deserunt"
+        "relativePath": "eu"
       },
-      "bdv.n5": {
-        "relativePath": "ad ut do est pariatur"
+      "openOrganelle.s3": {
+        "s3Address": "reprehenderit Excepteur ea"
+      },
+      "bdv.ome.zarr.s3": {
+        "relativePath": "nostrud in nisi"
+      },
+      "bdv.hdf5": {
+        "relativePath": "nisi pariatur dolore"
       }
     }
   }
@@ -319,215 +336,132 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "isExclusive": false,
-  "uiSelectionGroup": "<'B",
-  "description": "cillum enim sint",
+  "isExclusive": true,
+  "uiSelectionGroup": "ea3u",
   "viewerTransform": {
     "normalizedAffine": [
-      -86895229.99860428,
-      -42831871.87112847,
-      -23305792.868399903,
-      9128056.546639621,
-      -44364854.92243518,
-      63464220.519783854,
-      -68228748.3902126,
-      73168743.321015,
-      7463673.792088836,
-      60866018.48936519,
-      56199872.52863741,
-      33064682.62300189
+      41017849.27923009,
+      17918838.474168867,
+      -10812699.124627441,
+      25061615.477663323,
+      32089698.639641643,
+      64927094.42880443,
+      72319286.3174003,
+      86170359.58430356,
+      -31294233.531553984,
+      -98764214.39378396,
+      74794096.64476848,
+      -49380555.72894555
     ]
   },
-  "sourceDisplays": [
+  "description": "eu laboris sed tempor",
+  "sourceTransforms": [
     {
-      "imageDisplay": {
-        "color": "black",
-        "contrastLimits": [
-          500.9147747012968,
-          11551.634113855347
+      "crop": {
+        "min": [
+          88831888.193647,
+          -15559777.465794906,
+          27807442.622189254
         ],
-        "opacity": 0.40505376612933497,
-        "name": "nl[",
+        "max": [
+          -66579776.74884492,
+          64000958.558743775,
+          -39357901.32495871
+        ],
         "sources": [
-          "6:I&",
-          "8^bO>'vb;e",
-          "e.g1j$c",
-          "B2\\",
-          "Ip)["
+          ":",
+          "O>UD}?w2+*",
+          "+p<]z",
+          "z"
         ],
-        "showImagesIn3d": true,
-        "resolution3dView": [
-          -14919011.017857507,
-          -39352058.74006944,
-          -7683929.481579766
+        "timepoints": [
+          88838169,
+          18889848,
+          43257312
         ],
-        "blendingMode": "average"
+        "names": [
+          "Az=XK!^Z",
+          "Jp:$D_"
+        ],
+        "shiftToOrigin": false
       }
     }
   ],
-  "sourceTransforms": [
+  "sourceDisplays": [
     {
-      "affine": {
-        "parameters": [
-          -51199089.870168105,
-          28059280.483613864,
-          14436152.212858036,
-          -92825578.49002084,
-          60919489.9152489,
-          96810749.80139765,
-          -77906964.8527686,
-          -59134431.729638904,
-          24301517.687292054,
-          -53719492.370796785,
-          73990173.35952568,
-          18257279.790767893
+      "imageDisplay": {
+        "color": "randomFromGlasbey",
+        "contrastLimits": [
+          31657.156175567256,
+          48900.60175603501
         ],
+        "opacity": 0.05390641671433527,
+        "name": "*|5~QHe`}",
         "sources": [
-          "8]!9^`HP"
+          "s:"
         ],
-        "names": [
-          ")#iG",
-          "QqUnR",
-          "mkZs",
-          "#u-mLfCli",
-          "~]W(u(c"
+        "blendingMode": "averageOccluding"
+      }
+    },
+    {
+      "imageDisplay": {
+        "color": "r=94407361,g=8000126932,b=68766001,a=155",
+        "contrastLimits": [
+          40372.100199245106,
+          24901.716989139935
         ],
-        "timepoints": [
-          20993921
+        "opacity": 0.37706888617046697,
+        "name": "mvc+~Uij?",
+        "sources": [
+          ":57c",
+          "f9I5r",
+          "m-h0V55"
+        ],
+        "showImagesIn3d": false,
+        "blendingMode": "sumOccluding",
+        "resolution3dView": [
+          89873721.14751482,
+          -61526084.44548364,
+          72017648.8097775
         ]
       }
     },
     {
-      "grid": {
+      "imageDisplay": {
+        "color": "yellow",
+        "contrastLimits": [
+          40803.65529731704,
+          14632.285786300392
+        ],
+        "opacity": 0.4809387539001009,
+        "name": "[:(",
         "sources": [
-          [
-            "8:\"xVJEK{=]",
-            "N$^M"
-          ],
-          [
-            "yg(>$St"
-          ],
-          [
-            "R)*\"9uSJYoh",
-            "^wHkm",
-            "Z:mU",
-            "?P3JwG?0D"
-          ],
-          [
-            "AGq~.#*",
-            "evx&=f2VS7E"
-          ]
+          "e$3#Ud",
+          ";r'1TI%Af\"i",
+          "3",
+          "W[MnZ"
         ],
-        "tableData": {
-          "tsv": {
-            "relativePath": "dolor elit"
-          }
-        },
-        "names": [
-          "rtH[",
-          "r5\\Y7|"
+        "blendingMode": "average",
+        "resolution3dView": [
+          -45302385.59450565,
+          95537741.121402,
+          41434622.53240049
         ],
-        "timepoints": [
-          -11182480,
-          30971887,
-          -11546308,
-          -89712993
-        ],
-        "positions": [
-          [
-            -4009228,
-            65433241,
-            -98897974,
-            -61361814
-          ],
-          [
-            -40245909,
-            -29691389,
-            36109427,
-            90544740
-          ],
-          [
-            -25686809
-          ]
-        ]
+        "showImagesIn3d": true
       }
     },
     {
-      "grid": {
+      "segmentationDisplay": {
+        "opacity": 0.8474409341239166,
+        "lut": "glasbey",
+        "name": "Wr'z",
         "sources": [
-          [
-            "'h",
-            "z",
-            "+p6IlkrY"
-          ],
-          [
-            "NppctM"
-          ],
-          [
-            "Uf;|",
-            "~d'OHP",
-            "'>l1&p",
-            "R9y3S%"
-          ]
+          "rI(fK\\",
+          "|~A",
+          "-W$%CeUp=",
+          "%"
         ],
-        "tableData": {
-          "tsv": {
-            "relativePath": "culpa cupidatat voluptate Duis"
-          }
-        },
-        "positions": [
-          [
-            -12126940,
-            -77901794,
-            60351626
-          ],
-          [
-            -57727289
-          ],
-          [
-            52412862,
-            26312100
-          ],
-          [
-            -41271859
-          ]
-        ]
-      }
-    },
-    {
-      "grid": {
-        "sources": [
-          [
-            "~vv49"
-          ],
-          [
-            "I.4*",
-            "yp",
-            "B`ane9k",
-            "gf+"
-          ],
-          [
-            "wmhw",
-            "x",
-            "_-}0eduq",
-            "wa"
-          ],
-          [
-            "1'_NA%fr5",
-            "9zVmm>@",
-            "srcAj;W"
-          ]
-        ],
-        "tableData": {
-          "tsv": {
-            "relativePath": "cillum"
-          }
-        },
-        "names": [
-          "T<Zdz4b#",
-          "zqWj9z2hu",
-          "'l\\7Y-4ABCb"
-        ]
+        "showScatterPlot": false
       }
     }
   ]

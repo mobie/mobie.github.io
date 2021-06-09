@@ -7,11 +7,14 @@ Two different types of sources are supported:
 
 ### <a name="data"></a>Image Data
 
-The data is stored in a multi-dimensional, chunked format.
-MoBIE primarily supports the [n5](https://github.com/saalfeldlab/n5) data format, using the [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md) to represent timepoints and multi-scale image pyramids. TODO custom extension for s3
-In addition, it supports [HDF5](https://www.hdfgroup.org/solutions/hdf5/), again using the [bdv hdf5 format](https://imagej.net/BigDataViewer.html#About_the_BigDataViewer_data_format); however this format can only be read locally and **does not** support remote access from an object store.
-The `name` saved in the bdv.xml must agree with the name in the [source metadata](#source-metadata).
-There is also experimental support for the emerging [ome ngff](https://ngff.openmicroscopy.org/latest/) and the [open organelle data](https://openorganelle.janelia.org/).
+The data is stored in a chunked format for multi-dimensional data. Currently MoBIE supports the following data formats:
+- `bdv.n5` and `bdv.n5.s3`: the data is stored in the [n5](https://github.com/saalfeldlab/n5) data format. The [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md) is used to store additional metadata about timepoints, the multi-scale image pyramid and transformations. To support data stored on s3, we extend the xml by custom fields that describe the s3 storage. See an example
+  [here](https://github.com/mobie/plankton-fibsem-project/blob/master/data/emiliania/images/bdv-n5-s3/raw.xml#L27).
+- `bdv.hdf5`: the data is stored in the [HDF5](https://www.hdfgroup.org/solutions/hdf5/) data format, using the [bdv hdf5 format](https://imagej.net/BigDataViewer.html#About_the_BigDataViewer_data_format) to represent image metadata. This format can only be read locally and **does not** support remote access from an object store.
+- `bdv.ome.zarr` and `bdv.ome.zarr.s3`: the data is stored in the [ome zarr file format](https://ngff.openmicroscopy.org/latest/) and uses the same xml format as in the [bdv n5 format](https://github.com/bigdataviewer/bigdataviewer-core/blob/master/BDV%20N5%20format.md), but using `bdv.ome.zarr` as ImageLoader format. The custom xml fields for `bdv.ome.zarr.s3` are identical to `bdv.n5.s3`. The support for this file format is still experimental.
+- `openOrganelle.s3`: the data is stored in the [open organelle data format](https://openorganelle.janelia.org/), which is based on [n5](https://github.com/saalfeldlab/n5). Currently, this data format can only be streamed from s3 and not opened locally. We have added it to support data made available throuhg the Open Organelle data platform and the support is still experimental.
+
+For the data formats using a BigDataViewer xml, each xml must only contain a single setup id and the value of the field `name` must be the same as the name in the [source metadata](#source-metadata).
 
 ### <a name="table"></a>Table Data
 
