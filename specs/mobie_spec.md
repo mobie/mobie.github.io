@@ -227,20 +227,26 @@ The metadata entries have the following structure (see below for an example json
 {
   "segmentation": {
     "imageData": {
-      "bdv.hdf5": {
-        "relativePath": "aute magna irure"
-      },
-      "bdv.ome.zarr.s3": {
-        "relativePath": "Excepteur ad magna aliqua"
-      },
-      "bdv.n5": {
-        "relativePath": "irure elit"
+      "bdv.ome.zarr": {
+        "relativePath": "est irure ipsum ullamco"
       },
       "bdv.n5.s3": {
-        "relativePath": "dolore dolor officia"
+        "relativePath": "adipisicing laboris Excepteur"
       },
-      "bdv.ome.zarr": {
-        "relativePath": "est tempor"
+      "bdv.n5": {
+        "relativePath": "cupidatat mollit in reprehenderit"
+      },
+      "bdv.hdf5": {
+        "relativePath": "Excepteur nisi aliqua"
+      },
+      "bdv.ome.zarr.s3": {
+        "relativePath": "id proident"
+      }
+    },
+    "description": "consequat commodo velit",
+    "tableData": {
+      "tsv": {
+        "relativePath": "laborum"
       }
     }
   }
@@ -256,7 +262,7 @@ A `view` stores all metadata necessary to fully reproduce a MoBIE viewer state.
 Grid views can be used to arrange sources in a grid automatically. They must have at least one associated table. 
 Tables for grid views should be stored as tab separated values, but may also be comma separated. They must contain the column `grid_id`, which is
 used for navigation in the viewer, and must contain at least one more column.
-The `grid_id` column indexes the 2d grid position with row major convention.
+The `grid_id` column indexes the 2d grid position, assuming the same order of sources as in the `sources` list given in the view metadata.
 
 See an example grid view table for 4 grid positions that also gives the presence of different organelles for each position.
 ```tsv
@@ -308,7 +314,7 @@ The metadata entries have the following structure (see below for an example json
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources` and `tableData` are required.
+	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources`, `tableData` and `tables` are required.
 		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
@@ -341,105 +347,72 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": true,
-  "uiSelectionGroup": "pPaSn|op",
-  "viewerTransform": {
-    "normalizedAffine": [
-      68084507.80022836,
-      88279603.35005042,
-      -46003300.85003117,
-      -48867276.1286634,
-      -99863077.3114364,
-      21527055.137694046,
-      63270510.32997769,
-      9950735.204960108,
-      80786322.08254409,
-      -45948554.63895327,
-      66669379.64616421,
-      32107069.576607913
-    ]
-  },
-  "description": "pariatur nisi consectetur",
+  "uiSelectionGroup": "ZKqyZEjy",
   "sourceTransforms": [
     {
       "crop": {
         "min": [
-          87033526.4283689,
-          -24993206.123359486,
-          35578972.345189065
+          15224214.922728002,
+          -92822519.19506042,
+          27855108.142774433
         ],
         "max": [
-          -64253995.16045065,
-          15938507.71280554,
-          12278465.33196573
+          -41550371.46968437,
+          -4956455.603436008,
+          -51419688.96202749
         ],
         "sources": [
-          "Gj3qxap6nQ",
-          "kO",
-          "CYbfY$=",
-          ",#P\\x_l[Q",
-          "o"
+          "nz6>1,6[$3",
+          "vc=Fc=",
+          "YfO=~0.n=O",
+          "j-`u1\\v|P%",
+          "N(H=)>T)sG~"
+        ],
+        "timepoints": [
+          87049637,
+          47571472,
+          28294460
         ],
         "names": [
-          "OM1N\"uu",
-          "92mWt?`C?!",
-          "jMYa,h}lS&"
+          "Dz(6x,Jz!",
+          "x|Pw<Rfb?~>",
+          "(iuuG",
+          "y.<W7",
+          "5D"
         ],
-        "shiftToOrigin": false,
-        "timepoints": [
-          47188398
-        ]
-      }
-    }
-  ],
-  "sourceDisplays": [
-    {
-      "imageDisplay": {
-        "color": "randomFromGlasbey",
-        "contrastLimits": [
-          65201.1789777851,
-          35466.256864781244
-        ],
-        "opacity": 0.57699870762144,
-        "name": "8l0?e",
-        "sources": [
-          "FYbI?kz",
-          "~Jt}Q!i->",
-          "wPUK",
-          "C&g$B?GXh"
-        ],
-        "showImagesIn3d": false,
-        "blendingMode": "sumOccluding",
-        "resolution3dView": [
-          75971910.38815668,
-          -7956067.950100869,
-          -7443625.769906029
-        ]
+        "shiftToOrigin": false
       }
     },
     {
-      "segmentationDisplay": {
-        "opacity": 0.6030002113435526,
-        "lut": "viridis",
-        "name": "Nnl",
+      "affine": {
+        "parameters": [
+          76749759.59380853,
+          -30279907.48095779,
+          -6125426.423083663,
+          -81411886.68635038,
+          -95649751.0467898,
+          -98474098.41340342,
+          -70501069.6933139,
+          27453410.816301942,
+          17488362.95466782,
+          -67170066.31310785,
+          92533985.42885855,
+          5138926.444357887
+        ],
         "sources": [
-          ":",
-          "{lJb*[wg)u`",
-          "-qyBd"
+          "ya",
+          "yV+\\X}iCNl",
+          "]|^mJw^7>"
         ],
-        "showScatterPlot": false,
-        "colorByColumn": "B-wQEnx%1f",
-        "tables": [
-          "FTs.csv"
+        "names": [
+          "Bum",
+          "EAV",
+          "e{rWKR",
+          "Rt8[,WbQ%P",
+          "$=Nky@"
         ],
-        "showSelectedSegmentsIn3d": false,
-        "valueLimits": [
-          -60268659.84463856,
-          -26791250.993203163
-        ],
-        "resolution3dView": [
-          -56239328.164777905,
-          60059918.003335685,
-          -22408992.53726019
+        "timepoints": [
+          12684138
         ]
       }
     }
