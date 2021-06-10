@@ -165,7 +165,9 @@ when the corresponding obejct is selected. The `bb_min` and `bb_max` columns spe
 be given in phyisical units. It may contain additional columns.
 
 Additional segmentation tables must contain the column `label_id` and may contain arbitraty additional columns.
-The label id `0` is reserved for background and should not be listed in any of the tables.
+The `label_id`s in the additional tables may be incomplete, but they must not contain ids not present in the default table.
+For example, given `label_id`s `[1, 2, 3, 4, 5]` in the default table the `label_id`s `[1, 2, 3, 4, 5]` or `[1, 3, 4]` are valid but `[1, 3, 4, 7]` is invalid.
+The label id `0` is reserved for the background and must not be listed in any of the tables.
 
 See an example segmentation default table for 8 objects with additional column `n_pixels` giving the number of pixels of the object.
 ```tsv
@@ -223,25 +225,24 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "image": {
+  "segmentation": {
     "imageData": {
       "bdv.hdf5": {
-        "relativePath": "occaecat"
-      },
-      "bdv.n5": {
-        "relativePath": "dolor velit cillum labore"
-      },
-      "bdv.n5.s3": {
-        "relativePath": "et proident"
-      },
-      "bdv.ome.zarr": {
-        "relativePath": "officia Ut ad minim"
+        "relativePath": "aute magna irure"
       },
       "bdv.ome.zarr.s3": {
-        "relativePath": "et nisi ut magna elit"
+        "relativePath": "Excepteur ad magna aliqua"
+      },
+      "bdv.n5": {
+        "relativePath": "irure elit"
+      },
+      "bdv.n5.s3": {
+        "relativePath": "dolore dolor officia"
+      },
+      "bdv.ome.zarr": {
+        "relativePath": "est tempor"
       }
-    },
-    "description": "veniam tempor dolor aliquip"
+    }
   }
 }
 ```
@@ -339,151 +340,110 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "isExclusive": false,
-  "uiSelectionGroup": "|6",
-  "sourceDisplays": [
-    {
-      "imageDisplay": {
-        "color": "r=00872657,g=37804307,b=1,a=4",
-        "contrastLimits": [
-          12513.831662274351,
-          853.9080284948777
-        ],
-        "opacity": 0.5844565897150451,
-        "name": "=",
-        "sources": [
-          "s$pbhA#QG>v",
-          "|X!SRZ%AC=",
-          "V7=ZGt*I^1`"
-        ],
-        "showImagesIn3d": false
-      }
-    }
-  ],
+  "isExclusive": true,
+  "uiSelectionGroup": "pPaSn|op",
+  "viewerTransform": {
+    "normalizedAffine": [
+      68084507.80022836,
+      88279603.35005042,
+      -46003300.85003117,
+      -48867276.1286634,
+      -99863077.3114364,
+      21527055.137694046,
+      63270510.32997769,
+      9950735.204960108,
+      80786322.08254409,
+      -45948554.63895327,
+      66669379.64616421,
+      32107069.576607913
+    ]
+  },
+  "description": "pariatur nisi consectetur",
   "sourceTransforms": [
     {
       "crop": {
         "min": [
-          -24122256.424696878,
-          13074430.173537925,
-          -63657259.6992385
+          87033526.4283689,
+          -24993206.123359486,
+          35578972.345189065
         ],
         "max": [
-          -75271755.01675853,
-          -19609643.244961858,
-          -96351784.12519538
+          -64253995.16045065,
+          15938507.71280554,
+          12278465.33196573
         ],
         "sources": [
-          ".zmj9",
-          "+s4^5o",
-          "~WB"
+          "Gj3qxap6nQ",
+          "kO",
+          "CYbfY$=",
+          ",#P\\x_l[Q",
+          "o"
         ],
-        "shiftToOrigin": true,
+        "names": [
+          "OM1N\"uu",
+          "92mWt?`C?!",
+          "jMYa,h}lS&"
+        ],
+        "shiftToOrigin": false,
         "timepoints": [
-          49854908,
-          30327626
-        ],
-        "names": [
-          "jEq+E6=i2m"
-        ]
-      }
-    },
-    {
-      "crop": {
-        "min": [
-          22864947.343764096,
-          78135248.91880026,
-          -76186587.93581976
-        ],
-        "max": [
-          47701798.014599234,
-          -7572349.971904576,
-          -82924868.53373942
-        ],
-        "sources": [
-          "Ii`M6F6,x",
-          "?`optT+%&:Y"
-        ],
-        "names": [
-          "Uh@2Y(%",
-          "x0IrO",
-          "1[~A1)"
-        ]
-      }
-    },
-    {
-      "grid": {
-        "sources": [
-          [
-            "#p1yt<U",
-            ")Ot`6\"Bf",
-            "Yq",
-            "$=Z+q'bl#["
-          ],
-          [
-            "6E=O+}]",
-            "F",
-            "'Q",
-            "{dod}l2",
-            "d#CF7"
-          ],
-          [
-            "6JN--",
-            "`.%r#T+`[}K"
-          ],
-          [
-            "T)9jZf]",
-            "`SA;v(yH_\"F",
-            "y>ZD$+",
-            "atGL9PXW{",
-            "%B9vBucOF"
-          ],
-          [
-            "W",
-            ".h(E<?y=d#"
-          ]
-        ],
-        "tableData": {
-          "tsv": {
-            "relativePath": "enim dolor pariatur qui magna"
-          }
-        }
-      }
-    },
-    {
-      "affine": {
-        "parameters": [
-          80058397.45395115,
-          -55996265.63335463,
-          3232033.8676184714,
-          65481362.789743215,
-          -79908619.50351143,
-          87602820.54058069,
-          7331045.500779703,
-          41559506.041620284,
-          -55387155.983164504,
-          96068298.06032479,
-          -65017971.0147238,
-          29956640.207854286
-        ],
-        "sources": [
-          "nwJRJN",
-          ",wVi=V"
-        ],
-        "timepoints": [
-          25400896,
-          84241298,
-          8421586,
-          94042853
-        ],
-        "names": [
-          "U7D\"",
-          "1Fd,3`RT5N"
+          47188398
         ]
       }
     }
   ],
-  "description": "ipsum id quis pariatur"
+  "sourceDisplays": [
+    {
+      "imageDisplay": {
+        "color": "randomFromGlasbey",
+        "contrastLimits": [
+          65201.1789777851,
+          35466.256864781244
+        ],
+        "opacity": 0.57699870762144,
+        "name": "8l0?e",
+        "sources": [
+          "FYbI?kz",
+          "~Jt}Q!i->",
+          "wPUK",
+          "C&g$B?GXh"
+        ],
+        "showImagesIn3d": false,
+        "blendingMode": "sumOccluding",
+        "resolution3dView": [
+          75971910.38815668,
+          -7956067.950100869,
+          -7443625.769906029
+        ]
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.6030002113435526,
+        "lut": "viridis",
+        "name": "Nnl",
+        "sources": [
+          ":",
+          "{lJb*[wg)u`",
+          "-qyBd"
+        ],
+        "showScatterPlot": false,
+        "colorByColumn": "B-wQEnx%1f",
+        "tables": [
+          "FTs.csv"
+        ],
+        "showSelectedSegmentsIn3d": false,
+        "valueLimits": [
+          -60268659.84463856,
+          -26791250.993203163
+        ],
+        "resolution3dView": [
+          -56239328.164777905,
+          60059918.003335685,
+          -22408992.53726019
+        ]
+      }
+    }
+  ]
 }
 ```
 

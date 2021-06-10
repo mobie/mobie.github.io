@@ -27,7 +27,9 @@ when the corresponding obejct is selected. The `bb_min` and `bb_max` columns spe
 be given in phyisical units. It may contain additional columns.
 
 Additional segmentation tables must contain the column `label_id` and may contain arbitraty additional columns.
-The label id `0` is reserved for background and should not be listed in any of the tables.
+The `label_id`s in the additional tables may be incomplete, but they must not contain ids not present in the default table.
+For example, given `label_id`s `[1, 2, 3, 4, 5]` in the default table the `label_id`s `[1, 2, 3, 4, 5]` or `[1, 3, 4]` are valid but `[1, 3, 4, 7]` is invalid.
+The label id `0` is reserved for the background and must not be listed in any of the tables.
 
 See an example segmentation default table for 8 objects with additional column `n_pixels` giving the number of pixels of the object.
 ```tsv

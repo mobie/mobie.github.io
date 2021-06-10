@@ -384,7 +384,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["sources", "tableData"],
+                    "required": ["sources", "tableData", "tables"],
                     "additionalProperties": false
                 }
             },
