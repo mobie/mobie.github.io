@@ -225,28 +225,22 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "segmentation": {
+  "image": {
     "imageData": {
-      "bdv.ome.zarr": {
-        "relativePath": "est irure ipsum ullamco"
+      "bdv.ome.zarr.s3": {
+        "relativePath": "dolor"
       },
       "bdv.n5.s3": {
-        "relativePath": "adipisicing laboris Excepteur"
+        "relativePath": "laboris anim id amet minim"
       },
       "bdv.n5": {
-        "relativePath": "cupidatat mollit in reprehenderit"
+        "relativePath": "minim qui esse laborum"
       },
       "bdv.hdf5": {
-        "relativePath": "Excepteur nisi aliqua"
+        "relativePath": "amet"
       },
-      "bdv.ome.zarr.s3": {
-        "relativePath": "id proident"
-      }
-    },
-    "description": "consequat commodo velit",
-    "tableData": {
-      "tsv": {
-        "relativePath": "laborum"
+      "bdv.ome.zarr": {
+        "relativePath": "incididunt in est"
       }
     }
   }
@@ -310,13 +304,15 @@ The metadata entries have the following structure (see below for an example json
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
-		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
+		- `name`: 
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
+		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources`, `tableData` and `tables` are required.
-		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
+		- `name`: 
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
+		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
 		- `tableData`: Contains a [tableData](#tableData-metadata).
 		- `tables`: The tables to be loaded for this grid view. This must include the default table as the first item. Contains a list with items:
@@ -326,8 +322,9 @@ The metadata entries have the following structure (see below for an example json
 	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
 		- `min`: Minimum coordinates for the crop. Contains a list of numbers.
-		- `names`: Optional names the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
+		- `name`: 
 		- `shiftToOrigin`: Whether to shift the source to the coordinate space origin after applying the crop. By default true.
+		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 - `uiSelectionGroup`: 
@@ -346,73 +343,118 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "isExclusive": true,
-  "uiSelectionGroup": "ZKqyZEjy",
-  "sourceTransforms": [
+  "isExclusive": false,
+  "uiSelectionGroup": "~8}cn|^BSKD",
+  "sourceDisplays": [
     {
-      "crop": {
-        "min": [
-          15224214.922728002,
-          -92822519.19506042,
-          27855108.142774433
-        ],
-        "max": [
-          -41550371.46968437,
-          -4956455.603436008,
-          -51419688.96202749
-        ],
+      "segmentationDisplay": {
+        "opacity": 0.3046827220289676,
+        "lut": "blueWhiteRed",
+        "name": "S-{fbv3P",
         "sources": [
-          "nz6>1,6[$3",
-          "vc=Fc=",
-          "YfO=~0.n=O",
-          "j-`u1\\v|P%",
-          "N(H=)>T)sG~"
+          "H?R$*>yA]^",
+          "*G",
+          "P=7W$XGhq",
+          "p,*m",
+          "Qz(C."
         ],
-        "timepoints": [
-          87049637,
-          47571472,
-          28294460
+        "selectedSegmentIds": [
+          "+>|GC;211;8512",
+          "=x\\7X<];78;0857",
+          "R1']tOFaL;12185;3929"
         ],
-        "names": [
-          "Dz(6x,Jz!",
-          "x|Pw<Rfb?~>",
-          "(iuuG",
-          "y.<W7",
-          "5D"
+        "tables": [
+          ")|.csv",
+          "f.tsv"
         ],
-        "shiftToOrigin": false
+        "resolution3dView": [
+          97974635.14468992,
+          -96927659.80907941,
+          52420194.29002842
+        ],
+        "scatterPlotAxes": [
+          "qa'B-n2Y'",
+          "+)gGyn"
+        ]
       }
     },
     {
-      "affine": {
-        "parameters": [
-          76749759.59380853,
-          -30279907.48095779,
-          -6125426.423083663,
-          -81411886.68635038,
-          -95649751.0467898,
-          -98474098.41340342,
-          -70501069.6933139,
-          27453410.816301942,
-          17488362.95466782,
-          -67170066.31310785,
-          92533985.42885855,
-          5138926.444357887
-        ],
+      "segmentationDisplay": {
+        "opacity": 0.42985613388634425,
+        "lut": "glasbeyZeroTransparent",
+        "name": "9",
         "sources": [
-          "ya",
-          "yV+\\X}iCNl",
-          "]|^mJw^7>"
+          "m|q-:fef#u",
+          "pr2.j",
+          "z}{B.2tyuP(",
+          "F=N^*@e3",
+          "C3Ezp3CE@2k"
         ],
-        "names": [
-          "Bum",
-          "EAV",
-          "e{rWKR",
-          "Rt8[,WbQ%P",
-          "$=Nky@"
+        "selectedSegmentIds": [
+          "+;396;00014",
+          "K,,TV7IGt\";50194849459;8608",
+          "-z_\"~;70348;2512877",
+          "K!rI<gX,;3577;41178",
+          "@pv;5063;67"
         ],
-        "timepoints": [
-          12684138
+        "colorByColumn": "%kK.fa^",
+        "scatterPlotAxes": [
+          "E",
+          "tNzax:@u<"
+        ]
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.2241566426144641,
+        "lut": "glasbeyZeroTransparent",
+        "name": "i!I>lkrxPH",
+        "sources": [
+          "G$6<#>gcqd",
+          "~-1T'*Zh",
+          "i",
+          "O\\Y\"["
+        ],
+        "colorByColumn": ".lF1&v<",
+        "showScatterPlot": true,
+        "valueLimits": [
+          46820789.08194488,
+          -22247073.732559115
+        ],
+        "resolution3dView": [
+          88323046.93829164,
+          -75484097.33636391,
+          84340036.07780123
+        ],
+        "scatterPlotAxes": [
+          "c+L,z3",
+          "=)xUA<>yFK"
+        ],
+        "showSelectedSegmentsIn3d": true,
+        "tables": [
+          "WCj.tsv",
+          "!lv1p]3).tsv",
+          "*Z.csv",
+          ").csv"
+        ],
+        "selectedSegmentIds": [
+          "6z\"W=xG\\oU;90646475;8649937028",
+          "uK;866;61427408089",
+          "j~LO\\%*m;33;75772"
+        ]
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.9195656267427257,
+        "lut": "blueWhiteRed",
+        "name": "z#Gqa*H6",
+        "sources": [
+          ":cf*"
+        ],
+        "valueLimits": [
+          84716283.82238102,
+          -98594744.5799268
         ]
       }
     }
