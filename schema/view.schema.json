@@ -359,7 +359,10 @@
                             "description": "Names of the sources after transformation. If given, must have the same number of elements as `sources`.",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/name"
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/name"
+                                }
                             },
                             "minItems": 1
                         },
