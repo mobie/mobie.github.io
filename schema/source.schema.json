@@ -48,7 +48,7 @@
                 },
                 "bdv.ome.zarr": {
                     "type": "object",
-                    "description": "Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem.",
+                    "description": "Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem with additional bdv xml metadata.",
                     "properties": {
                         "relativePath": {
                             "type": "string",
@@ -60,11 +60,35 @@
                 },
                 "bdv.ome.zarr.s3": {
                     "type": "object",
-                    "description": "Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store.",
+                    "description": "Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store with additional bdv xml metadata.",
                     "properties": {
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "ome.zarr": {
+                    "type": "object",
+                    "description": "Data stored in the ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the ome.zarr file, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "ome.zarr.s3": {
+                    "type": "object",
+                    "description": "Data stored in the ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store.",
+                    "properties": {
+                        "s3Address": {
+                            "type": "string",
+                            "description": "The s3 address for this image data."
                         }
                     },
                     "required": ["relativePath"],
