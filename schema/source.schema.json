@@ -91,7 +91,7 @@
                             "description": "The s3 address for this image data."
                         }
                     },
-                    "required": ["relativePath"],
+                    "required": ["s3Address"],
                     "additionalProperties": false
                 },
                 "openOrganelle.s3": {
