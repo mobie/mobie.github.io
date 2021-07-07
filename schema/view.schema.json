@@ -56,7 +56,7 @@
                         "blendingMode": {
                             "description": "The mode for blending multiple image sources.",
                             "type": "string",
-                            "enum": ["average", "averageOccluding", "sum", "sumOccluding"]
+                            "enum": ["sum", "sumOccluding"]
                         },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
@@ -103,6 +103,11 @@
                             "type": "number",
                             "minimum": 0,
                             "maximum": 1
+                        },
+                        "blendingMode": {
+                            "description": "The mode for blending multiple image sources.",
+                            "type": "string",
+                            "enum": ["sum", "sumOccluding"]
                         },
                         "lut": {
                             "description": "The segmentation look-up-table for the segmentation coloring.",
