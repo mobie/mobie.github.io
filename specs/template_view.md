@@ -2,16 +2,19 @@
 
 A `view` stores all metadata necessary to fully reproduce a MoBIE viewer state.
 
-### <a name="view-grid"></a>Grid Views
+### <a name="view-source-annotations"></a>Source Annotations
 
-Grid views can be used to arrange sources in a grid automatically. They must have at least one associated table. 
-Tables for grid views should be stored as tab separated values, but may also be comma separated. They must contain the column `grid_id`, which is
-used for navigation in the viewer, and must contain at least one more column.
-The `grid_id` column indexes the 2d grid position, assuming the same order of sources as in the `sources` list given in the view metadata.
+Views can optionally contain source annotations, which are specified via a `sourceAnnotationDisplay` (see schema description below). Source annotations contain a table, which has rows that are associated with the sources in this view and can be used to navigate to the sources (by clicking on the row) and store additional source level annotations.
+Source annotaiton tables should be stored as tab separated values, but may also be comma separated.
+They must contain the column `source_annotation_id`, which is used for navigation in the viewer, and must contain at least one more column.
+
+A primary application of source annotations are tables for views containing a `grid` transform (see schema description below).
+In this case the `source_annotation_id` column corresponds to the flat grid position, which is computed from the 2d grid position according to the row-major indexing convention.
+The mapping of grid positions to sources is defined in the `sources` field.
 
 See an example grid view table for 4 grid positions that also gives the presence of different organelles for each position.
 ```tsv
-grid_id mitochondria    vesicles    golgi   er
+source_annotation_id    mitochondria    vesicles    golgi   er
 0   1   0   1   0
 1   1   0   1   1
 2   0   0   0   1
