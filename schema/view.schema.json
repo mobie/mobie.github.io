@@ -10,6 +10,72 @@
             "pattern": "^[^;\\/ ]+$"
         },
 
+        "tables": {
+            "description": "The tables to load for this display. Must include the default table as the first item.",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "pattern": "^[^;\\/ ]+\\.csv$"
+                    },
+                    {
+                        "type": "string",
+                        "pattern": "^[^;\\/ ]+\\.tsv$"
+                    }
+                ]
+            },
+            "minItems": 1
+        },
+
+        "lut": {
+            "description": "The look-up-table for categorical coloring modes.",
+            "type": "string",
+            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis"]
+        },
+
+        "opacity": {
+            "description": "The alpha value used for blending segmentation and image data in the viewer.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+
+        "valueLimits": {
+            "description": "Value limits for numerical color maps like 'blueWhiteRed'.",
+            "type": "array",
+            "items": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "number"
+                }
+            ],
+            "additionalItems": false
+        },
+
+        "scatterPlotAxes": {
+            "description": "The names of columns which should be used for the scatter plot.",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/name"
+            },
+            "maxItems": 2,
+            "minItems": 2
+        },
+
+        "mapOfSources": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/name"
+                },
+                "minItems": 1
+            }
+        },
+
         "imageDisplay": {
             "description": "",
             "type": "object",
@@ -48,10 +114,7 @@
                             "$ref": "#/definitions/name"
                         },
                         "opacity": {
-                            "description": "The alpha value used for blending segmentation and image data in the viewer.",
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1
+                            "$ref": "#/definitions/opacity"
                         },
                         "blendingMode": {
                             "description": "The mode for blending multiple image sources.",
@@ -99,10 +162,7 @@
                     "type": "object",
                     "properties": {
                         "opacity": {
-                            "description": "The alpha value used for blending segmentation and image data in the viewer.",
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1
+                            "$ref": "#/definitions/opacity"
                         },
                         "blendingMode": {
                             "description": "The mode for blending multiple image sources.",
@@ -110,9 +170,7 @@
                             "enum": ["sum", "sumOccluding"]
                         },
                         "lut": {
-                            "description": "The segmentation look-up-table for the segmentation coloring.",
-                            "type": "string",
-                            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis"]
+                            "$ref": "#/definitions/lut"
                         },
                         "colorByColumn": {
                             "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
@@ -133,13 +191,7 @@
                             "$ref": "#/definitions/name"
                         },
                         "scatterPlotAxes": {
-                            "description": "The names of columns which should be used for the scatter plot.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/name"
-                            },
-                            "maxItems": 2,
-                            "minItems": 2
+                            "$ref": "#/definitions/scatterPlotAxes"
                         },
                         "selectedSegmentIds": {
                             "description": "List of selected segment ids.",
@@ -166,34 +218,10 @@
                             "minItems": 1
                         },
                         "tables": {
-                            "description": "The tables to be loaded for this view. This must include the default table as the first item.",
-                            "type": "array",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "type": "string",
-                                        "pattern": "^[^;\\/ ]+\\.csv$"
-                                    },
-                                    {
-                                        "type": "string",
-                                        "pattern": "^[^;\\/ ]+\\.tsv$"
-                                    }
-                                ]
-                            },
-                            "minItems": 1
+                            "$ref": "#/definitions/tables"
                         },
                         "valueLimits": {
-                            "description": "Value limits for numerical color maps like 'blueWhiteRed'.",
-                            "type": "array",
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "additionalItems": false
+                            "$ref": "#/definitions/valueLimits"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
@@ -201,6 +229,64 @@
                 }
             },
             "required": ["segmentationDisplay"],
+            "additionalProperties": false
+        },
+
+        "sourceAnnotationDisplay": {
+            "description": "Viewer state for a spatial arrangement of sources, e.g. via grid transform, with an associated table.",
+            "type": "object",
+            "properties": {
+                "sourceAnnotationDisplay": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "$ref": "#/definitions/name"
+                        },
+                        "sources": {
+                            "description": "Map of source_annotation_ids (first table column) to source per location.",
+                            "$ref": "#/definitions/mapOfSources",
+                            "minProperties": 1
+                        },
+                        "tableData": {
+                            "$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json#/definitions/tableData"
+                        },
+                        "tables": {
+                            "$ref": "#/definitions/tables"
+                        },
+                        "lut": {
+                            "$ref": "#/definitions/lut"
+                        },
+                        "colorByColumn": {
+                            "description": "Name of table column that is used for coloring. By default the 'source_annotation_id' column is used.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "opacity": {
+                            "$ref": "#/definitions/opacity"
+                        },
+                        "valueLimits": {
+                            "$ref": "#/definitions/valueLimits"
+                        },
+                        "selectedSourceAnnotationIds": {
+                            "description": "List of selected source annotation ids.",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^\\d+;\\d+$"
+                            }
+                        },
+                        "scatterPlotAxes": {
+                            "$ref": "#/definitions/scatterPlotAxes"
+                        },
+                        "showScatterPlot": {
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": ["sources", "tableData", "tables", "opacity", "lut", "name"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["sourceAnnotationDisplay"],
             "additionalProperties": false
         },
 
@@ -336,64 +422,31 @@
                     "type": "object",
                     "properties": {
                         "positions": {
-                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`.",
-                            "type": "array",
-                            "items": {
+                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same keys as `sources`, mapping to 2d grid positions",
+                            "type": "object",
+                            "additionalProperties": {
                                 "type": "array",
                                 "items": {
                                     "type": "integer",
                                     "maxItems": 2,
                                     "minItems": 2
                                 }
-                            }
+                            },
+                            "minProperties": 2
                         },
                         "sources": {
-                            "description": "The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position.",
-                            "type": "array",
-                            "items": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string",
-                                    "pattern": "^[^,\\/ ]+$"
-                                },
-                                "minItems": 1
-                            },
-                            "minItems": 2
+                            "description": "The sources for the grid. Map of grid posititions to sources per position.",
+                            "$ref": "#/definitions/mapOfSources",
+                            "minProperties": 2
                         },
                         "sourceNamesAfterTransform": {
-                            "description": "Names of the sources after transformation. If given, must have the same number of elements as `sources`.",
-                            "type": "array",
-                            "items": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/definitions/name"
-                                }
-                            },
-                            "minItems": 1
+                            "description": "Names of the sources after transformation. If given, must have the same structure as `sources`.",
+                            "$ref": "#/definitions/mapOfSources",
+                            "minProperties": 2
                         },
                         "name": {
                             "description": "Name of this transformation",
                             "$ref": "#/definitions/name"
-                        },
-                        "tableData": {
-                            "$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json#/definitions/tableData"
-                        },
-                        "tables": {
-                            "description": "The tables to be loaded for this grid view. This must include the default table as the first item.",
-                            "type": "array",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "type": "string",
-                                        "pattern": "^[^;\\/ ]+\\.csv$"
-                                    },
-                                    {
-                                        "type": "string",
-                                        "pattern": "^[^;\\/ ]+\\.tsv$"
-                                    }
-                                ]
-                            },
-                            "minItems": 1
                         },
                         "timepoints": {
                             "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
@@ -404,7 +457,7 @@
                             "minItems": 1
                         }
                     },
-                    "required": ["sources", "tableData", "tables"],
+                    "required": ["sources"],
                     "additionalProperties": false
                 }
             },
@@ -432,7 +485,8 @@
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/imageDisplay"},
-                {"$ref": "#/definitions/segmentationDisplay"}
+                {"$ref": "#/definitions/segmentationDisplay"},
+                {"$ref": "#/definitions/sourceAnnotationDisplay"}
             ]}
         },
         "sourceTransforms": {
