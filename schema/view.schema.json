@@ -266,7 +266,7 @@
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
                         },
-                        "selectedSourceAnnotationIds": {
+                        "selectedAnnotationIds": {
                             "description": "List of selected source annotation ids.",
                             "type": "array",
                             "items": {
