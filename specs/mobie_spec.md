@@ -198,10 +198,14 @@ The metadata entries have the following structure (see below for an example json
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
 		- `bdv.n5.s3`: Data stored in the bdv.n5.s3 format, i.e. n5 data that is stored on a s3 object store. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
-		- `bdv.ome.zarr`: Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem. The field `relativePath` is required.
+		- `bdv.ome.zarr`: Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem with additional bdv xml metadata. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
-		- `bdv.ome.zarr.s3`: Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store. The field `relativePath` is required.
+		- `bdv.ome.zarr.s3`: Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store with additional bdv xml metadata. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
+		- `ome.zarr`: Data stored in the ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem. The field `relativePath` is required.
+			- `relativePath`: The file path to the ome.zarr file, relative to the dataset root location.
+		- `ome.zarr.s3`: Data stored in the ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store. The field `s3Address` is required.
+			- `s3Address`: The s3 address for this image data.
 		- `openOrganelle.s3`: Data stored in the openOrganelle file format on a s3 object store. The field `s3Address` is required.
 			- `s3Address`: The s3 address for this image data.
 - `segmentation`: A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml. The field `imageData` is required.
@@ -213,10 +217,14 @@ The metadata entries have the following structure (see below for an example json
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
 		- `bdv.n5.s3`: Data stored in the bdv.n5.s3 format, i.e. n5 data that is stored on a s3 object store. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
-		- `bdv.ome.zarr`: Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem. The field `relativePath` is required.
+		- `bdv.ome.zarr`: Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem with additional bdv xml metadata. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
-		- `bdv.ome.zarr.s3`: Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store. The field `relativePath` is required.
+		- `bdv.ome.zarr.s3`: Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store with additional bdv xml metadata. The field `relativePath` is required.
 			- `relativePath`: The file path to the xml storing the bdv metadata, relative to the dataset root location.
+		- `ome.zarr`: Data stored in the ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem. The field `relativePath` is required.
+			- `relativePath`: The file path to the ome.zarr file, relative to the dataset root location.
+		- `ome.zarr.s3`: Data stored in the ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store. The field `s3Address` is required.
+			- `s3Address`: The s3 address for this image data.
 		- `openOrganelle.s3`: Data stored in the openOrganelle file format on a s3 object store. The field `s3Address` is required.
 			- `s3Address`: The s3 address for this image data.
 	- `tableData`: Description of the table data for this source, including the format and the location of the table data. The field `tsv` is required.
@@ -225,24 +233,27 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "image": {
+  "segmentation": {
     "imageData": {
-      "bdv.ome.zarr.s3": {
-        "relativePath": "dolor"
+      "bdv.hdf5": {
+        "relativePath": "in quis laboris Lorem"
+      },
+      "openOrganelle.s3": {
+        "s3Address": "Duis minim qui nisi"
       },
       "bdv.n5.s3": {
-        "relativePath": "laboris anim id amet minim"
+        "relativePath": "est aute sunt ea labore"
       },
-      "bdv.n5": {
-        "relativePath": "minim qui esse laborum"
-      },
-      "bdv.hdf5": {
-        "relativePath": "amet"
-      },
-      "bdv.ome.zarr": {
-        "relativePath": "incididunt in est"
+      "ome.zarr.s3": {
+        "s3Address": "culpa consequat"
       }
-    }
+    },
+    "tableData": {
+      "tsv": {
+        "relativePath": "mollit commodo aute sint qui"
+      }
+    },
+    "description": "qui"
   }
 }
 ```
@@ -251,20 +262,24 @@ The metadata entries have the following structure (see below for an example json
 
 A `view` stores all metadata necessary to fully reproduce a MoBIE viewer state.
 
-### <a name="view-grid"></a>Grid Views
+### <a name="view-source-annotations"></a>Source Annotations
 
-Grid views can be used to arrange sources in a grid automatically. They must have at least one associated table. 
-Tables for grid views should be stored as tab separated values, but may also be comma separated. They must contain the column `grid_id`, which is
-used for navigation in the viewer, and must contain at least one more column.
-The `grid_id` column indexes the 2d grid position, assuming the same order of sources as in the `sources` list given in the view metadata.
+Views can optionally contain source annotations, which are specified via a `sourceAnnotationDisplay` (see schema description below). Source annotations contain a table, which has rows that are associated with the sources in this view and can be used to navigate to the sources (by clicking on the row) and store additional source level annotations.
+Source annotation tables should be stored as tab separated values, but may also be comma separated.
+They must contain the column `annotation_id`, which is used for navigation in the viewer, and must contain at least one more column.
+The values in the `annotation_id` must be strings and must correspond to the keys of the `sources` field in the `sourceAnnotationDisplay`.
+A primary application of source annotations are tables for views containing a `grid` transform (see schema description below).
+
+In this case the `annotation_id` column corresponds to the flat grid position, which is computed from the 2d grid position according to the row-major indexing convention.
+The mapping of grid positions to sources is defined in the `sources` field.
 
 See an example grid view table for 4 grid positions that also gives the presence of different organelles for each position.
 ```tsv
-grid_id mitochondria    vesicles    golgi   er
-0   1   0   1   0
-1   1   0   1   1
-2   0   0   0   1
-3   0   1   0   1
+annotation_id    mitochondria    vesicles    golgi   er
+source1   1   0   1   0
+source2   1   0   1   1
+source3   0   0   0   1
+source4   0   1   0   1
 ```
 
 ### <a name="view-metadata"></a>View Metadata
@@ -288,8 +303,9 @@ The metadata entries have the following structure (see below for an example json
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
 		- `sources`: The image sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer. Contains a list of strings.
 	- `segmentationDisplay`:  The fields `opacity`, `lut`, `name` and `sources` are required.
+		- `blendingMode`: The mode for blending multiple image sources.
 		- `colorByColumn`: 
-		- `lut`: The segmentation look-up-table for the segmentation coloring.
+		- `lut`: The look-up-table for categorical coloring modes.
 		- `name`: 
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
@@ -298,7 +314,21 @@ The metadata entries have the following structure (see below for an example json
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
 		- `sources`: The segmentation sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer. Contains a list of strings.
-		- `tables`: The tables to be loaded for this view. This must include the default table as the first item. Contains a list with items:
+		- `tables`: The tables to load for this display. Must include the default table as the first item. Contains a list with items:
+			- ``: 
+			- ``: 
+		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
+	- `sourceAnnotationDisplay`:  The fields `sources`, `tableData`, `tables`, `opacity`, `lut` and `name` are required.
+		- `colorByColumn`: 
+		- `lut`: The look-up-table for categorical coloring modes.
+		- `name`: 
+		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
+		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
+		- `selectedAnnotationIds`: List of selected source annotation ids. Contains a list of strings.
+		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.
+		- `sources`: Contains array with items of type [None](#None-metadata)
+		- `tableData`: Contains a [tableData](#tableData-metadata).
+		- `tables`: The tables to load for this display. Must include the default table as the first item. Contains a list with items:
 			- ``: 
 			- ``: 
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
@@ -309,15 +339,11 @@ The metadata entries have the following structure (see below for an example json
 		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The fields `sources`, `tableData` and `tables` are required.
+	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The field `sources` is required.
 		- `name`: 
-		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources`. Contains a list of arrays.
-		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
-		- `sources`: The sources for the grid. The outer list specifies the grid posititions, the inner list the sources per grid position. Contains a list of arrays.
-		- `tableData`: Contains a [tableData](#tableData-metadata).
-		- `tables`: The tables to be loaded for this grid view. This must include the default table as the first item. Contains a list with items:
-			- ``: 
-			- ``: 
+		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same keys as `sources`, mapping to 2d grid positions.Contains array with items of type [None](#None-metadata)
+		- `sourceNamesAfterTransform`: Contains array with items of type [None](#None-metadata)
+		- `sources`: Contains array with items of type [None](#None-metadata)
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
@@ -344,117 +370,166 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": "~8}cn|^BSKD",
+  "uiSelectionGroup": "~",
+  "description": "id consectetur tempor in sed",
   "sourceDisplays": [
     {
       "segmentationDisplay": {
-        "opacity": 0.3046827220289676,
-        "lut": "blueWhiteRed",
-        "name": "S-{fbv3P",
+        "opacity": 0.3558171101635148,
+        "lut": "viridis",
+        "name": "Hh2R",
         "sources": [
-          "H?R$*>yA]^",
-          "*G",
-          "P=7W$XGhq",
-          "p,*m",
-          "Qz(C."
-        ],
-        "selectedSegmentIds": [
-          "+>|GC;211;8512",
-          "=x\\7X<];78;0857",
-          "R1']tOFaL;12185;3929"
+          "|3<m"
         ],
         "tables": [
-          ")|.csv",
-          "f.tsv"
-        ],
-        "resolution3dView": [
-          97974635.14468992,
-          -96927659.80907941,
-          52420194.29002842
+          ".2nvH3c$QAC.tsv",
+          "M.tsv",
+          "pq4s.csv"
         ],
         "scatterPlotAxes": [
-          "qa'B-n2Y'",
-          "+)gGyn"
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.42985613388634425,
-        "lut": "glasbeyZeroTransparent",
-        "name": "9",
-        "sources": [
-          "m|q-:fef#u",
-          "pr2.j",
-          "z}{B.2tyuP(",
-          "F=N^*@e3",
-          "C3Ezp3CE@2k"
+          "c'O::",
+          "lrxMC-f?"
         ],
-        "selectedSegmentIds": [
-          "+;396;00014",
-          "K,,TV7IGt\";50194849459;8608",
-          "-z_\"~;70348;2512877",
-          "K!rI<gX,;3577;41178",
-          "@pv;5063;67"
-        ],
-        "colorByColumn": "%kK.fa^",
-        "scatterPlotAxes": [
-          "E",
-          "tNzax:@u<"
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.2241566426144641,
-        "lut": "glasbeyZeroTransparent",
-        "name": "i!I>lkrxPH",
-        "sources": [
-          "G$6<#>gcqd",
-          "~-1T'*Zh",
-          "i",
-          "O\\Y\"["
-        ],
-        "colorByColumn": ".lF1&v<",
+        "blendingMode": "sum",
+        "colorByColumn": "p\\hv",
         "showScatterPlot": true,
         "valueLimits": [
-          46820789.08194488,
-          -22247073.732559115
-        ],
-        "resolution3dView": [
-          88323046.93829164,
-          -75484097.33636391,
-          84340036.07780123
-        ],
-        "scatterPlotAxes": [
-          "c+L,z3",
-          "=)xUA<>yFK"
+          -96127174.89251122,
+          10592213.456028342
         ],
         "showSelectedSegmentsIn3d": true,
-        "tables": [
-          "WCj.tsv",
-          "!lv1p]3).tsv",
-          "*Z.csv",
-          ").csv"
-        ],
         "selectedSegmentIds": [
-          "6z\"W=xG\\oU;90646475;8649937028",
-          "uK;866;61427408089",
-          "j~LO\\%*m;33;75772"
+          "sF*`N(V4&xq;30;0299",
+          "P0Q3yh)x;3118897;44912224",
+          "m:mL`9,-ZJZ;621760164;10",
+          "D^M4d4Zw\\;660;950112214"
+        ],
+        "resolution3dView": [
+          -6351403.396917775,
+          55201063.502655506,
+          50285329.4329617
+        ]
+      }
+    },
+    {
+      "sourceAnnotationDisplay": {
+        "sources": {
+          "deserunt9c": [
+            "uY$:y].",
+            "Sa\\vxh",
+            "m\\]a~]l"
+          ]
+        },
+        "tableData": {
+          "tsv": {
+            "relativePath": "eu"
+          }
+        },
+        "tables": [
+          "0O#V~-nV.tsv",
+          "o@.tsv",
+          "v\"K.tsv",
+          "=,2WBK.tsv",
+          "UsPNr)-8~.tsv"
+        ],
+        "opacity": 0.23130875953467767,
+        "lut": "glasbey",
+        "name": "{~",
+        "valueLimits": [
+          54941373.97505513,
+          -93888085.9906278
+        ],
+        "colorByColumn": ")of^hV^",
+        "showScatterPlot": false
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.21668963907827354,
+        "lut": "viridis",
+        "name": "Fxtr]kO",
+        "sources": [
+          "aKfV-Z*uV",
+          "~?7{>JB",
+          "O:*=!aI"
+        ],
+        "scatterPlotAxes": [
+          "z_",
+          "}j^!k"
+        ],
+        "tables": [
+          "eq7baF:.tsv"
+        ],
+        "blendingMode": "sum",
+        "resolution3dView": [
+          53334130.28314,
+          34492911.200997055,
+          -60395806.05433388
+        ],
+        "showSelectedSegmentsIn3d": true,
+        "valueLimits": [
+          47524030.549262345,
+          13321421.744171947
+        ],
+        "showScatterPlot": false,
+        "colorByColumn": "],Z(\\,B47&J",
+        "selectedSegmentIds": [
+          "jqe2F|d;10;3015",
+          "np;10;12817195501"
         ]
       }
     },
     {
       "segmentationDisplay": {
-        "opacity": 0.9195656267427257,
-        "lut": "blueWhiteRed",
-        "name": "z#Gqa*H6",
+        "opacity": 0.724606387654052,
+        "lut": "glasbeyZeroTransparent",
+        "name": "q3$mQ=1e`K",
         "sources": [
-          ":cf*"
+          "Nn&-q~_Y}",
+          "hc=Zzh",
+          "9\"[F@T",
+          "S",
+          "uYH"
         ],
+        "showSelectedSegmentsIn3d": false,
+        "selectedSegmentIds": [
+          "hTuiq[w+>*m;970882;3"
+        ],
+        "scatterPlotAxes": [
+          "HmFBq`y",
+          ":?"
+        ],
+        "showScatterPlot": false,
+        "resolution3dView": [
+          -24834026.34798844,
+          25605925.898883,
+          32406052.29982543
+        ],
+        "tables": [
+          "_.csv",
+          "+@\\#rxW.tsv",
+          "{w?.csv",
+          "[.tsv"
+        ],
+        "colorByColumn": "$P)V6",
         "valueLimits": [
-          84716283.82238102,
-          -98594744.5799268
+          -99612413.22152166,
+          -68168005.60299207
+        ],
+        "blendingMode": "sumOccluding"
+      }
+    },
+    {
+      "segmentationDisplay": {
+        "opacity": 0.459514946359483,
+        "lut": "argbColumn",
+        "name": "T",
+        "sources": [
+          "\"?w",
+          "{FF\\[",
+          "\"WM{,A7F,:s",
+          "i7YlOFx<",
+          "|FM$}bI[)FH"
         ]
       }
     }

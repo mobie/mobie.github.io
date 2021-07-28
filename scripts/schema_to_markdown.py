@@ -146,9 +146,19 @@ def add_obj(name, obj, md, indent, schema):
 
     additional = obj.get('additionalProperties', None)
     if isinstance(additional, dict):
-        additional_type = get_external_link(additional["$ref"])
-        assert additional_type is not None
-        line += f" Contains fields of type [{additional_type}](#{additional_type}-metadata)."
+        try:
+            additional_type = get_external_link(additional["$ref"])
+        except KeyError:
+            additional_type = None
+        if additional_type is None:
+            container_type = additional["type"]
+            try:
+                item_type = get_external_link(additional["items"]["$ref"])
+            except KeyError:
+                item_type = get_external_link(additional["items"]["type"])
+            line += f"Contains {container_type} with items of type [{item_type}](#{item_type}-metadata)"
+        else:
+            line += f" Contains fields of type [{additional_type}](#{additional_type}-metadata)."
 
     if required:
         required = [f'`{req}`' for req in required]
