@@ -400,8 +400,8 @@
                             },
                             "minItems": 1
                         },
-                        "shiftToOrigin": {
-                            "description": "Whether to shift the source to the coordinate space origin after applying the crop. By default true.",
+                        "centerAtOrigin": {
+                            "description": "Whether to center the source at the coordinate space origin after applying the crop. By default true.",
                             "type": "boolean"
                         }
                     },
