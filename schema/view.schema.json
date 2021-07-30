@@ -455,6 +455,10 @@
                                 "type": "integer"
                             },
                             "minItems": 1
+                        },
+                        "centerAtOrigin": {
+                            "type": "boolean",
+                            "description": "Center the views at the origin for 3d sources."
                         }
                     },
                     "required": ["sources"],
