@@ -143,6 +143,10 @@
                                 "pattern": "^[^,\\/ ]+$"
                             },
                             "minItems": 1
+                        },
+                        "visible": {
+                            "description": "Are the sources of this display visible? Default is true.",
+                            "type": "boolean"
                         }
                     },
                     "required": ["color", "contrastLimits", "opacity", "name", "sources"],
@@ -222,6 +226,10 @@
                         },
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
+                        },
+                        "visible": {
+                            "description": "Are the sources of this display visible? Default is true.",
+                            "type": "boolean"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
