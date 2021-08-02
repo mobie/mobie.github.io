@@ -230,6 +230,10 @@
                         "visible": {
                             "description": "Are the sources of this display visible? Default is true.",
                             "type": "boolean"
+                        },
+                        "showTable": {
+                            "description" : "Show the table GUI element. Default is true (if the display has a table).",
+                            "type": "boolean"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
@@ -287,6 +291,10 @@
                         },
                         "showScatterPlot": {
                             "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.",
+                            "type": "boolean"
+                        },
+                        "showTable": {
+                            "description" : "Show the table GUI element. Default is true.",
                             "type": "boolean"
                         }
                     },
