@@ -296,6 +296,10 @@
                         "showTable": {
                             "description" : "Show the table GUI element. Default is true.",
                             "type": "boolean"
+                        },
+                        "visible": {
+                            "description": "Is the color overlay of this display visible? Default is true.",
+                            "type": "boolean"
                         }
                     },
                     "required": ["sources", "tableData", "tables", "opacity", "lut", "name"],
