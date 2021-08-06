@@ -457,9 +457,12 @@
                             "description": "The sources this transformation is applied to.",
                             "type": "array",
                             "items": {
-                                "type": "integer",
-                                "maxItems": 2,
-                                "minItems": 2
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "maxItems": 2,
+                                    "minItems": 2
+                                }
                             },
                             "minItems": 1
                         },
