@@ -433,6 +433,44 @@
             "additionalProperties": false
         },
 
+        "mergedGrid": {
+            "description": "",
+            "type": "object",
+            "required": ["mergedGrid"],
+            "additionalProperties": false,
+            "properties": {
+                "mergedGrid": {
+                    "required": ["mergedGridSourceName", "sources"],
+                    "additinalProperties": false,
+                    "type": "object",
+                    "description": "merged grid",
+                    "properties": {
+                        "sources": {
+                            "description": "The sources this transformation is applied to.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "positions": {
+                            "description": "The sources this transformation is applied to.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "maxItems": 2,
+                                "minItems": 2
+                            },
+                            "minItems": 1
+                        },
+                        "mergedGridSourceName": {
+                            "$ref": "#/definitions/name"
+                        }
+                    }
+                }
+            }
+        },
+
         "grid": {
             "description": "",
             "type": "object",
@@ -519,7 +557,8 @@
             "items": {"anyOf": [
                 {"$ref": "#/definitions/affine"},
                 {"$ref": "#/definitions/grid"},
-                {"$ref": "#/definitions/crop"}
+                {"$ref": "#/definitions/crop"},
+                {"$ref": "#/definitions/mergedGrid"}
             ]}
         },
         "viewerTransform": {
