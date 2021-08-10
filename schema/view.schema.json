@@ -565,7 +565,7 @@
                 {"$ref": "#/definitions/affine"},
                 {"$ref": "#/definitions/grid"},
                 {"$ref": "#/definitions/crop"},
-                {"$ref": "#/definitions/mergedGrid"}
+                {"$ref": "#/definitions/transformGrid"}
             ]}
         },
         "viewerTransform": {
