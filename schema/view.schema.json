@@ -468,6 +468,10 @@
                         },
                         "mergedGridSourceName": {
                             "$ref": "#/definitions/name"
+                        },
+                        "centerAtOrigin": {
+                            "description": "Whether to center the source at the coordinate space origin after applying the crop. By default true.",
+                            "type": "boolean"
                         }
                     }
                 }
