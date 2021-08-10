@@ -433,17 +433,17 @@
             "additionalProperties": false
         },
 
-        "mergedGrid": {
+        "grid": {
             "description": "",
             "type": "object",
-            "required": ["mergedGrid"],
+            "required": ["grid"],
             "additionalProperties": false,
             "properties": {
-                "mergedGrid": {
+                "grid": {
                     "required": ["mergedGridSourceName", "sources"],
                     "additinalProperties": false,
                     "type": "object",
-                    "description": "merged grid",
+                    "description": "A grid view of multiple sources that creates an new merged source.",
                     "properties": {
                         "sources": {
                             "description": "The sources this transformation is applied to.",
@@ -474,11 +474,11 @@
             }
         },
 
-        "grid": {
+        "transformGrid": {
             "description": "",
             "type": "object",
             "properties": {
-                "grid": {
+                "transformGrid": {
                     "description": "Arrange multiple sources in a grid by offseting sources with a grid spacing.",
                     "type": "object",
                     "properties": {
@@ -526,7 +526,7 @@
                     "additionalProperties": false
                 }
             },
-            "required": ["grid"],
+            "required": ["transformGrid"],
             "additionalProperties": false
         }
     },
