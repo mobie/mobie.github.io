@@ -454,7 +454,7 @@
                             "minItems": 1
                         },
                         "positions": {
-                            "description": "The sources this transformation is applied to.",
+                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x].",
                             "type": "array",
                             "items": {
                                 "type": "array",
@@ -487,7 +487,7 @@
                     "type": "object",
                     "properties": {
                         "positions": {
-                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same keys as `sources`, mapping to 2d grid positions",
+                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same keys as `sources` and map to 2d grid positions specified as [y, x]",
                             "type": "object",
                             "additionalProperties": {
                                 "type": "array",
