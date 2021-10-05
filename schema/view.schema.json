@@ -87,6 +87,20 @@
             }
         },
 
+        "positions": {
+            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x].",
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "integer",
+                    "maxItems": 2,
+                    "minItems": 2
+                }
+            },
+            "minItems": 2
+        },
+
         "imageDisplay": {
             "description": "",
             "type": "object",
@@ -462,20 +476,10 @@
                             "items": {
                                 "$ref": "#/definitions/name"
                             },
-                            "minItems": 1
+                            "minItems": 2
                         },
                         "positions": {
-                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x].",
-                            "type": "array",
-                            "items": {
-                                "type": "array",
-                                "items": {
-                                    "type": "integer",
-                                    "maxItems": 2,
-                                    "minItems": 2
-                                }
-                            },
-                            "minItems": 1
+                            "$ref": "#/definitions/positions"
                         },
                         "mergedGridSourceName": {
                             "$ref": "#/definitions/name"
@@ -498,17 +502,7 @@
                     "type": "object",
                     "properties": {
                         "positions": {
-                            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same keys as `sources` and map to 2d grid positions specified as [y, x]",
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "array",
-                                "items": {
-                                    "type": "integer",
-                                    "maxItems": 2,
-                                    "minItems": 2
-                                }
-                            },
-                            "minProperties": 2
+                            "$ref": "#/definitions/positions"
                         },
                         "sources": {
                             "description": "The sources for the grid. Map of grid posititions to sources per position.",
