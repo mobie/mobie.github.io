@@ -76,6 +76,17 @@
             }
         },
 
+        "nestedListOfSources": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/name"
+                },
+                "minItems": 1
+            }
+        },
+
         "imageDisplay": {
             "description": "",
             "type": "object",
@@ -433,13 +444,13 @@
             "additionalProperties": false
         },
 
-        "grid": {
+        "mergedGrid": {
             "description": "",
             "type": "object",
             "required": ["grid"],
             "additionalProperties": false,
             "properties": {
-                "grid": {
+                "mergedGrid": {
                     "required": ["mergedGridSourceName", "sources"],
                     "additinalProperties": false,
                     "type": "object",
@@ -475,14 +486,16 @@
                         }
                     }
                 }
-            }
+            },
+            "required": ["mergedGrid"],
+            "additionalProperties": false
         },
 
-        "transformGrid": {
+        "transformedGrid": {
             "description": "",
             "type": "object",
             "properties": {
-                "transformGrid": {
+                "transformedGrid": {
                     "description": "Arrange multiple sources in a grid by offseting sources with a grid spacing.",
                     "type": "object",
                     "properties": {
@@ -501,13 +514,13 @@
                         },
                         "sources": {
                             "description": "The sources for the grid. Map of grid posititions to sources per position.",
-                            "$ref": "#/definitions/mapOfSources",
-                            "minProperties": 2
+                            "$ref": "#/definitions/nestedListOfSources",
+                            "minItems": 2
                         },
                         "sourceNamesAfterTransform": {
                             "description": "Names of the sources after transformation. If given, must have the same structure as `sources`.",
-                            "$ref": "#/definitions/mapOfSources",
-                            "minProperties": 2
+                            "$ref": "#/definitions/nestedListOfSources",
+                            "minItems": 2
                         },
                         "name": {
                             "description": "Name of this transformation",
@@ -530,7 +543,7 @@
                     "additionalProperties": false
                 }
             },
-            "required": ["transformGrid"],
+            "required": ["transformedGrid"],
             "additionalProperties": false
         }
     },
@@ -563,9 +576,9 @@
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/affine"},
-                {"$ref": "#/definitions/grid"},
+                {"$ref": "#/definitions/mergedGrid"},
                 {"$ref": "#/definitions/crop"},
-                {"$ref": "#/definitions/transformGrid"}
+                {"$ref": "#/definitions/transformedGrid"}
             ]}
         },
         "viewerTransform": {
