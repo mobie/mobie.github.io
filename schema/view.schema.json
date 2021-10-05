@@ -447,7 +447,7 @@
         "mergedGrid": {
             "description": "",
             "type": "object",
-            "required": ["grid"],
+            "required": ["mergedGrid"],
             "additionalProperties": false,
             "properties": {
                 "mergedGrid": {
@@ -486,9 +486,7 @@
                         }
                     }
                 }
-            },
-            "required": ["mergedGrid"],
-            "additionalProperties": false
+            }
         },
 
         "transformedGrid": {
