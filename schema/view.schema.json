@@ -209,7 +209,7 @@
                             "$ref": "#/definitions/scatterPlotAxes"
                         },
                         "selectedSegmentIds": {
-                            "description": "List of selected segment ids.",
+                            "description": "List of selected segment ids, each of the form sourceName;timePoint;label_id",
                             "type": "array",
                             "items": {
                                 "type": "string",
@@ -290,7 +290,7 @@
                             "$ref": "#/definitions/valueLimits"
                         },
                         "selectedAnnotationIds": {
-                            "description": "List of selected source annotation ids.",
+                            "description": "List of selected source annotation ids, each of the form timePoint;annotationId",
                             "type": "array",
                             "items": {
                                 "type": "string",
