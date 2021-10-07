@@ -468,7 +468,7 @@
                     "required": ["mergedGridSourceName", "sources"],
                     "additinalProperties": false,
                     "type": "object",
-                    "description": "A grid view of multiple sources that creates an new merged source.",
+                    "description": "A grid view of multiple sources that creates an new merged source. Only valid if all sources have the same size (both in pixels and physical space).",
                     "properties": {
                         "sources": {
                             "description": "The sources this transformation is applied to.",
@@ -483,10 +483,6 @@
                         },
                         "mergedGridSourceName": {
                             "$ref": "#/definitions/name"
-                        },
-                        "centerAtOrigin": {
-                            "description": "Whether to center the source at the coordinate space origin after applying the crop. By default true.",
-                            "type": "boolean"
                         }
                     }
                 }
