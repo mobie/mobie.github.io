@@ -93,7 +93,6 @@ All tables associated with a segmentation or view, must be located in the same s
 See the [table data specification](#tables) for details on how tables are stored.
 
 The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
-It may also contain the file `leveling.json`, which specifies the "natural" orientation of the dataset and other subdirectories and other files that are associated with this dataset.
 
 
 See an example dataset directory structure and `dataset.json` (left incomplete for brevity) for one of the zebrafish-lm project's dataset below.
@@ -105,7 +104,6 @@ actin/
 │   └── bdv-n5-s3
 ├── misc
 │   └── views
-│   └── leveling.json
 └── tables
     ├── segmentation_sample1
     └── segmentation_sample2
@@ -233,27 +231,27 @@ The metadata entries have the following structure (see below for an example json
 
 ```json
 {
-  "segmentation": {
+  "image": {
     "imageData": {
-      "bdv.hdf5": {
-        "relativePath": "in quis laboris Lorem"
-      },
-      "openOrganelle.s3": {
-        "s3Address": "Duis minim qui nisi"
-      },
-      "bdv.n5.s3": {
-        "relativePath": "est aute sunt ea labore"
+      "ome.zarr": {
+        "relativePath": "sed commodo nulla reprehenderit irure"
       },
       "ome.zarr.s3": {
-        "s3Address": "culpa consequat"
+        "s3Address": "adipisicing ad id Excepteur"
+      },
+      "bdv.n5": {
+        "relativePath": "officia"
+      },
+      "bdv.ome.zarr.s3": {
+        "relativePath": "pariatur tempor ipsum"
+      },
+      "openOrganelle.s3": {
+        "s3Address": "et"
+      },
+      "bdv.hdf5": {
+        "relativePath": "cillum occaecat Ut"
       }
-    },
-    "tableData": {
-      "tsv": {
-        "relativePath": "mollit commodo aute sint qui"
-      }
-    },
-    "description": "qui"
+    }
   }
 }
 ```
@@ -302,6 +300,7 @@ The metadata entries have the following structure (see below for an example json
 		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
 		- `sources`: The image sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer. Contains a list of strings.
+		- `visible`: Are the sources of this display visible? Default is true.
 	- `segmentationDisplay`:  The fields `opacity`, `lut`, `name` and `sources` are required.
 		- `blendingMode`: The mode for blending multiple image sources.
 		- `colorByColumn`: 
@@ -310,28 +309,32 @@ The metadata entries have the following structure (see below for an example json
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
-		- `selectedSegmentIds`: List of selected segment ids. Contains a list of strings.
+		- `selectedSegmentIds`: List of selected segment ids, each of the form sourceName;timePoint;label_id. Contains a list of strings.
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
+		- `showTable`: Show the table GUI element. Default is true (if the display has a table).
 		- `sources`: The segmentation sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer. Contains a list of strings.
 		- `tables`: The tables to load for this display. Must include the default table as the first item. Contains a list with items:
 			- ``: 
 			- ``: 
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
+		- `visible`: Are the sources of this display visible? Default is true.
 	- `sourceAnnotationDisplay`:  The fields `sources`, `tableData`, `tables`, `opacity`, `lut` and `name` are required.
 		- `colorByColumn`: 
 		- `lut`: The look-up-table for categorical coloring modes.
 		- `name`: 
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
-		- `selectedAnnotationIds`: List of selected source annotation ids. Contains a list of strings.
+		- `selectedAnnotationIds`: List of selected source annotation ids, each of the form timePoint;annotationId. Contains a list of strings.
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.
+		- `showTable`: Show the table GUI element. Default is true.
 		- `sources`: Contains array with items of type [None](#None-metadata)
 		- `tableData`: Contains a [tableData](#tableData-metadata).
 		- `tables`: The tables to load for this display. Must include the default table as the first item. Contains a list with items:
 			- ``: 
 			- ``: 
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
+		- `visible`: Is the color overlay of this display visible? Default is true.
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
 		- `name`: 
@@ -339,23 +342,31 @@ The metadata entries have the following structure (see below for an example json
 		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-	- `grid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The field `sources` is required.
-		- `name`: 
-		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same keys as `sources`, mapping to 2d grid positions.Contains array with items of type [None](#None-metadata)
-		- `sourceNamesAfterTransform`: Contains array with items of type [None](#None-metadata)
-		- `sources`: Contains array with items of type [None](#None-metadata)
-		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
+	- `mergedGrid`: A grid view of multiple sources that creates an new merged source. Only valid if all sources have the same size (both in pixels and physical space). The fields `mergedGridSourceName` and `sources` are required.
+		- `mergedGridSourceName`: 
+		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x]. Contains a list of arrays.
+		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
+		- `centerAtOrigin`: Whether to center the source at the coordinate space origin after applying the crop. By default true.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
 		- `min`: Minimum coordinates for the crop. Contains a list of numbers.
 		- `name`: 
-		- `shiftToOrigin`: Whether to shift the source to the coordinate space origin after applying the crop. By default true.
 		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
+		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
+	- `transformedGrid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The field `sources` is required.
+		- `centerAtOrigin`: Center the views at the origin for 3d sources.
+		- `name`: 
+		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x]. Contains a list of arrays.
+		- `sourceNamesAfterTransform`:  Contains a list of arrays.
+		- `sources`:  Contains a list of arrays.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 - `uiSelectionGroup`: 
 - `viewerTransform`: The viewer transformation of this view.Must contain exactly one of the following items:
 	- 
+		- `timepoint`: The initial timepoint shown in the viewer.
+	- 
+		- `normalVector`: The normal vector to the view plane. Contains a list of numbers.
 		- `timepoint`: The initial timepoint shown in the viewer.
 	- 
 		- `affine`: Affine transformation applied by the viewer. Contains a list of numbers.
@@ -370,170 +381,7 @@ The metadata entries have the following structure (see below for an example json
 ```json
 {
   "isExclusive": false,
-  "uiSelectionGroup": "~",
-  "description": "id consectetur tempor in sed",
-  "sourceDisplays": [
-    {
-      "segmentationDisplay": {
-        "opacity": 0.3558171101635148,
-        "lut": "viridis",
-        "name": "Hh2R",
-        "sources": [
-          "|3<m"
-        ],
-        "tables": [
-          ".2nvH3c$QAC.tsv",
-          "M.tsv",
-          "pq4s.csv"
-        ],
-        "scatterPlotAxes": [
-          "c'O::",
-          "lrxMC-f?"
-        ],
-        "blendingMode": "sum",
-        "colorByColumn": "p\\hv",
-        "showScatterPlot": true,
-        "valueLimits": [
-          -96127174.89251122,
-          10592213.456028342
-        ],
-        "showSelectedSegmentsIn3d": true,
-        "selectedSegmentIds": [
-          "sF*`N(V4&xq;30;0299",
-          "P0Q3yh)x;3118897;44912224",
-          "m:mL`9,-ZJZ;621760164;10",
-          "D^M4d4Zw\\;660;950112214"
-        ],
-        "resolution3dView": [
-          -6351403.396917775,
-          55201063.502655506,
-          50285329.4329617
-        ]
-      }
-    },
-    {
-      "sourceAnnotationDisplay": {
-        "sources": {
-          "deserunt9c": [
-            "uY$:y].",
-            "Sa\\vxh",
-            "m\\]a~]l"
-          ]
-        },
-        "tableData": {
-          "tsv": {
-            "relativePath": "eu"
-          }
-        },
-        "tables": [
-          "0O#V~-nV.tsv",
-          "o@.tsv",
-          "v\"K.tsv",
-          "=,2WBK.tsv",
-          "UsPNr)-8~.tsv"
-        ],
-        "opacity": 0.23130875953467767,
-        "lut": "glasbey",
-        "name": "{~",
-        "valueLimits": [
-          54941373.97505513,
-          -93888085.9906278
-        ],
-        "colorByColumn": ")of^hV^",
-        "showScatterPlot": false
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.21668963907827354,
-        "lut": "viridis",
-        "name": "Fxtr]kO",
-        "sources": [
-          "aKfV-Z*uV",
-          "~?7{>JB",
-          "O:*=!aI"
-        ],
-        "scatterPlotAxes": [
-          "z_",
-          "}j^!k"
-        ],
-        "tables": [
-          "eq7baF:.tsv"
-        ],
-        "blendingMode": "sum",
-        "resolution3dView": [
-          53334130.28314,
-          34492911.200997055,
-          -60395806.05433388
-        ],
-        "showSelectedSegmentsIn3d": true,
-        "valueLimits": [
-          47524030.549262345,
-          13321421.744171947
-        ],
-        "showScatterPlot": false,
-        "colorByColumn": "],Z(\\,B47&J",
-        "selectedSegmentIds": [
-          "jqe2F|d;10;3015",
-          "np;10;12817195501"
-        ]
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.724606387654052,
-        "lut": "glasbeyZeroTransparent",
-        "name": "q3$mQ=1e`K",
-        "sources": [
-          "Nn&-q~_Y}",
-          "hc=Zzh",
-          "9\"[F@T",
-          "S",
-          "uYH"
-        ],
-        "showSelectedSegmentsIn3d": false,
-        "selectedSegmentIds": [
-          "hTuiq[w+>*m;970882;3"
-        ],
-        "scatterPlotAxes": [
-          "HmFBq`y",
-          ":?"
-        ],
-        "showScatterPlot": false,
-        "resolution3dView": [
-          -24834026.34798844,
-          25605925.898883,
-          32406052.29982543
-        ],
-        "tables": [
-          "_.csv",
-          "+@\\#rxW.tsv",
-          "{w?.csv",
-          "[.tsv"
-        ],
-        "colorByColumn": "$P)V6",
-        "valueLimits": [
-          -99612413.22152166,
-          -68168005.60299207
-        ],
-        "blendingMode": "sumOccluding"
-      }
-    },
-    {
-      "segmentationDisplay": {
-        "opacity": 0.459514946359483,
-        "lut": "argbColumn",
-        "name": "T",
-        "sources": [
-          "\"?w",
-          "{FF\\[",
-          "\"WM{,A7F,:s",
-          "i7YlOFx<",
-          "|FM$}bI[)FH"
-        ]
-      }
-    }
-  ]
+  "uiSelectionGroup": "gU13P!JH5"
 }
 ```
 

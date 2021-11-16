@@ -586,6 +586,26 @@
                 },
                 {
                     "properties": {
+                        "normalVector": {
+                            "description": "The normal vector to the view plane.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["normalVector"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
                         "affine": {
                             "description": "Affine transformation applied by the viewer.",
                             "type": "array",
