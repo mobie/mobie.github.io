@@ -483,6 +483,10 @@
                         },
                         "mergedGridSourceName": {
                             "$ref": "#/definitions/name"
+                        },
+                        "encodeSource": {
+                            "description": "Encode the source name into the pixel value. This is necessary for merged grid label sources.",
+                            "type": "boolean"
                         }
                     }
                 }
