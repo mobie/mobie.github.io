@@ -4,6 +4,10 @@
     "title": "MoBIEDatasetSchema",
     "description": "Schema describing a MoBIE dataset",
     "properties": {
+        "defaultLocation": {
+            "description": "Default location for the 'location' menu in the viewer. Must be a valid viewer transform. If none is given the menu will be empty.",
+            "$ref": "view.schema.json#/definitions/viewerTransform"
+        },
         "description": {
             "description": "Description of the dataset",
             "type": "string"
