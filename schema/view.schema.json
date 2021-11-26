@@ -537,108 +537,108 @@
             },
             "required": ["transformedGrid"],
             "additionalProperties": false
+        },
+
+        "viewerTransform": {
+            "description": "A viewer transform to specify position, rotation, timepoint and/or zoom.",
+            "type": "object",
+            "oneOf": [
+                {
+                    "properties": {
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["timepoint"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "normalVector": {
+                            "description": "The normal vector to the view plane.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["normalVector"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "affine": {
+                            "description": "Affine transformation applied by the viewer.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                },
+                "required": ["affine"],
+                "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "normalizedAffine": {
+                            "description": "Normalized affine transformation applied by the viewer.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["normalizedAffine"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "position": {
+                            "description": "Position that will be centered in the viewer.",
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["position"],
+                    "additionalProperties": false
+                }
+            ]
         }
     },
         
-    "viewerTransform": {
-        "description": "A viewer transform to specify position, rotation, timepoint and/or zoom.",
-        "type": "object",
-        "oneOf": [
-            {
-                "properties": {
-                    "timepoint": {
-                        "description": "The initial timepoint shown in the viewer.",
-                        "type": "integer",
-                        "minimum": 0
-                    }
-                },
-                "required": ["timepoint"],
-                "additionalProperties": false
-            },
-            {
-                "properties": {
-                    "normalVector": {
-                        "description": "The normal vector to the view plane.",
-                        "type": "array",
-                        "items": {
-                            "type": "number"
-                        },
-                        "minItems": 3,
-                        "maxItems": 3
-                    },
-                    "timepoint": {
-                        "description": "The initial timepoint shown in the viewer.",
-                        "type": "integer",
-                        "minimum": 0
-                    }
-                },
-                "required": ["normalVector"],
-                "additionalProperties": false
-            },
-            {
-                "properties": {
-                    "affine": {
-                        "description": "Affine transformation applied by the viewer.",
-                        "type": "array",
-                        "items": {
-                            "type": "number"
-                        },
-                        "minItems": 12,
-                        "maxItems": 12
-                    },
-                    "timepoint": {
-                        "description": "The initial timepoint shown in the viewer.",
-                        "type": "integer",
-                        "minimum": 0
-                    }
-            },
-            "required": ["affine"],
-            "additionalProperties": false
-            },
-            {
-                "properties": {
-                    "normalizedAffine": {
-                        "description": "Normalized affine transformation applied by the viewer.",
-                        "type": "array",
-                        "items": {
-                            "type": "number"
-                        },
-                        "minItems": 12,
-                        "maxItems": 12
-                    },
-                    "timepoint": {
-                        "description": "The initial timepoint shown in the viewer.",
-                        "type": "integer",
-                        "minimum": 0
-                    }
-                },
-                "required": ["normalizedAffine"],
-                "additionalProperties": false
-            },
-            {
-                "properties": {
-                    "position": {
-                        "description": "Position that will be centered in the viewer.",
-                        "type": "array",
-                        "items": {
-                            "type": "number",
-                            "minimum": 0
-                        },
-                        "minItems": 3,
-                        "maxItems": 3
-                    },
-                    "timepoint": {
-                        "description": "The initial timepoint shown in the viewer.",
-                        "type": "integer",
-                        "minimum": 0
-                    }
-                },
-                "required": ["position"],
-                "additionalProperties": false
-            }
-        ]
-    },
-
     "type": "object",
     "properties": {
         "uiSelectionGroup": {
