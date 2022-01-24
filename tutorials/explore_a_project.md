@@ -71,7 +71,7 @@ To control the image sources appearance, there are several buttons...
 - **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
 - **[ X ] V**  Check to show source in **v**olume viewer (i.e. in 3D)
 - **[ X ] T**  Check to show **t**able
-- **[ X ] P**  Check to show **p** plot (i.e. a scatter plot)
+- **[ X ] P**  Check to show **p**lot (i.e. a scatter plot)
 
 Note that the available buttons and checkboxes depends on what was present in the selected view e.g. the **T** checkbox will only appear if a table is available.
 
