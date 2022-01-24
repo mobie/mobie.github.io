@@ -5,14 +5,16 @@ needed to display your data e.g. which images and tables to display, where they 
 
 ### How to explore an existing project?
 
-Once the MoBIE plugin has been installed (see instructions [here](https://github.com/mobie/mobie-viewer-fiji#install),
+Once the MoBIE plugin has been installed (see instructions [here](./installation.md)),
 you can open a project:
 
-1. In the Fiji search bar, type: "mobie"<br> <img width="460" alt="image" src="./tutorial_images/mobie_command.png"> <br> 
+1. In the Fiji search bar, type: "mobie"<br> <img width="460" alt="image" src="./tutorial_images/mobie_command.png"> <br>
 ...select 'Open MoBIE Project..' and click [ Run ]  
+
 2. Enter the location of the project (a github repository).  
-We will use the published 'Platybrowser' project as an example (location: https://github.com/mobie/platybrowser-datasets)
- <br><img width="300" alt="image" src="./tutorial_images/project_location.png">
+We will use the published 'Platybrowser' project as an example (location: https://github.com/mobie/platybrowser-project)
+ <br><img width="400" alt="image" src="./tutorial_images/project_location.png">
+
 3. The MoBIE viewer is ready to be used:<br><img width="800" alt="image" src="./tutorial_images/ui.png">
 
 The left window contains all the controls for MoBIE, and the right is a [BigDataViewer](https://imagej.net/BigDataViewer)
@@ -22,10 +24,10 @@ Note: It is also possible to open projects from your local file system.
 
 ### Browsing in the viewer
 
-All the controls for BigDataViewer can be found under Help > Show Help in the menu at the top of the 
-viewer.
+All the controls for BigDataViewer can be found under Help > Show Help in the menu at the top of the viewer.
 
-<img width="460" alt="image" src="./tutorial_images/viewer_browsing.gif">  
+<img width="460" alt="image" src="./tutorial_images/viewer_browsing.gif">
+
 The most important controls are:   
 
 * **[Left click + drag]** Rotate view
@@ -47,28 +49,37 @@ after rounds of segmentation proofreading.
 **Descriptions of buttons:**  
 
 - **[ show ] Get information / help on a certain topic.** Select an item from the drop-down and click the button.
-- **[ switch ] Switch dataset.** Select a dataset from the drop-down and click the button.
-- **[ add ] Add an image source to the view.** Select an image source from the drop-downs and click the button. If the image source is a segmentation, also a corresponding objects table will appear. 
-**Note:** the categories available here are specific to the project! e.g. in this example project, two categories 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
-- **[ view ] View a bookmark.** Select a bookmark from the drop-down and click the button. The corresponding bookmarked view will appear. See [here](./bookmarks_and_locations.md) for more information.
+- **[ view ] on the 'dataset' row - switch dataset.** Select a dataset from the drop-down and click the button.
+- **[ view ] on any other row - display a view** Select a view from the drop-down menus and click the button. Views can contain a number of images and segmentations, as well as tables, plots and 3D views.
+**Note:** the drop-down groups available here are specific to the project! e.g. in this example project, groups like 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
 - **[ move ] Move to a particular position or view.** See [here](./bookmarks_and_locations.md) for more information.
 
 ### Sources Panel
 As you add more images to the viewer, they will appear in the **sources panel**, like below:
-<img width="460" alt="image" src="./tutorial_images/sources_buttons.png">  
+<img width="500" alt="image" src="./tutorial_images/sources_buttons.png">  
 
 To control the image sources appearance, there are several buttons...
 
+- **[ F ]**  Focus the viewer on the source
+- **[ O ]**  Change the opacity
 - **[ C ]**  Change the color
 - **[ B ]**  Change the brightness settings
 - **[ X ]**  Remove from viewer and sources panel
 
 ...and checkboxes:
 
-- **[ X ] V**  Check to show source in **v**olume viewer
-- **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer) 
+- **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
+- **[ X ] V**  Check to show source in **v**olume viewer (i.e. in 3D)
+- **[ X ] T**  Check to show **t**able
+- **[ X ] P**  Check to show **p** plot (i.e. a scatter plot)
 
-<img width="800" alt="image" src="./tutorial_images/sourcesPanel.gif"> 
+Note that the available buttons and checkboxes depends on what was present in the selected view e.g. the **T** checkbox will only appear if a table is available.
 
 
+<img width="800" alt="image" src="./tutorial_images/sourcesPanel.gif">
 
+### Other Controls
+
+There are some extra MoBIE options available by right clicking in the BigDataViewer window. For example, making high quality screenshots, or logging the current position.
+
+<img width="500" alt="image" src="./tutorial_images/contextMenu.png">
