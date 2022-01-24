@@ -2,17 +2,17 @@
 
 ### MoBIE Update Site
 
-Install Fiji, and enable the MoBIE update site (([how to install an update site](https://imagej.net/Following_an_update_site#Introduction)).
+Install Fiji, and enable the MoBIE update site ([how to install an update site](https://imagej.net/Following_an_update_site#Introduction)).  
 In detail:
 
-1. Please [install Fiji](https://fiji.sc) on your computer.
-2. Open Fiji and go to [ Help > Update... ] in the menu.
-3. Click[ Manage Update Sites ]
-4. Click the checkbox next to `MoBIE`
-<img width="428" alt="image" src="./tutorial_images/mobieUpdateSite">
-5. Click [ Close ]
-6. Click [ Apply changes ]
-7. Restart Fiji
+1. Please [install Fiji](https://fiji.sc) on your computer.  
+2. Open Fiji and go to [ Help > Update... ] in the menu.  
+3. Click[ Manage Update Sites ]  
+4. Click the checkbox next to `MoBIE`  
+<img width="428" alt="image" src="./tutorial_images/mobieUpdateSite.png">
+5. Click [ Close ]  
+6. Click [ Apply changes ]  
+7. Restart Fiji 
 
 
 ### MoBIE-beta Update site
@@ -34,8 +34,7 @@ To try MoBIE-beta you need to:
 3. [ Manage Update Sites ]
 4. Manually add the update site, by clicking [Add update site] and filling in the boxes
 to match below:
-
-<img width="428" alt="image" src="./tutorial_images/mobieBetaUpdateSite">
-5. [ Close ]
-6. [ Apply changes ]
-6. Restart Fiji
+<img width="428" alt="image" src="./tutorial_images/mobieBetaUpdateSite.png">
+5. [ Close ]  
+6. [ Apply changes ]  
+6. Restart Fiji  
