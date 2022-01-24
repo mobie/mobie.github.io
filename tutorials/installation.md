@@ -9,7 +9,8 @@ In detail:
 2. Open Fiji and go to [ Help > Update... ] in the menu.  
 3. Click [ Manage Update Sites ]  
 4. Click the checkbox next to `MoBIE`
-  <img width="700" alt="image" src="./tutorial_images/mobieUpdateSite.png">
+
+    <img width="700" alt="image" src="./tutorial_images/mobieUpdateSite.png">
 5. Click [ Close ]  
 6. Click [ Apply changes ]  
 7. Restart Fiji
@@ -34,7 +35,8 @@ To try MoBIE-beta you need to:
 3. [ Manage Update Sites ]
 4. Manually add the update site, by clicking [Add update site] and filling in the boxes
 to match below:  
-  <img width="500" alt="image" src="./tutorial_images/mobieBetaUpdateSite.png">
+
+    <img width="500" alt="image" src="./tutorial_images/mobieBetaUpdateSite.png">
 5. [ Close ]
 6. [ Apply changes ]
 7. Restart Fiji
