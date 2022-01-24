@@ -16,6 +16,7 @@ views, images and tables for your colleagues to explore
 **Get started with the tutorials below:**
 
 ## Exploring existing projects
+- [Installation](./tutorials/installation.md)
 - [Getting Started](./tutorials/explore_a_project.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
 - [Locations and bookmarks](./tutorials/bookmarks_and_locations.md)
