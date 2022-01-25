@@ -1,25 +1,52 @@
-## Viewing your own bookmarks
+## Creating your own views
 
-You can also view bookmarks from your own file system within MoBIE.
+You can also add views from your own file system within MoBIE.
 
-### Making a compatible bookmark
+### Making a compatible view
 
-Bookmarks save the current state of your MoBIE session, so you can easily return to it later e.g.
-the location, orientation, open images, colouring schemes etc are saved. 
+Views save the current state of your MoBIE session, so you can easily return to
+it later e.g. the location, orientation, open images, colouring schemes etc are
+saved.
 
-To make a bookmark, right click in the MoBIE viewer and select **Save Current Settings As Bookmark**.
-Then, name your bookmark, and select save to **File_system**. 
+To make a view, right click in the MoBIE viewer and select
+**Save Current Settings As View**. Then select a 'Save method' of 'Save as new view', and select save to **File_system**.
 
-<img width="200" alt="image" src="./tutorial_images/saveBookmark.png"> 
+<img width="300" alt="image" src="./tutorial_images/saveView.png">
 
-A filebrowser will open. Bookmarks are stored in **.json** files. If you already have a bookmark .json file, 
-you can select it now to add your new bookmark. If not, simply provide a name for your .json, and 
-a new one will be created.
+A dialog will appear with the following options:
+- **view name** - The name of your view.
+- **Ui Selection Group** -  The name of the MoBIE dropdown menu your view will
+appear in. You can either select an existing one, or choose to 'Make New Ui
+Selection Group'
+- **exclusive** - When checked, this will make your view exclusive i.e. When
+you 'view' it in MoBIE it will remove all other images before displaying it.
+- **Include viewer transform?** - When checked, this will include the viewer
+transform i.e. it will save the location and orientation of the current view.
 
-### Viewing your bookmark
+Once filled in, a filebrowser will open, allowing you to choose where to save
+your view. Views are stored in **.json** files. If you already have a view .json file, you can select it now to add your new view. If not, simply provide a name for your .json, and a new one will be created.
 
-To view your new bookmark, right click in the MoBIE viewer and select **Load Additional Bookmarks**,
-then Load from **File_system**. You can then select your .json file.
+### Viewing your view in MoBIE
 
-Your new bookmarks will appear in the bookmark dropdown menu.
+To add your new view, right click in the MoBIE viewer and select **Load Additional Views**,then Load from **File_system**. You can then select your
+.json file.
 
+Your new views will appear in the relevant MoBIE dropdown menus.
+
+### Modifying a view
+
+If you wish to modify a view you have already saved, you can do this in a similar
+way. Right click in the MoBIE viewer and select **Save Current Settings As View**.
+Now select a 'Save method' of 'Overwrite existing view', and select save to **File_system**.
+
+<img width="300" alt="image" src="./tutorial_images/overwriteViewSettings.png">
+
+The dialog that follows allows you to choose the ui selection group, and other
+parameters.
+
+After this, a filebrowser will open where you can select a previously saved view
+.json file, and then a particular view to overwrite. Clicking 'Select' when
+the correct ui selection group and view name are shown will overwrite this view
+with your current MoBIE settings.
+
+<img width="350" alt="image" src="./tutorial_images/overwriteViewChoice.png">
