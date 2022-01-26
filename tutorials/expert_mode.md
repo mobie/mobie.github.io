@@ -5,9 +5,9 @@ choose where different aspects of your project (e.g. images and tables) are load
 to have a mix of local and remote access, or remote access from multiple locations.
 
 You can control three aspects:
-- **Project Location** The location of all your project metadata (e.g. information about your datasets and images, bookmarks...)
+- **Project Location** The location of all your project metadata (e.g. information about your datasets and images, views...)
 - **Image Data Location** The location of your images.
-- **Table Data Location** The location of your tabular data. 
+- **Table Data Location** The location of your tabular data.
 
 ### Common use cases
 
@@ -18,11 +18,11 @@ You can control three aspects:
 - Table Data Location: your own fork of that repository, or a local clone of it (where you've added or modified tables)
 
 
-**I'm using an existing project (remote), but want to modify tables, and bookmarks**
+**I'm using an existing project (remote), but want to modify tables, and views**
 
-- Project Location: your own fork of that repository, or a local clone of it (where you've changed bookmarks and tables)
+- Project Location: your own fork of that repository, or a local clone of it (where you've changed views and tables)
 - Image Data Location: project github repository
-- Table Data Location: your own fork of that repository, or a local clone of it (where you've changed bookmarks and tables)
+- Table Data Location: your own fork of that repository, or a local clone of it (where you've changed views and tables)
 
 
 **I'm working with a local project on my file system, but want separate control of all metadata / tables**
@@ -34,7 +34,7 @@ You can control three aspects:
 
 ### Opening expert mode
 
-To open expert mode, type **mobie** in the Fiji search bar, and select 
+To open expert mode, type **mobie** in the Fiji search bar, and select
 **Open MoBIE Project Expert Mode...**
 
 <img width="600" alt="image" src="./tutorial_images/mobie_expert_command.png">
@@ -42,10 +42,10 @@ To open expert mode, type **mobie** in the Fiji search bar, and select
 This will bring up a dialog, as below:
 
  <img width="300" alt="image" src="./tutorial_images/expertModeDialog.png">
- 
- - **Project Location** - github repository, or local file path
+
+ - **Project Location** - github repository, s3 location or local file path
  - **Project Branch** - which git branch to load data from
- - **Image Data Storage Modality** - s3 for remote images, FileSystem for local images
- - **Image Data Location** - github repository (will load from remote), or local file path
- - **Table Data Location** - github repository, or local file path
+ - **Image Data Storage Modality** - Which image format to use. Those that end with S3 are for remote access, the rest local.
+ - **Image Data Location** - github repository, s3 location, or local file path
+ - **Table Data Location** - github repository, s3 location or local file path
  - **Table Data Branch** - which git branch to load data from
