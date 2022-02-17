@@ -52,7 +52,7 @@ after rounds of segmentation proofreading.
 - **[ view ] on the 'dataset' row - switch dataset.** Select a dataset from the drop-down and click the button.
 - **[ view ] on any other row - display a view** Select a view from the drop-down menus and click the button. Views can contain a number of images and segmentations, as well as tables, plots and 3D views.
 **Note:** the drop-down groups available here are specific to the project! e.g. in this example project, groups like 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
-- **[ move ] Move to a particular position or view.** See [here](./bookmarks_and_locations.md) for more information.
+- **[ move ] Move to a particular position or view.** See [here](./views_and_locations.md) for more information.
 
 ### Sources Panel
 As you add more images to the viewer, they will appear in the **sources panel**, like below:

@@ -88,6 +88,24 @@ values for the colour palette. This is useful if you want to focus on / see diff
 
 <img width="900" alt="image" src="./tutorial_images/colourByColumn.gif">
 
+### Plots
+
+An interactive scatter plot can be made from any segmentation with an associated table.
+Tick the **P** checkbox on the row for that segmentation to open the plot dialog:
+
+<img width="250" alt="image" src="./tutorial_images/plotMenu.png">
+
+Select which table columns to use for the x and y axis, as well as any scale factors.
+This will open the plot:
+
+<img width="400" alt="image" src="./tutorial_images/scatterPlot.png">
+
+This plot will follow the **color by column** and selection settings given for the table, and is also interactive (i.e. ctrl+left click on a point to go there in the viewer).
+
+There are more options if you right click in the scatter plot window.
+For example, you can configure the point selection to control how many points
+are selected / select all within a certain radius.
+
 ### Saving tables
 
 Tables can be saved by using Table > Save Table as... in the menu at the top of the table.
