@@ -15,7 +15,7 @@ objects, you can include those only. Any missing values when your table is merge
 by None (for categorical data) or NaN (for numeric data).
 
 e.g. the table below would be a valid table (but you could add as many additional columns
-as you'd like):
+as you'd like):  
 <img width="200" alt="image" src="./tutorial_images/exampleUserTable.png">
 
 Save your table as a .tsv file (both comma-separated and tab-separated are suitable).
