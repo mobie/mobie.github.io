@@ -30,6 +30,7 @@ views, images and tables for your colleagues to explore
 
 ## Making your own projects
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
+- [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
 ## MoBIE specification:
 - [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md)
