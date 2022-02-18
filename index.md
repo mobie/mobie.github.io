@@ -15,12 +15,14 @@ views, images and tables for your colleagues to explore
 
 **Get started with the tutorials below:**
 
+- [Installation](./tutorials/installation.md)
+
 ## Exploring existing projects
 - [Getting Started](./tutorials/explore_a_project.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
-- [Locations and bookmarks](./tutorials/bookmarks_and_locations.md)
+- [Locations and views](./tutorials/views_and_locations.md)
 - [Viewing your own tables](./tutorials/viewing_your_own_tables.md)
-- [Viewing your own bookmarks](./tutorials/viewing_your_own_bookmarks.md)
+- [Creating your own views](./tutorials/creating_your_own_views.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 
 ## Expert mode usage
@@ -28,7 +30,7 @@ views, images and tables for your colleagues to explore
 
 ## Making your own projects
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
-- [Bookmark structure](./tutorials/bookmarks.md)
+- [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
 ## MoBIE specification:
-- [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md) (This specification is work in progress and the current MoBIE Fiji plugin does not support it yet. We plan to update this very soon!)
+- [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md)

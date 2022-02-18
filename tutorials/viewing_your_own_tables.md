@@ -1,7 +1,7 @@
 ## Viewing your own tables
 
 You can also view tables from your own file system within MoBIE.
-e.g. this can allow you to view your own measurements alongside all the other data of an 
+e.g. this can allow you to view your own measurements alongside all the other data of an
 existing project.
 
 ### Making a compatible table
@@ -15,23 +15,22 @@ objects, you can include those only. Any missing values when your table is merge
 by None (for categorical data) or NaN (for numeric data).
 
 e.g. the table below would be a valid table (but you could add as many additional columns
-as you'd like):
-<img width="200" alt="image" src="./tutorial_images/exampleUserTable.png"> 
+as you'd like):  
+<img width="200" alt="image" src="./tutorial_images/exampleUserTable.png">
 
-Save your table as a .csv file (both comma-separated and tab-separated are suitable).
+Save your table as a .tsv file (both comma-separated and tab-separated are suitable).
 
 ### Viewing your table
 
-To view your table select Table > Load Columns..., then Load Columns from **File System** in the dropdown.
+To view your table select Table > Load Columns... from the menu at the top of
+the table. Then, Load Columns from **File System** in the dropdown.
 
-<img width="300" alt="image" src="./tutorial_images/loadColumnFromFileSystem.png"> 
+<img width="300" alt="image" src="./tutorial_images/loadColumnFromFileSystem.png">
 
-This will create a file browser, where you can select your .csv file.
+This will create a file browser, where you can select your .tsv file.
 
 Your new columns should now be added to the right side of the table - scroll with the slider
 at the bottom of the table to see them.
 
 If you want more control over your tables / want to add many at once, you will have to use
 **Expert Mode** - see tutorial [here](./expert_mode.md)
-
-

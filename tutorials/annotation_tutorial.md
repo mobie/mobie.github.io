@@ -1,10 +1,10 @@
-# Annotation tutorial
+## Annotation tutorial
 
 You can also annotate the segmented objects in your project using MoBIE. You can either do it from scratch or correct an already existing annotation.
 
-## Part I. Annotating from scratch
+### Part I. Annotating from scratch
 
-1. To start with, open a project and add the segmentation image you want to annotate. We will use the cell segmentation of the published ['Platybrowser' project](https://github.com/mobie/platybrowser-datasets) as an example:
+1. To start with, open a project and add the segmentation image you want to annotate. We will use the cell segmentation of the published ['Platybrowser' project](https://github.com/mobie/platybrowser-project) as an example:
 <br> <img width="800" alt="image" src="./tutorial_images/cellSegm.png"> <br>
 2. In the segmentation table select Annotate -> Start new annotation... You will be asked to name your annotation. In this example we will annotate cell types, so we name it **cell_type**.
 Starting the annotation will add a new column into the segmentation table, where the annotations will be saved. At the moment all the values in the column are **None**:
@@ -26,20 +26,20 @@ To start with, we add two categories: muscles and neurons. The button **C** next
 <br> <img width="400" alt="image" src="./tutorial_images/saveAnnot.png"> <br>
 7. If the annotation was saved with the **label_id** column, it can always be reopened and modified/corrected using MoBIE.
 
-## Part II. Correcting or extending an existing annotation
+### Part II. Correcting or extending an existing annotation
 
-You can open any annotation of a segmentation image, which was either annotated and saved as described in the previous part, or created as described [here](https://mobie.github.io/tutorials/viewing_your_own_tables.html).
+You can open any annotation of a segmentation image, which was either annotated and saved as described in the previous part, or created as described [here](./viewing_your_own_tables.md).
 
 Important to note that the objects that don't have a label (missing values) can be either excluded from the table (by not including the respective label_ids),
 or filled with None or NaN values for categorical and numeric data respectively.
 
 To start annotating:
 
-1. Open a project and add the segmentation image you want to annotate. Again we will use the cell segmentation of the ['Platybrowser' project](https://github.com/mobie/platybrowser-datasets)
+1. Open a project and add the segmentation image you want to annotate. Again we will use the cell segmentation of the ['Platybrowser' project](https://github.com/mobie/platybrowser-project)
 2. Load your annotation using Table -> Load Columns... -> File System, then select the location of your annotation.
 This will add additional column/s to the table. We will load the Cell Type annotation created in the previous part:
 <br> <img width="400" alt="image" src="./tutorial_images/newColumn.png"> <br>
-3. Now open the annotation menu by selecting Table -> Annotate -> Continue annotation... and select the column you added in the previous step. The annotation menu will show you all the values present in the columns.
+3. Now open the annotation menu by selecting Annotate -> Continue annotation... and select the column you added in the previous step. The annotation menu will show you all the values present in the columns.
 You can change the color for each category.
 <br> <img width="300" alt="image" src="./tutorial_images/annotMenu2.png"> <br>
 4. Selected **Skip "None" & "NaN"** option will skip all the unannotated segments. Use this option to correct the already existing annotation for the annotated segments only.
