@@ -131,7 +131,7 @@ First, you must add some metadata to the project by clicking on the 'Add/update 
 <img width="250" alt="image" src="./tutorial_images/remoteMetadata.png">
 
 - **image format** - the image format
-- **Signing region** - signing region (this can usually just be left at the default!)
+- **Signing region** - signing region (this can usually just be left at the default!). It is only necessary for AWS managed object stores - for others, it can be left blank.
 - **Service endpoint** - the location of your S3 object store
 - **Bucket name** - the name of the bucket inside your S3 object store
 
@@ -144,7 +144,9 @@ In detail:
 ### S3 upload
 
 Upload the complete MoBIE project folder to the s3 bucket. There are several tools available to achieve this, for example aws s3 sync (https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html). The sync command would look something like this:  
+```
 $ aws s3 sync /path/to/my/project https://s3.embl.de/my-bucket
+```
 
 ### Add metadata to github
 
@@ -153,13 +155,21 @@ Note that this is optional! It is useful especially for larger projects, with ma
 - Go to https://github.com/ and log into or create your account
 - Create a new empty (!) repository, e.g. called "my-mobie-project"
 - Go to your local MoBIE project folder in a terminal
-- Initialize git via  
-   $ git init
-- Add the repository you just created as remote via  
-   $ git remote add origin https://github.com/<USERNAME\>/my-mobie-project
+- Initialize git via:  
+```
+$ git init
+```
+- Add the repository you just created as remote via:  
+```
+$ git remote add origin https://github.com/USERNAME/my-mobie-project
+```
 - Tell git to ignore the image data files (n5/ome-zarr files) by creating a file ".gitignore" and adding the lines "\*.n5" and "\*.ome.zarr"
 This is very important, because otherwise we would add all the image data to git.
-- Add the metadata to git via  
-  $ git add .
-- Upload the data to github via  
-  $ git push origin master
+- Add the metadata to git via:  
+```
+$ git add .
+```
+- Upload the data to github via:
+```
+$ git push origin master
+```
