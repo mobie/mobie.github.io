@@ -89,6 +89,10 @@
                         "s3Address": {
                             "type": "string",
                             "description": "The s3 address for this image data."
+                        },
+                        "signingRegion": {
+                            "type": "string",
+                            "description": "The signing region for aws, e.g. us-east-1"
                         }
                     },
                     "required": ["s3Address"],
@@ -101,6 +105,10 @@
                         "s3Address": {
                             "type": "string",
                             "description": "The s3 address for this image data."
+                        },
+                        "signingRegion": {
+                            "type": "string",
+                            "description": "The signing region for aws, e.g. us-east-1"
                         }
                     },
                     "required": ["s3Address"],
