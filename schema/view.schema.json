@@ -398,6 +398,15 @@
                     "description": "Crop transformation applied to a list of sources.",
                     "type": "object",
                     "properties": {
+                        "boxAffine": {
+                            "description": "The transformation to place the crop's bounding box in the global coordinate system (if not given assumes identity)",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
                         "min": {
                             "description": "Minimum coordinates for the crop.",
                             "type": "array",
@@ -415,6 +424,10 @@
                             },
                             "minItems": 3,
                             "maxItems": 3
+                        },
+                        "rectify": {
+                            "description": "Whether to align the crop's bounding box with the coordinate system. By default true.",
+                            "type": "boolean"
                         },
                         "sources": {
                             "description": "The sources this transformation is applied to.",
