@@ -122,14 +122,10 @@
                             "type": "array",
                             "items": [
                                 {
-                                    "type": "number",
-                                    "minimum": 0,
-                                    "maximum": 65535
+                                    "type": "number"
                                 },
                                 {
-                                    "type": "number",
-                                    "minimum": 0,
-                                    "maximum": 65535
+                                    "type": "number"
                                 }
                             ],
                             "additionalItems": false
