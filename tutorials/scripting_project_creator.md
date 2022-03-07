@@ -26,8 +26,8 @@ dataDirectory.mkdirs();
 try {
     projectCreator = new ProjectCreator(dataDirectory);
 
-    // create a dataset called 'testDataset'
-    projectCreator.getDatasetsCreator().addDataset("testDataset");
+    // create a 3D dataset called 'testDataset'
+    projectCreator.getDatasetsCreator().addDataset("testDataset", false);
 
 	// open an example image to add to project
     currentImage = IJ.openImage("http://imagej.nih.gov/ij/images/mri-stack.zip");
@@ -51,7 +51,8 @@ try {
 You can create a new empty dataset, with a specific name like so:
 ```
 datasetName = "testDataset"
-projectCreator.getDatasetsCreator().addDataset( datasetName );
+is2D = false
+projectCreator.getDatasetsCreator().addDataset( datasetName, is2D );
 ```
 
 You can rename a dataset like so:

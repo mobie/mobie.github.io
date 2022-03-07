@@ -28,10 +28,10 @@ your view. Views are stored in **.json** files. If you already have a view .json
 
 ### Displaying your view in MoBIE
 
-To add your new view, right click in the MoBIE viewer and select **Load Additional Views**,then Load from **File_system**. You can then select your
-.json file.
+The view will be added automatically to the correct dropdown menu in MoBIE (note it may be at the bottom of this dropdown list - so scroll down!). Click the 'view' button to see it.
 
-Your new views will appear in the relevant MoBIE dropdown menus.
+If you close and re-open MoBIE, you will need to right click in the MoBIE viewer and select **Load Additional Views**, then Load from **File_system**. You can then select your
+.json file. Your new views will appear again in the relevant MoBIE dropdown menus.
 
 ### Modifying a view
 
