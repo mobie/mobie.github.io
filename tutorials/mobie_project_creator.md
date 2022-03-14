@@ -23,10 +23,16 @@ This has 4 rows showing the contents of your project: 'dataset' (datasets in you
 A dataset is a combination of images that can be displayed in the same physical coordinate system e.g.
 you might make this images from different samples, or timepoints, or separate experiments.
 
-Click **Add** on the dataset row, and provide a name for your dataset. Clicking **OK** will create the dataset,
+Click **Add** on the dataset row, and provide a name for your dataset.
+Also, select if you want to **Limit images and display to only 2D**. If
+you check this box, you will only be able to add 2D images to your dataset,
+and when you open them in MoBIE they will be displayed only in 2D.
+Uncheck this if you need 3D images, or you want to arrange your 2D images
+in 3D space e.g. stacking 2D slices into a 3D stack.  
+Clicking **OK** will create the dataset,
 and add it to the dataset dropdown.  
 
-<img width="200" alt="image" src="./tutorial_images/createDataset.png">
+<img width="350" alt="image" src="./tutorial_images/createDataset.png">
 
 The first dataset you create will automatically become the default i.e. the one you see when you first
 open that MoBIE Project. To make another dataset the default, select it in the dataset dropdown, then
@@ -41,6 +47,8 @@ This Edit menu also allows you to rename datasets.
 To add an image to a dataset, make sure the chosen dataset is selected in the dataset dropdown.
 Then follow the directions below for either **open current image** (to add images open in imageJ) or
 **bdv format image** (if your image is already in n5 or ome-zarr format).
+
+For all images, make sure your unit and voxel size are set correctly! The project creator only allows images with the same unit to be added to the same project (e.g. all micrometre or all nanometre etc...)
 
 **Note**: if your images are particularly large, it will be more efficient to convert your images outside of
 imageJ. e.g. using this [python library](https://github.com/mobie/mobie-utils-python)
@@ -143,9 +151,9 @@ In detail:
 
 ### S3 upload
 
-Upload the complete MoBIE project folder to the s3 bucket. There are several tools available to achieve this, for example aws s3 sync (https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html). The sync command would look something like this:  
+Upload the contents of the 'data' directory (the directory containing the project.json file) to the s3 bucket. There are several tools available to achieve this, for example aws s3 sync (https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html). The sync command would look something like this:  
 ```
-$ aws s3 sync /path/to/my/project https://s3.embl.de/my-bucket
+$ aws s3 sync /path/to/my/project/data https://s3.embl.de/my-bucket
 ```
 
 ### Add metadata to github
