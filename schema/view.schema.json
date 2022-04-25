@@ -255,6 +255,14 @@
                         "showTable": {
                             "description" : "Show the table GUI element. Default is true (if the display has a table).",
                             "type": "boolean"
+                        },
+                        "showAsBoundaries": {
+                            "description": "Show boundary mask instead of segment masks. Default is false.",
+                            "type": "boolean"
+                        },
+                        "boundaryThickness": {
+                            "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
@@ -321,6 +329,14 @@
                         "visible": {
                             "description": "Is the color overlay of this display visible? Default is true.",
                             "type": "boolean"
+                        },
+                        "showAsBoundaries": {
+                            "description": "Show boundary mask instead of region masks. Default is false.",
+                            "type": "boolean"
+                        },
+                        "boundaryThickness": {
+                            "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
                         }
                     },
                     "required": ["sources", "tableData", "tables", "opacity", "lut", "name"],
