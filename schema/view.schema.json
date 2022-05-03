@@ -189,11 +189,6 @@
                         "opacity": {
                             "$ref": "#/definitions/opacity"
                         },
-                        "blendingMode": {
-                            "description": "The mode for blending multiple image sources.",
-                            "type": "string",
-                            "enum": ["sum", "sumOccluding"]
-                        },
                         "lut": {
                             "$ref": "#/definitions/lut"
                         },
