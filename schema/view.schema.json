@@ -272,11 +272,11 @@
             "additionalProperties": false
         },
 
-        "sourceAnnotationDisplay": {
+        "regionDisplay": {
             "description": "Viewer state for a spatial arrangement of sources, e.g. via grid transform, with an associated table.",
             "type": "object",
             "properties": {
-                "sourceAnnotationDisplay": {
+                "regionDisplay": {
                     "type": "object",
                     "properties": {
                         "name": {
@@ -346,7 +346,7 @@
                     "additionalProperties": false
                 }
             },
-            "required": ["sourceAnnotationDisplay"],
+            "required": ["regionDisplay"],
             "additionalProperties": false
         },
 
@@ -687,7 +687,7 @@
             "items": {"anyOf": [
                 {"$ref": "#/definitions/imageDisplay"},
                 {"$ref": "#/definitions/segmentationDisplay"},
-                {"$ref": "#/definitions/sourceAnnotationDisplay"}
+                {"$ref": "#/definitions/regionDisplay"}
             ]}
         },
         "sourceTransforms": {
