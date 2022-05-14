@@ -258,6 +258,10 @@
                         "boundaryThickness": {
                             "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
                             "type": "number"
+                        },
+                        "glasbeyRandomSeed": {
+                            "description": "Random seed for the glasbey lut to reproduce the exact colors of the view. (Optional)",
+                            "type": "number"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
@@ -331,6 +335,10 @@
                         },
                         "boundaryThickness": {
                             "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
+                        },
+                        "glasbeyRandomSeed": {
+                            "description": "Random seed for the glasbey lut to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
                         }
                     },
