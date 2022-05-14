@@ -283,7 +283,7 @@
                             "$ref": "#/definitions/name"
                         },
                         "sources": {
-                            "description": "Map of source_annotation_ids (first table column) to source per location.",
+                            "description": "Map of region_ids (first table column) to source per location.",
                             "$ref": "#/definitions/mapOfSources",
                             "minProperties": 1
                         },
@@ -297,7 +297,7 @@
                             "$ref": "#/definitions/lut"
                         },
                         "colorByColumn": {
-                            "description": "Name of table column that is used for coloring. By default the 'source_annotation_id' column is used.",
+                            "description": "Name of table column that is used for coloring. By default the 'region_id' column is used.",
                             "$ref": "#/definitions/name"
                         },
                         "opacity": {
@@ -306,8 +306,8 @@
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
                         },
-                        "selectedAnnotationIds": {
-                            "description": "List of selected source annotation ids, each of the form timePoint;annotationId",
+                        "selectedRegionIds": {
+                            "description": "List of selected source region ids, each of the form timePoint;regionId",
                             "type": "array",
                             "items": {
                                 "type": "string",
