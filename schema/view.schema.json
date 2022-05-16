@@ -532,7 +532,7 @@
                         "positions": {
                             "$ref": "#/definitions/positions"
                         },
-                        "sources": {
+                        "nestedSources": {
                             "description": "The sources for the grid. Map of grid posititions to sources per position.",
                             "$ref": "#/definitions/nestedListOfSources",
                             "minItems": 2
