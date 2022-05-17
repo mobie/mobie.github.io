@@ -559,7 +559,7 @@
                             "description": "Center the views at the origin for 3d sources."
                         }
                     },
-                    "required": ["sources"],
+                    "required": ["nestedSources"],
                     "additionalProperties": false
                 }
             },
