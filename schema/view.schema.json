@@ -259,8 +259,8 @@
                             "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
                             "type": "number"
                         },
-                        "glasbeyRandomSeed": {
-                            "description": "Random seed for the glasbey lut to reproduce the exact colors of the view. (Optional)",
+                        "randomColorSeed": {
+                            "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
                         }
                     },
@@ -272,18 +272,18 @@
             "additionalProperties": false
         },
 
-        "sourceAnnotationDisplay": {
+        "regionDisplay": {
             "description": "Viewer state for a spatial arrangement of sources, e.g. via grid transform, with an associated table.",
             "type": "object",
             "properties": {
-                "sourceAnnotationDisplay": {
+                "regionDisplay": {
                     "type": "object",
                     "properties": {
                         "name": {
                             "$ref": "#/definitions/name"
                         },
                         "sources": {
-                            "description": "Map of source_annotation_ids (first table column) to source per location.",
+                            "description": "Map of region_ids (first table column) to source per location.",
                             "$ref": "#/definitions/mapOfSources",
                             "minProperties": 1
                         },
@@ -297,7 +297,7 @@
                             "$ref": "#/definitions/lut"
                         },
                         "colorByColumn": {
-                            "description": "Name of table column that is used for coloring. By default the 'source_annotation_id' column is used.",
+                            "description": "Name of table column that is used for coloring. By default the 'region_id' column is used.",
                             "$ref": "#/definitions/name"
                         },
                         "opacity": {
@@ -306,8 +306,8 @@
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
                         },
-                        "selectedAnnotationIds": {
-                            "description": "List of selected source annotation ids, each of the form timePoint;annotationId",
+                        "selectedRegionIds": {
+                            "description": "List of selected source region ids, each of the form timePoint;regionId",
                             "type": "array",
                             "items": {
                                 "type": "string",
@@ -337,8 +337,8 @@
                             "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
                             "type": "number"
                         },
-                        "glasbeyRandomSeed": {
-                            "description": "Random seed for the glasbey lut to reproduce the exact colors of the view. (Optional)",
+                        "randomColorSeed": {
+                            "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
                         }
                     },
@@ -346,7 +346,7 @@
                     "additionalProperties": false
                 }
             },
-            "required": ["sourceAnnotationDisplay"],
+            "required": ["regionDisplay"],
             "additionalProperties": false
         },
 
@@ -532,7 +532,7 @@
                         "positions": {
                             "$ref": "#/definitions/positions"
                         },
-                        "sources": {
+                        "nestedSources": {
                             "description": "The sources for the grid. Map of grid posititions to sources per position.",
                             "$ref": "#/definitions/nestedListOfSources",
                             "minItems": 2
@@ -687,7 +687,7 @@
             "items": {"anyOf": [
                 {"$ref": "#/definitions/imageDisplay"},
                 {"$ref": "#/definitions/segmentationDisplay"},
-                {"$ref": "#/definitions/sourceAnnotationDisplay"}
+                {"$ref": "#/definitions/regionDisplay"}
             ]}
         },
         "sourceTransforms": {
