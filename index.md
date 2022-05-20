@@ -34,3 +34,14 @@ views, images and tables for your colleagues to explore
 
 ## MoBIE specification:
 - [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md)
+
+## Live demonstrations
+
+The MoBIE functionality is also demonstrated in a series of videos:
+- [MoBIE core functionality](https://youtu.be/oXOXkWyIIOk)
+- [Creating MoBIE projects in Fiji](https://youtu.be/3oP3t6elsQU)
+- [Image Registration in MoBIE](https://youtu.be/jKlM68lrhso)
+- [Interactive user annotation](https://youtu.be/M-QUE-Qh97w)
+- [Timeseries in MoBIE](https://youtu.be/Md4PbK50NE0)
+
+There is also a talk from NeuBIAS introducing MoBIE and demonstrating some of its features: https://youtu.be/CZpaTCuSQao?t=2868.
