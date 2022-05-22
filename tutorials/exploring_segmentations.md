@@ -29,8 +29,8 @@ how labels are displayed in the viewer (see image below).
   - **Selected labels coloring** - Can change between showing labels
   in the 'Label color' (i.e. whatever their current colour is), or a specified 'Selection color'.
   - **Selection color** - the colour of selected labels if 'Selected labels coloring' is set to 'Selection color'
-  - **Opacity of non-selected labels** Changes opacity of non-selected labels
-  - **Increment random color seed [ Ctrl L ]** Same as Ctrl + L above.
+  - **Opacity of non-selected labels** - Changes opacity of non-selected labels
+  - **Increment random color seed [ Ctrl L ]** - Same as Ctrl + L above.
 
   Configure Label Rendering dialog | Example of boundary rendering
   ---|---

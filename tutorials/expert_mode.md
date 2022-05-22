@@ -52,7 +52,7 @@ This will bring up a dialog, as below:
 
 ### Open MoBIE Project Branch
 
-If you only want to open a certain github branch of a project (without separate control over metadata, images an tables), you can use the **Open MoBIE Project Branch** command:
+If you only want to open a certain github branch of a project (without separate control over metadata, images and tables), you can use the **Open MoBIE Project Branch** command:
 
 <img width="600" alt="image" src="./tutorial_images/openMoBIEProjectBranch.png">
 
