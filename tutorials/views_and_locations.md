@@ -10,7 +10,7 @@ The current coordinates of your mouse are displayed in the top right corner of t
 To save your current location and orientation, you can right click in the viewer and select
 **Log Current View**
 
-<img width="500" alt="image" src="./tutorial_images/logLocation.png">
+<img width="600" alt="image" src="./tutorial_images/logLocation.png">
 
 This will print a series of values to the **Log window** like so:
 ```
@@ -64,7 +64,7 @@ If the project contains more, you can view them by right clicking
 in the mobie viewer and selecting **Load Additional Views**, and then Load from
 **Project**.
 
-<img width="500" alt="image" src="./tutorial_images/loadAdditionalViews.png">
+<img width="600" alt="image" src="./tutorial_images/loadAdditionalViews.png">
 
 You can also load your own views from the file system. To create your own
 views, see the **Creating your own views** tutorial [here](./creating_your_own_views.md).

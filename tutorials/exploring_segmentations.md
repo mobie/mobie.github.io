@@ -20,7 +20,7 @@ table to highlight. If you have **V** ticked in the sources panel, it will also 
 
 More options are available if you right click in the viewer:
 
-<img width="550" alt="image" src="./tutorial_images/contextMenu.png">
+<img width="600" alt="image" src="./tutorial_images/contextMenu.png">
 
 - **Configure Label Rendering** - this will open a menu allowing you to change
 how labels are displayed in the viewer (see image below).
