@@ -20,15 +20,25 @@ table to highlight. If you have **V** ticked in the sources panel, it will also 
 
 More options are available if you right click in the viewer:
 
-<img width="500" alt="image" src="./tutorial_images/contextMenu.png">
+<img width="600" alt="image" src="./tutorial_images/contextMenu.png">
 
-- **Change Random Coloring Seed** Same as Ctrl + L above.
-- **Change Opacity of Non-selected Segments** Changes opacity of non-selected segments
-- **Configure Coloring Of Selected Segments** Can change between showing Segments
-in the 'default colour' (i.e. whatever their current colour is), or a specified 'selected color'.
-- **Configure Segments Volume Rendering** Change resolution with which segments are
+- **Configure Label Rendering** - this will open a menu allowing you to change
+how labels are displayed in the viewer (see image below).
+  - **Show labels as boundaries** - display only the boundaries of segmented objects (see example image below)
+  - **Boundary thickness** - the thickness of the displayed boundary (if 'show labels as boundaries' is enabled)
+  - **Selected labels coloring** - Can change between showing labels
+  in the 'Label color' (i.e. whatever their current colour is), or a specified 'Selection color'.
+  - **Selection color** - the colour of selected labels if 'Selected labels coloring' is set to 'Selection color'
+  - **Opacity of non-selected labels** - Changes opacity of non-selected labels
+  - **Increment random color seed [ Ctrl L ]** - Same as Ctrl + L above.
+
+  Configure Label Rendering dialog | Example of boundary rendering
+  ---|---
+  <img width="350" alt="image" src="./tutorial_images/configureLabelRendering.png">  |  <img width="300" alt="image" src="./tutorial_images/boundaryRendering.png">
+
+- **Configure Label Volume Rendering** Change resolution with which labels are
 shown in the 3D viewer.
-- **Undo Segment Selections** Same as Ctrl + Shift + N above.
+- **Undo Segment Selections [ Ctrl Shift N ]** Same as Ctrl + Shift + N above.
 
 ### Interacting with segmentation table
 
