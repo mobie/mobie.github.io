@@ -44,4 +44,4 @@ The MoBIE functionality is also demonstrated in a series of videos:
 - [Interactive user annotation](https://youtu.be/M-QUE-Qh97w)
 - [Timeseries in MoBIE](https://youtu.be/Md4PbK50NE0)
 
-There is also a talk from NeuBIAS introducing MoBIE and demonstrating some of its features: https://youtu.be/CZpaTCuSQao?t=2868.
+There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
