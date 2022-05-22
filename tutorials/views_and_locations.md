@@ -8,7 +8,7 @@ The current coordinates of your mouse are displayed in the top right corner of t
 ### Saving a location / orientation
 
 To save your current location and orientation, you can right click in the viewer and select
-**BDV - Log Current View**
+**Log Current View**
 
 <img width="500" alt="image" src="./tutorial_images/logLocation.png">
 
