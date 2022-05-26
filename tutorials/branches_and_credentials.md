@@ -21,6 +21,6 @@ To open a MoBIE project from an S3 bucket with credentials, use the **Open MoBIE
 
 <img width="600" alt="image" src="./tutorial_images/openMoBIEProjectWithS3Credentials.png">
 
-This will open a dialog ...
+This will open a dialog where you can enter the project location (either an S3 address or a github repository) and the S3 access credentials.
 
-<img width="250" alt="image" src="./tutorial_images/openMoBIEProjectWithS3CredentialsDialog.png">
+<img width="300" alt="image" src="./tutorial_images/openMoBIEProjectWithS3CredentialsDialog.png">
