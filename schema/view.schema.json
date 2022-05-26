@@ -18,10 +18,12 @@
                 "anyOf": [
                     {
                         "type": "string",
+                        "description": "Path to a csv table.",
                         "pattern": "^[^;\\/ ]+\\.csv$"
                     },
                     {
                         "type": "string",
+                        "description": "Path to a tsv table.",
                         "pattern": "^[^;\\/ ]+\\.tsv$"
                     }
                 ]

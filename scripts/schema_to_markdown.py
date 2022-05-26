@@ -106,7 +106,10 @@ def add_field(name, prop, md, indent, schema):
     else:
         descr = prop.get("description", "")
         descr = require_dot(descr)
-        line = f"{indent}- `{name}`: {descr}\n"
+        if name:
+            line = f"{indent}- `{name}`: {descr}\n"
+        else:
+            line = f"{indent}- {descr}\n"
         md += line
     return md
 

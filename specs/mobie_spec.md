@@ -324,8 +324,8 @@ The view metadata has the following elements (see below for an example json file
 		- `showTable`: Show the table GUI element. Default is true (if the display has a table).
 		- `sources`: The segmentation sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer. Contains a list of strings.
 		- `tables`: The tables to load for this display. Must include the default table as the first item. Contains a list with items:
-			- ``: 
-			- ``: 
+			- Path to a csv table.
+			- Path to a tsv table.
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
 		- `visible`: Are the sources of this display visible? Default is true.
 	- `regionDisplay`:  The fields `sources`, `tableData`, `tables`, `opacity`, `lut` and `name` are required.
@@ -343,8 +343,8 @@ The view metadata has the following elements (see below for an example json file
 		- `sources`: Contains array with items of type [None](#None-metadata)
 		- `tableData`: Contains a [tableData](#tableData-metadata).
 		- `tables`: The tables to load for this display. Must include the default table as the first item. Contains a list with items:
-			- ``: 
-			- ``: 
+			- Path to a csv table.
+			- Path to a tsv table.
 		- `valueLimits`: Value limits for numerical color maps like 'blueWhiteRed'. Contains a tuple of [number, number].
 		- `visible`: Is the color overlay of this display visible? Default is true.
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
