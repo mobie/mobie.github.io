@@ -25,7 +25,8 @@ views, images and tables for your colleagues to explore
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 
-## Expert mode usage
+## Advanced usage
+- [Opening projects from branches and with credentials](./tutorials/branches_and_credentials.md)
 - [Expert Mode](./tutorials/expert_mode.md)
 
 ## Making your own projects
