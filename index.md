@@ -48,3 +48,8 @@ The MoBIE functionality is also demonstrated in a series of videos:
 - [Timeseries in MoBIE](https://youtu.be/Md4PbK50NE0)
 
 There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
+
+
+## Contact
+
+If you have questions about MoBIE or run into issues using it, please either open an issue on [github](https://github.com/mobie/mobie-viewer-fiji) or create a new topic with the tag `mobie` on [image.sc](https://forum.image.sc/).
