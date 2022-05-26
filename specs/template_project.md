@@ -1,12 +1,12 @@
 # MoBIE specification
 
-The MoBIE specification describes a valid configuration for the MoBIE viewer. The specification defines four different concepts:
+MoBIE projects follow the specification described here; it is based on four key concepts:
 - A `project`, which groups data, for example from the same publication, that can be opened by the MoBIE viewer. It consists of multiple `datasets`.
-- A `dataset`, which contains data that can be opened *jointly* by the MoBIE viewer.
-- A `source`, which corresponds to a single image data source as well as associated metadata and viewer state.
-- A `view`, which describes the viewer state.
+- A `dataset`, which contains data that can be opened in the same MoBIE viewer instance.
+- A `source`, which corresponds to the data for a single image (also volume, timeseries) or segmentation image. For segmentation images it may also contain the associated tabular data.
+- A `view`, which describes the full viewer state.
 
-The specification is defined via [jsonschema](https://json-schema.org/) and the schema files are located [here](https://github.com/mobie/mobie.github.io/tree/master/schema).
+The specification is defined via [jsonschema](https://json-schema.org/). The schema files are located [here](https://github.com/mobie/mobie.github.io/tree/master/schema).
 It is versioned, following [the semantic versioning convention](https://semver.org/). The current version is `0.2.0`.
 
 **Using jsonschema:**
@@ -17,63 +17,52 @@ The jsonschema files can be used in the following ways:
 
 ## <a name="project"></a>Project 
 
-The `project` and its associated `datasets` are stored in a directory structure with the project corresponding to the root directory.
-This directory must contain the file `project.json`, which must contain a valid [project schema](https://github.com/mobie/mobie.github.io/tree/master/schema/project.schema.json)
-See an example project structure, slightly adapted from the [zebrafish-lm project](https://github.com/mobie/zebrafish-lm-datasets):
+The `project` and its associated `datasets` are stored in a directory structure, with the project corresponding to the root directory.
+This directory must contain the file `project.json`, which must contain a valid [project schema](https://github.com/mobie/mobie.github.io/tree/master/schema/project.schema.json).
+See an example project structure, slightly adapted from the [clem project](https://github.com/mobie/clem-example-project):
 ```
-zebrafish-lm/
+clem/
 ├── project.json
-├── actin
-├── cisgolgi
-├── lysosomes
-├── membrane
-├── nuclei
-└── trans_golgi
+├── hela
+└── yeast
 ```
 
 ### <a name="project-metadata"></a>Project Metadata
 
 The project metadata, stored in `project.json`, has the following structure:
-- `datasets`: List of the available datasets. The dataset directory names must match the names in the list. It must contain at least one dataset.
+- `datasets`: List of the available datasets. The dataset directory names must match the names in this list. It must contain at least one dataset.
 - `defaultDataset`: The dataset that will be opened when the MoBIE viewer is started for this project.
+- `imageDataFormats`: The image data formats present in this project, see [supported data formats](#data) for details.
 - `description`: Description of this project.
 - `references`: List of references for this project.
 - `specVersion`: The MoBIE specification version of this project.
 
-For the zebrafish-lm project the `project.json` looks like this:
-```json
+For the clem project the `project.json` looks like this:
+```yaml
 {
-  "datasets": [
-    "actin",
-    "cisgolgi",
-    "lysosomes",
-    "membrane",
-    "nuclei",
-    "trans_golgi"
-  ],
-  "defaultDataset": "membrane",
-  "description": "A quantitative atlas of the cellular architecture for the zebrafish posterior lateral line primoridum.",
-  "references": ["https://doi.org/10.7554/eLife.55913"],
+  "datasets": ["hela", "yeast"],
+  "defaultDataset": "hela",
+  "description": "Correlative electron microscopy data from the Schwab Lab at EMBL Heidelberg.",
+  "imageDataFormats": ["ome.zarr", "ome.zarr.s3"]
+  "references": ["https://doi.org/10.1083/jcb.201009037", "https://doi.org/10.1038/nmeth.1486"],
   "specVersion": "0.2.0"
 }
 ```
 
 ### <a name="project-storage"></a>Local & Remote Projects
 
-Projects can be either stored locally or hosted on a remote object store.
-In addition, the `image data`, i.e. the image data in one of the [supported data formats](#data) and `metadata`, corresponding to the json files for this project and [tables](#tables) 
-can be accessed from different storage locations for one project.
+Projects can be stored locally or hosted remotely and  the `image data`, i.e. the images in one of the [supported data formats](#data) and `metadata`, i.e. the json files describing the project and [tabular data](#tables) can be accessed from different storage locations for one project.
 
-In more detail, MoBIE currently supports the following storage options:
+In more detail, MoBIE currently supports the following three storage options:
 - filesystem: can store `image data` and `metadata`.
-- s3 object store: can store `image data` and `metadata`; public and private buckets are supported.
-- github: can only store `metadata`, `image data` must be loaded from object store.
+- s3 object storage: can store `image data` and `metadata`; public and private buckets are supported.
+- github: can only store `metadata`, `image data` must be loaded from object storarge.
 
-This enables different combinations of hosting a project, see also this [figure](fig-storage):
+This enables different combinations of hosting a project, see also [this figure](fig-storage):
 <ol type="a">
-<li>only on filesystem: project is only available locally; this is the best mode for development.</li>
-<li>only on s3 object store: project is self-contained in object store and can be shared with collaborators privately (using a privat bucket) or shared publicly (using a public bucket).</li>
-<li>on github and s3 object store: the metadata is stored on github, which also serves as entrypoint for the viewer. The image sources are stored on the s3 bucket. This set-up has the advantage that metadata is under version control.</li>
+<li>only on filesystem: project is only available locally.</li>
+<li>only on s3 object storage: project is self-contained in object storage and can be shared with collaborators privately (using a privat bucket) or shared publicly (using a public bucket).</li>
+<li>on github and s3 object storage: the metadata is stored on github, which also serves as entrypoint for the viewer. The image data is stored on the s3 bucket. This set-up has the advantage that the metadata is under version control.</li>
 </ol>
 
 ![fig-storage](../assets/hosting.png)
