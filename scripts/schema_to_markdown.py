@@ -8,15 +8,15 @@ def require_dot(descr):
 
 
 def add_array(name, prop, md, indent, schema):
-    items = prop['items']
+    items = prop["items"]
     descr = prop.get("description", "")
     descr = require_dot(descr)
     if isinstance(items, dict):  # case dict
 
         def _add_items(items, md):
-            if 'type' in items:
-                type_ = items['type']
-                if type_ in ('boolean', 'string', 'number', 'integer', 'object', 'array'):
+            if "type" in items:
+                type_ = items["type"]
+                if type_ in ("boolean", "string", "number", "integer", "object", "array"):
                     line = f"{indent}- `{name}`: {descr} Contains a list of {items['type']}s.\n"
                     md += line
                 else:
@@ -38,7 +38,7 @@ def add_array(name, prop, md, indent, schema):
             return md
 
         if "$ref" in items:
-            items = get_reference(items['$ref'], schema)
+            items = get_reference(items["$ref"], schema)
             md = _add_items(items, md)
         else:
             md = _add_items(items, md)

@@ -38,7 +38,7 @@ def describe_and_generate(name):
     schema = schema_to_markdown(schema_file)
     md += schema
     md += "\n"
-    md += "Examples:\n"
+    md += "**Examples:**\n"
     for example in EXAMPLE_SPECS[name]:
         md += "```yaml\n"
         with open(example) as f:

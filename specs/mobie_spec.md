@@ -224,7 +224,7 @@ The source metadata has the following elements (see below for an example json):
 		- `tsv`: Table data in tsv file format, specified as root location for the table data. The field `relativePath` is required.
 			- `relativePath`: The relative path of the table data w.r.t the dataset root location.
 
-Examples:
+**Examples:**
 ```yaml
 {
   "em-detail-a1-A": {
@@ -302,7 +302,7 @@ The view metadata has the following elements (see below for an example json file
 		- `blendingMode`: The mode for blending multiple image sources.
 		- `color`: The color map.
 		- `contrastLimits`: The contrast limits. Contains a tuple of [number, number].
-		- `name`: 
+		- `name`: Name for this field.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
@@ -310,9 +310,9 @@ The view metadata has the following elements (see below for an example json file
 		- `visible`: Are the sources of this display visible? Default is true.
 	- `segmentationDisplay`:  The fields `opacity`, `lut`, `name` and `sources` are required.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
-		- `colorByColumn`: 
+		- `colorByColumn`: Name for this field.
 		- `lut`: The look-up-table for categorical coloring modes.
-		- `name`: 
+		- `name`: Name for this field.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `randomColorSeed`: Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional).
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
@@ -330,9 +330,9 @@ The view metadata has the following elements (see below for an example json file
 		- `visible`: Are the sources of this display visible? Default is true.
 	- `regionDisplay`:  The fields `sources`, `tableData`, `tables`, `opacity`, `lut` and `name` are required.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
-		- `colorByColumn`: 
+		- `colorByColumn`: Name for this field.
 		- `lut`: The look-up-table for categorical coloring modes.
-		- `name`: 
+		- `name`: Name for this field.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `randomColorSeed`: Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional).
 		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
@@ -349,14 +349,14 @@ The view metadata has the following elements (see below for an example json file
 		- `visible`: Is the color overlay of this display visible? Default is true.
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
-		- `name`: 
+		- `name`: Name for this field.
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `mergedGrid`: A grid view of multiple sources that creates an new merged source. Only valid if all sources have the same size (both in pixels and physical space). The fields `mergedGridSourceName` and `sources` are required.
 		- `encodeSource`: Encode the source name into the pixel value. This is necessary for merged grid label sources.
-		- `mergedGridSourceName`: 
+		- `mergedGridSourceName`: Name for this field.
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x]. Contains a list of arrays.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 	- `crop`: Crop transformation applied to a list of sources. The fields `min`, `max` and `sources` are required.
@@ -364,19 +364,19 @@ The view metadata has the following elements (see below for an example json file
 		- `centerAtOrigin`: Whether to center the source at the coordinate space origin after applying the crop. By default true.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
 		- `min`: Minimum coordinates for the crop. Contains a list of numbers.
-		- `name`: 
+		- `name`: Name for this field.
 		- `rectify`: Whether to align the crop's bounding box with the coordinate system. By default true.
 		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
 	- `transformedGrid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The field `nestedSources` is required.
 		- `centerAtOrigin`: Center the views at the origin for 3d sources.
-		- `name`: 
+		- `name`: Name for this field.
 		- `nestedSources`:  Contains a list of arrays.
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x]. Contains a list of arrays.
 		- `sourceNamesAfterTransform`:  Contains a list of arrays.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-- `uiSelectionGroup`: 
+- `uiSelectionGroup`: Name for this field.
 - `viewerTransform`: A viewer transform to specify position, rotation, timepoint and/or zoom.Must contain exactly one of the following items:
 	- 
 		- `timepoint`: The initial timepoint shown in the viewer.
@@ -393,7 +393,7 @@ The view metadata has the following elements (see below for an example json file
 		- `position`: Position that will be centered in the viewer. Contains a list of numbers.
 		- `timepoint`: The initial timepoint shown in the viewer.
 
-Examples:
+**Examples:**
 ```yaml
 {
   "default": {
