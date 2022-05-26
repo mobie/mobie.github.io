@@ -24,6 +24,7 @@ views, images and tables for your colleagues to explore
 - [Viewing your own tables](./tutorials/viewing_your_own_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
+- [Grid views & image region tables](./tutorials/image_grids_and_tables.md)
 
 ## Advanced usage
 - [Opening projects from branches and with credentials](./tutorials/branches_and_credentials.md)
@@ -34,7 +35,7 @@ views, images and tables for your colleagues to explore
 - [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
 ## MoBIE specification:
-- [MoBIE projects are stored according to a jsonschema based specification](./specs/mobie_spec.md)
+- [MoBIE project specification](./specs/mobie_spec.md)
 
 ## Live demonstrations
 

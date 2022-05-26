@@ -1,6 +1,7 @@
 ## Annotation tutorial
 
 You can also annotate the segmented objects in your project using MoBIE. You can either do it from scratch or correct an already existing annotation.
+There is also [a video](https://youtu.be/M-QUE-Qh97w) demonstrating this functionality.
 
 ### Part I. Annotating from scratch
 

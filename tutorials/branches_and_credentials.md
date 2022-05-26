@@ -2,7 +2,7 @@
 
 MoBIE projects can also be loaded from different branches of a github repository than `main`. This is useful to test changes before making them directly available in the version of the project that is opened by default.
 Furthermore, the S3 bucket containing the project image data may not be public, i.e. it requires credentials to be accessible.
-See the two section below for how to open such projects and check out [the expert mode](./tutorials/expert_mode.md) for how to fully configure the data sources of a MoBIE project.
+See the two section below for how to open such projects and check out [the expert mode](./expert_mode.md) for how to fully configure the data sources of a MoBIE project.
 
 ### Open MoBIE Project Branch
 
