@@ -2,8 +2,8 @@
 
 For making projects on your local file system, you can use the MoBIE Project Creator within Fiji.  
 **Note**: if your images are particularly large, or you want more control over your project, you can
-create your project with this [python library](https://github.com/mobie/mobie-utils-python). See
-[here](../specs/mobie_spec.md) for details of project structure.
+create your project with our [python library](https://github.com/mobie/mobie-utils-python). See also [here](../specs/mobie_spec.md)
+for details about the project specification and structure.
 
 Type MoBIE in the search bar, and select the **Create new MoBIE Project** command.  
 
@@ -51,7 +51,7 @@ Then follow the directions below for either **open current image** (to add image
 For all images, make sure your unit and voxel size are set correctly! The project creator only allows images with the same unit to be added to the same project (e.g. all micrometre or all nanometre etc...)
 
 **Note**: if your images are particularly large, it will be more efficient to convert your images outside of
-imageJ. e.g. using this [python library](https://github.com/mobie/mobie-utils-python)
+imageJ. e.g. using our [python library](https://github.com/mobie/mobie-utils-python)
 
 #### Current open image
 
