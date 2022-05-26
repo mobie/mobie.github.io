@@ -1,0 +1,14 @@
+{
+  "em-detail-a1-A": {
+    "image": {
+      "imageData": {
+        "bdv.n5": {
+          "relativePath": "images/bdv-n5/em-detail-a1-A.xml"
+        },
+        "bdv.n5.s3": {
+          "relativePath": "images/bdv-n5-s3/em-detail-a1-A.xml"
+        }
+      }
+    }
+  }
+}
