@@ -10,6 +10,7 @@ segmentations...)
 - Explore tabular data interactively alongside the images they're derived from
 - Easy sharing with colleagues (no need to download the raw images!)
 - Easy sharing of points of interest in your data e.g. create bookmarks showing selected
+- Image registration directly in MoBIE
 views, images and tables for your colleagues to explore
 - ... and more!
 
