@@ -1,37 +1,20 @@
-# helper script to compile a pdf from the markdown files, e.g. for the nature methods supplementary material
+import pdfkit
 
-import os
-from subprocess import run
+urls = [
+    "https://mobie.github.io/",
+    "https://mobie.github.io/tutorials/installation.html",
+    "https://mobie.github.io/tutorials/explore_a_project.html",
+    "https://mobie.github.io/tutorials/exploring_segmentations.html",
+    "https://mobie.github.io/tutorials/views_and_locations.html",
+    "https://mobie.github.io/tutorials/viewing_your_own_tables.html",
+    "https://mobie.github.io/tutorials/creating_your_own_views.html",
+    "https://mobie.github.io/tutorials/annotation_tutorial.html",
+    "https://mobie.github.io/tutorials/image_grids_and_tables.html",
+    "https://mobie.github.io/tutorials/branches_and_credentials.html",
+    "https://mobie.github.io/tutorials/expert_mode.html",
+    "https://mobie.github.io/tutorials/mobie_project_creator.html",
+    "https://mobie.github.io/tutorials/scripting_project_creator.html",
+    "https://mobie.github.io/specs/mobie_spec.html"
+]
 
-
-# TODO need to have all image sources locally or enable download
-# TODO write introductory supplementary note
-# this is just an example of how to combine the different pages into one pdf
-files = {
-    # 'Supplementary': '',
-    "# Supplementary Note 1: Usage": [
-        "./tutorials/explore_a_project.md",
-        "./tutorials/bookmarks_and_locations.md"
-    ],
-    "# Supplementary Note 2: Specification": [
-        "./specs/mobie_project_spec.md",
-        "./specs/metadata_and_tables.md"
-    ]
-}
-out_file = './test.pdf'
-
-text = ""
-for title, file_list in files.items():
-    text += f"{title}\n"
-    for in_file in file_list:
-        with open(in_file, 'r') as f:
-            # TODO, all headings should get an additional # to have the correct nesting
-            text += f.read()
-    text += "\n"
-
-tmp_file = './tmp.md'
-with open(tmp_file, 'w') as f:
-    f.write(text)
-
-run(['pandoc', '--pdf-engine=xelatex', '-o', out_file, tmp_file])
-os.remove(tmp_file)
+pdfkit.from_url(urls, "test.pdf")
