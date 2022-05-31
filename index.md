@@ -50,6 +50,10 @@ The MoBIE functionality is also demonstrated in a series of videos:
 There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
 
 
+## Citation
+
+If you use MoBIE in your research please cite [the MoBIE bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2022.05.27.493763v1).
+
 ## Contact
 
 If you have questions about MoBIE or run into issues using it, please either open an issue on [github](https://github.com/mobie/mobie-viewer-fiji) or create a new topic with the tag `mobie` on [image.sc](https://forum.image.sc/).
