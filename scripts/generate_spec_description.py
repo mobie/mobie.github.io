@@ -3,7 +3,9 @@ from schema_to_markdown import schema_to_markdown
 
 EXAMPLE_SPECS = {
     "source": ["../specs/examples/image_source.json", "../specs/examples/segmentation_source.json"],
-    "view": ["../specs/examples/single_source_view.json", "../specs/examples/grid_view.json"],
+    "view": ["../specs/examples/single_source_view.json",
+             "../specs/examples/grid_view.json",
+             "../specs/examples/advanced_fig2c.json"],
 }
 
 
