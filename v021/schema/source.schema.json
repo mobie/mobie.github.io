@@ -1,0 +1,190 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json",
+    "title": "MoBIESourceSchema",
+    "description": "Schema describing a MoBIE source",
+
+    "definitions": {
+
+        "imageData": {
+            "description": "Description of the image data for this source, including the file format and the location of the data.",
+            "type": "object",
+            "properties": {
+                "bdv.hdf5": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.hdf5 format, i.e. hdf5 data that is stored on the local fileystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "bdv.n5": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.n5 format, i.e. n5 data that is stored on the local fileystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "bdv.n5.s3": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.n5.s3 format, i.e. n5 data that is stored on a s3 object store.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "bdv.ome.zarr": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem with additional bdv xml metadata.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "bdv.ome.zarr.s3": {
+                    "type": "object",
+                    "description": "Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store with additional bdv xml metadata.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "ome.zarr": {
+                    "type": "object",
+                    "description": "Data stored in the ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the ome.zarr file, relative to the dataset root location."
+                        }
+                    },
+                    "required": ["relativePath"],
+                    "additionalProperties": false
+                },
+                "ome.zarr.s3": {
+                    "type": "object",
+                    "description": "Data stored in the ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store.",
+                    "properties": {
+                        "s3Address": {
+                            "type": "string",
+                            "description": "The s3 address for this image data."
+                        },
+                        "signingRegion": {
+                            "type": "string",
+                            "description": "The signing region for aws, e.g. us-east-1"
+                        }
+                    },
+                    "required": ["s3Address"],
+                    "additionalProperties": false
+                },
+                "openOrganelle.s3": {
+                    "type": "object",
+                    "description": "Data stored in the openOrganelle file format on a s3 object store.",
+                    "properties": {
+                        "s3Address": {
+                            "type": "string",
+                            "description": "The s3 address for this image data."
+                        },
+                        "signingRegion": {
+                            "type": "string",
+                            "description": "The signing region for aws, e.g. us-east-1"
+                        }
+                    },
+                    "required": ["s3Address"],
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "minProperties": 1
+        },
+
+        "tableData": {
+            "description": "Description of the table data for this source, including the format and the location of the table data.",
+            "type": "object",
+            "properties": {
+                "tsv": {
+                    "type": "object",
+                    "description": "Table data in tsv file format, specified as root location for the table data.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The relative path of the table data w.r.t the dataset root location."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["relativePath"]
+                }
+            },
+            "additionalProperties": false,
+            "required": ["tsv"]
+        },
+
+        "imageSource": {
+            "description": "An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml.",
+            "type": "object",
+            "properties": {
+                "description": {
+                    "description": "Description of this image source.",
+                    "type": "string"
+                },
+                "imageData": {"$ref": "#/definitions/imageData"}
+            },
+            "required": ["imageData"],
+            "additionalProperties": false
+        },
+
+        "segmentationSource": {
+            "description": "A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml.",
+            "type": "object",
+            "properties": {
+                "description": {
+                    "description": "Description of this segmentation source.",
+                    "type": "string"
+                },
+                "imageData": {"$ref": "#/definitions/imageData"},
+                "tableData": {"$ref": "#/definitions/tableData"}
+            },
+            "required": ["imageData"],
+            "additionalProperties": false
+        }
+    },
+
+    "type": "object",
+    "oneOf": [
+        {
+            "properties": {
+                "image": {"$ref": "#/definitions/imageSource"}
+            },
+            "required": ["image"],
+            "additionalProperties": false
+        },
+        {
+            "properties": {
+                "segmentation": {"$ref": "#/definitions/segmentationSource"}
+            },
+            "required": ["segmentation"],
+            "additionalProperties": false
+        }
+    ]
+}

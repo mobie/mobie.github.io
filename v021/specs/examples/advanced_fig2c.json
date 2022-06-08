@@ -1,0 +1,333 @@
+{
+  "Figure2c": {
+    "isExclusive": true,
+    "sourceDisplays": [
+      {
+        "imageDisplay": {
+          "blendingMode": "sumOccluding",
+          "color": "r=255,g=255,b=255,a=255",
+          "contrastLimits": [
+            150.0,
+            45700.0
+          ],
+          "name": "em-detail-a3",
+          "opacity": 1.0,
+          "showImagesIn3d": false,
+          "sources": [
+            "em-detail-a3-A"
+          ],
+          "visible": true
+        }
+      },
+      {
+        "imageDisplay": {
+          "blendingMode": "sumOccluding",
+          "color": "r=255,g=255,b=255,a=255",
+          "contrastLimits": [
+            30000,
+            35000
+          ],
+          "name": "tomo_38_lm",
+          "opacity": 1.0,
+          "sources": [
+            "tomo_38_lm"
+          ]
+        }
+      },
+      {
+        "imageDisplay": {
+          "blendingMode": "sumOccluding",
+          "color": "white",
+          "contrastLimits": [
+            70.0,
+            235.0
+          ],
+          "name": "tomo_38_hm",
+          "opacity": 1.0,
+          "sources": [
+            "tomo_38_hm"
+          ]
+        }
+      },
+      {
+        "imageDisplay": {
+          "blendingMode": "sum",
+          "color": "r=255,g=0,b=0,a=255",
+          "contrastLimits": [
+            55.0,
+            400.0
+          ],
+          "name": "fluorescence-a3-c0",
+          "opacity": 1.0,
+          "showImagesIn3d": false,
+          "sources": [
+            "fluorescence-a3-c0"
+          ],
+          "visible": true
+        }
+      },
+      {
+        "imageDisplay": {
+          "blendingMode": "sum",
+          "color": "r=0,g=255,b=0,a=255",
+          "contrastLimits": [
+            40.0,
+            250.0
+          ],
+          "name": "fluorescence-a3-c1",
+          "opacity": 1.0,
+          "showImagesIn3d": false,
+          "sources": [
+            "fluorescence-a3-c1"
+          ],
+          "visible": true
+        }
+      },
+      {
+        "imageDisplay": {
+          "blendingMode": "sum",
+          "color": "r=0,g=0,b=255,a=255",
+          "contrastLimits": [
+            40.0,
+            400.0
+          ],
+          "name": "fluorescence-a3-c2",
+          "opacity": 1.0,
+          "showImagesIn3d": false,
+          "sources": [
+            "fluorescence-a3-c2"
+          ],
+          "visible": true
+        }
+      },
+      {
+        "regionDisplay": {
+          "boundaryThickness": 0.2,
+          "colorByColumn": "annotationColor",
+          "lut": "argbColumn",
+          "name": "lm-tomo-annotations",
+          "opacity": 1.0,
+          "selectedRegionIds": [
+            "0;1"
+          ],
+          "showAsBoundaries": true,
+          "sources": {
+            "1": [
+              "tomo_38_lm"
+            ]
+          },
+          "tableData": {
+            "tsv": {
+              "relativePath": "tables/lm-tomogram-table"
+            }
+          },
+          "tables": [
+            "default.tsv"
+          ]
+        }
+      },
+      {
+        "regionDisplay": {
+          "boundaryThickness": 0.2,
+          "colorByColumn": "annotationColor",
+          "lut": "argbColumn",
+          "name": "hm-tomo-annotations",
+          "opacity": 1.0,
+          "showAsBoundaries": true,
+          "sources": {
+            "1": [
+              "tomo_38_hm"
+            ]
+          },
+          "tableData": {
+            "tsv": {
+              "relativePath": "tables/highmag_tomos"
+            }
+          },
+          "tables": [
+            "default.tsv"
+          ]
+        }
+      }
+    ],
+    "sourceTransforms": [
+      {
+        "affine": {
+          "name": "MapScaleMat",
+          "parameters": [
+            -0.18777152869337194,
+            0.9821399838237337,
+            0.0,
+            0.0,
+            1.0032799126909004,
+            0.16846097748363031,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            99.62143853357243,
+            0.0
+          ],
+          "sources": [
+            "em-detail-a3-A"
+          ]
+        }
+      },
+      {
+        "affine": {
+          "name": "Translation",
+          "parameters": [
+            1.0,
+            0.0,
+            0.0,
+            203.422,
+            0.0,
+            1.0,
+            0.0,
+            238.934,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "sources": [
+            "em-detail-a3-A"
+          ]
+        }
+      },
+      {
+        "affine": {
+          "name": "affine0",
+          "parameters": [
+            0.013245148924148945,
+            1.0039595803164607,
+            0.0,
+            239.93945962096353,
+            1.0206688295391182,
+            -0.034661042654656964,
+            0.0,
+            300.37466120697667,
+            0.0,
+            0.0,
+            1.0,
+            -0.191475
+          ],
+          "sources": [
+            "tomo_38_lm"
+          ]
+        }
+      },
+      {
+        "affine": {
+          "name": "affine0",
+          "parameters": [
+            0.013245148924148947,
+            1.0039595803164607,
+            0.0,
+            243.59201639109855,
+            1.0206688295391182,
+            -0.03466104265465697,
+            0.0,
+            303.91519667035317,
+            0.0,
+            0.0,
+            1.0,
+            -0.0701
+          ],
+          "sources": [
+            "tomo_38_hm"
+          ]
+        }
+      },
+      {
+        "affine": {
+          "name": "Translation",
+          "parameters": [
+            100.23021139885087,
+            13.287015421562778,
+            0.0,
+            165.3568,
+            -13.287015421562778,
+            100.23021139885087,
+            0.0,
+            2243.2063,
+            0.0,
+            0.0,
+            15.423117146329398,
+            0.0
+          ],
+          "sources": [
+            "fluorescence-a3-c0",
+            "fluorescence-a3-c1",
+            "fluorescence-a3-c2"
+          ]
+        }
+      },
+      {
+        "affine": {
+          "name": "MapScaleMat",
+          "parameters": [
+            -0.0018848506050240675,
+            0.009858721157622638,
+            0.0,
+            0.0,
+            0.010070923763591259,
+            0.001691011291980681,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "sources": [
+            "fluorescence-a3-c0",
+            "fluorescence-a3-c1",
+            "fluorescence-a3-c2"
+          ]
+        }
+      },
+      {
+        "affine": {
+          "name": "CLEMRegistration",
+          "parameters": [
+            1.0,
+            0.0,
+            0.0,
+            203.422,
+            0.0,
+            1.0,
+            0.0,
+            238.934,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "sources": [
+            "fluorescence-a3-c0",
+            "fluorescence-a3-c1",
+            "fluorescence-a3-c2"
+          ]
+        }
+      }
+    ],
+    "uiSelectionGroup": "mobie-paper",
+    "viewerTransform": {
+      "normalizedAffine": [
+        0.06345607117925063,
+        0.0,
+        0.0,
+        -15.741442519524742,
+        0.0,
+        0.06344640651225365,
+        0.0,
+        -19.442105775080794,
+        0.0,
+        -0.0011074611451334798,
+        0.06344640651225365,
+        0.3410102495449885],
+      "timepoint": 0
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/project.schema.json",
+    "title": "MoBIEProjectSchema",
+    "description": "Schema describing a MoBIE project",
+
+    "properties": {
+        "datasets": {
+            "description": "The list of datasets available in this project.",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "$ref": "view.schema.json#/definitions/name"
+            },
+            "minItems": 1
+        },
+        "defaultDataset": {
+            "description": "The default dataset for this project.",
+            "type": "string"
+        },
+        "description": {
+            "desription": "The description.",
+            "type": "string"
+        },
+        "references": {
+            "description": "Publication or other references for this project",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "specVersion": {
+            "description": "The MoBIE spec version of this project.",
+            "type": "string",
+            "pattern": "0\\.2\\.\\d+"
+        },
+        "imageDataFormats": {
+            "description": "The available data formats for this project.",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": ["bdv.hdf5", "bdv.n5", "bdv.n5.s3", "bdv.ome.zarr", "bdv.ome.zarr.s3", "ome.zarr", "ome.zarr.s3", "openOrganelle.s3"]
+            },
+            "minItems": 1
+        }
+    },
+    "required": ["datasets", "defaultDataset", "specVersion", "imageDataFormats"],
+    "additionalProperties": false
+}

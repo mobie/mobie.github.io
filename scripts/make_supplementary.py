@@ -1,3 +1,6 @@
+import os
+import re
+import requests
 import pdfkit
 
 urls = [
@@ -17,4 +20,20 @@ urls = [
     "https://mobie.github.io/specs/mobie_spec.html"
 ]
 
-pdfkit.from_url(urls, "test.pdf")
+
+def download_and_remove_header(url):
+    with requests.get(url) as r:
+        text = r.text
+    return text
+    without_header = re.sub("<header>.*?</header>", "", text, flags=re.DOTALL)
+    return without_header
+    # out_dir = "./htmls"
+    # os.makedirs(out_dir, exist_ok=True)
+    # out_path = os.path.join(out_dir, os.path.basename(url))
+    # with open(out_path, "w") as f:
+    #     f.write(without_header)
+
+
+x = download_and_remove_header(urls[1])
+breakpoint()
+pdfkit.from_string(x, "test.pdf")
