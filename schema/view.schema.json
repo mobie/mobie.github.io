@@ -523,6 +523,52 @@
                 }
             }
         },
+        
+        "timepoints": {
+            "description": "",
+            "type": "object",
+            "required": ["timepoints"],
+            "additionalProperties": false,
+            "properties": {
+                "timepoints": {
+                    "required": ["parameters", "sources"],
+                    "additinalProperties": false,
+                    "type": "object",
+                    "description": "Move sources to different timepoints.",
+                    "properties": {
+                        "sources": {
+                            "description": "The sources this transformation is applied to.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "parameters": {
+                            "description": "List of the timepoint shifts. The list contains elements of size 2, the first entry gives the new timepoint (where the source is moved to), the second the old one (where it comes from). The first entries must be unique across the whole list, the second entries may be duplicated.",
+                            "type": "array",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type":"number"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            },
+                            "minItems": 1
+                        },
+                        "name": {
+                            "description": "Name of this transformation",
+                            "$ref": "#/definitions/name"
+                        },
+                        "keep": {
+                            "type": "boolean",
+                            "description": "Whether to keep timepoints that are not transformed, or to only display timepoints that are explicitly given in the transformation."
+                        }
+                    }
+                }
+            }
+        },
 
         "transformedGrid": {
             "description": "",
@@ -698,8 +744,9 @@
             "type": "array",
             "items": {"anyOf": [
                 {"$ref": "#/definitions/affine"},
-                {"$ref": "#/definitions/mergedGrid"},
                 {"$ref": "#/definitions/crop"},
+                {"$ref": "#/definitions/mergedGrid"},
+                {"$ref": "#/definitions/timepoints"},
                 {"$ref": "#/definitions/transformedGrid"}
             ]}
         },
