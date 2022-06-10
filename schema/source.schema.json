@@ -145,7 +145,7 @@
         },
 
         "imageSource": {
-            "description": "An image source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml.",
+            "description": "An image source. The source name (=key for this source entry) must be the same as the setup name in the bdv.xml.",
             "type": "object",
             "properties": {
                 "description": {
@@ -159,7 +159,7 @@
         },
 
         "segmentationSource": {
-            "description": "A segmentation source. The source name (=key for this source entry) must be teh same as the setup name in the bdv.xml.",
+            "description": "A segmentation source. The source name (=key for this source entry) must be the same as the setup name in the bdv.xml.",
             "type": "object",
             "properties": {
                 "description": {
@@ -172,6 +172,20 @@
             "required": ["imageData"],
             "additionalProperties": false
         }
+    },
+
+    "spotSource": {
+        "description": "A spot source, corresponding to a collection of points loaded from a table. The table must contain the columns 'spot_id', as well as 'x', 'y', 'z' ('z' is not required for 2d datasets.)",
+        "type": "object",
+        "properties": {
+            "description": {
+                "description": "Description of this pot source.",
+                "type": "string"
+            },
+            "tableData": {"$ref": "#/definitions/tableData"}
+        },
+        "required": ["tableData"],
+        "additionalProperties": false
     },
 
     "type": "object",
@@ -188,6 +202,13 @@
                 "segmentation": {"$ref": "#/definitions/segmentationSource"}
             },
             "required": ["segmentation"],
+            "additionalProperties": false
+        },
+        {
+            "properties": {
+                "spots": {"$ref": "#/definitions/spotSource"}
+            },
+            "required": ["spots"],
             "additionalProperties": false
         }
     ]
