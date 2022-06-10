@@ -550,7 +550,7 @@
                             "items": {
                                 "type": "array",
                                 "items": {
-                                    "type":"number"
+                                    "type":"integer"
                                 },
                                 "minItems": 2,
                                 "maxItems": 2

@@ -77,6 +77,10 @@
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the ome.zarr file, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the ome.zarr file, in case it contains multiple channels."
                         }
                     },
                     "required": ["relativePath"],
