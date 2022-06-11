@@ -56,4 +56,4 @@ If you use MoBIE in your research please cite [the MoBIE bioRxiv preprint](https
 
 ## Contact
 
-If you have questions about MoBIE or run into issues using it, please either open an issue on [github](https://github.com/mobie/mobie-viewer-fiji) or create a new topic with the tag `mobie` on [image.sc](https://forum.image.sc/).
+For questions or issues about MoBIE, please open a topic in the [image.sc](https://forum.image.sc/) forum using the tag `mobie`. For specific technical issues or bugs, you can also open an issue on [github](https://github.com/mobie/mobie-viewer-fiji).
