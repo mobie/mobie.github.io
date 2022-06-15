@@ -97,6 +97,10 @@
                         "signingRegion": {
                             "type": "string",
                             "description": "The signing region for aws, e.g. us-east-1"
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the ome.zarr file, in case it contains multiple channels."
                         }
                     },
                     "required": ["s3Address"],
