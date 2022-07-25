@@ -225,7 +225,7 @@
                             }
                         },
                         "showScatterPlot": {
-                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.",
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown. If it is 'true' then 'scatterPlotAxes' must be given.",
                             "type": "boolean"
                         },
                         "showSelectedSegmentsIn3d": {
