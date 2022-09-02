@@ -38,6 +38,14 @@ views, images and tables for your colleagues to explore
 ## MoBIE specification:
 - [MoBIE project specification](./specs/mobie_spec.md)
 
+## Use-cases and example projects
+
+- [High resolution morphology and genetic cellular atlas](./use-cases/platy.md)
+- [Correlative light and electron microscopy](./use-cases/clem.md)
+- [High-throughput microscopy](./use-cases/htm.md)
+- [3D light microscopy timeseries](./use-cases/timeseries.md)
+- [Spatial transcriptomics](./use-cases/spatial_transcriptomics.md)
+
 ## Live demonstrations
 
 The MoBIE functionality is also demonstrated in a series of videos:
