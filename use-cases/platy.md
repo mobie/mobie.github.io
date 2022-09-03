@@ -1,3 +1,7 @@
 # High resolution morphology and genetic cellular atlas
 
-TODO
+
+## Data & project set-up
+
+
+## Exploring the project

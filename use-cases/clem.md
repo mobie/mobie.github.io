@@ -1,3 +1,5 @@
 # Correlative light and electron microscopy
 
-TODO
+## Data & project set-up
+
+## Exploring the project

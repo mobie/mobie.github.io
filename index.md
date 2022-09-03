@@ -40,6 +40,8 @@ views, images and tables for your colleagues to explore
 
 ## Use-cases and example projects
 
+MoBIE supports several data modalities and enables combining them in a project. Here, we highglight five MoBIE projects to exemplify common MoBIE use-cases:
+
 - [High resolution morphology and genetic cellular atlas](./use-cases/platy.md)
 - [Correlative light and electron microscopy](./use-cases/clem.md)
 - [High-throughput microscopy](./use-cases/htm.md)
