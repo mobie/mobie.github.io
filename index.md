@@ -38,6 +38,16 @@ views, images and tables for your colleagues to explore
 ## MoBIE specification:
 - [MoBIE project specification](./specs/mobie_spec.md)
 
+## Use-cases and example projects
+
+Most of the examples used in the tutorial come from the publication [Whole-body integration of gene expression and single-cell morphology](https://www.sciencedirect.com/science/article/pii/S009286742100876X). In this work MoBIE was used to visualize a electron microscopy volume showing a *Platynereis dumerilii* larva, as well as derived segmentations and genetic data that was imaged in light microscopy and registered to the EM.
+Besides this application MoBIE supports several other data modalities and combining them together in a project, for example:
+
+- [Correlative light and electron microscopy](./use-cases/clem.md)
+- [High-throughput microscopy](./use-cases/htm.md)
+- [3D light microscopy timeseries](./use-cases/timeseries.md)
+- [Spatial transcriptomics](./use-cases/spatial_transcriptomics.md)
+
 ## Live demonstrations
 
 The MoBIE functionality is also demonstrated in a series of videos:
@@ -48,7 +58,6 @@ The MoBIE functionality is also demonstrated in a series of videos:
 - [Timeseries in MoBIE](https://youtu.be/Md4PbK50NE0)
 
 There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
-
 
 ## Citation
 
