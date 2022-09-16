@@ -518,6 +518,10 @@
                         "encodeSource": {
                             "description": "Encode the source name into the pixel value. This is necessary for merged grid label sources.",
                             "type": "boolean"
+                        },
+                        "metadataSource": {
+                            "description": "Name of the source to be used as reference to load the metadata for all sources. This can decrease the load time significantly for large merged grids.",
+                            "type": "string"
                         }
                     }
                 }
