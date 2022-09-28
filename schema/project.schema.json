@@ -33,17 +33,8 @@
             "description": "The MoBIE spec version of this project.",
             "type": "string",
             "pattern": "0\\.3\\.\\d+"
-        },
-        "imageDataFormats": {
-            "description": "The available data formats for this project.",
-            "type": "array",
-            "items": {
-                "type": "string",
-                "enum": ["bdv.hdf5", "bdv.n5", "bdv.n5.s3", "bdv.ome.zarr", "bdv.ome.zarr.s3", "ome.zarr", "ome.zarr.s3", "openOrganelle.s3"]
-            },
-            "minItems": 1
         }
     },
-    "required": ["datasets", "defaultDataset", "specVersion", "imageDataFormats"],
+    "required": ["datasets", "defaultDataset", "specVersion"],
     "additionalProperties": false
 }
