@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/views.schema.json",
+    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/mobie3/schema/views.schema.json",
     "title": "MoBIEViewsSchema",
     "description": "Additional MoBIE views",
     "properties": {
