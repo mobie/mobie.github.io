@@ -32,7 +32,7 @@
         "specVersion": {
             "description": "The MoBIE spec version of this project.",
             "type": "string",
-            "pattern": "0\\.2\\.\\d+"
+            "pattern": "0\\.3\\.\\d+"
         },
         "imageDataFormats": {
             "description": "The available data formats for this project.",
