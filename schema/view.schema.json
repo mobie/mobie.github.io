@@ -11,8 +11,8 @@
             "pattern": "^[^;\\/ ]+$"
         },
 
-        "tables": {
-            "description": "The tables to load for this display. Must include the default table as the first item.",
+        "additionalTables": {
+            "description": "Additional tables to load for this display. This only needs to be specified if additional tables are loaded; the default table (default.tsv) will always be loaded.",
             "type": "array",
             "items": {
                 "anyOf": [
@@ -240,8 +240,8 @@
                             },
                             "minItems": 1
                         },
-                        "tables": {
-                            "$ref": "#/definitions/tables"
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
                         },
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
@@ -290,11 +290,11 @@
                             "$ref": "#/definitions/mapOfSources",
                             "minProperties": 1
                         },
-                        "tableData": {
-                            "$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json#/definitions/tableData"
+                        "tableSource": {
+                            "$ref": "#/definitions/name"
                         },
-                        "tables": {
-                            "$ref": "#/definitions/tables"
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
                         },
                         "lut": {
                             "$ref": "#/definitions/lut"
@@ -345,7 +345,7 @@
                             "type": "number"
                         }
                     },
-                    "required": ["sources", "tableData", "tables", "opacity", "lut", "name"],
+                    "required": ["sources", "tableSource", "opacity", "lut", "name"],
                     "additionalProperties": false
                 }
             },
