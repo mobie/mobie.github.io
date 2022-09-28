@@ -35,6 +35,10 @@ class TestSchema(unittest.TestCase):
         source = {"regionTable": {"tableData": {"tsv": {"relativePath": "tables/my_table"}}}}
         jsonschema.validate(instance=source, schema=schema)
 
+        # test an example spot source
+        source = {"spots": {"tableData": {"tsv": {"relativePath": "tables/my_table"}}}}
+        jsonschema.validate(instance=source, schema=schema)
+
     def test_view(self):
         self._test_schema("view")
 

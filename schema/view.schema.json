@@ -353,6 +353,90 @@
             "additionalProperties": false
         },
 
+        "spotDisplay": {
+            "description": "Viewer state for a group of spot sources.",
+            "type": "object",
+            "properties": {
+                "spotDisplay": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "opacity": {
+                            "$ref": "#/definitions/opacity"
+                        },
+                        "lut": {
+                            "$ref": "#/definitions/lut"
+                        },
+                        "colorByColumn": {
+                            "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "name": {
+                            "description": "Name of this spot display.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "scatterPlotAxes": {
+                            "$ref": "#/definitions/scatterPlotAxes"
+                        },
+                        "selectedSpotIds": {
+                            "description": "List of selected segment ids, each of the form sourceName;timePoint;label_id",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[^; \\/]+;\\d+;\\d+$"
+                            }
+                        },
+                        "showScatterPlot": {
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown. If it is 'true' then 'scatterPlotAxes' must be given.",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "description": "The spot sources that are part of this display group.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
+                        },
+                        "valueLimits": {
+                            "$ref": "#/definitions/valueLimits"
+                        },
+                        "visible": {
+                            "description": "Are the sources of this display visible? Default is true.",
+                            "type": "boolean"
+                        },
+                        "showTable": {
+                            "description" : "Show the table GUI element. Default is true (if the display has a table).",
+                            "type": "boolean"
+                        },
+                        "showAsBoundaries": {
+                            "description": "Show boundary mask instead of segment masks. Default is false.",
+                            "type": "boolean"
+                        },
+                        "boundaryThickness": {
+                            "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
+                        },
+                        "randomColorSeed": {
+                            "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
+                            "type": "number"
+                        },
+                        "spotRadius": {
+                            "description": "The radius that is used for rendering the spots. In physical units",
+                            "type": "number"
+                        }
+                    },
+                    "required": ["opacity", "lut", "name", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["spotDisplay"],
+            "additionalProperties": false
+        },
+
         "affine": {
             "description": "",
             "type": "object",
@@ -740,6 +824,7 @@
             "items": {"anyOf": [
                 {"$ref": "#/definitions/imageDisplay"},
                 {"$ref": "#/definitions/segmentationDisplay"},
+                {"$ref": "#/definitions/spotDisplay"},
                 {"$ref": "#/definitions/regionDisplay"}
             ]}
         },
