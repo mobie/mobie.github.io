@@ -175,35 +175,36 @@
             },
             "required": ["imageData"],
             "additionalProperties": false
+        },
+
+        "spotSource": {
+            "description": "A spot source, corresponding to a collection of points loaded from a table. The table must contain the columns 'spot_id', as well as 'x', 'y', 'z' ('z' is not required for 2d datasets.)",
+            "type": "object",
+            "properties": {
+                "description": {
+                    "description": "Description of this spot source.",
+                    "type": "string"
+                },
+                "tableData": {"$ref": "#/definitions/tableData"}
+            },
+            "required": ["tableData"],
+            "additionalProperties": false
+        },
+
+        "regionTableSource": {
+            "description": "A region table, corresponding to a image region attributes. The table must contain the column 'region_id'. Can be referenced in regionDisplays",
+            "type": "object",
+            "properties": {
+                "description": {
+                    "description": "Description of the region table.",
+                    "type": "string"
+                },
+                "tableData": {"$ref": "#/definitions/tableData"}
+            },
+            "required": ["tableData"],
+            "additionalProperties": false
         }
-    },
 
-    "spotSource": {
-        "description": "A spot source, corresponding to a collection of points loaded from a table. The table must contain the columns 'spot_id', as well as 'x', 'y', 'z' ('z' is not required for 2d datasets.)",
-        "type": "object",
-        "properties": {
-            "description": {
-                "description": "Description of this spot source.",
-                "type": "string"
-            },
-            "tableData": {"$ref": "#/definitions/tableData"}
-        },
-        "required": ["tableData"],
-        "additionalProperties": false
-    },
-
-    "regionTableSource": {
-        "description": "A region table, corresponding to a image region attributes. The table must contain the column 'region_id'. Can be referenced in regionDisplays",
-        "type": "object",
-        "properties": {
-            "description": {
-                "description": "Description of the region table.",
-                "type": "string"
-            },
-            "tableData": {"$ref": "#/definitions/tableData"}
-        },
-        "required": ["tableData"],
-        "additionalProperties": false
     },
 
     "type": "object",
