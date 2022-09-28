@@ -7,7 +7,7 @@
         "views": {
             "description": "",
             "type": "object",
-            "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
+            "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/mobie3/schema/view.schema.json"}
         }
     },
     "required": ["views"],
