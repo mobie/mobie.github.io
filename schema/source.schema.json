@@ -181,17 +181,39 @@
             "description": "A spot source, corresponding to a collection of points loaded from a table. The table must contain the columns 'spot_id', as well as 'x', 'y', 'z' ('z' is not required for 2d datasets.)",
             "type": "object",
             "properties": {
+                "boundingBoxMin": {
+                    "description": "The minimum of the bounding box of physical cooridinates for the spots.",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 3
+                },
+                "boundingBoxMax": {
+                    "description": "The maximum of the bounding box of physical cooridinates for the spots.",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 3
+                },
                 "description": {
                     "description": "Description of this spot source.",
                     "type": "string"
                 },
-                "tableData": {"$ref": "#/definitions/tableData"}
+                "tableData": {"$ref": "#/definitions/tableData"},
+                "unit": {
+                    "description": "The unit of measurement for the coordinate system, e.g. micrometer or nanometer",
+                    "type": "string"
+                }
             },
-            "required": ["tableData"],
+            "required": ["tableData", "boundingBoxMin", "boundingBoxMax", "unit"],
             "additionalProperties": false
         },
 
-        "regionTableSource": {
+        "regionSource": {
             "description": "A region table, corresponding to a image region attributes. The table must contain the column 'region_id'. Can be referenced in regionDisplays",
             "type": "object",
             "properties": {
@@ -232,7 +254,7 @@
         },
         {
             "properties": {
-                "regionTable": {"$ref": "#/definitions/regionTableSource"}
+                "regions": {"$ref": "#/definitions/regionSource"}
             },
             "required": ["regionTable"],
             "additionalProperties": false

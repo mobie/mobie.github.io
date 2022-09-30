@@ -310,7 +310,7 @@
                             "$ref": "#/definitions/valueLimits"
                         },
                         "selectedRegionIds": {
-                            "description": "List of selected source region ids, each of the form timePoint;regionId",
+                            "description": "List of selected source region ids, each of the form timePoint;region_id",
                             "type": "array",
                             "items": {
                                 "type": "string",
@@ -379,7 +379,7 @@
                             "$ref": "#/definitions/scatterPlotAxes"
                         },
                         "selectedSpotIds": {
-                            "description": "List of selected segment ids, each of the form sourceName;timePoint;label_id",
+                            "description": "List of selected segment ids, each of the form sourceName;timePoint;spot_id",
                             "type": "array",
                             "items": {
                                 "type": "string",
