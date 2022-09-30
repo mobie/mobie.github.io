@@ -32,7 +32,7 @@ class TestSchema(unittest.TestCase):
         jsonschema.validate(instance=source, schema=schema)
 
         # test an example region table source
-        source = {"regionTable": {"tableData": {"tsv": {"relativePath": "tables/my_table"}}}}
+        source = {"regions": {"tableData": {"tsv": {"relativePath": "tables/my_table"}}}}
         jsonschema.validate(instance=source, schema=schema)
 
         # test an example spot source
