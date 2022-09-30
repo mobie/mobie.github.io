@@ -256,7 +256,7 @@
             "properties": {
                 "regions": {"$ref": "#/definitions/regionSource"}
             },
-            "required": ["regionTable"],
+            "required": ["regions"],
             "additionalProperties": false
         }
     ]
