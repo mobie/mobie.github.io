@@ -604,7 +604,7 @@
                             "type": "boolean"
                         },
                         "metadataSource": {
-                            "description": "Name of the source to be used as reference to load the metadata for all sources. This can decrease the load time significantly for large merged grids.",
+                            "description": "Name of the source to be used as reference to load the metadata for all sources in this transformation. This can decrease the load time significantly for large grids. Note that the image related metadata (shape, datatype, etc.) must exactly match.",
                             "type": "string"
                         }
                     }
