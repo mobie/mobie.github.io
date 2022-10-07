@@ -599,10 +599,6 @@
                         "mergedGridSourceName": {
                             "$ref": "#/definitions/name"
                         },
-                        "encodeSource": {
-                            "description": "Encode the source name into the pixel value. This is necessary for merged grid label sources.",
-                            "type": "boolean"
-                        },
                         "metadataSource": {
                             "description": "Name of the source to be used as reference to load the metadata for all sources in this transformation. This can decrease the load time significantly for large grids. Note that the image related metadata (shape, datatype, etc.) must exactly match.",
                             "type": "string"
