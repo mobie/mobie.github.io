@@ -141,9 +141,9 @@
                             "$ref": "#/definitions/opacity"
                         },
                         "blendingMode": {
-                            "description": "The mode for blending multiple image sources.",
+                            "description": "The blending mode for rendeting multiple image sources on top of each other. Use 'sum' for additive blending and 'alpha' for occluded blending. If not specified 'sum' will be used",
                             "type": "string",
-                            "enum": ["sum", "sumOccluding"]
+                            "enum": ["sum", "alpha"]
                         },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
