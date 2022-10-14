@@ -21,11 +21,6 @@
             },
             "minProperties": 1
         },
-        "timepoints": {
-            "description": "The number of timepoints in this dataset. Default is 1.",
-            "type": "integer",
-            "minimum": 1
-        },
         "views": {
             "description": "The list of views in this dataset.",
             "type": "object",
