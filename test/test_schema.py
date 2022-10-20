@@ -36,7 +36,12 @@ class TestSchema(unittest.TestCase):
         jsonschema.validate(instance=source, schema=schema)
 
         # test an example spot source
-        source = {"spots": {"tableData": {"tsv": {"relativePath": "tables/my_table"}}}}
+        source = {"spots": {
+            "boundingBoxMin": [0.0, 0.0],
+            "boundingBoxMax": [100.0, 100.0],
+            "tableData": {"tsv": {"relativePath": "tables/my_table"}},
+            "unit": "pixel",
+        }}
         jsonschema.validate(instance=source, schema=schema)
 
     def test_view(self):
