@@ -22,7 +22,7 @@ views, images and tables for your colleagues to explore
 - [Getting Started](./tutorials/explore_a_project.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
 - [Locations and views](./tutorials/views_and_locations.md)
-- [Viewing your own tables](./tutorials/viewing_your_own_tables.md)
+- [Importign and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 - [Grid views & image region tables](./tutorials/image_grids_and_tables.md)
