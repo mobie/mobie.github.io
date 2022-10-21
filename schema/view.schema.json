@@ -11,8 +11,8 @@
             "pattern": "^[^;\\/ ]+$"
         },
 
-        "tables": {
-            "description": "The tables to load for this display. Must include the default table as the first item.",
+        "additionalTables": {
+            "description": "Additional tables to load for this display. This only needs to be specified if additional tables are loaded; the default table (default.tsv) will always be loaded.",
             "type": "array",
             "items": {
                 "anyOf": [
@@ -141,9 +141,9 @@
                             "$ref": "#/definitions/opacity"
                         },
                         "blendingMode": {
-                            "description": "The mode for blending multiple image sources.",
+                            "description": "The blending mode for rendeting multiple image sources on top of each other. Use 'sum' for additive blending and 'alpha' for occluded blending. If not specified 'sum' will be used",
                             "type": "string",
-                            "enum": ["sum", "sumOccluding"]
+                            "enum": ["sum", "alpha"]
                         },
                         "resolution3dView": {
                             "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
@@ -240,8 +240,8 @@
                             },
                             "minItems": 1
                         },
-                        "tables": {
-                            "$ref": "#/definitions/tables"
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
                         },
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
@@ -290,11 +290,11 @@
                             "$ref": "#/definitions/mapOfSources",
                             "minProperties": 1
                         },
-                        "tableData": {
-                            "$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json#/definitions/tableData"
+                        "tableSource": {
+                            "$ref": "#/definitions/name"
                         },
-                        "tables": {
-                            "$ref": "#/definitions/tables"
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
                         },
                         "lut": {
                             "$ref": "#/definitions/lut"
@@ -310,7 +310,7 @@
                             "$ref": "#/definitions/valueLimits"
                         },
                         "selectedRegionIds": {
-                            "description": "List of selected source region ids, each of the form timePoint;regionId",
+                            "description": "List of selected source region ids, each of the form timePoint;region_id",
                             "type": "array",
                             "items": {
                                 "type": "string",
@@ -345,11 +345,95 @@
                             "type": "number"
                         }
                     },
-                    "required": ["sources", "tableData", "tables", "opacity", "lut", "name"],
+                    "required": ["sources", "tableSource", "opacity", "lut", "name"],
                     "additionalProperties": false
                 }
             },
             "required": ["regionDisplay"],
+            "additionalProperties": false
+        },
+
+        "spotDisplay": {
+            "description": "Viewer state for a group of spot sources.",
+            "type": "object",
+            "properties": {
+                "spotDisplay": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "opacity": {
+                            "$ref": "#/definitions/opacity"
+                        },
+                        "lut": {
+                            "$ref": "#/definitions/lut"
+                        },
+                        "colorByColumn": {
+                            "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "name": {
+                            "description": "Name of this spot display.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "scatterPlotAxes": {
+                            "$ref": "#/definitions/scatterPlotAxes"
+                        },
+                        "selectedSpotIds": {
+                            "description": "List of selected segment ids, each of the form sourceName;timePoint;spot_id",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[^; \\/]+;\\d+;\\d+$"
+                            }
+                        },
+                        "showScatterPlot": {
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown. If it is 'true' then 'scatterPlotAxes' must be given.",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "description": "The spot sources that are part of this display group.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
+                        },
+                        "valueLimits": {
+                            "$ref": "#/definitions/valueLimits"
+                        },
+                        "visible": {
+                            "description": "Are the sources of this display visible? Default is true.",
+                            "type": "boolean"
+                        },
+                        "showTable": {
+                            "description" : "Show the table GUI element. Default is true (if the display has a table).",
+                            "type": "boolean"
+                        },
+                        "showAsBoundaries": {
+                            "description": "Show boundary mask instead of segment masks. Default is false.",
+                            "type": "boolean"
+                        },
+                        "boundaryThickness": {
+                            "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
+                        },
+                        "randomColorSeed": {
+                            "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
+                            "type": "number"
+                        },
+                        "spotRadius": {
+                            "description": "The radius that is used for rendering the spots. In physical units",
+                            "type": "number"
+                        }
+                    },
+                    "required": ["opacity", "lut", "name", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["spotDisplay"],
             "additionalProperties": false
         },
 
@@ -502,7 +586,7 @@
                     "description": "A grid view of multiple sources that creates an new merged source. Only valid if all sources have the same size (both in pixels and physical space).",
                     "properties": {
                         "sources": {
-                            "description": "The sources this transformation is applied to.",
+                            "description": "The sources this transformation is applied to. After transformation all sources will get the name <sourceName>_<mergedGridSourceName>. <sourceName> still refers to the source befor transformation (useful e.g. for specifying a metadataSource)",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/name"
@@ -515,9 +599,9 @@
                         "mergedGridSourceName": {
                             "$ref": "#/definitions/name"
                         },
-                        "encodeSource": {
-                            "description": "Encode the source name into the pixel value. This is necessary for merged grid label sources.",
-                            "type": "boolean"
+                        "metadataSource": {
+                            "description": "Name of the source to be used as reference to load the metadata for all sources in this transformation. This can decrease the load time significantly for large grids. Note that the image related metadata (shape, datatype, etc.) must exactly match.",
+                            "type": "string"
                         }
                     }
                 }
@@ -736,6 +820,7 @@
             "items": {"anyOf": [
                 {"$ref": "#/definitions/imageDisplay"},
                 {"$ref": "#/definitions/segmentationDisplay"},
+                {"$ref": "#/definitions/spotDisplay"},
                 {"$ref": "#/definitions/regionDisplay"}
             ]}
         },
