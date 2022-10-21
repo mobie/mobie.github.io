@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/mobie3/schema/dataset.schema.json",
+    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/dataset.schema.json",
     "title": "MoBIEDatasetSchema",
     "description": "Schema describing a MoBIE dataset",
     "properties": {
@@ -15,7 +15,7 @@
         "sources": {
             "description": "The list of sources in this dataset.",
             "type": "object",
-            "additionalProperties": {"$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/mobie3/schema/source.schema.json"},
+            "additionalProperties": {"$ref": "http://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/source.schema.json"},
             "propertyNames": {
                 "$ref": "view.schema.json#/definitions/name"
             },
@@ -27,11 +27,11 @@
             "properties": {
                 "default": {
                     "description": "The default view for this dataset.",
-                    "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/mobie3/schema/view.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"
                 }
             },
             "required": ["default"],
-            "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/mobie3/schema/view.schema.json"}
+            "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
         },
         "defaultLocation": {
             "description": "Default location for the 'location' menu in the viewer. Must be a valid viewer transform. If none is given the menu will be empty.",
