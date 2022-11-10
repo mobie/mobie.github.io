@@ -1,0 +1,844 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json",
+    "title": "MoBIEViewSchema",
+    "description": "Schema for serializing the MoBIE viewer state",
+    "definitions": {
+
+        "name": {
+            "type": "string",
+            "description": "Name for this field",
+            "pattern": "^[^;\\/ ]+$"
+        },
+
+        "additionalTables": {
+            "description": "Additional tables to load for this display. This only needs to be specified if additional tables are loaded; the default table (default.tsv) will always be loaded.",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "description": "Path to a csv table.",
+                        "pattern": "^[^;\\/ ]+\\.csv$"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Path to a tsv table.",
+                        "pattern": "^[^;\\/ ]+\\.tsv$"
+                    }
+                ]
+            },
+            "minItems": 1
+        },
+
+        "lut": {
+            "description": "The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.",
+            "type": "string",
+            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis"]
+        },
+
+        "opacity": {
+            "description": "The alpha value used for blending segmentation and image data in the viewer.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+
+        "valueLimits": {
+            "description": "Value limits for numerical color maps: 'blueWhiteRed', 'viridis'.",
+            "type": "array",
+            "items": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "number"
+                }
+            ],
+            "additionalItems": false
+        },
+
+        "scatterPlotAxes": {
+            "description": "The names of columns which should be used for the scatter plot.",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/name"
+            },
+            "maxItems": 2,
+            "minItems": 2
+        },
+
+        "mapOfSources": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/name"
+                },
+                "minItems": 1
+            }
+        },
+
+        "nestedListOfSources": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/name"
+                },
+                "minItems": 1
+            }
+        },
+
+        "positions": {
+            "description": "Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x].",
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "integer",
+                    "maxItems": 2,
+                    "minItems": 2
+                }
+            },
+            "minItems": 2
+        },
+
+        "imageDisplay": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "imageDisplay": {
+                    "description": "Viewer state for a group of image sources.",
+                    "type": "object",
+                    "properties": {
+                        "color": {
+                            "description": "The color map.",
+                            "type": "string",
+                            "oneOf": [
+                                {"pattern": "^r=(\\d+),g=(\\d+),b=(\\d+),a=(\\d+)$"},
+                                {"enum": ["black", "blue", "cyan", "darkGray", "randomFromGlasbey", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "white", "yellow"]}
+                            ]
+                        },
+                        "contrastLimits": {
+                            "description": "The contrast limits.",
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "additionalItems": false
+                        },
+                        "name": {
+                            "description": "Name of this image display.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "opacity": {
+                            "$ref": "#/definitions/opacity"
+                        },
+                        "blendingMode": {
+                            "description": "The blending mode for rendeting multiple image sources on top of each other. Use 'sum' for additive blending and 'alpha' for occluded blending. If not specified 'sum' will be used",
+                            "type": "string",
+                            "enum": ["sum", "alpha"]
+                        },
+                        "resolution3dView": {
+                            "description": "The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified.",
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "showImagesIn3d": {
+                            "description": "Whether to show the images in the 3d viewer.",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "description": "The image sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer.",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[^,\\/ ]+$"
+                            },
+                            "minItems": 1
+                        },
+                        "visible": {
+                            "description": "Are the sources of this display visible? Default is true.",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": ["color", "contrastLimits", "opacity", "name", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["imageDisplay"],
+            "additionalProperties": false
+        },
+
+        "segmentationDisplay": {
+            "description": "Viewer state for a group of segmentation sources.",
+            "type": "object",
+            "properties": {
+                "segmentationDisplay": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "opacity": {
+                            "$ref": "#/definitions/opacity"
+                        },
+                        "lut": {
+                            "$ref": "#/definitions/lut"
+                        },
+                        "colorByColumn": {
+                            "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "resolution3dView": {
+                            "description": "Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified.",
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "name": {
+                            "description": "Name of this segmentation display.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "scatterPlotAxes": {
+                            "$ref": "#/definitions/scatterPlotAxes"
+                        },
+                        "selectedSegmentIds": {
+                            "description": "List of selected segment ids, each of the form sourceName;timePoint;label_id",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[^; \\/]+;\\d+;\\d+$"
+                            }
+                        },
+                        "showScatterPlot": {
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown. If it is 'true' then 'scatterPlotAxes' must be given.",
+                            "type": "boolean"
+                        },
+                        "showSelectedSegmentsIn3d": {
+                            "description": "Whether to show the selected segments in the 3d viewer.",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "description": "The segmentation sources that are part of this display group. Multiple sources should be moved apart spatially with source transform(s), e.g. grid, otherwise they will not be correctly displayed in the viewer.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
+                        },
+                        "valueLimits": {
+                            "$ref": "#/definitions/valueLimits"
+                        },
+                        "visible": {
+                            "description": "Are the sources of this display visible? Default is true.",
+                            "type": "boolean"
+                        },
+                        "showTable": {
+                            "description" : "Show the table GUI element. Default is true (if the display has a table).",
+                            "type": "boolean"
+                        },
+                        "showAsBoundaries": {
+                            "description": "Show boundary mask instead of segment masks. Default is false.",
+                            "type": "boolean"
+                        },
+                        "boundaryThickness": {
+                            "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
+                        },
+                        "randomColorSeed": {
+                            "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
+                            "type": "number"
+                        }
+                    },
+                    "required": ["opacity", "lut", "name", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["segmentationDisplay"],
+            "additionalProperties": false
+        },
+
+        "regionDisplay": {
+            "description": "Viewer state for a spatial arrangement of sources, e.g. via grid transform, with an associated table.",
+            "type": "object",
+            "properties": {
+                "regionDisplay": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "$ref": "#/definitions/name"
+                        },
+                        "sources": {
+                            "description": "Map of region_ids (first table column) to source per location.",
+                            "$ref": "#/definitions/mapOfSources",
+                            "minProperties": 1
+                        },
+                        "tableSource": {
+                            "$ref": "#/definitions/name"
+                        },
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
+                        },
+                        "lut": {
+                            "$ref": "#/definitions/lut"
+                        },
+                        "colorByColumn": {
+                            "description": "Name of table column that is used for coloring. By default the 'region_id' column is used.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "opacity": {
+                            "$ref": "#/definitions/opacity"
+                        },
+                        "valueLimits": {
+                            "$ref": "#/definitions/valueLimits"
+                        },
+                        "selectedRegionIds": {
+                            "description": "List of selected source region ids, each of the form timePoint;region_id",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^\\d+;[^;\\/ ]+$"
+                            }
+                        },
+                        "scatterPlotAxes": {
+                            "$ref": "#/definitions/scatterPlotAxes"
+                        },
+                        "showScatterPlot": {
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.",
+                            "type": "boolean"
+                        },
+                        "showTable": {
+                            "description" : "Show the table GUI element. Default is true.",
+                            "type": "boolean"
+                        },
+                        "visible": {
+                            "description": "Is the color overlay of this display visible? Default is true.",
+                            "type": "boolean"
+                        },
+                        "showAsBoundaries": {
+                            "description": "Show boundary mask instead of region masks. Default is false.",
+                            "type": "boolean"
+                        },
+                        "boundaryThickness": {
+                            "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
+                        },
+                        "randomColorSeed": {
+                            "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
+                            "type": "number"
+                        }
+                    },
+                    "required": ["sources", "tableSource", "opacity", "lut", "name"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["regionDisplay"],
+            "additionalProperties": false
+        },
+
+        "spotDisplay": {
+            "description": "Viewer state for a group of spot sources.",
+            "type": "object",
+            "properties": {
+                "spotDisplay": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "opacity": {
+                            "$ref": "#/definitions/opacity"
+                        },
+                        "lut": {
+                            "$ref": "#/definitions/lut"
+                        },
+                        "colorByColumn": {
+                            "description": "Name of table column that is used for coloring. By default the 'label_id' column is used.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "name": {
+                            "description": "Name of this spot display.",
+                            "$ref": "#/definitions/name"
+                        },
+                        "scatterPlotAxes": {
+                            "$ref": "#/definitions/scatterPlotAxes"
+                        },
+                        "selectedSpotIds": {
+                            "description": "List of selected segment ids, each of the form sourceName;timePoint;spot_id",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[^; \\/]+;\\d+;\\d+$"
+                            }
+                        },
+                        "showScatterPlot": {
+                            "description": "Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown. If it is 'true' then 'scatterPlotAxes' must be given.",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "description": "The spot sources that are part of this display group.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "additionalTables": {
+                            "$ref": "#/definitions/additionalTables"
+                        },
+                        "valueLimits": {
+                            "$ref": "#/definitions/valueLimits"
+                        },
+                        "visible": {
+                            "description": "Are the sources of this display visible? Default is true.",
+                            "type": "boolean"
+                        },
+                        "showTable": {
+                            "description" : "Show the table GUI element. Default is true (if the display has a table).",
+                            "type": "boolean"
+                        },
+                        "showAsBoundaries": {
+                            "description": "Show boundary mask instead of segment masks. Default is false.",
+                            "type": "boolean"
+                        },
+                        "boundaryThickness": {
+                            "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
+                            "type": "number"
+                        },
+                        "randomColorSeed": {
+                            "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
+                            "type": "number"
+                        },
+                        "spotRadius": {
+                            "description": "The radius that is used for rendering the spots. In physical units",
+                            "type": "number"
+                        }
+                    },
+                    "required": ["opacity", "lut", "name", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["spotDisplay"],
+            "additionalProperties": false
+        },
+
+        "affine": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "affine": {
+                    "description": "Affine transformation applied to a list of sources.",
+                    "type": "object",
+                    "properties": {
+                        "parameters": {
+                            "description": "Parameters of the affine transformation, using the BigDataViewer convention.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "sources": {
+                            "description": "The sources this transformation is applied to.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "sourceNamesAfterTransform": {
+                            "description": "Names of the sources after transformation. If given, must have the same number of elements as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "name": {
+                            "description": "Name of this transformation",
+                            "$ref": "#/definitions/name"
+                        },
+                        "timepoints": {
+                            "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "minItems": 1
+                        }
+                    },
+                    "required": ["parameters", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["affine"],
+            "additionalProperties": false
+        },
+
+        "crop": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "crop": {
+                    "description": "Crop transformation applied to a list of sources.",
+                    "type": "object",
+                    "properties": {
+                        "boxAffine": {
+                            "description": "The transformation to place the crop's bounding box in the global coordinate system (if not given assumes identity)",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "min": {
+                            "description": "Minimum coordinates for the crop.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "max": {
+                            "description": "Maximum coordinates for the crop.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "rectify": {
+                            "description": "Whether to align the crop's bounding box with the coordinate system. By default true.",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "description": "The sources this transformation is applied to.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "sourceNamesAfterTransform": {
+                            "description": "Names of the sources after transformation. If given, must have the same number of elements as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "name": {
+                            "description": "Name of this transformation",
+                            "$ref": "#/definitions/name"
+                        },
+                        "timepoints": {
+                            "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "minItems": 1
+                        },
+                        "centerAtOrigin": {
+                            "description": "Whether to center the source at the coordinate space origin after applying the crop. By default true.",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": ["min", "max", "sources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["crop"],
+            "additionalProperties": false
+        },
+
+        "mergedGrid": {
+            "description": "",
+            "type": "object",
+            "required": ["mergedGrid"],
+            "additionalProperties": false,
+            "properties": {
+                "mergedGrid": {
+                    "required": ["mergedGridSourceName", "sources"],
+                    "additinalProperties": false,
+                    "type": "object",
+                    "description": "A grid view of multiple sources that creates an new merged source. Only valid if all sources have the same size (both in pixels and physical space).",
+                    "properties": {
+                        "sources": {
+                            "description": "The sources this transformation is applied to. After transformation all sources will get the name <sourceName>_<mergedGridSourceName>. <sourceName> still refers to the source befor transformation (useful e.g. for specifying a metadataSource)",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 2
+                        },
+                        "positions": {
+                            "$ref": "#/definitions/positions"
+                        },
+                        "mergedGridSourceName": {
+                            "$ref": "#/definitions/name"
+                        },
+                        "metadataSource": {
+                            "description": "Name of the source to be used as reference to load the metadata for all sources in this transformation. This can decrease the load time significantly for large grids. Note that the image related metadata (shape, datatype, etc.) must exactly match.",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        
+        "timepoints": {
+            "description": "",
+            "type": "object",
+            "required": ["timepoints"],
+            "additionalProperties": false,
+            "properties": {
+                "timepoints": {
+                    "required": ["parameters", "sources"],
+                    "additinalProperties": false,
+                    "type": "object",
+                    "description": "Move sources to different timepoints.",
+                    "properties": {
+                        "sources": {
+                            "description": "The sources this transformation is applied to.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
+                        "parameters": {
+                            "description": "List of the timepoint shifts. The list contains elements of size 2, the first entry gives the new timepoint (where the source is moved to), the second the old one (where it comes from). The first entries must be unique across the whole list, the second entries may be duplicated.",
+                            "type": "array",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type":"integer"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            },
+                            "minItems": 1
+                        },
+                        "name": {
+                            "description": "Name of this transformation",
+                            "$ref": "#/definitions/name"
+                        },
+                        "keep": {
+                            "type": "boolean",
+                            "description": "Whether to keep timepoints that are not transformed, or to only display timepoints that are explicitly given in the transformation."
+                        }
+                    }
+                }
+            }
+        },
+
+        "transformedGrid": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "transformedGrid": {
+                    "description": "Arrange multiple sources in a grid by offseting sources with a grid spacing.",
+                    "type": "object",
+                    "properties": {
+                        "positions": {
+                            "$ref": "#/definitions/positions"
+                        },
+                        "nestedSources": {
+                            "description": "The sources for the grid. Map of grid posititions to sources per position.",
+                            "$ref": "#/definitions/nestedListOfSources",
+                            "minItems": 2
+                        },
+                        "sourceNamesAfterTransform": {
+                            "description": "Names of the sources after transformation. If given, must have the same structure as `sources`.",
+                            "$ref": "#/definitions/nestedListOfSources",
+                            "minItems": 2
+                        },
+                        "name": {
+                            "description": "Name of this transformation",
+                            "$ref": "#/definitions/name"
+                        },
+                        "timepoints": {
+                            "description": "The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 1
+                        },
+                        "centerAtOrigin": {
+                            "type": "boolean",
+                            "description": "Center the views at the origin for 3d sources."
+                        }
+                    },
+                    "required": ["nestedSources"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["transformedGrid"],
+            "additionalProperties": false
+        },
+
+        "viewerTransform": {
+            "description": "A viewer transform to specify position, rotation, timepoint and/or zoom.",
+            "type": "object",
+            "oneOf": [
+                {
+                    "properties": {
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["timepoint"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "normalVector": {
+                            "description": "The normal vector to the view plane.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["normalVector"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "affine": {
+                            "description": "Affine transformation applied by the viewer.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                },
+                "required": ["affine"],
+                "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "normalizedAffine": {
+                            "description": "Normalized affine transformation applied by the viewer.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 12,
+                            "maxItems": 12
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["normalizedAffine"],
+                    "additionalProperties": false
+                },
+                {
+                    "properties": {
+                        "position": {
+                            "description": "Position that will be centered in the viewer.",
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "timepoint": {
+                            "description": "The initial timepoint shown in the viewer.",
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["position"],
+                    "additionalProperties": false
+                }
+            ]
+        }
+    },
+        
+    "type": "object",
+    "properties": {
+        "uiSelectionGroup": {
+            "description": "Name of the UI from which this view can be selected.",
+            "$ref": "#/definitions/name"
+        },
+        "isExclusive": {
+            "type": "boolean",
+            "description": "Does this view replace the current viewer state (exclusive) or is it added to it (additive)?"
+        },
+        "description": {
+            "type": "string",
+            "description": "Free text description of this view."
+        },
+        "sourceDisplays": {
+            "description": "The display groups of this view.",
+            "type": "array",
+            "items": {"anyOf": [
+                {"$ref": "#/definitions/imageDisplay"},
+                {"$ref": "#/definitions/segmentationDisplay"},
+                {"$ref": "#/definitions/spotDisplay"},
+                {"$ref": "#/definitions/regionDisplay"}
+            ]}
+        },
+        "sourceTransforms": {
+            "description": "The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml.",
+            "type": "array",
+            "items": {"anyOf": [
+                {"$ref": "#/definitions/affine"},
+                {"$ref": "#/definitions/crop"},
+                {"$ref": "#/definitions/mergedGrid"},
+                {"$ref": "#/definitions/timepoints"},
+                {"$ref": "#/definitions/transformedGrid"}
+            ]}
+        },
+        "viewerTransform": {
+            "$ref": "#/definitions/viewerTransform"
+        }
+    },
+    "required": ["isExclusive", "uiSelectionGroup"],
+    "additionalProperties": false
+}

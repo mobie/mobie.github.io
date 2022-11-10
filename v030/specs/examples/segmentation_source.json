@@ -1,0 +1,19 @@
+{
+  "em-segmentation": {
+    "segmentation": {
+      "imageData": {
+        "bdv.n5": {
+          "relativePath": "images/local/em-segmentation.xml"
+        },
+        "bdv.n5.s3": {
+          "relativePath": "images/remote/em-segmentation.xml"
+        }
+      },
+      "tableData": {
+        "tsv": {
+          "relativePath": "tables/em-segmentation"
+        }
+      }
+    }
+  }
+}

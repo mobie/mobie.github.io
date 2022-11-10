@@ -1,0 +1,90 @@
+{
+  "highmag_tomos": {
+    "isExclusive": true,
+    "sourceDisplays": [
+      {
+        "imageDisplay": {
+          "blendingMode": "sumOccluding",
+          "color": "r=255,g=255,b=255,a=255",
+          "contrastLimits": [
+            30,
+            240
+          ],
+          "name": "highmag_tomos_images",
+          "opacity": 1.0,
+          "sources": [
+            "tomo_37_hm",
+            "tomo_38_hm",
+            "tomo_40_hm",
+            "tomo_41_hm",
+            "tomo_53_hm",
+            "tomo_54_hm"
+          ]
+        }
+      },
+      {
+        "regionDisplay": {
+          "lut": "glasbey",
+          "name": "highmag_tomos",
+          "opacity": 0.5,
+          "sources": {
+            "0": [
+              "tomo_37_hm"
+            ],
+            "1": [
+              "tomo_38_hm"
+            ],
+            "2": [
+              "tomo_40_hm"
+            ],
+            "3": [
+              "tomo_41_hm"
+            ],
+            "4": [
+              "tomo_53_hm"
+            ],
+            "5": [
+              "tomo_54_hm"
+            ]
+          },
+          "tableData": {
+            "tsv": {
+              "relativePath": "tables/highmag_tomos"
+            }
+          },
+          "tables": [
+            "default.tsv"
+          ]
+        }
+      }
+    ],
+    "sourceTransforms": [
+      {
+        "transformedGrid": {
+          "centerAtOrigin": true,
+          "nestedSources": [
+            [
+              "tomo_37_hm"
+            ],
+            [
+              "tomo_38_hm"
+            ],
+            [
+              "tomo_40_hm"
+            ],
+            [
+              "tomo_41_hm"
+            ],
+            [
+              "tomo_53_hm"
+            ],
+            [
+              "tomo_54_hm"
+            ]
+          ]
+        }
+      }
+    ],
+    "uiSelectionGroup": "bookmark"
+  }
+}
