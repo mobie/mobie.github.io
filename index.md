@@ -22,10 +22,11 @@ views, images and tables for your colleagues to explore
 - [Getting Started](./tutorials/explore_a_project.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
 - [Locations and views](./tutorials/views_and_locations.md)
-- [Importign and exporting tables](./tutorials/importing_and_exporting_tables.md)
+- [Importing and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 - [Grid views & image region tables](./tutorials/image_grids_and_tables.md)
+- [More features](./tutorials/more_features.md)
 
 ## Advanced usage
 - [Opening projects from branches and with credentials](./tutorials/branches_and_credentials.md)
@@ -40,8 +41,8 @@ views, images and tables for your colleagues to explore
 
 ## Use-cases and example projects
 
-Most of the examples used in the tutorial come from the publication [Whole-body integration of gene expression and single-cell morphology](https://www.sciencedirect.com/science/article/pii/S009286742100876X). In this work MoBIE was used to visualize a electron microscopy volume showing a *Platynereis dumerilii* larva, as well as derived segmentations and genetic data that was imaged in light microscopy and registered to the EM.
-Besides this application MoBIE supports several other data modalities and combining them together in a project, for example:
+Most of the examples in the tutorial are from [Whole-body integration of gene expression and single-cell morphology](https://www.sciencedirect.com/science/article/pii/S009286742100876X), where MoBIE is used to visualize a EM volume of a *Platynereis dumerilii* larva, derived segmentations and gene expression profiles.
+MoBIE supports several other data modalities and combinations thereof, for example:
 
 - [Correlative light and electron microscopy](./use-cases/clem.md)
 - [High-throughput microscopy](./use-cases/htm.md)
@@ -56,6 +57,7 @@ The MoBIE functionality is also demonstrated in a series of videos:
 - [Image Registration in MoBIE](https://youtu.be/jKlM68lrhso)
 - [Interactive user annotation](https://youtu.be/M-QUE-Qh97w)
 - [Timeseries in MoBIE](https://youtu.be/Md4PbK50NE0)
+- [Spatial Transcriptomics data in MoBIE](https://youtu.be/1dDaxOAZ9Sg)
 
 There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
 
