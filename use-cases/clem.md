@@ -10,6 +10,5 @@ It contains 2D FM images to target features of interest and EM data in both 2D (
 
 The original data in various formats (`MRC`, `TIF`, etc.) was converted to the MoBIE data format using the [MoBIE python library](https://github.com/mobie/mobie-utils-python).
 Initial registrations were imported using the metadata from [SerialEM]() and [ec-CLEM]() software and the refined using MoBIE's transformation functionality.
-The project metadata is stored on [github](https://github.com/mobie/arabidopsis-root-lm-project) and the image data is stored on the EMBL S3 server.
 
 ## Exploring the project

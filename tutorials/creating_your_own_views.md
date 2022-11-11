@@ -24,7 +24,8 @@ you 'view' it in MoBIE it will remove all other images before displaying it.
 transform i.e. it will save the location and orientation of the current view.
 
 Once filled in, a filebrowser will open, allowing you to choose where to save
-your view. Views are stored in **.json** files. If you already have a view .json file, you can select it now to add your new view. If not, simply provide a name for your .json, and a new one will be created.
+your view. Views are stored in **.json** files. If you already have a view .json file, you can select it now to add your new view.
+If not, simply provide a name for your .json, and a new one will be created. You can also upload new views directly to a GitHub repository.
 
 ### Displaying your view in MoBIE
 
