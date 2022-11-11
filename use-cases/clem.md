@@ -12,3 +12,6 @@ The original data in various formats (`MRC`, `TIF`, etc.) was converted to the M
 Initial registrations were imported using the metadata from [SerialEM]() and [ec-CLEM]() software and the refined using MoBIE's transformation functionality.
 
 ## Exploring the project
+
+Open the project from [https://github.com/mobie/clem-example-project](https://github.com/mobie/clem-example-project). See ["Getting Started"]("../tutorials/explore_a_prject.md") for how to open a project in the MoBIE Fiji plugin.
+The project will open the default view, which shows the lowest magnification overview EM map.
