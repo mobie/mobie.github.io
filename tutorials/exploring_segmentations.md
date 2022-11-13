@@ -18,23 +18,26 @@ table to highlight. If you have **V** ticked in the sources panel, it will also 
 - **[Ctrl + L]** Randomly shuffle the colours of the segmented objects.
 - **[Ctrl + shift + N]** Undo any segment selections.
 
+More options are available if you click the '**S**' button in the sources panel:
+
+<img width="500" alt="image" src="./tutorial_images/segmentation_source_panel.png">
+
+This opens the **Configure Label Rendering** menu which allows you to change
+how labels are displayed in the viewer (see image below):
+- **Show labels as boundaries** - display only the boundaries of segmented objects (see example image below)
+- **Boundary thickness** - the thickness of the displayed boundary (if 'show labels as boundaries' is enabled)
+- **Selected labels coloring** - Can change between 'Keep current color', or 'Use below selection color' allowing you to specify a specific colour to use.
+- **Selection color** - the colour of selected labels if 'Selected labels coloring' is set to 'Use below selection color'
+- **Opacity of non-selected labels** - Changes opacity of non-selected labels
+- **Random label color seed [ Ctrl L ]** - Changes the seed used for random colouring of labels.
+
+Configure Label Rendering dialog | Example of boundary rendering
+---|---
+<img width="350" alt="image" src="./tutorial_images/configureLabelRendering.png">  |  <img width="300" alt="image" src="./tutorial_images/boundaryRendering.png">
+
 More options are available if you right click in the viewer:
 
 <img width="600" alt="image" src="./tutorial_images/contextMenu.png">
-
-- **Configure Label Rendering** - this will open a menu allowing you to change
-how labels are displayed in the viewer (see image below).
-  - **Show labels as boundaries** - display only the boundaries of segmented objects (see example image below)
-  - **Boundary thickness** - the thickness of the displayed boundary (if 'show labels as boundaries' is enabled)
-  - **Selected labels coloring** - Can change between showing labels
-  in the 'Label color' (i.e. whatever their current colour is), or a specified 'Selection color'.
-  - **Selection color** - the colour of selected labels if 'Selected labels coloring' is set to 'Selection color'
-  - **Opacity of non-selected labels** - Changes opacity of non-selected labels
-  - **Increment random color seed [ Ctrl L ]** - Same as Ctrl + L above.
-
-  Configure Label Rendering dialog | Example of boundary rendering
-  ---|---
-  <img width="350" alt="image" src="./tutorial_images/configureLabelRendering.png">  |  <img width="300" alt="image" src="./tutorial_images/boundaryRendering.png">
 
 - **Configure Label Volume Rendering** Change resolution with which labels are
 shown in the 3D viewer.
