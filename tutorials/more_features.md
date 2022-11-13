@@ -1,7 +1,6 @@
 # More Features
 
-- Transformations
--
+MoBIE supports more features than the ones described in the previous tutorials. Here is a not exhaustive list of those features:
 
 ## Screenshots
 
