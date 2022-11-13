@@ -26,8 +26,10 @@ source4   0   1   0   1
 ### <a name="view-metadata"></a>View Metadata
 
 The metadata for the views of a dataset is specified in the field `views` of `dataset.json` (see also [dataset metadata](#dataset-metadata)).
-`views` contains a mapping of view names to [view metadata](https://github.com/mobie/mobie.github.io/tree/master/schema/view.schema.json).
+`views` contains a mapping of view names to [view metadata](../schema/view.schema.json).
 
 Additional views can be stored as json files with the field `views` mapping view names to metadata in the folder `misc/views`
 
 The view metadata has the following elements (see below for an example json file):
+
+https://github.com/mobie/mobie.github.io/blob/48b4f9bb0528cfeae67f24d3d230d5a951b8f423/specs/examples/single_source_view.json#L1-L91
