@@ -9,7 +9,7 @@ To take a screenshot of the MoBIE viewer, right click inside it and select **Tak
 
 This will open the following menu:
 
-<img width="400" alt="image" src="./tutorial_images/screenshot.png">
+<img width="400" alt="image" src="./tutorial_images/screenshot_ui.png">
 
 - **Sampling** - Sampling of screenshot (uses same units as viewer, see the viewer scalebar).
 - **Show RGB Image** - create an RGB image of the viewer.
