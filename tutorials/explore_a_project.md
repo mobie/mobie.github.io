@@ -53,6 +53,8 @@ after rounds of segmentation proofreading.
 - **[ view ] on any other row - display a view** Select a view from the drop-down menus and click the button. Views can contain a number of images and segmentations, as well as tables, plots and 3D views.
 **Note:** the drop-down groups available here are specific to the project! e.g. in this example project, groups like 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
 - **[ move ] Move to a particular position or view.** See [here](./views_and_locations.md) for more information.
+- **[clear] Remove all sources.** This button removes all displayed sources.
+- **overlay names checkbox** When enabled, shows names of images in the image viewer.
 
 ### Sources Panel
 As you add more images to the viewer, they will appear in the **sources panel**, like below:
@@ -64,6 +66,8 @@ To control the image sources appearance, there are several buttons...
 - **[ O ]**  Change the opacity
 - **[ C ]**  Change the color
 - **[ B ]**  Change the brightness settings
+- **[ S ]**  Open the display settings (the options available here will depend on the
+corresponding display e.g. different options for images vs segmentations).
 - **[ X ]**  Remove from viewer and sources panel
 
 ...and checkboxes:
