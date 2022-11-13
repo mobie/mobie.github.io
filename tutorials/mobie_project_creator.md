@@ -1,7 +1,7 @@
 ## MoBIE Project Creator
 
 For making projects on your local file system, you can use the MoBIE Project Creator within Fiji. See also [here](../specs/mobie_spec.md) for details about the project specification and structure.
-**Note**: if your images are particularly large, or you want more control over your project, you can create your project with our [python library](https://github.com/mobie/mobie-utils-python) (see below for details). 
+**Note**: if your images are particularly large, or you want more control over your project, you can create your project with our [python library](https://github.com/mobie/mobie-utils-python) (see below for details).
 
 Type MoBIE in the search bar, and select the **Create new MoBIE Project** command.  
 
@@ -122,7 +122,7 @@ Once the project is open in MoBIE, you can change how the images are displayed b
 
 Select the relevant view in the drop down menus and click 'view'. Then setup the view as you like by moving in the MoBIE viewer / changing the colour, brightness etc...
 
-To save these changes you can then right click in the viewer and select 'Save Current Settings As View', and select 'Overwrite existing view' and 'Project'.
+To save these changes you can then right click in the viewer and select 'Save Current View', and select 'Overwrite existing view' and 'Project'.
 
 The following dialog has all the same settings as [here](./creating_your_own_views.md), with one additional one 'Save location'. Select 'dataset.json' for this.
 
@@ -183,7 +183,7 @@ $ git push origin master
 
 ## MoBIE python
 
-The [MoBIE python library](https://github.com/mobie/mobie-utils-python) offers better for support for large images, more control and support for all features of the spec, including grid transformations, region displays and spot sources. 
+The [MoBIE python library](https://github.com/mobie/mobie-utils-python) offers better support for large images, more control and support for all features of the spec, including grid transformations, region displays and spot sources.
 You can learn how to uses based on our example notebooks:
 - [create a MoBIE project for CLEM data](https://github.com/mobie/mobie-utils-python/blob/master/examples/create_mobie_project.ipynb)
 - [create a MoBIE project for high-throughput microscopy data](https://github.com/mobie/mobie-utils-python/blob/master/examples/create_mobie_htm_project.ipynb)

@@ -87,3 +87,5 @@ Note that the available buttons and checkboxes depends on what was present in th
 There are some extra MoBIE options available by right clicking in the BigDataViewer window. For example, making high quality screenshots, or logging the current position.
 
 <img width="600" alt="image" src="./tutorial_images/contextMenu.png">
+
+See [here](./more_features.md) for information about taking high quality screenshots and other features.
