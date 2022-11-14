@@ -72,10 +72,10 @@ corresponding display e.g. different options for images vs segmentations).
 
 ...and checkboxes:
 
-- **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
-- **[ X ] V**  Check to show source in **v**olume viewer (i.e. in 3D)
-- **[ X ] T**  Check to show **t**able
-- **[ X ] P**  Check to show **p**lot (i.e. a scatter plot)
+- [ ] **S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
+- [ ] **V**  Check to show source in **v**olume viewer (i.e. in 3D)
+- [ ] **T**  Check to show **t**able
+- [ ] **P**  Check to show **p**lot (i.e. a scatter plot)
 
 Note that the available buttons and checkboxes depends on what was present in the selected view e.g. the **T** checkbox will only appear if a table is available.
 
