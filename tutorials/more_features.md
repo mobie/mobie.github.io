@@ -64,7 +64,7 @@ As every [view](../specs/template_view.md) can contain sets of transformations t
 The transformations can be generated using external tools and then provided as part of a view, or generated directly in MoBIE.
 
 ### Manual registration
-In order to manually transform sources (and register them to each other), right click inside the BDV viewer and select `Registration - Manual`.
+In order to manually transform sources (and register them to each other), right click inside the MoBIE viewer and select **Registration - Manual**.
 
 <img alt="image" src="./tutorial_images/reg_manual_click.png">
 
@@ -76,7 +76,7 @@ The currently active source(s) selected in MoBIE's BDV window can now be moved w
 The transformation can be stored by pressing **[T]** ord discarded **[Esc]**.
 
 ### BigWarp
-In order to transform sources and register them to each other using [BigWarp](https://imagej.net/plugins/bigwarp), right click inside the BDV viewer and select `Registration - Manual`.
+In order to transform sources and register them to each other using [BigWarp](https://imagej.net/plugins/bigwarp), right click inside the MoBIE viewer and select **Registration - Manual**.
 
 <img alt="image" src="./tutorial_images/reg_bigwarp_click.png">
 
