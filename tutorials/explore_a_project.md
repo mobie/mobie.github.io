@@ -22,7 +22,7 @@ window allowing you to browse images.
 
 Note: It is also possible to open projects from your local file system.
 
-### Browsing in the viewer
+### <a name="browsing"></a> Browsing in the viewer
 
 All the controls for BigDataViewer can be found under Help > Show Help in the menu at the top of the viewer.
 
@@ -72,10 +72,10 @@ corresponding display e.g. different options for images vs segmentations).
 
 ...and checkboxes:
 
-- **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
-- **[ X ] V**  Check to show source in **v**olume viewer (i.e. in 3D)
-- **[ X ] T**  Check to show **t**able
-- **[ X ] P**  Check to show **p**lot (i.e. a scatter plot)
+- [ ] **S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
+- [ ] **V**  Check to show source in **v**olume viewer (i.e. in 3D)
+- [ ] **T**  Check to show **t**able
+- [ ] **P**  Check to show **p**lot (i.e. a scatter plot)
 
 Note that the available buttons and checkboxes depends on what was present in the selected view e.g. the **T** checkbox will only appear if a table is available.
 

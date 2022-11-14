@@ -55,3 +55,33 @@ an image of smaller total size.
 
 All exported images will be opened as normal imageJ images that you can save / analyse however
 you want.
+
+## <a name="registrations"></a>Register images/sources
+
+As every [view](../specs/template_view.md) can contain sets of transformations that are applied before it is displayed, sources and images can be shown registered on top of each other.
+<img width="500" alt="image" src="../use-cases/images/clem_area.png">
+
+The transformations can be generated using external tools and then provided as part of a view, or generated directly in MoBIE.
+
+### Manual registration
+In order to manually transform sources (and register them to each other), right click inside the MoBIE viewer and select **Registration - Manual**.
+
+<img alt="image" src="./tutorial_images/reg_manual_click.png">
+
+The following window with instructions will appear:
+
+<img alt="image" src="./tutorial_images/reg_manual.png">
+
+The currently active source(s) selected in MoBIE's BDV window can now be moved with the standard [viewer controls](./explore_a_project.md#browsing) (translations, rotations, scaling). All unselected sources stay where they are
+The transformation can be stored by pressing **[T]** ord discarded **[Esc]**.
+
+### BigWarp
+In order to transform sources and register them to each other using [BigWarp](https://imagej.net/plugins/bigwarp), right click inside the MoBIE viewer and select **Registration - Manual**.
+
+<img alt="image" src="./tutorial_images/reg_bigwarp_click.png">
+
+The following window will appear:
+
+<img alt="image" src="./tutorial_images/reg_bigwarp_select.png">
+
+Here you select which source(s) will stay fixed and which sources move during the transformation. The exact procedure is explained in [BigWarp's tutorials](https://imagej.net/plugins/bigwarp).
