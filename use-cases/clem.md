@@ -9,7 +9,7 @@ The data for this project comes from two different experiments (one using _S. ce
 It contains 2D FM images to target features of interest and EM data in both 2D (overview maps) and 3D (reconstructed electron tomographic volumes at different resolutions).
 
 The original data in various formats (`MRC`, `TIF`, etc.) was converted to the MoBIE data format using the [MoBIE python library](https://github.com/mobie/mobie-utils-python).
-Initial registrations were imported using the metadata from [SerialEM]() and [ec-CLEM]() software and then refined using MoBIE's transformation functionality.
+Initial registrations were imported using the metadata from [SerialEM](https://bio3d.colorado.edu/SerialEM/) and [ec-CLEM](https://icy.bioimageanalysis.org/plugin/ec-clem/) software and then refined using MoBIE's [transformation functionality](#registrations).
 
 ## Exploring the project
 

@@ -22,7 +22,7 @@ window allowing you to browse images.
 
 Note: It is also possible to open projects from your local file system.
 
-### Browsing in the viewer
+### <a name="browsing"></a> Browsing in the viewer
 
 All the controls for BigDataViewer can be found under Help > Show Help in the menu at the top of the viewer.
 
