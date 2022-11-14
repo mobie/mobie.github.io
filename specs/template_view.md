@@ -32,4 +32,7 @@ Additional views can be stored as json files with the field `views` mapping view
 
 The view metadata has the following elements (see below for an example json file):
 
-https://github.com/mobie/mobie.github.io/blob/48b4f9bb0528cfeae67f24d3d230d5a951b8f423/specs/examples/single_source_view.json#L1-L91
+<!---
+Don't add anything manually after this line. The example view metadata will be generated automatically when running
+scripts/generate_spec_description.py
+-->
