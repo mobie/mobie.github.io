@@ -72,7 +72,7 @@ The following window with instructions will appear:
 
 <img alt="image" src="./tutorial_images/reg_manual.png">
 
-The currently active source(s) selected in MoBIE's BDV window can now be moved with the standard [viewer controls](#browsing) (translations, rotations, scaling). All unselected sources stay where they are
+The currently active source(s) selected in MoBIE's BDV window can now be moved with the standard [viewer controls](./explore_a_project.md#browsing) (translations, rotations, scaling). All unselected sources stay where they are
 The transformation can be stored by pressing **[T]** ord discarded **[Esc]**.
 
 ### BigWarp
