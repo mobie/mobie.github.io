@@ -1,7 +1,7 @@
 # High-throughput microscopy
 
-High-throughput (screening) microscopy reference light microscopy techniques where a large number of images are taken, usually by imaging *wells* that are distributed on a *plate*.
-This technique is often used to study samples under different conditions, each well potentially representing a different condition, for example for drug screening, diagnostic tests or knockout studies.
+In high-throughput (screening) microscopy light microscopy techniques a large number of images are taken, usually by imaging *wells* that are distributed on a *plate*.
+This technique is often used to study samples under different conditions, each well potentially representing a different condition, for example for drug screening, diagnostics or knockout studies.
 Here we showcase the [covid-if-project](https://github.com/mobie/covid-if-project) that visualizes data from an immunofluorescence assay to measure the SARS-CoV-2 antibody response in human serum.
 
 

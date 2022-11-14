@@ -61,7 +61,7 @@ you want.
 As every [view](../specs/template_view.md) can contain sets of transformations that are applied before it is displayed, sources and images can be shown registered on top of each other.
 <img width="500" alt="image" src="../use-cases/images/clem_area.png">
 
-The transformations can be generated using external tools and then provided as part of a view, or generated directly in MoBIE.
+The transformations can be generated using external tools and then provided as part of a view, or generated directly in MoBIE. This registration fucntionality is also demonstrated in [an example video](https://youtu.be/jKlM68lrhso).
 
 ### Manual registration
 In order to manually transform sources (and register them to each other), right click inside the MoBIE viewer and select **Registration - Manual**.
