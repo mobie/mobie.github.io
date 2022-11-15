@@ -23,7 +23,7 @@ For example, coloring the well boundaries based on the "score" column (which con
 
 <img width="800" alt="image" src="./tutorial_images/grid3.png">
 
-Tables are also very useful for navigation, for example to quickly go to a specific well, via `[Ctrl + Left click]` (selection + navigation) `[Shift + Left click]` (onkly navigation).
+Tables are also very useful for navigation, for example to quickly go to a specific well, via `[Ctrl + Left click]` (selection + navigation) `[Shift + Left click]` (only navigation).
 
 <img width="800" alt="image" src="./tutorial_images/grid4.png">
 

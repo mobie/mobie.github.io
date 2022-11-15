@@ -9,7 +9,7 @@ it later e.g. the location, orientation, open images, colouring schemes etc are
 saved.
 
 To make a view, right click in the MoBIE viewer and select
-**Save Current Settings As View**. Then select a 'Save method' of 'Save as new view', and select save to **File_system**.
+**Save Current View**. Then select a 'Save method' of 'Save as new view', and select save to **FileSystem**.
 
 <img width="300" alt="image" src="./tutorial_images/saveView.png">
 
@@ -24,20 +24,21 @@ you 'view' it in MoBIE it will remove all other images before displaying it.
 transform i.e. it will save the location and orientation of the current view.
 
 Once filled in, a filebrowser will open, allowing you to choose where to save
-your view. Views are stored in **.json** files. If you already have a view .json file, you can select it now to add your new view. If not, simply provide a name for your .json, and a new one will be created.
+your view. Views are stored in **.json** files. If you already have a view .json file, you can select it now to add your new view.
+If not, simply provide a name for your .json, and a new one will be created. You can also upload new views directly to a GitHub repository.
 
 ### Displaying your view in MoBIE
 
 The view will be added automatically to the correct dropdown menu in MoBIE (note it may be at the bottom of this dropdown list - so scroll down!). Click the 'view' button to see it.
 
-If you close and re-open MoBIE, you will need to right click in the MoBIE viewer and select **Load Additional Views**, then Load from **File_system**. You can then select your
+If you close and re-open MoBIE, you will need to right click in the MoBIE viewer and select **Load Additional Views**, then Load from **FileSystem**. You can then select your
 .json file. Your new views will appear again in the relevant MoBIE dropdown menus.
 
 ### Modifying a view
 
 If you wish to modify a view you have already saved, you can do this in a similar
-way. Right click in the MoBIE viewer and select **Save Current Settings As View**.
-Now select a 'Save method' of 'Overwrite existing view', and select save to **File_system**.
+way. Right click in the MoBIE viewer and select **Save Current View**.
+Now select a 'Save method' of 'Overwrite existing view', and select save to **FileSystem**.
 
 <img width="300" alt="image" src="./tutorial_images/overwriteViewSettings.png">
 

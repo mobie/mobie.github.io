@@ -22,7 +22,7 @@ window allowing you to browse images.
 
 Note: It is also possible to open projects from your local file system.
 
-### Browsing in the viewer
+### <a name="browsing"></a> Browsing in the viewer
 
 All the controls for BigDataViewer can be found under Help > Show Help in the menu at the top of the viewer.
 
@@ -53,6 +53,8 @@ after rounds of segmentation proofreading.
 - **[ view ] on any other row - display a view** Select a view from the drop-down menus and click the button. Views can contain a number of images and segmentations, as well as tables, plots and 3D views.
 **Note:** the drop-down groups available here are specific to the project! e.g. in this example project, groups like 'propsr' (gene expression data) and 'sbem' (electron microscopy data) are available.
 - **[ move ] Move to a particular position or view.** See [here](./views_and_locations.md) for more information.
+- **[clear] Remove all sources.** This button removes all displayed sources.
+- **overlay names checkbox** When enabled, shows names of images in the image viewer.
 
 ### Sources Panel
 As you add more images to the viewer, they will appear in the **sources panel**, like below:
@@ -64,14 +66,16 @@ To control the image sources appearance, there are several buttons...
 - **[ O ]**  Change the opacity
 - **[ C ]**  Change the color
 - **[ B ]**  Change the brightness settings
+- **[ S ]**  Open the display settings (the options available here will depend on the
+corresponding display e.g. different options for images vs segmentations).
 - **[ X ]**  Remove from viewer and sources panel
 
 ...and checkboxes:
 
-- **[ X ] S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
-- **[ X ] V**  Check to show source in **v**olume viewer (i.e. in 3D)
-- **[ X ] T**  Check to show **t**able
-- **[ X ] P**  Check to show **p**lot (i.e. a scatter plot)
+- [ ] **S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
+- [ ] **V**  Check to show source in **v**olume viewer (i.e. in 3D)
+- [ ] **T**  Check to show **t**able
+- [ ] **P**  Check to show **p**lot (i.e. a scatter plot)
 
 Note that the available buttons and checkboxes depends on what was present in the selected view e.g. the **T** checkbox will only appear if a table is available.
 
@@ -83,3 +87,5 @@ Note that the available buttons and checkboxes depends on what was present in th
 There are some extra MoBIE options available by right clicking in the BigDataViewer window. For example, making high quality screenshots, or logging the current position.
 
 <img width="600" alt="image" src="./tutorial_images/contextMenu.png">
+
+See [here](./more_features.md) for information about taking high quality screenshots and other features.

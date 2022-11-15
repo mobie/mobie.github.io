@@ -8,13 +8,13 @@ but the layout using `images/` and `tables/` is recommended for consistency with
 The `images` directory contains the metadata files describing the image data, see [data specification](#data) for details.
 It may contain additional subdirectories to organise these files. By convention the files for different data formats are often separated into folders named accordingly, e.g. `images/bdv-n5` and `images/bdv-n5-s3`.
 
-The `tables` directory contains all tabular data assoicated with segmentations or region displays (see [data specification](#data) and [view specification](#view) for details)
+The `tables` directory contains all tabular data assoicated with segmentation, spot or region sources (see the [data specification](#data) for details)
 The tables associated with a segmentation or view, must all be located in the same subdirectory. This subdirectory must contain a default table, which should be called `default.tsv`, and may contain additional tables. 
 See the [table data specification](#tables) for details on how tables are stored.
 
 The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
 
-See an example dataset directory structure and `dataset.json` (left incomplete for brevity) for one of the zebrafish-lm project's dataset below.
+As an example see the dataset directory structure for the `hela` dataset of the clem project:
 ```
 hela/
 ├── dataset.json

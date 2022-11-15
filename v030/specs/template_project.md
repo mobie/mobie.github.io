@@ -2,12 +2,12 @@
 
 MoBIE projects follow the specification described here; it is based on four key concepts:
 - A `project`, which groups data, for example from the same publication, that can be opened by the MoBIE viewer. It consists of multiple `datasets`.
-- A `dataset`, which contains data that can be opened in the same MoBIE viewer instance.
-- A `source`, which corresponds to the data for a single image (also volume, timeseries) or segmentation image. For segmentation images it may also contain the associated tabular data.
+- A `dataset`, which contains all the data that can be opened in the same MoBIE viewer instance.
+- A `source`, which corresponds to the data for a single image (also volume, timeseries), segmentation image or spot coordinates. For segmentation images it may also contain the associated tabular data. For spots the only data associated with the source is a table.
 - A `view`, which describes the full viewer state.
 
 The specification is defined via [jsonschema](https://json-schema.org/). The schema files are located [here](https://github.com/mobie/mobie.github.io/tree/master/schema).
-It is versioned, following [the semantic versioning convention](https://semver.org/). The current version is `0.2.0`.
+It is versioned, following [the semantic versioning convention](https://semver.org/). The current version is `0.3.0`.
 
 **Using jsonschema:**
 
@@ -32,9 +32,8 @@ clem/
 The project metadata, stored in `project.json`, has the following structure:
 - `datasets`: List of the available datasets. The dataset directory names must match the names in this list. It must contain at least one dataset.
 - `defaultDataset`: The dataset that will be opened when the MoBIE viewer is started for this project.
-- `imageDataFormats`: The image data formats present in this project, see [supported data formats](#data) for details.
 - `description`: Description of this project.
-- `references`: List of references for this project.
+- `references`: List of references (publications, urls etc.) for this project.
 - `specVersion`: The MoBIE specification version of this project.
 
 For the clem project the `project.json` looks like this:
@@ -43,9 +42,8 @@ For the clem project the `project.json` looks like this:
   "datasets": ["hela", "yeast"],
   "defaultDataset": "hela",
   "description": "Correlative electron microscopy data from the Schwab Lab at EMBL Heidelberg.",
-  "imageDataFormats": ["ome.zarr", "ome.zarr.s3"]
   "references": ["https://doi.org/10.1083/jcb.201009037", "https://doi.org/10.1038/nmeth.1486"],
-  "specVersion": "0.2.0"
+  "specVersion": "0.3.0"
 }
 ```
 

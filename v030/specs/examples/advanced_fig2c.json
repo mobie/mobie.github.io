@@ -4,7 +4,7 @@
     "sourceDisplays": [
       {
         "imageDisplay": {
-          "blendingMode": "sumOccluding",
+          "blendingMode": "alpha",
           "color": "r=255,g=255,b=255,a=255",
           "contrastLimits": [
             150.0,
@@ -21,7 +21,7 @@
       },
       {
         "imageDisplay": {
-          "blendingMode": "sumOccluding",
+          "blendingMode": "alpha",
           "color": "r=255,g=255,b=255,a=255",
           "contrastLimits": [
             30000,
@@ -36,7 +36,7 @@
       },
       {
         "imageDisplay": {
-          "blendingMode": "sumOccluding",
+          "blendingMode": "alpha",
           "color": "white",
           "contrastLimits": [
             70.0,
@@ -116,14 +116,7 @@
               "tomo_38_lm"
             ]
           },
-          "tableData": {
-            "tsv": {
-              "relativePath": "tables/lm-tomogram-table"
-            }
-          },
-          "tables": [
-            "default.tsv"
-          ]
+          "tableSource": "lm-tomogram-table" 
         }
       },
       {
@@ -139,14 +132,7 @@
               "tomo_38_hm"
             ]
           },
-          "tableData": {
-            "tsv": {
-              "relativePath": "tables/highmag_tomos"
-            }
-          },
-          "tables": [
-            "default.tsv"
-          ]
+          "tableSource": "highmag_tomos"
         }
       }
     ],

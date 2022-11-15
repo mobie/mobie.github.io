@@ -10,7 +10,7 @@ You can also export data from tables within MoBIE, for example to analyze it in 
 MoBIE contains three different kinds of tables:
 - tables associated with a segmentation, which always contain the column **label_id**. This column represents the id (pixel value) of the corresponding segmented object. **label_id** is an integer.
 - tables associated with regions (for example positions in a grid-view), which always contain the column **region_id**. This column represents the id of a region and can be an integer or string.
-- tables associated with spots (e.g. gene detections in spatial transcriptomics data), which always contain the column **spot_id**. This column represnts the id of a spot and is an integer.
+- tables associated with spots (e.g. gene detections in spatial transcriptomics data), which always contain the column **spot_id**. This column represents the id of a spot and is an integer.
 
 The following describes how to prepare tables for the segmentation tables. The process for region and spot tables is analogous, but your table must contain a **region_id** / **spot_id** column instead of the **label_id** column.
 
