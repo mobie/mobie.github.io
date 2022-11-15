@@ -10,7 +10,8 @@ This will open the following menu:
 
 <img width="400" alt="image" src="./tutorial_images/screenshot_ui.png">
 
-- **Sampling** - Sampling of screenshot (uses same units as viewer, see the viewer scalebar).
+- **Sampling** - Sampling of screenshot (in units stated on 'Pixel unit' line).
+- **Pixel unit** - Units to use for sampling
 - **Show RGB Image** - create an RGB image of the viewer.
 - **Show Multi-Channel Image** - create a multi-channel image, where each image shown in the viewer becomes
 a separate channel.
