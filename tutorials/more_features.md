@@ -32,7 +32,7 @@ Taking a screenshot with **Show RGB Image** checked gives:
 and with **Show Multi-Channel Image** checked, gives a multi-channel image with the
 following 3 channels:
 
-raw | ache | allcr1
+ raw | ache | allcr1
 ---|---|---
 <img width="300" alt="image" src="./tutorial_images/screenshot_channel_1.png">  |  <img width="300" alt="image" src="./tutorial_images/screenshot_channel_2.png"> | <img width="300" alt="image" src="./tutorial_images/screenshot_channel_3.png">
 
@@ -53,7 +53,7 @@ Make sure you select a resolution level that your computer can handle! For examp
 if your working on a laptop without much memory then you should select a lower resolution level with
 an image of smaller total size.
 
-All exported images will be opened as normal imageJ images that you can save / analyse however
+All exported images will be opened as normal ImageJ images that you can save / analyse however
 you want.
 
 ## <a name="registrations"></a>Register images/sources
@@ -61,7 +61,7 @@ you want.
 As every [view](../specs/template_view.md) can contain sets of transformations that are applied before it is displayed, sources and images can be shown registered on top of each other.
 <img width="500" alt="image" src="../use-cases/images/clem_area.png">
 
-The transformations can be generated using external tools and then provided as part of a view, or generated directly in MoBIE. This registration fucntionality is also demonstrated in [an example video](https://youtu.be/jKlM68lrhso).
+The transformations can be generated using external tools and then provided as part of a view, or generated directly in MoBIE. This registration functionality is also demonstrated in [an example video](https://youtu.be/jKlM68lrhso).
 
 ### Manual registration
 In order to manually transform sources (and register them to each other), right click inside the MoBIE viewer and select **Registration - Manual**.
@@ -72,8 +72,8 @@ The following window with instructions will appear:
 
 <img alt="image" src="./tutorial_images/reg_manual.png">
 
-The currently active source(s) selected in MoBIE's BDV window can now be moved with the standard [viewer controls](./explore_a_project.md#browsing) (translations, rotations, scaling). All unselected sources stay where they are
-The transformation can be stored by pressing **[T]** ord discarded **[Esc]**.
+The currently active source(s) selected in MoBIE's BDV window can now be moved with the standard [viewer controls](./explore_a_project.md#browsing) (translations, rotations, scaling). All unselected sources stay where they are. 
+The transformation can be stored by pressing **[T]** or discarded **[Esc]**.
 
 ### BigWarp
 In order to transform sources and register them to each other using [BigWarp](https://imagej.net/plugins/bigwarp), right click inside the MoBIE viewer and select **Registration - Manual**.
