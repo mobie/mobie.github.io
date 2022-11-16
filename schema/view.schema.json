@@ -44,6 +44,13 @@
             "maximum": 1
         },
 
+        "opacityNotSelected": {
+            "description": "The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+
         "valueLimits": {
             "description": "Value limits for numerical color maps: 'blueWhiteRed', 'viridis'.",
             "type": "array",
@@ -102,6 +109,12 @@
                 }
             },
             "minItems": 2
+        },
+
+        "selectionColor": {
+            "description": "Color for the selected objects (segments, regions or spots). By default the color that follows from the current coloring scheme is used.",
+            "type": "string",
+            "pattern": "^(\\d+)-(\\d+)-(\\d+)-(\\d+)$"
         },
 
         "imageDisplay": {
@@ -192,6 +205,9 @@
                         "opacity": {
                             "$ref": "#/definitions/opacity"
                         },
+                        "opacityNotSelected": {
+                            "$ref": "#/definitions/opacityNotSelected"
+                        },
                         "lut": {
                             "$ref": "#/definitions/lut"
                         },
@@ -265,6 +281,9 @@
                         "randomColorSeed": {
                             "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
+                        },
+                        "selectionColor": {
+                            "$ref": "#/definitions/selectionColor"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
@@ -306,6 +325,9 @@
                         "opacity": {
                             "$ref": "#/definitions/opacity"
                         },
+                        "opacityNotSelected": {
+                            "$ref": "#/definitions/opacityNotSelected"
+                        },
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
                         },
@@ -343,6 +365,9 @@
                         "randomColorSeed": {
                             "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
+                        },
+                        "selectionColor": {
+                            "$ref": "#/definitions/selectionColor"
                         }
                     },
                     "required": ["sources", "tableSource", "opacity", "lut", "name"],
@@ -363,6 +388,9 @@
                     "properties": {
                         "opacity": {
                             "$ref": "#/definitions/opacity"
+                        },
+                        "opacityNotSelected": {
+                            "$ref": "#/definitions/opacityNotSelected"
                         },
                         "lut": {
                             "$ref": "#/definitions/lut"
@@ -427,6 +455,9 @@
                         "spotRadius": {
                             "description": "The radius that is used for rendering the spots. In physical units",
                             "type": "number"
+                        },
+                        "selectionColor": {
+                            "$ref": "#/definitions/selectionColor"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
