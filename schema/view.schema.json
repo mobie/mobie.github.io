@@ -111,10 +111,19 @@
             "minItems": 2
         },
 
+        "colorModel": {
+            "type": "string",
+            "oneOf": [
+                {"enum": ["black", "blue", "cyan", "darkGray", "randomFromGlasbey", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "white", "yellow"]},
+                {"pattern": "^(\\d+)-(\\d+)-(\\d+)-(\\d+)$"},
+                {"pattern": "^r=(\\d+),g=(\\d+),b=(\\d+),a=(\\d+)$"},
+                {"pattern": "^r(\\d+)-g(\\d+)-b(\\d+)-a(\\d+)$"}
+            ]
+        },
+
         "selectionColor": {
             "description": "Color for the selected objects (segments, regions or spots). By default the color that follows from the current coloring scheme is used.",
-            "type": "string",
-            "pattern": "^(\\d+)-(\\d+)-(\\d+)-(\\d+)$"
+            "$ref": "#/definitions/colorModel"
         },
 
         "imageDisplay": {
@@ -127,11 +136,7 @@
                     "properties": {
                         "color": {
                             "description": "The color map.",
-                            "type": "string",
-                            "oneOf": [
-                                {"pattern": "^r=(\\d+),g=(\\d+),b=(\\d+),a=(\\d+)$"},
-                                {"enum": ["black", "blue", "cyan", "darkGray", "randomFromGlasbey", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "white", "yellow"]}
-                            ]
+                            "$ref": "#/definitions/colorModel"
                         },
                         "contrastLimits": {
                             "description": "The contrast limits.",
