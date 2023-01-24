@@ -53,6 +53,10 @@
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "The channel to select from the ome.zarr data."
                         }
                     },
                     "required": ["relativePath"],
@@ -65,6 +69,10 @@
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "The channel to select from the ome.zarr data."
                         }
                     },
                     "required": ["relativePath"],
