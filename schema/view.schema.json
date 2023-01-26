@@ -34,7 +34,7 @@
         "lut": {
             "description": "The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.",
             "type": "string",
-            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis"]
+            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis", "rgbaColumn"]
         },
 
         "opacity": {
