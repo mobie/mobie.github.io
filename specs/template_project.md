@@ -49,7 +49,7 @@ For the clem project the `project.json` looks like this:
 
 ### <a name="project-storage"></a>Local & Remote Projects
 
-Projects can be stored locally or hosted remotely and  the `image data`, i.e. the images in one of the [supported data formats](#data) and `metadata`, i.e. the json files describing the project and [tabular data](#tables) can be accessed from different storage locations for one project.
+Projects can be stored locally or hosted remotely and  the `image data`, i.e. the images in one of the [supported data formats](#data) and `metadata`, i.e. the json files describing the project and [tabular data](#table-data) can be accessed from different storage locations for one project.
 
 In more detail, MoBIE currently supports the following three storage options:
 - filesystem: can store `image data` and `metadata`.
