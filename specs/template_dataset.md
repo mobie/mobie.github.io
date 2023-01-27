@@ -10,7 +10,7 @@ It may contain additional subdirectories to organise these files. By convention 
 
 The `tables` directory contains all tabular data assoicated with segmentation, spot or region sources (see the [data specification](#data) for details)
 The tables associated with a segmentation or view, must all be located in the same subdirectory. This subdirectory must contain a default table, which should be called `default.tsv`, and may contain additional tables. 
-See the [table data specification](#tables) for details on how tables are stored.
+See the [table data specification](#table-data) for details on how tables are stored.
 
 The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
 

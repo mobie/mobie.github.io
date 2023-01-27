@@ -77,7 +77,7 @@ It may contain additional subdirectories to organise these files. By convention 
 
 The `tables` directory contains all tabular data assoicated with segmentation, spot or region sources (see the [data specification](#data) for details)
 The tables associated with a segmentation or view, must all be located in the same subdirectory. This subdirectory must contain a default table, which should be called `default.tsv`, and may contain additional tables. 
-See the [table data specification](#tables) for details on how tables are stored.
+See the [table data specification](#table-data) for details on how tables are stored.
 
 The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
 
@@ -301,7 +301,7 @@ The region source is associated with a table, which has rows associated with the
 The table must contain the column `region_id` and must contain at least one more column.
 The values in the `region_id` column must be strings and must correspond to the keys of the `sources` field of the `regionDisplay`.
 The sources field in the dispalay defines the mapping of the `region_id` values to the source(s) for each region. 
-Otherwise the same rules as outlined in the [Table Data setion](#table) apply.
+Otherwise the same rules as outlined in the [Table Data setion](#table-data) apply.
 
 A primary application of region displays are tables for views with a `grid` transform (see schema description below).
 See an example grid view table for four positions in a grid of tomograms for the clem project, which contains indicator values for the presence of different organelles for each position.
@@ -345,7 +345,7 @@ scripts/generate_spec_description.py
 			- Path to a tsv table.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
 		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
-		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.
+		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given. 'argbColumn' is deprecated, please use 'rgbaColumn' instead.
 		- `name`: Name of this segmentation display.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `opacityNotSelected`: The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15.
@@ -367,7 +367,7 @@ scripts/generate_spec_description.py
 			- Path to a tsv table.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
 		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
-		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.
+		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given. 'argbColumn' is deprecated, please use 'rgbaColumn' instead.
 		- `name`: Name of this spot display.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `opacityNotSelected`: The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15.
@@ -388,7 +388,7 @@ scripts/generate_spec_description.py
 			- Path to a tsv table.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
 		- `colorByColumn`: Name of table column that is used for coloring. By default the 'region_id' column is used.
-		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.
+		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given. 'argbColumn' is deprecated, please use 'rgbaColumn' instead.
 		- `name`: Name for this field.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `opacityNotSelected`: The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15.
