@@ -36,8 +36,9 @@ views, images and tables for your colleagues to explore
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
 - [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
-## MoBIE specification:
+## Data formats & MoBIE specification:
 - [MoBIE project specification](./specs/mobie_spec.md)
+- [OME-NGFF data](./specs/ngff.md)
 
 ## Use-cases and example projects
 
