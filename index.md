@@ -31,6 +31,7 @@ views, images and tables for your colleagues to explore
 ## Advanced usage
 - [Opening projects from branches and with credentials](./tutorials/branches_and_credentials.md)
 - [Expert Mode](./tutorials/expert_mode.md)
+- [Using MoBIE from the command line](./tutorials/cli.md)
 
 ## Making your own projects
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
@@ -64,7 +65,7 @@ There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) i
 
 ## Citation
 
-If you use MoBIE in your research please cite [the MoBIE bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2022.05.27.493763v1).
+If you use MoBIE in your research please cite [the MoBIE Nature Methods publication](https://www.nature.com/articles/s41592-023-01776-4).
 
 ## Contact
 
