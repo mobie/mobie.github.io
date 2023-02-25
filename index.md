@@ -37,9 +37,12 @@ views, images and tables for your colleagues to explore
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
 - [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
-## Data formats & MoBIE specification:
+## Data formats & MoBIE specification
 - [MoBIE project specification](./specs/mobie_spec.md)
 - [OME-NGFF data](./specs/ngff.md)
+
+## High content screening
+- [Opening high content screening data](./tutorials/hcs.md)
 
 ## Use-cases and example projects
 
@@ -61,7 +64,7 @@ The MoBIE functionality is also demonstrated in a series of videos:
 - [Timeseries in MoBIE](https://youtu.be/Md4PbK50NE0)
 - [Spatial Transcriptomics data in MoBIE](https://youtu.be/1dDaxOAZ9Sg)
 
-There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
+There is also a [NEuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
 
 ## Citation
 
