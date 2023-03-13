@@ -367,6 +367,10 @@
                             "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
                             "type": "number"
                         },
+                        "boundaryThicknessIsRelative": {
+                            "description": "Whether the boundary thicknes is given relative to the region size, or in absolute units (default: False)",
+                            "type": "boolean"
+                        },
                         "randomColorSeed": {
                             "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
