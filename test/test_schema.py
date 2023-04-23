@@ -65,7 +65,7 @@ class TestSchema(unittest.TestCase):
 
     # make sure that the other color models work
     def test_color_scheme(self):
-        with open("../specs/examples/single_source_view.json") as f:
+        with open(os.path.join(self.example_root, "single_source_view.json")) as f:
             view = json.load(f)["default"]
 
         schema_path = os.path.join(self.schema_root, "view.schema.json")
