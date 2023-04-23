@@ -1,6 +1,8 @@
 import json
 import os
 import unittest
+from copy import deepcopy
+
 import jsonschema
 
 
@@ -60,6 +62,24 @@ class TestSchema(unittest.TestCase):
 
     def test_views(self):
         self._test_schema("views")
+
+    # make sure that the other color models work
+    def test_color_scheme(self):
+        with open("../specs/examples/single_source_view.json") as f:
+            view = json.load(f)["default"]
+
+        schema_path = os.path.join(self.schema_root, "view.schema.json")
+        with open(schema_path, "r") as f:
+            schema = json.load(f)
+
+        # make sure that all patterns work
+        # {"pattern": "^(\\d+)-(\\d+)-(\\d+)-(\\d+)$"},
+        # {"pattern": "^r=(\\d+),g=(\\d+),b=(\\d+),a=(\\d+)$"},
+        # {"pattern": "^r(\\d+)-g(\\d+)-b(\\d+)-a(\\d+)$"}
+        for color_string in ["255-255-255-255", "r=255,g=255,b=255,a=255", "r255-g255-b255-a255"]:
+            this_view = deepcopy(view)
+            this_view["sourceDisplays"][0]["imageDisplay"]["color"] = color_string
+            jsonschema.validate(instance=this_view, schema=schema)
 
 
 if __name__ == "__main__":
