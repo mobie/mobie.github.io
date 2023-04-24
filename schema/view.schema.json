@@ -626,7 +626,8 @@
                             "items": {
                                 "$ref": "#/definitions/name"
                             },
-                            "minItems": 1
+                            "minItems": 1,
+                            "maxItems": 1
                         },
                         "parameters": {
                             "description": "List of the timepoint shifts. The list contains elements of size 2, the first entry gives the new timepoint (where the source is moved to), the second the old one (where it comes from). The first entries must be unique across the whole list, the second entries may be duplicated.",
@@ -644,6 +645,15 @@
                         "name": {
                             "description": "Name of this transformation",
                             "$ref": "#/definitions/name"
+                        },
+                        "sourceNamesAfterTransform": {
+                            "description": "Names of the sources after transformation. If given, must have the same number of elements as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1,
+                            "maxItems": 1
                         },
                         "keep": {
                             "type": "boolean",
