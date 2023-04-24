@@ -31,13 +31,18 @@ views, images and tables for your colleagues to explore
 ## Advanced usage
 - [Opening projects from branches and with credentials](./tutorials/branches_and_credentials.md)
 - [Expert Mode](./tutorials/expert_mode.md)
+- [Using MoBIE from the command line](./tutorials/cli.md)
 
 ## Making your own projects
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
 - [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
-## MoBIE specification:
+## Data formats & MoBIE specification
 - [MoBIE project specification](./specs/mobie_spec.md)
+- [OME-NGFF data](./specs/ngff.md)
+
+## High content screening
+- [Opening high content screening data](./tutorials/hcs.md)
 
 ## Use-cases and example projects
 
@@ -59,11 +64,11 @@ The MoBIE functionality is also demonstrated in a series of videos:
 - [Timeseries in MoBIE](https://youtu.be/Md4PbK50NE0)
 - [Spatial Transcriptomics data in MoBIE](https://youtu.be/1dDaxOAZ9Sg)
 
-There is also a [NeuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
+There is also a [NEuBIAS BigData Seminar](https://youtu.be/CZpaTCuSQao?t=2868) introducing MoBIE.
 
 ## Citation
 
-If you use MoBIE in your research please cite [the MoBIE bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2022.05.27.493763v1).
+If you use MoBIE in your research please cite [the MoBIE Nature Methods publication](https://www.nature.com/articles/s41592-023-01776-4).
 
 ## Contact
 

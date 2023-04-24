@@ -4,7 +4,7 @@
     "sourceDisplays": [
       {
         "imageDisplay": {
-          "blendingMode": "sumOccluding",
+          "blendingMode": "alpha",
           "color": "r=255,g=255,b=255,a=255",
           "contrastLimits": [
             30,
@@ -47,14 +47,7 @@
               "tomo_54_hm"
             ]
           },
-          "tableData": {
-            "tsv": {
-              "relativePath": "tables/highmag_tomos"
-            }
-          },
-          "tables": [
-            "default.tsv"
-          ]
+          "tableSource": "highmag_tomos"
         }
       }
     ],

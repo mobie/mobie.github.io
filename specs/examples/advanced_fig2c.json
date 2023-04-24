@@ -5,7 +5,7 @@
       {
         "imageDisplay": {
           "blendingMode": "alpha",
-          "color": "r=255,g=255,b=255,a=255",
+          "color": "r255-g255-b255-a255",
           "contrastLimits": [
             150.0,
             45700.0
@@ -22,7 +22,7 @@
       {
         "imageDisplay": {
           "blendingMode": "alpha",
-          "color": "r=255,g=255,b=255,a=255",
+          "color": "r255-g255-b255-a255",
           "contrastLimits": [
             30000,
             35000
@@ -52,7 +52,7 @@
       {
         "imageDisplay": {
           "blendingMode": "sum",
-          "color": "r=255,g=0,b=0,a=255",
+          "color": "r255-g0-b0-a255",
           "contrastLimits": [
             55.0,
             400.0
@@ -69,7 +69,7 @@
       {
         "imageDisplay": {
           "blendingMode": "sum",
-          "color": "r=0,g=255,b=0,a=255",
+          "color": "r0-g255-b0-a255",
           "contrastLimits": [
             40.0,
             250.0
@@ -86,7 +86,7 @@
       {
         "imageDisplay": {
           "blendingMode": "sum",
-          "color": "r=0,g=0,b=255,a=255",
+          "color": "r0-g0-b255-a255",
           "contrastLimits": [
             40.0,
             400.0

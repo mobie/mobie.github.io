@@ -49,7 +49,7 @@ For the clem project the `project.json` looks like this:
 
 ### <a name="project-storage"></a>Local & Remote Projects
 
-Projects can be stored locally or hosted remotely and  the `image data`, i.e. the images in one of the [supported data formats](#data) and `metadata`, i.e. the json files describing the project and [tabular data](#tables) can be accessed from different storage locations for one project.
+Projects can be stored locally or hosted remotely and  the `image data`, i.e. the images in one of the [supported data formats](#data) and `metadata`, i.e. the json files describing the project and [tabular data](#table-data) can be accessed from different storage locations for one project.
 
 In more detail, MoBIE currently supports the following three storage options:
 - filesystem: can store `image data` and `metadata`.
@@ -77,7 +77,7 @@ It may contain additional subdirectories to organise these files. By convention 
 
 The `tables` directory contains all tabular data assoicated with segmentation, spot or region sources (see the [data specification](#data) for details)
 The tables associated with a segmentation or view, must all be located in the same subdirectory. This subdirectory must contain a default table, which should be called `default.tsv`, and may contain additional tables. 
-See the [table data specification](#tables) for details on how tables are stored.
+See the [table data specification](#table-data) for details on how tables are stored.
 
 The `misc` directory may contain the subdirectory `views` with additional views stored in json files according to the [views spec](https://github.com/mobie/mobie.github.io/tree/master/schema/views.schema.json).
 
@@ -301,7 +301,7 @@ The region source is associated with a table, which has rows associated with the
 The table must contain the column `region_id` and must contain at least one more column.
 The values in the `region_id` column must be strings and must correspond to the keys of the `sources` field of the `regionDisplay`.
 The sources field in the dispalay defines the mapping of the `region_id` values to the source(s) for each region. 
-Otherwise the same rules as outlined in the [Table Data setion](#table) apply.
+Otherwise the same rules as outlined in the [Table Data setion](#table-data) apply.
 
 A primary application of region displays are tables for views with a `grid` transform (see schema description below).
 See an example grid view table for four positions in a grid of tomograms for the clem project, which contains indicator values for the presence of different organelles for each position.
@@ -333,7 +333,7 @@ scripts/generate_spec_description.py
 		- `blendingMode`: The blending mode for rendeting multiple image sources on top of each other. Use 'sum' for additive blending and 'alpha' for occluded blending. If not specified 'sum' will be used.
 		- `color`: The color map.
 		- `contrastLimits`: The contrast limits. Contains a tuple of [number, number].
-		- `name`: Name for this field.
+		- `name`: Name of this image display.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
 		- `resolution3dView`: The resolution used for the 3d viewer, in physical units. Only relevant if 'showImageIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `showImagesIn3d`: Whether to show the images in the 3d viewer.
@@ -344,14 +344,16 @@ scripts/generate_spec_description.py
 			- Path to a csv table.
 			- Path to a tsv table.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
-		- `colorByColumn`: Name for this field.
-		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.
-		- `name`: Name for this field.
+		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
+		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given. 'argbColumn' is deprecated, please use 'rgbaColumn' instead.
+		- `name`: Name of this segmentation display.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
+		- `opacityNotSelected`: The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15.
 		- `randomColorSeed`: Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional).
 		- `resolution3dView`: Resolution used for the 3d viewer, in physical units. Only relevant if 'showSelectedSegmentsIn3d' is true. Will be determined automatically if not specified. Contains a list of numbers.
 		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
 		- `selectedSegmentIds`: List of selected segment ids, each of the form sourceName;timePoint;label_id. Contains a list of strings.
+		- `selectionColor`: Color for the selected objects (segments, regions or spots). By default the color that follows from the current coloring scheme is used.
 		- `showAsBoundaries`: Show boundary mask instead of segment masks. Default is false.
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown. If it is 'true' then 'scatterPlotAxes' must be given.
 		- `showSelectedSegmentsIn3d`: Whether to show the selected segments in the 3d viewer.
@@ -364,13 +366,15 @@ scripts/generate_spec_description.py
 			- Path to a csv table.
 			- Path to a tsv table.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
-		- `colorByColumn`: Name for this field.
-		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.
-		- `name`: Name for this field.
+		- `colorByColumn`: Name of table column that is used for coloring. By default the 'label_id' column is used.
+		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given. 'argbColumn' is deprecated, please use 'rgbaColumn' instead.
+		- `name`: Name of this spot display.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
+		- `opacityNotSelected`: The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15.
 		- `randomColorSeed`: Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional).
 		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
 		- `selectedSpotIds`: List of selected segment ids, each of the form sourceName;timePoint;spot_id. Contains a list of strings.
+		- `selectionColor`: Color for the selected objects (segments, regions or spots). By default the color that follows from the current coloring scheme is used.
 		- `showAsBoundaries`: Show boundary mask instead of segment masks. Default is false.
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown. If it is 'true' then 'scatterPlotAxes' must be given.
 		- `showTable`: Show the table GUI element. Default is true (if the display has a table).
@@ -383,13 +387,15 @@ scripts/generate_spec_description.py
 			- Path to a csv table.
 			- Path to a tsv table.
 		- `boundaryThickness`: Thickness of the boundary masks. Only used if showAsBoundaries is true.
-		- `colorByColumn`: Name for this field.
-		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.
+		- `colorByColumn`: Name of table column that is used for coloring. By default the 'region_id' column is used.
+		- `lut`: The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given. 'argbColumn' is deprecated, please use 'rgbaColumn' instead.
 		- `name`: Name for this field.
 		- `opacity`: The alpha value used for blending segmentation and image data in the viewer.
+		- `opacityNotSelected`: The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15.
 		- `randomColorSeed`: Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional).
 		- `scatterPlotAxes`: The names of columns which should be used for the scatter plot. Contains a list of strings.
 		- `selectedRegionIds`: List of selected source region ids, each of the form timePoint;region_id. Contains a list of strings.
+		- `selectionColor`: Color for the selected objects (segments, regions or spots). By default the color that follows from the current coloring scheme is used.
 		- `showAsBoundaries`: Show boundary mask instead of region masks. Default is false.
 		- `showScatterPlot`: Whether to show the scatter plot. The default is 'false', i.e. if this property is not present the scatter plot should not be shown.
 		- `showTable`: Show the table GUI element. Default is true.
@@ -399,7 +405,7 @@ scripts/generate_spec_description.py
 		- `visible`: Is the color overlay of this display visible? Default is true.
 - `sourceTransforms`: The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml. Contains a list with items:
 	- `affine`: Affine transformation applied to a list of sources. The fields `parameters` and `sources` are required.
-		- `name`: Name for this field.
+		- `name`: Name of this transformation.
 		- `parameters`: Parameters of the affine transformation, using the BigDataViewer convention. Contains a list of numbers.
 		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
@@ -409,7 +415,7 @@ scripts/generate_spec_description.py
 		- `centerAtOrigin`: Whether to center the source at the coordinate space origin after applying the crop. By default true.
 		- `max`: Maximum coordinates for the crop. Contains a list of numbers.
 		- `min`: Minimum coordinates for the crop. Contains a list of numbers.
-		- `name`: Name for this field.
+		- `name`: Name of this transformation.
 		- `rectify`: Whether to align the crop's bounding box with the coordinate system. By default true.
 		- `sourceNamesAfterTransform`: Names of the sources after transformation. If given, must have the same number of elements as `sources`. Contains a list of strings.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
@@ -421,17 +427,17 @@ scripts/generate_spec_description.py
 		- `sources`: The sources this transformation is applied to. After transformation all sources will get the name <sourceName>_<mergedGridSourceName>. <sourceName> still refers to the source befor transformation (useful e.g. for specifying a metadataSource). Contains a list of strings.
 	- `timepoints`: Move sources to different timepoints. The fields `parameters` and `sources` are required.
 		- `keep`: Whether to keep timepoints that are not transformed, or to only display timepoints that are explicitly given in the transformation.
-		- `name`: Name for this field.
+		- `name`: Name of this transformation.
 		- `parameters`: List of the timepoint shifts. The list contains elements of size 2, the first entry gives the new timepoint (where the source is moved to), the second the old one (where it comes from). The first entries must be unique across the whole list, the second entries may be duplicated. Contains a list of arrays.
 		- `sources`: The sources this transformation is applied to. Contains a list of strings.
 	- `transformedGrid`: Arrange multiple sources in a grid by offseting sources with a grid spacing. The field `nestedSources` is required.
 		- `centerAtOrigin`: Center the views at the origin for 3d sources.
-		- `name`: Name for this field.
+		- `name`: Name of this transformation.
 		- `nestedSources`:  Contains a list of arrays.
 		- `positions`: Grid positions for the sources. If not specified, the sources will be arranged in a square grid. If given, must have the same length as `sources` and contain 2d grid positions specified as [y, x]. Contains a list of arrays.
 		- `sourceNamesAfterTransform`:  Contains a list of arrays.
 		- `timepoints`: The valid timepoints for this transformation. If none is given, the transformation is valid for all timepoints. Contains a list of integers.
-- `uiSelectionGroup`: Name for this field.
+- `uiSelectionGroup`: Name of the UI from which this view can be selected.
 - `viewerTransform`: A viewer transform to specify position, rotation, timepoint and/or zoom.Must contain exactly one of the following items:
 	- 
 		- `timepoint`: The initial timepoint shown in the viewer.
@@ -457,7 +463,7 @@ scripts/generate_spec_description.py
       {
         "imageDisplay": {
           "blendingMode": "sum",
-          "color": "r=255,g=255,b=255,a=255",
+          "color": "r255-g255-b255-a255",
           "contrastLimits": [
             290,
             23000
@@ -550,7 +556,7 @@ scripts/generate_spec_description.py
       {
         "imageDisplay": {
           "blendingMode": "alpha",
-          "color": "r=255,g=255,b=255,a=255",
+          "color": "r255-g255-b255-a255",
           "contrastLimits": [
             30,
             240
@@ -635,7 +641,7 @@ scripts/generate_spec_description.py
       {
         "imageDisplay": {
           "blendingMode": "alpha",
-          "color": "r=255,g=255,b=255,a=255",
+          "color": "r255-g255-b255-a255",
           "contrastLimits": [
             150.0,
             45700.0
@@ -652,7 +658,7 @@ scripts/generate_spec_description.py
       {
         "imageDisplay": {
           "blendingMode": "alpha",
-          "color": "r=255,g=255,b=255,a=255",
+          "color": "r255-g255-b255-a255",
           "contrastLimits": [
             30000,
             35000
@@ -682,7 +688,7 @@ scripts/generate_spec_description.py
       {
         "imageDisplay": {
           "blendingMode": "sum",
-          "color": "r=255,g=0,b=0,a=255",
+          "color": "r255-g0-b0-a255",
           "contrastLimits": [
             55.0,
             400.0
@@ -699,7 +705,7 @@ scripts/generate_spec_description.py
       {
         "imageDisplay": {
           "blendingMode": "sum",
-          "color": "r=0,g=255,b=0,a=255",
+          "color": "r0-g255-b0-a255",
           "contrastLimits": [
             40.0,
             250.0
@@ -716,7 +722,7 @@ scripts/generate_spec_description.py
       {
         "imageDisplay": {
           "blendingMode": "sum",
-          "color": "r=0,g=0,b=255,a=255",
+          "color": "r0-g0-b255-a255",
           "contrastLimits": [
             40.0,
             400.0

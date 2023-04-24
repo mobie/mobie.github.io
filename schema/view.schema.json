@@ -32,13 +32,20 @@
         },
 
         "lut": {
-            "description": "The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given.",
+            "description": "The look-up-table for categorical coloring modes. Note: if the lut is numeric ('viridis', 'blueWhiteRed'), the valueLimits field must be given. 'argbColumn' is deprecated, please use 'rgbaColumn' instead",
             "type": "string",
-            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis"]
+            "enum": ["argbColumn", "blueWhiteRed", "glasbey", "glasbeyZeroTransparent", "viridis", "rgbaColumn"]
         },
 
         "opacity": {
             "description": "The alpha value used for blending segmentation and image data in the viewer.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+
+        "opacityNotSelected": {
+            "description": "The alpha value used for blending segmentation and image data in the viewer that is applied to segments that are not currently selected. By default this is set to 0.15",
             "type": "number",
             "minimum": 0,
             "maximum": 1
@@ -104,6 +111,21 @@
             "minItems": 2
         },
 
+        "colorModel": {
+            "type": "string",
+            "oneOf": [
+                {"enum": ["black", "blue", "cyan", "darkGray", "randomFromGlasbey", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "white", "yellow"]},
+                {"pattern": "^(\\d+)-(\\d+)-(\\d+)-(\\d+)$"},
+                {"pattern": "^r=(\\d+),g=(\\d+),b=(\\d+),a=(\\d+)$"},
+                {"pattern": "^r(\\d+)-g(\\d+)-b(\\d+)-a(\\d+)$"}
+            ]
+        },
+
+        "selectionColor": {
+            "description": "Color for the selected objects (segments, regions or spots). By default the color that follows from the current coloring scheme is used.",
+            "$ref": "#/definitions/colorModel"
+        },
+
         "imageDisplay": {
             "description": "",
             "type": "object",
@@ -114,11 +136,7 @@
                     "properties": {
                         "color": {
                             "description": "The color map.",
-                            "type": "string",
-                            "oneOf": [
-                                {"pattern": "^r=(\\d+),g=(\\d+),b=(\\d+),a=(\\d+)$"},
-                                {"enum": ["black", "blue", "cyan", "darkGray", "randomFromGlasbey", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "white", "yellow"]}
-                            ]
+                            "$ref": "#/definitions/colorModel"
                         },
                         "contrastLimits": {
                             "description": "The contrast limits.",
@@ -191,6 +209,9 @@
                     "properties": {
                         "opacity": {
                             "$ref": "#/definitions/opacity"
+                        },
+                        "opacityNotSelected": {
+                            "$ref": "#/definitions/opacityNotSelected"
                         },
                         "lut": {
                             "$ref": "#/definitions/lut"
@@ -265,6 +286,9 @@
                         "randomColorSeed": {
                             "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
+                        },
+                        "selectionColor": {
+                            "$ref": "#/definitions/selectionColor"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
@@ -306,6 +330,9 @@
                         "opacity": {
                             "$ref": "#/definitions/opacity"
                         },
+                        "opacityNotSelected": {
+                            "$ref": "#/definitions/opacityNotSelected"
+                        },
                         "valueLimits": {
                             "$ref": "#/definitions/valueLimits"
                         },
@@ -340,12 +367,19 @@
                             "description": "Thickness of the boundary masks. Only used if showAsBoundaries is true.",
                             "type": "number"
                         },
+                        "boundaryThicknessIsRelative": {
+                            "description": "Whether the boundary thicknes is given relative to the region size, or in absolute units (default: False)",
+                            "type": "boolean"
+                        },
                         "randomColorSeed": {
                             "description": "Random seed for the random color lut (e.g. glasbey) to reproduce the exact colors of the view. (Optional)",
                             "type": "number"
+                        },
+                        "selectionColor": {
+                            "$ref": "#/definitions/selectionColor"
                         }
                     },
-                    "required": ["sources", "tableSource", "opacity", "lut", "name"],
+                    "required": ["sources", "opacity", "lut", "name"],
                     "additionalProperties": false
                 }
             },
@@ -363,6 +397,9 @@
                     "properties": {
                         "opacity": {
                             "$ref": "#/definitions/opacity"
+                        },
+                        "opacityNotSelected": {
+                            "$ref": "#/definitions/opacityNotSelected"
                         },
                         "lut": {
                             "$ref": "#/definitions/lut"
@@ -427,6 +464,9 @@
                         "spotRadius": {
                             "description": "The radius that is used for rendering the spots. In physical units",
                             "type": "number"
+                        },
+                        "selectionColor": {
+                            "$ref": "#/definitions/selectionColor"
                         }
                     },
                     "required": ["opacity", "lut", "name", "sources"],
@@ -602,6 +642,10 @@
                         "metadataSource": {
                             "description": "Name of the source to be used as reference to load the metadata for all sources in this transformation. This can decrease the load time significantly for large grids. Note that the image related metadata (shape, datatype, etc.) must exactly match.",
                             "type": "string"
+                        },
+                        "margin": {
+                            "description": "The margin to add around a position in the grid. By default a fraction of 0.1 of the position size will be used.",
+                            "type": "number"
                         }
                     }
                 }
@@ -700,6 +744,10 @@
                         "centerAtOrigin": {
                             "type": "boolean",
                             "description": "Center the views at the origin for 3d sources."
+                        },
+                        "margin": {
+                            "description": "The margin to add around a position in the grid. By default a fraction of 0.1 of the position size will be used.",
+                            "type": "number"
                         }
                     },
                     "required": ["nestedSources"],

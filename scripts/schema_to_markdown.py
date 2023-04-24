@@ -75,7 +75,7 @@ def get_reference(reference, schema):
     return link
 
 
-def follow_reference(name, reference, md, indent, schema):
+def follow_reference(name, reference, md, indent, schema, descr=None):
     reference = reference.lstrip("#")
     reference = reference.split("/")
     if reference[0] == '':
@@ -91,20 +91,22 @@ def follow_reference(name, reference, md, indent, schema):
     link = schema
     for ref in reference:
         link = link[ref]
-    md = add_field(name, link, md, indent, schema)
+    md = add_field(name, link, md, indent, schema, descr)
     return md
 
 
-def add_field(name, prop, md, indent, schema):
+def add_field(name, prop, md, indent, schema, descr=None):
     type_ = prop.get("type")
     if type_ == "object":
         md = add_obj(name, prop, md, indent, schema)
     elif type_ == "array":
         md = add_array(name, prop, md, indent, schema)
     elif "$ref" in prop:
-        md = follow_reference(name, prop["$ref"], md, indent, schema)
+        descr = prop.get("description", None)
+        md = follow_reference(name, prop["$ref"], md, indent, schema, descr)
     else:
-        descr = prop.get("description", "")
+        if descr is None:
+            descr = prop.get("description", "")
         descr = require_dot(descr)
         if name:
             line = f"{indent}- `{name}`: {descr}\n"

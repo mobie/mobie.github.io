@@ -10,7 +10,7 @@ The region source is associated with a table, which has rows associated with the
 The table must contain the column `region_id` and must contain at least one more column.
 The values in the `region_id` column must be strings and must correspond to the keys of the `sources` field of the `regionDisplay`.
 The sources field in the dispalay defines the mapping of the `region_id` values to the source(s) for each region. 
-Otherwise the same rules as outlined in the [Table Data setion](#table) apply.
+Otherwise the same rules as outlined in the [Table Data setion](#table-data) apply.
 
 A primary application of region displays are tables for views with a `grid` transform (see schema description below).
 See an example grid view table for four positions in a grid of tomograms for the clem project, which contains indicator values for the presence of different organelles for each position.
