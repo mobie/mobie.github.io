@@ -17,6 +17,10 @@
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
                     "required": ["relativePath"],
@@ -29,6 +33,10 @@
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
                     "required": ["relativePath"],
@@ -41,6 +49,10 @@
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
                     "required": ["relativePath"],
@@ -48,11 +60,15 @@
                 },
                 "bdv.ome.zarr": {
                     "type": "object",
-                    "description": "Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem with additional bdv xml metadata.",
+                    "description": "Data stored in the bdv.ome.zarr format, i.e. ome.zarr data that is stored on the local fileystem with additional bdv xml metadata. This data format is deprecated, please use ome.zarr instead.",
                     "properties": {
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
                     "required": ["relativePath"],
@@ -60,11 +76,15 @@
                 },
                 "bdv.ome.zarr.s3": {
                     "type": "object",
-                    "description": "Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store with additional bdv xml metadata.",
+                    "description": "Data stored in the bdv.ome.zarr.s3 format, i.e. ome.zarr data that is stored on a s3 object store with additional bdv xml metadata. This data format is deprecated, please use ome.zarr.s3 instead.",
                     "properties": {
                         "relativePath": {
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
                     "required": ["relativePath"],
@@ -117,6 +137,10 @@
                         "signingRegion": {
                             "type": "string",
                             "description": "The signing region for aws, e.g. us-east-1"
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the open organelle file, in case it contains multiple channels."
                         }
                     },
                     "required": ["s3Address"],
