@@ -685,6 +685,14 @@
                             },
                             "minItems": 1
                         },
+                        "sourceNamesAfterTransform": {
+                            "description": "Names of the sources after transformation. If given, must have the same number of elements as `sources`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name"
+                            },
+                            "minItems": 1
+                        },
                         "name": {
                             "description": "Name of this transformation",
                             "$ref": "#/definitions/name"
