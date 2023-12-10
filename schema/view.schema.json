@@ -189,6 +189,10 @@
                         "visible": {
                             "description": "Are the sources of this display visible? Default is true.",
                             "type": "boolean"
+                        },
+                        "invert": {
+                            "description": "Whether to invert the colormap. Default is false",
+                            "type": "boolean"
                         }
                     },
                     "required": ["color", "contrastLimits", "opacity", "name", "sources"],
