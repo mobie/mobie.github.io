@@ -7,8 +7,13 @@
 
         "name": {
             "type": "string",
-            "description": "Name for this field",
+            "description": "Name of this view.",
             "pattern": "^[^;\\/ ]+$"
+        },
+
+        "description": {
+            "description": "Optional description of the view. Will be printed when users load this view.",
+            "type": "string"
         },
 
         "additionalTables": {
