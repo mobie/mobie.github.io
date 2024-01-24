@@ -7,13 +7,8 @@
 
         "name": {
             "type": "string",
-            "description": "Name of this view.",
+            "description": "Name of this field.",
             "pattern": "^[^;\\/ ]+$"
-        },
-
-        "description": {
-            "description": "Optional description of the view. Will be printed when users load this view.",
-            "type": "string"
         },
 
         "additionalTables": {
@@ -871,14 +866,17 @@
             "description": "Name of the UI from which this view can be selected.",
             "$ref": "#/definitions/name"
         },
+
         "isExclusive": {
             "type": "boolean",
             "description": "Does this view replace the current viewer state (exclusive) or is it added to it (additive)?"
         },
+
         "description": {
             "type": "string",
-            "description": "Free text description of this view."
+            "description": "Description of this view. Will be displayed when the view is loaded."
         },
+
         "sourceDisplays": {
             "description": "The display groups of this view.",
             "type": "array",
@@ -889,6 +887,7 @@
                 {"$ref": "#/definitions/regionDisplay"}
             ]}
         },
+
         "sourceTransforms": {
             "description": "The source transformations of this view. The transformations must be defined in the physical coordinate space and are applied in addition to the transformations given in the bdv.xml.",
             "type": "array",
@@ -900,6 +899,7 @@
                 {"$ref": "#/definitions/transformedGrid"}
             ]}
         },
+
         "viewerTransform": {
             "$ref": "#/definitions/viewerTransform"
         }
