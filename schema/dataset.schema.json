@@ -4,10 +4,6 @@
     "title": "MoBIEDatasetSchema",
     "description": "Schema describing a MoBIE dataset",
     "properties": {
-        "description": {
-            "description": "Description of the dataset",
-            "type": "string"
-        },
         "is2D": {
             "desription": "Are all image sources in this dataset two-dimensional?",
             "type": "boolean"
