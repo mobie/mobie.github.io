@@ -4,10 +4,17 @@
     "title": "MoBIEDatasetSchema",
     "description": "Schema describing a MoBIE dataset",
     "properties": {
+
         "is2D": {
             "desription": "Are all image sources in this dataset two-dimensional?",
             "type": "boolean"
         },
+
+        "description": {
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+
         "sources": {
             "description": "The list of sources in this dataset.",
             "type": "object",
@@ -17,6 +24,7 @@
             },
             "minProperties": 1
         },
+
         "views": {
             "description": "The list of views in this dataset.",
             "type": "object",
@@ -29,10 +37,12 @@
             "required": ["default"],
             "additionalProperties": {"$ref": "https://raw.githubusercontent.com/mobie/mobie.github.io/master/schema/view.schema.json"}
         },
+
         "defaultLocation": {
             "description": "Default location for the 'location' menu in the viewer. Must be a valid viewer transform. If none is given the menu will be empty.",
             "$ref": "view.schema.json#/definitions/viewerTransform"
         }
+
     },
     "required": ["is2D", "sources", "views"],
     "additionalProperties": false
