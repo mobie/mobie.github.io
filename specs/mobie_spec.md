@@ -141,7 +141,7 @@ The data is stored in a chunked format for multi-dimensional data. Currently MoB
 - `openOrganelle.s3`: the data is stored in the [open organelle data format](https://openorganelle.janelia.org/), which is based on [n5](https://github.com/saalfeldlab/n5). Currently, this data format can only be streamed from s3 and cannnot be opened locally. We have added it to support data made available throuhg the Open Organelle data platform and the support is still experimental.
 
 For the data formats using a BigDataViewer xml file, each xml file must only contain a single setup id and the value of the field `name` must be the same as the name in the [source metadata](#source-metadata).
-Similarly, data stored in `ome.zarr` must only contain a single channel, and the value of the `name` field in the image metadata must correspond to the name of the source.
+Similarly, for data stored in `ome.zarr`, the value of the `name` field in the image metadata must correspond to the name of the source.
 
 ### <a name="table"></a>Table Data
 
