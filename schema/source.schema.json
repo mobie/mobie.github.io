@@ -18,12 +18,19 @@
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
                         },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the xml storing the bdv metadata."
+                        },
                         "channel": {
                             "type": "integer",
                             "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
-                    "required": ["relativePath"],
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
                     "additionalProperties": false
                 },
                 "bdv.n5": {
@@ -34,12 +41,19 @@
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
                         },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the xml storing the bdv metadata."
+                        },
                         "channel": {
                             "type": "integer",
                             "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
-                    "required": ["relativePath"],
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
                     "additionalProperties": false
                 },
                 "bdv.n5.s3": {
@@ -66,12 +80,19 @@
                             "type": "string",
                             "description": "The file path to the xml storing the bdv metadata, relative to the dataset root location."
                         },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the xml storing the bdv metadata."
+                        },
                         "channel": {
                             "type": "integer",
                             "description": "Optional setup to display from the bdv.xml, in case it contains multiple setups."
                         }
                     },
-                    "required": ["relativePath"],
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
                     "additionalProperties": false
                 },
                 "bdv.ome.zarr.s3": {
@@ -98,12 +119,19 @@
                             "type": "string",
                             "description": "The file path to the ome.zarr file, relative to the dataset root location."
                         },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the ome.zarr file."
+                        },
                         "channel": {
                             "type": "integer",
                             "description": "Optional channel to display from the ome.zarr file, in case it contains multiple channels."
                         }
                     },
-                    "required": ["relativePath"],
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
                     "additionalProperties": false
                 },
                 "ome.zarr.s3": {
