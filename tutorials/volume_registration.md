@@ -1,0 +1,55 @@
+## Volume registration
+
+This tutorial will show how to generate a project from multimodal volume images and register them.
+
+### retrieve the raw data
+
+
+ - To download the Electron microscopy (EM) dataset, head to https://www.ebi.ac.uk/empiar/EMPIAR-11537/, make sure to de-select all data except #4 "Downscaled (20nm) aligned FIB SEM stack resliced to match the Airyscan dataset" and click the individual download button (choose HTTP).
+
+ - The Fluorescence microscopy (FM) dataset is stored at https://www.ebi.ac.uk/biostudies/bioimages/studies/S-BSST1075. You can download the raw data file [directly](https://www.ebi.ac.uk/biostudies/files/S-BSST1075/EM04480_05_4G_Hoechst_GFP-TGN46_agglutinin_mitotracker.czi).
+
+### create the MoBIE project
+
+- open the LM data in Fiji using the BioFormats Importer plugin. (`Plugins > Bio-Formats > Bio-Formats Importer`)
+- you should get a Hyperstack image with 4 channels. (MitoTracker, Agglutinin, GFP-TGN46, and Hoechst)
+- adjust the lookup table for each channel to fit the fluorophore. (`Image > Lookup Tables`)
+- Currently, the MoBIE project creator only supports single channels, so we have to split the fluorescence stack into separate channels using `Image > Hyperstacks > Make Subset...` and choose the channel number. Do this with each of the 4 channels active.
+---
+- create a new MoBIE project: type "mobie" in the search bar or choose `Plugins > MoBIE > Create > Create New MoBIE project...`
+![createMobieProject.png](tutorial_images/createMobieProject.png)
+
+  name the project as you like and create it in a local directory.
+- add a new dataset, name it as you like. Do not tick "2D".
+![createDataset.png](tutorial_images/createDataset.png)
+- select the first channel image in Fiji
+- add a new source `current displayed image`, call it appropriately (channels are sorted inverse), make sure the Image type is "Image" and do not tick `make view exclusive`.
+![addCurrentImage.png](tutorial_images/addCurrentImage.png)
+- choose the `selection group name` as "fluorescence" or "FM"
+![uiSelectionGroup.png](tutorial_images/uiSelectionGroup.png)
+
+- open the MoBIE project to see how the scaling and LUT are transferred 
+
+---
+- continue the same way with the other channels, adding them to the same dataset and selection group.
+
+- open the other channel views using the MoBIE UI and explore the multi-channel volume
+- right click into the multi-channel viewer and `Save current view`
+- `Save as new view`, save to `projcect`
+- Call the view something like "all channels" and make it part of the "FM" group
+- close MoBIE
+---
+- open the EM data in Fiji
+- add the volume to MoBIE under the selection group "EM" (make new selection group) to the same dataset. The format conversion can take a couple of minutes.
+- open the MoBIE project and view your multichannel FM and EM together
+- switch off all fluorescence channels but the Hoechst by clicking on `S`
+- change contrast and transparency settings for the relevant sources (`B`)
+
+![multiview.png](tutorial_images/multiview.png)
+
+
+- right click the image "registration manual", select the EM image as we want to keep the multi-channles where they are, `Start manual transform` drag the image around.
+- click `cancel manual Transform` to undo the translation and bring the image back to its original position.
+
+- use the mouse wheel to translate in `z`, make sure rotations are around the viewing axis and press the `z` key. Use the right and left arrow keys to rotate and the up and down to scale (dangerous)
+- click `Accept manual Transform` to make it permanent and store the view into the project. This will only save the transformed EM source. Create a new selection group "Registration"

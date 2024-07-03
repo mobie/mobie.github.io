@@ -24,6 +24,7 @@ views, images and tables for your colleagues to explore
 - [Locations and views](./tutorials/views_and_locations.md)
 - [Importing and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
+- [Volume Registration tutorial](./tutorials/volume_registration.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 - [Grid views & image region tables](./tutorials/image_grids_and_tables.md)
 - [More features](./tutorials/more_features.md)
