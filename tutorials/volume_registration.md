@@ -15,7 +15,9 @@ This tutorial will show how to generate a project from multimodal volume images 
 - you should get a Hyperstack image with 4 channels. (MitoTracker, Agglutinin, GFP-TGN46, and Hoechst)
 - adjust the lookup table for each channel to fit the fluorophore. (`Image > Lookup Tables`)
 - Currently, the MoBIE project creator only supports single channels, so we have to split the fluorescence stack into separate channels using `Image > Hyperstacks > Make Subset...` and choose the channel number. Do this with each of the 4 channels active.
+ (*hint:* you can use `Ctrl + 9` to get the history in ImageJ to repeat commands)
 ---
+
 - create a new MoBIE project: type "mobie" in the search bar or choose `Plugins > MoBIE > Create > Create New MoBIE project...`
 ![createMobieProject.png](tutorial_images/createMobieProject.png)
 
@@ -31,25 +33,40 @@ This tutorial will show how to generate a project from multimodal volume images 
 - open the MoBIE project to see how the scaling and LUT are transferred 
 
 ---
-- continue the same way with the other channels, adding them to the same dataset and selection group.
 
+- continue the same way with the other channels, adding them to the same dataset and selection group.
 - open the other channel views using the MoBIE UI and explore the multi-channel volume
 - right click into the multi-channel viewer and `Save current view`
 - `Save as new view`, save to `projcect`
 - Call the view something like "all channels" and make it part of the "FM" group
 - close MoBIE
+
 ---
+
 - open the EM data in Fiji
 - add the volume to MoBIE under the selection group "EM" (make new selection group) to the same dataset. The format conversion can take a couple of minutes.
 - open the MoBIE project and view your multichannel FM and EM together
-- switch off all fluorescence channels but the Hoechst by clicking on `S`
+- make all fluorescence channels but the Hoechst invisible by clicking on `S`
 - change contrast and transparency settings for the relevant sources (`B`)
 
 ![multiview.png](tutorial_images/multiview.png)
 
 
-- right click the image "registration manual", select the EM image as we want to keep the multi-channles where they are, `Start manual transform` drag the image around.
+- right click the image "registration manual", select the EM image as we want to keep the multi-channels where they are.
+![img.png](tutorial_images/manual_transform.png)
+- Click `Start manual transform` 
+- use the right mouse button to drag the image around.
+- Press the `z` key to make sure rotations are around the viewing axis and use the right and left arrow keys to rotate.
+- You can also use the mouse wheel to translate in `z`, and the up and down arrows to scale (dangerous).
+- If necessary adjust brightness or opacity of the images using MoBIE's main window (`B`).
 - click `cancel manual Transform` to undo the translation and bring the image back to its original position.
+- click `Accept manual Transform` to make it permanent and store the view into the project. This will only save the transformed EM source. Create a new selection group "registered".
+- clear the viewer
+- open the registered view an all FM channels. Check their registration by scrolling through the volume.
+![img.png](tutorial_images/multi_view_reg1.png)
 
-- use the mouse wheel to translate in `z`, make sure rotations are around the viewing axis and press the `z` key. Use the right and left arrow keys to rotate and the up and down to scale (dangerous)
-- click `Accept manual Transform` to make it permanent and store the view into the project. This will only save the transformed EM source. Create a new selection group "Registration"
+---
+
+- push `CTRL + y` to view the volume from the side. Make sure te mouse pointer is in the center of the feature, as it determines the viewer's rotation axis.
+- repeat the manual registration of the EM volume until your registration matches in all axes.
+- You could also use the mitochondria channel for refining it.
