@@ -5,17 +5,16 @@ This tutorial will show how to generate a project from multimodal volume images 
 ### retrieve the raw data
 
 
- - To download the Electron microscopy (EM) dataset, head to https://www.ebi.ac.uk/empiar/EMPIAR-11537/, make sure to de-select all data except #4 "Downscaled (20nm) aligned FIB SEM stack resliced to match the Airyscan dataset" and click the individual download button (choose HTTP).
+ - To download the Electron microscopy (EM) dataset, head to [https://www.ebi.ac.uk/empiar/EMPIAR-11537/](https://www.ebi.ac.uk/empiar/EMPIAR-11537/), make sure to de-select all data except #4 "Downscaled (20nm) aligned FIB SEM stack resliced to match the Airyscan dataset" and click the individual download button (choose HTTP).
 
- - The Fluorescence microscopy (FM) dataset is stored at https://www.ebi.ac.uk/biostudies/bioimages/studies/S-BSST1075. You can download the raw data file [directly](https://www.ebi.ac.uk/biostudies/files/S-BSST1075/EM04480_05_4G_Hoechst_GFP-TGN46_agglutinin_mitotracker.czi).
+ - The Fluorescence microscopy (FM) dataset is stored at [https://www.ebi.ac.uk/biostudies/bioimages/studies/S-BSST1075](https://www.ebi.ac.uk/biostudies/bioimages/studies/S-BSST1075). You can download the raw data file [directly from here](https://www.ebi.ac.uk/biostudies/files/S-BSST1075/EM04480_05_4G_Hoechst_GFP-TGN46_agglutinin_mitotracker.czi).
 
 ### create the MoBIE project
 
 - open the LM data in Fiji using the BioFormats Importer plugin. (`Plugins > Bio-Formats > Bio-Formats Importer`)
 - you should get a Hyperstack image with 4 channels. (MitoTracker, Agglutinin, GFP-TGN46, and Hoechst)
 - adjust the lookup table for each channel to fit the fluorophore. (`Image > Lookup Tables`)
-- Currently, the MoBIE project creator only supports single channels, so we have to split the fluorescence stack into separate channels using `Image > Hyperstacks > Make Subset...` and choose the channel number. Do this with each of the 4 channels active.
- (*hint:* you can use `Ctrl + 9` to get the history in ImageJ to repeat commands)
+- Currently, the MoBIE project creator only supports single channels, so we have to split the fluorescence stack into separate channels using `Image > Color > Split Channels`.
 ---
 
 - create a new MoBIE project: type "mobie" in the search bar or choose `Plugins > MoBIE > Create > Create New MoBIE project...`
@@ -69,4 +68,5 @@ This tutorial will show how to generate a project from multimodal volume images 
 
 - push `CTRL + y` to view the volume from the side. Make sure te mouse pointer is in the center of the feature, as it determines the viewer's rotation axis.
 - repeat the manual registration of the EM volume until your registration matches in all axes.
-- You could also use the mitochondria channel for refining it.
+![img.png](tutorial_images/multi_view_reg_side.png)
+- You could also use the mitochondria or another channel for refining it.
