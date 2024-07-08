@@ -70,3 +70,8 @@ This tutorial will show how to generate a project from multimodal volume images 
 - repeat the manual registration of the EM volume until your registration matches in all axes.
 ![img.png](tutorial_images/multi_view_reg_side.png)
 - You could also use the mitochondria or another channel for refining it.
+
+Note that when clicking `Accept manual transform` the single transformed source will be saved as a new view. In case you like to transform more.
+
+- To save a complete view with all sources (channels + EM), do `right click > save current view` and save your view as desired.
+![img.png](tutorial_images/saveView.png)
