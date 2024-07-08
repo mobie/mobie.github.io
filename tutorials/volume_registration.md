@@ -15,6 +15,7 @@ This tutorial will show how to generate a project from multimodal volume images 
 - you should get a Hyperstack image with 4 channels. (MitoTracker, Agglutinin, GFP-TGN46, and Hoechst)
 - adjust the lookup table for each channel to fit the fluorophore. (`Image > Lookup Tables`)
 - Currently, the MoBIE project creator only supports single channels, so we have to split the fluorescence stack into separate channels using `Image > Color > Split Channels`.
+
 ---
 
 - create a new MoBIE project: type "mobie" in the search bar or choose `Plugins > MoBIE > Create > Create New MoBIE project...`
@@ -50,6 +51,7 @@ This tutorial will show how to generate a project from multimodal volume images 
 
 ![multiview.png](tutorial_images/multiview.png)
 
+### Manual registration of sources
 
 - right click the image "registration manual", select the EM image as we want to keep the multi-channels where they are.
 ![img.png](tutorial_images/manual_transform.png)
@@ -75,3 +77,7 @@ Note that when clicking `Accept manual transform` the single transformed source 
 
 - To save a complete view with all sources (channels + EM), do `right click > save current view` and save your view as desired.
 ![img.png](tutorial_images/saveView.png)
+
+### (optional) registration using BigWarp
+
+- `right click > Registration - BigWarp`
