@@ -630,7 +630,7 @@
                     "description": "A grid view of multiple sources that creates an new merged source. Only valid if all sources have the same size (both in pixels and physical space).",
                     "properties": {
                         "sources": {
-                            "description": "The sources this transformation is applied to. After transformation all sources will get the name <sourceName>_<mergedGridSourceName>. <sourceName> still refers to the source befor transformation (useful e.g. for specifying a metadataSource)",
+                            "description": "The sources this transformation is applied to. After transformation all sources will get the name `<sourceName>_<mergedGridSourceName>`. `<sourceName>` still refers to the source befor transformation (useful e.g. for specifying a metadataSource)",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/name"
