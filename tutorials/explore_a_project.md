@@ -34,6 +34,7 @@ The most important controls are:
 * **[Middle click + drag, or right click + drag]** Pan in xy
 * **[Scroll]** Move along z axis
 * **[Up / Down arrow keys]** Zoom in and out
+* Hold `Shift` to rotate and browse 10x faster. Hold `Ctrl` to rotate and browse 10x slower.
 
 ### MoBIE Controls
 
