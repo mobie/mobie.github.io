@@ -63,11 +63,12 @@ As you add more images to the viewer, they will appear in the **sources panel**,
 
 To control the image sources appearance, there are several buttons...
 
-- **[ F ]**  Focus the viewer on the source
-- **[ O ]**  Change the opacity
-- **[ C ]**  Change the color
-- **[ B ]**  Change the brightness settings
-- **[ S ]**  Open the display settings (the options available here will depend on the
+- <img width="24" alt="image" src="./tutorial_images/focus.png">  Focus the viewer on the source
+  Focus the viewer on the source
+  
+- <img width="24" alt="image" src="./tutorial_images/contrast.png">  Change the brightness and opacity settings
+- <img width="24" alt="image" src="./tutorial_images/color.png">  Change the color
+- <img width="24" alt="image" src="./tutorial_images/settings.png">  Open the display settings (the options available here will depend on the
 corresponding display e.g. different options for images vs segmentations).
 - **[ X ]**  Remove from viewer and sources panel
 
