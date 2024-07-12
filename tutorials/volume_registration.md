@@ -80,7 +80,7 @@ Note that when clicking `Accept manual transform` the single transformed source 
 
 ### (optional) registration using BigWarp
 
-You might realize, that a rigid transform (composed of translations, rotations and isotropic scaling) is not sufficient to register all regions of the volumes at once. In order to achieve this, we need to allow for more flexibility. We can apply a landmark-based registration and use BigWarpp for this purpose.
+You might realize, that a rigid transform (composed of translations, rotations and isotropic scaling) is not sufficient to register all regions of the volumes at once. In order to achieve this, we need to allow for more flexibility. We can apply a landmark-based registration and use BigWarp for this purpose.
 A good introduction in the concepts and functions can be found [here](https://imagej.net/plugins/bigwarp).
 
 - `right click > Registration - BigWarp`
@@ -97,3 +97,7 @@ A good introduction in the concepts and functions can be found [here](https://im
 - press `U` to open the BigWarp preferences.
 - observe how the registration changes/improves when selecting a different transformation type ("affine" vs. "similarity" etc.).
 ![img.png](tutorial_images/BigWarp4.png)
+
+- if you are interested in comparing your registration with the published result, you can open BigWarp using the raw (not transformed) sources (FM as moving sources) in BigWarp and apply the transformations using the published landmarks that you can download [here](https://www.ebi.ac.uk/biostudies/files/S-BSST1075/landmarks.csv). Click `File > Import landmarks` to load them into BigWarp.
+
+![img.png](tutorial_images/BigWarp_open_landmarks.png)
