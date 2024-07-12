@@ -86,13 +86,14 @@ A good introduction in the concepts and functions can be found [here](https://im
 - `right click > Registration - BigWarp`
 - you can select multiple sources as the moving image, in this case, select all fluorescence channels. (You should change LUT, contrast and opacity settings for the relevant channel(s) to make it easier to identify objects as landmarks).
 - when you start BigWarp, multiple windows will open. One showing the fixed image (EM), one showing the moving image (FM) and a list of landmarks.![img.png](tutorial_images/BigWarp1.png)
-- it is very useful to open the help which gives you an overview of all inputs and keyboard shortuts.
+- it is very useful to open the help which gives you an overview of all inputs and keyboard shortcuts.
+- pressing `F` will switch between single-source and fused mode showing the moving and fixed source(s) in one viewer.
 - one very useful one is pressing `T` in the _fixed image_ viewer to toggle a fused view of all sources on or off.
 - to start placing landmarks, we have to activate BigWarp's landmark mode by pressing `␣ Space`.
 - now add corresponding landmarks by clicking in both image viewers![img.png](tutorial_images/BigWarp2.png)
 - if you want to browse a viewer (using the standard commands) switch off landmark mode again.
 - when you added a couple of landmarks, you can toggle a transformed view by pressing `T`.![img.png](tutorial_images/BigWarp3.png)
 - Observe how the registration improves with adding more landmarks.
-- press `U` to open the BigWarppreferences.
+- press `U` to open the BigWarp preferences.
 - observe how the registration changes/improves when selecting a different transformation type ("affine" vs. "similarity" etc.).
 ![img.png](tutorial_images/BigWarp4.png)
