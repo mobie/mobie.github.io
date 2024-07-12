@@ -9,7 +9,7 @@ Once the MoBIE plugin has been installed (see instructions [here](./installation
 you can open a project:
 
 1. In the Fiji search bar, type: "mobie"<br> <img width="460" alt="image" src="./tutorial_images/mobie_command.png"> <br>
-...select 'Open MoBIE Project..' and click [ Run ]  
+...select 'Open published MoBIE Project..' and click [ Run ]  
 
 2. Enter the location of the project (a github repository).  
 We will use the published 'Platybrowser' project as an example (location: https://github.com/mobie/platybrowser-project)
