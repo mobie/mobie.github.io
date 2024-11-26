@@ -16,15 +16,7 @@ In Fiji select `Plugins › MoBIE › Open › Open HCS Dataset...` and browse t
 
 MoBIE builds a grid view of wells and sites by parsing the HCS file names, which typically contain information about the channel, well and site.
 
-#### Operetta (Harmony 4)
-
-Regular expression:
-
-`".*(?<"+WELL+">r[0-9]{2}c[0-9]{2})f(?<"+SITE+">[0-9]{2})p[0-9]{2}.*-ch(?<"+CHANNEL+">[0-9])sk.*.tiff$"`
-
-Example file name and regular expression matching:
-
-`r01c01f04p01-ch1sk1fk1fl1.tiff : WELL = r01c01, SITE = 04, CHANNEL = 1`
+See [here for an up-to-date list of supported naming schemes](https://github.com/mobie/mobie-viewer-fiji/blob/main/src/main/java/org/embl/mobie/lib/hcs/HCSPattern.java#L37). 
 
 ### Current limitations
 
