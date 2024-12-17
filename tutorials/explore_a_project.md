@@ -75,6 +75,7 @@ corresponding display e.g. different options for images vs segmentations).
 
 - [ ] **S**  Check to show source in **s**licing viewer (i.e., BigDataViewer)
 - [ ] **V**  Check to show source in **v**olume viewer (i.e. in 3D)
+- [ ] **B**  Check to show source in **B**igVolumeViewer (i.e. also in 3D)
 - [ ] **T**  Check to show **t**able
 - [ ] **P**  Check to show **p**lot (i.e. a scatter plot)
 
