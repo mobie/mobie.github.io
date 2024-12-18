@@ -22,6 +22,7 @@ views, images and tables for your colleagues to explore
 - [Getting Started](./tutorials/explore_a_project.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
 - [Locations and views](./tutorials/views_and_locations.md)
+- [Using BigVolumeViewer](./tutorials/bigvolumeviewer.md)
 - [Importing and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 - [Volume Registration tutorial](./tutorials/volume_registration.md)
