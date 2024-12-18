@@ -29,10 +29,13 @@ The top slider maps minimum and maximum shade of selected source color (or min a
 Upon loading a source to BVV, its contrast and range will be taken from the current BDV source settings.  
 There are additional source display setting, which you can expand by clicking on "three triangles" bar:  
 
-<img width="490" alt="expand settings" src="./tutorial_images/bvv/bvv_expand_brightness.gif">  
+<img width="490" alt="illustration of expand settings click" src="./tutorial_images/bvv/bvv_expand_brightness.gif">  
+
 The second slider from the top (marked as **γ**) adjusts non-linear color/LUT mapping by introducing gamma correction (a power-law). Overall color/LUT adjustments can be illustrated using an example below.  
 
-<img width="495" alt="expand settings" src="./tutorial_images/bvv/bvv_lutrange.gif">  
+<img width="495" alt="an example of changing LUT mapping" src="./tutorial_images/bvv/bvv_lutrange.gif">  
+
+### Opacity
 
 Here we have a box volume, where intensities are increasing from 0 to 255, left-to-right slices. Intensity values are colored using ImageJ's periodic "3-3-2" LUT shown in the color bar. Changing min max range values of the top slider maps the range of LUT application with respect to the data (voxel values) range. Changing gamma slider introduces non-linear color mapping.  
 
@@ -43,13 +46,13 @@ Now, let's return to the animation shown above. It was made using "volumetric" r
 
 The example shown below shows what will happen with a source view, if we independently change opacity (alpha value) mapping. 
 
-<img width="490" alt="expand settings" src="./tutorial_images/bvv/bvv_alpharange.gif">  
+<img width="490" alt="an example of changing opacity" src="./tutorial_images/bvv/bvv_alpharange.gif">  
 
 Notice, that the colors in this example remain the same, only voxels' opacity is modified.  
 
-The last element in source appearance control is the checkbox on the left from the **α** slider. It is used to synchronize top pair of sliders (color/LUT and **γ**) with the bottom pair (**α** and **γ α**), but not the other way around. It also synchronizes slider ranges.  
-Notice, that the checkbox was unselected in the examples above for the illustration purposes.  
-In "real life examples", upon opening a data/volume, usually it is convenient to first keep this checkbox selected, to see the loaded volume and approximate data range. And later fine-tune the alpha values independently (checkbox unselected) for a better visualization result.  
+The last element in source appearance control is the checkbox on the left from the **α** slider. It is used to synchronize top pair of sliders (color/LUT and **γ**) with the bottom pair (**α** and **γ α**), but not the other way around. It also synchronizes slider ranges. You can see its effect in the final part of the animation.   
+
+In "real life examples", upon opening a data/volume, usually it is convenient to first keep this checkbox selected, to see the loaded volume and approximate data range. And later fine-tune the alpha range independently (checkbox unselected) for a better visualization result.  
 
 ### BigVolumeViewer settings
 
