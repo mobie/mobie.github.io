@@ -22,21 +22,38 @@ As with all 3D applications, a better GPU card with large amount of GPU memory i
 As with BigDataViewer, you can configure the appearance of each source in BVV using shortcut **`S`** (also in the Cards Panel, activated by a shortcut **`P`**).    
 The square on the left shows a color that is used to display the volume.  
 You can change it using left click. Or you can apply Fiji installed LUT using right-click.  
+
 <img width="500" alt="LUT selection example" src="./tutorial_images/bvv/bvv_lut_selection.gif">   
+
 The top slider maps minimum and maximum shade of selected source color (or min and max of LUT) to the selected data range (like a standard Fiji's "brightness" dialog).  
 Upon loading a source to BVV, its contrast and range will be taken from the current BDV source settings.  
 There are additional source display setting, which you can expand by clicking on "three triangles" bar:  
+
 <img width="490" alt="expand settings" src="./tutorial_images/bvv/bvv_expand_brightness.gif">  
 The second slider from the top (marked as **γ**) adjusts non-linear color/LUT mapping by introducing gamma correction (a power-law). Overall color/LUT adjustments can be illustrated using an example below.  
-<img width="490" alt="expand settings" src="./tutorial_images/bvv/bvv_lutrange.gif">  
-Here we have a box volume, where intensities are increasing from 0 to 255, left-to-right slices. Intensity values are colored using ImageJ's periodic "3-3-2" LUT shown in the color bar. Changing min max range values of the top slider maps the range of LUT application with respect to the data (voxel values) range. Changing gamma slider introduces non-linear mapping. 
 
+<img width="495" alt="expand settings" src="./tutorial_images/bvv/bvv_lutrange.gif">  
 
+Here we have a box volume, where intensities are increasing from 0 to 255, left-to-right slices. Intensity values are colored using ImageJ's periodic "3-3-2" LUT shown in the color bar. Changing min max range values of the top slider maps the range of LUT application with respect to the data (voxel values) range. Changing gamma slider introduces non-linear color mapping.  
 
+Two bottom sliders adjust (or map) voxels' opacity, also called [alpha value](https://en.wikipedia.org/wiki/Alpha_compositing). It is especially important for the "Volumetric" rendering mode.  
+The range slider marked with **α** (alpha) maps opacity range (0 = fully transparent, 1 = fully opaque) to the data intensity range. The very bottom slider, again, introduces independent non-linear gamma modulation of this mapping, marked "**γ α**". 
+
+Now, let's return to the animation shown above. It was made using "volumetric" render. As you may see, the alpha slider range was set from 0 to 1, meaning that all voxels with intensity above or equal to 1 have opacity of 1 (completely opaque).  
+
+The example shown below shows what will happen with a source view, if we independently change opacity (alpha value) mapping. 
+
+<img width="490" alt="expand settings" src="./tutorial_images/bvv/bvv_alpharange.gif">  
+
+Notice, that the colors in this example remain the same, only voxels' opacity is modified.  
+
+The last element in source appearance control is the checkbox on the left from the **α** slider. It is used to synchronize top pair of sliders (color/LUT and **γ**) with the bottom pair (**α** and **γ α**), but not the other way around. It also synchronizes slider ranges.  
+Notice, that the checkbox was unselected in the examples above for the illustration purposes.  
+In "real life examples", upon opening a data/volume, usually it is convenient to first keep this checkbox selected, to see the loaded volume and approximate data range. And later fine-tune the alpha values independently (checkbox unselected) for a better visualization result.  
 
 ### BigVolumeViewer settings
 
-To change BVV settings, right click on the BigDataViewer window and select "Configure BigVolumeViewer Rendering".  
+To change global BVV settings, right click on the BigDataViewer window and select "Configure BigVolumeViewer Rendering".  
 Short parameters description (and [a bit longer](https://forum.image.sc/t/bigvolumeviewer-tech-demo/12104), if interested) :  
 
 - **Render width and height** - the true quality of 3D rendering performed by GPU and stretched to the current window size. Increasing them makes better picture at the expense of higher computational load;
