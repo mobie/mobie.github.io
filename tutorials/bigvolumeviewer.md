@@ -1,11 +1,11 @@
 ## Using BigVolumeViewer
 
-By selecting a **B** checkbox in the Sources panel, you can view a 3D dataset/segmentation results in the BigVolumeViewer (BVV) window.  
+By selecting a **B** checkbox in the Sources panel, you can view a 3D dataset/segmentation results in the [BigVolumeViewer](https://forum.image.sc/t/bigvolumeviewer-tech-demo/12104) (BVV) window.  
 <img width="400" alt="MoBIE sources panel example" src="./tutorial_images/bvv/sources_buttons_bvv.png">  
 
 BVV navigation controls (rotation, zoom, etc) are [the same as in BigDataViewer](./explore_a_project.html#browsing).  
 
-It supports two rendering modes: Maximum Intensity projection and Volumetric (translucent/alpha blending), see an example below.  
+It supports two rendering modes: [Maximum Intensity](https://en.wikipedia.org/wiki/Maximum_intensity_projection) projection and Volumetric (translucent/[alpha compositing](https://en.wikipedia.org/wiki/Alpha_compositing)), see an example below.  
 You can toggle between them using the keyboard shortcut **`O`** (letter, not a number).  
 
 <img width="800" alt="comparison of rendering modes, left=max, right=volumetric" src="./tutorial_images/bvv/bvv_render_style.png">
