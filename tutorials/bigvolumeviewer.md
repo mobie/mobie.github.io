@@ -17,7 +17,7 @@ Compared with [3DViewer](https://imagej.net/plugins/3d-viewer/) volume rendering
 For the 3D volume rendering substantially more data is required to be loaded and processed, therefore for a smoother experience in displaying remote datasets it is recommended to use high-speed network connections.   
 As with all 3D applications, a better GPU card with a large amount of GPU memory is recommended. You can adjust the amount of dedicated GPU memory and tweak quality/performance using BVV setting command (explained below). 
 
-### Adjusting color, LUTs and brightness
+### <a name="adjust"></a>Adjusting color, LUTs and brightness
 
 As with BigDataViewer, you can configure the appearance of each source in BVV using shortcut **`S`** (also in the Cards Panel, activated by a shortcut **`P`**).    
 The square on the left shows a color that is used to display the volume.  
@@ -55,14 +55,19 @@ The last element in source appearance control is the checkbox on the left from t
 
 In "real life examples", upon opening a data/volume, it is usually convenient to first keep this checkbox selected, to see the loaded volume and approximate data's range. Later, fine-tune the alpha range independently (checkbox unselected) for a better visualization result.  
 
-### Viewing annotations/segmentation results
+### <a name="annotations"></a>Viewing annotations/segmentation results
 
 [3D annotations/segmentation](./exploring_segmentations.html) results usually are represented as volumetric data, where all voxels corresponding to a specific segmentation object are marked with the same value.  
 Upon loading this type of data to BVV, MoBIE calculates and assigns a special lookup table to this source. In this LUT the color for the value of the object (voxel values) is the same as in the table containing annotations.  
 Therefore it is not recommended to change the brightness slider or its gamma value, since the order of annotation coloring will be broken.  
 By default MoBIE adjusts the alpha value to the range of [0,1] for this kind of data, so all annotations are not transparent. This kind of data is better displayed using "volumetric" rendering mode.    
 While exploring individual labels, setting "Opacity of non-selected labels" parameter to zero in the "Configure Label Rendering" dialog improved 3D view, making it less crowded.  
-Working with annotation results stored as a multi-scale pyramid can introduce some intermittent coloring 'ghost' artifacts. This happens, because the voxels at the objects' boundaries in the downscaled versions take intermediate values. Their appearance is more prominent in 3D view, but it disappears upon loading of the highest resolution level.  
+Working with annotation results stored as a multi-scale pyramid can introduce some intermittent coloring blurring artifacts, see below.  
+
+<img width="800" alt="BVV segmentation view, left=still loading, right=loaded" src="./tutorial_images/bvv/bvv-segmentation.png">
+
+This happens, because the voxels at the objects' boundaries in the downscaled versions take intermediate values. Their appearance is more prominent in 3D view, but it disappears upon loading of the highest resolution level.  
+To speed up the loading, it is recommended to increase "GPU cache size" and "Render width and height" settings of BVV (see next section).  
 At the current moment MoBIE support maximum of 65535 labels per volume.  
 
 ### BigVolumeViewer settings
