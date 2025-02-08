@@ -4,6 +4,7 @@ The MoBIE Fiji viewer is a [Fiji](https://imagej.net/Fiji) plugin allowing easy 
 of big multi-modal images and associated tabular data.
 
 **Main Features:**
+
 - Smooth browsing of large image data thanks to [BigDataViewer](https://imagej.net/BigDataViewer)
 - Overlay many types of images in the same coordinate system (e.g. electron microscopy, light microscopy,
 segmentations...)
@@ -20,10 +21,11 @@ views, images and tables for your colleagues to explore
 
 ## Opening data with MoBIE 
 
-- [Open a MoBIE project](./tutorials/explore_a_project.md)
+- [Open MoBIE projects](./tutorials/explore_a_project.md)
+- [Open generic image datasets](./tutorials/open_image_data.md)
+- [Open high content screening data](./tutorials/hcs.md)
 
-
-### Opening data with MoBIE (advanced features)
+### Advanced opening features
 
 - [Opening MoBIE projects from branches and with credentials](./tutorials/branches_and_credentials.md)
 - [Open a MoBIE project (expert mode)](./tutorials/expert_mode.md)
@@ -31,30 +33,29 @@ views, images and tables for your colleagues to explore
 
 ## Exploring image and segmentation data within MoBIE 
 
-- [Exploring images](./tutorials/image_browsing.md)
+- [Exploring images](./tutorials/exploring_images.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
+- [Grid views & image region tables](./tutorials/image_grids_and_tables.md)
+- [Volume rendering using BigVolumeViewer](./tutorials/bigvolumeviewer.md)
 - [Locations and views](./tutorials/views_and_locations.md)
 - [Importing and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 
-## Exploring image and segmentation data within MoBIE 
+### Image registration and annotation 
 
 - [Volume registration tutorial](./tutorials/volume_registration.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
-- [Grid views & image region tables](./tutorials/image_grids_and_tables.md)
 - [More features](./tutorials/more_features.md)
 
-
 ## Creating your own MoBIE projects
+
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
 - [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
 ## Data formats & MoBIE specification
+
 - [MoBIE project specification](./specs/mobie_spec.md)
 - [OME-NGFF data](./specs/ngff.md)
-
-## High content screening
-- [Opening high content screening data](./tutorials/hcs.md)
 
 ## Use-cases and example projects
 
