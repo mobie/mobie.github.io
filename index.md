@@ -19,11 +19,12 @@ views, images and tables for your colleagues to explore
 
 - [Installation](./tutorials/installation.md)
 
-## Opening data with MoBIE 
+## Opening data
 
-- [Open MoBIE projects](./tutorials/explore_a_project.md)
-- [Open generic image datasets](./tutorials/open_image_data.md)
-- [Open high content screening data](./tutorials/hcs.md)
+- [Open generic image and segmentation data](./tutorials/open_image_data.md)
+- [Open various high content screening data](./tutorials/hcs.md)
+- [Open MoBIE collection tables](./tutorials/open_mobie_collections.md)
+- [Open MoBIE projects](./tutorials/open_projects.md)
 
 ### Advanced opening features
 
@@ -31,7 +32,7 @@ views, images and tables for your colleagues to explore
 - [Open a MoBIE project (expert mode)](./tutorials/expert_mode.md)
 - [Using MoBIE from the command line](./tutorials/cli.md)
 
-## Exploring image and segmentation data within MoBIE 
+## Exploring image and segmentation data 
 
 - [Exploring images](./tutorials/exploring_images.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
@@ -41,21 +42,20 @@ views, images and tables for your colleagues to explore
 - [Importing and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 
-### Image registration and annotation 
+## Image registration and annotation 
 
 - [Volume registration tutorial](./tutorials/volume_registration.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 - [More features](./tutorials/more_features.md)
 
-## Creating your own MoBIE projects
+## Creating a MoBIE project
 
-- [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
+Please note that creating a MoBIE project is somewhat involved. For many cases, a [MoBIE collection table](./tutorials/mobie_collection_table.md) will do the job and is  easier to create and maintain.
+
+- [Scripting Project Creation in Python](https://github.com/mobie/mobie-utils-python?tab=readme-ov-file#mobie-utils-python)
+- [Project Creator GUI in Fiji](./tutorials/mobie_project_creator.md)
 - [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
-
-## Data formats & MoBIE specification
-
 - [MoBIE project specification](./specs/mobie_spec.md)
-- [OME-NGFF data](./specs/ngff.md)
 
 ## Use-cases and example projects
 
