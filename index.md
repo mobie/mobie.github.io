@@ -18,23 +18,34 @@ views, images and tables for your colleagues to explore
 
 - [Installation](./tutorials/installation.md)
 
-## Exploring existing projects
-- [Getting Started](./tutorials/explore_a_project.md)
+## Opening data with MoBIE 
+
+- [Open a MoBIE project](./tutorials/explore_a_project.md)
+
+
+### Opening data with MoBIE (advanced features)
+
+- [Opening MoBIE projects from branches and with credentials](./tutorials/branches_and_credentials.md)
+- [Open a MoBIE project (expert mode)](./tutorials/expert_mode.md)
+- [Using MoBIE from the command line](./tutorials/cli.md)
+
+## Exploring image and segmentation data within MoBIE 
+
+- [Exploring images](./tutorials/image_browsing.md)
 - [Exploring segmentations and tables](./tutorials/exploring_segmentations.md)
 - [Locations and views](./tutorials/views_and_locations.md)
 - [Importing and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
-- [Volume Registration tutorial](./tutorials/volume_registration.md)
+
+## Exploring image and segmentation data within MoBIE 
+
+- [Volume registration tutorial](./tutorials/volume_registration.md)
 - [Annotation tutorial](./tutorials/annotation_tutorial.md)
 - [Grid views & image region tables](./tutorials/image_grids_and_tables.md)
 - [More features](./tutorials/more_features.md)
 
-## Advanced usage
-- [Opening projects from branches and with credentials](./tutorials/branches_and_credentials.md)
-- [Expert Mode](./tutorials/expert_mode.md)
-- [Using MoBIE from the command line](./tutorials/cli.md)
 
-## Making your own projects
+## Creating your own MoBIE projects
 - [MoBIE Project Creator](./tutorials/mobie_project_creator.md)
 - [Scripting Project Creation in Fiji](./tutorials/scripting_project_creator.md)
 
