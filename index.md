@@ -23,7 +23,7 @@ views, images and tables for your colleagues to explore
 
 - [Open generic image and segmentation data](./tutorials/open_image_data.md)
 - [Open various high content screening data](./tutorials/hcs.md)
-- [Open MoBIE collection tables](./tutorials/open_mobie_collections.md)
+- [Open MoBIE collection tables](./tutorials/mobie_collection_table.md)
 - [Open MoBIE projects](./tutorials/open_projects.md)
 
 ### Advanced opening features
