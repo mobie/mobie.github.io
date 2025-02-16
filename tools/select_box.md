@@ -10,14 +10,15 @@ The box location is given in the following way:
 
 1. The 3-D **center** location in the global (physical) coordinate system
 1. The 3-D **size** of the box in the global (physical) units
-1. An **affine transformation** that encodes the box rotation
+1. An **affine transformation** that encodes the box rotation and location
 
 Note that the center is just given for convenience, but could also be computed using the box size and the affine transformation, via `center = affine( size[0]/2,  size[1]/2,  size[2]/2 )`. To locate any voxel within the box in the global coordinate system, you may affine transform any voxel within the interval `[ 0, 0, 0 ]-[ size[0], size[1], size[2] ]`.
 
+### Notes
 
-### References
+- One could also put the box size into the affine transformation. The box interval would then always be `[ 0, 0, 0 ]-[ 1, 1, 1 ]`. That means the box could be fully specified by just one affine transformation.
+- Have a look at the [source code](https://github.com/mobie/mobie-viewer-fiji/blob/main/src/main/java/org/embl/mobie/command/context/BoxSelectionCommand.java).
 
-- The box is implemented using this code: https://github.com/bigdataviewer/bigdataviewer-core/tree/master/src/main/java/bdv/tools/boundingbox
 
 
 
