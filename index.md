@@ -42,6 +42,14 @@ views, images and tables for your colleagues to explore
 - [Importing and exporting tables](./tutorials/importing_and_exporting_tables.md)
 - [Creating your own views](./tutorials/creating_your_own_views.md)
 
+## Conext menu items
+
+When you right click in the BigDataViewer window there will be a context menu, including the following items:
+
+- [Select Box](./tools/select_box.md)
+
+More documentation for the other tools will be added soon...
+
 ## Image registration and annotation 
 
 - [Volume registration tutorial](./tutorials/volume_registration.md)
