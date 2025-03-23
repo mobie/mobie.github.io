@@ -47,6 +47,7 @@ views, images and tables for your colleagues to explore
 When you right click in the BigDataViewer window there will be a context menu, including the following items:
 
 - [Select Box](./tools/select_box.md)
+- [Registration - ...](./tools/registration.md)
 
 More documentation for the other tools will be added soon...
 
