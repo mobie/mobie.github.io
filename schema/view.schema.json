@@ -864,6 +864,16 @@
     "properties": {
         "uiSelectionGroup": {
             "description": "Name of the UI from which this view can be selected.",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/name",
+                "minItems": 1,
+            },
+            "$ref": "#/definitions/name"
+        },
+
+        "uiSelectionGroups": {
+            "description": "Name of multiple UI elements from which this view can be selected. Values specified here will be added in addition to the value in 'uiSelectionGroup.'",
             "$ref": "#/definitions/name"
         },
 
