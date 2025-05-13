@@ -57,7 +57,9 @@ class TestSchema(unittest.TestCase):
         jsonschema.validate(instance=source, schema=schema)
 
     def test_view(self):
-        examples = ["single_source_view.json", "grid_view.json", "advanced_fig2c.json"]
+        examples = [
+            "single_source_view.json", "grid_view.json", "advanced_fig2c.json", "single_source_view_selection_groups.json"
+        ]
         self._test_schema("view", examples)
 
     def test_views(self):
