@@ -875,7 +875,7 @@
             "items": {
                 "$ref": "#/definitions/name"
             }
-        }
+        },
 
         "isExclusive": {
             "type": "boolean",
