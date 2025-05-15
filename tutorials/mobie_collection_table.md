@@ -19,3 +19,12 @@ A collection table can be opened via the `Open Collection Table...` command to b
 The collection table itself can be provided in a number of formats; notably also links to Google Sheets are supported. If you like to use the CSV file format we recommed quoting `"..."` the table cell values, because some of them may contain commas.
 
 [**Supported table file formats.**](tutorials/index.md#table-data-formats)
+
+### Example collection tables
+
+Below are some examples. Those are all Google sheets, so those links could be directly opened in the above described command.
+
+- [Correlative 2-D EM, fluorescence and 3-D tomography data](https://docs.google.com/spreadsheets/d/1d_khb5P-z1SHu09SHSS7HV0PmN_VK9ZkMKDuqF52KRg/edit?gid=0#gid=0)
+- [Grid view of many OpenOrganelle EM volumes](https://docs.google.com/spreadsheets/d/1trSQFm_4Nc42C_Fum8N_ZzEmPuML6ACKVmLlc862Rp8/edit?usp=sharing)
+- [Grid view of a few OpenOrganelle EM volumes and organelle segmentations](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
+- [Large volume EM data, annotated cell segmentation, and a few spots](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=0#gid=0)
