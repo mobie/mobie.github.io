@@ -11,6 +11,11 @@ The `Open Collection Table...` is designed to:
 - Support different viewing modes for data visualization.
 - Optionally handle access credentials for protected S3 buckets.
 
+### Collection table examples
+
+- [Volume EM with segmentation and spots]()
+- [CLEM](https://docs.google.com/spreadsheets/d/1d_khb5P-z1SHu09SHSS7HV0PmN_VK9ZkMKDuqF52KRg/edit?usp=sharing)
+
 ### Parameters
 
 - Table Path: The file location of the collection table to be opened. The table must be a TAB-separated text file.
