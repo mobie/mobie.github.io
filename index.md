@@ -32,6 +32,24 @@ views, images and tables for your colleagues to explore
 - [Open a MoBIE project (expert mode)](./tutorials/expert_mode.md)
 - [Using MoBIE from the command line](./tutorials/cli.md)
 
+### Supported file formats
+
+#### Table data formats
+
+- TSV
+- Excel
+- Google sheet links
+- CSV
+    - We recommend quoting `".."` all values, because some may contain commas, which will break the format if not quoted
+- Parquet
+
+#### Image data formats
+
+- Everything that Bio-Formats can open
+- OME-Zarr
+- BigDataViewer N5
+- ilastik HDF5
+
 ## Exploring image and segmentation data 
 
 - [Exploring images](./tutorials/exploring_images.md)
