@@ -863,8 +863,18 @@
     "type": "object",
     "properties": {
         "uiSelectionGroup": {
-            "description": "Name of the UI from which this view can be selected.",
+            "description": "Name of the UI from which this view can be selected. You have to either specify uiSelectionGroup or uiSelectionGroups.",
             "$ref": "#/definitions/name"
+        },
+        
+        "uiSelectionGroups": {
+            "description": "Name of multiple UI elements from which this view can be selected. You have to either specify uiSelectionGroup or uiSelectionGroups",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/name",
+                "minItems": 1
+            }
         },
 
         "isExclusive": {
@@ -904,6 +914,9 @@
             "$ref": "#/definitions/viewerTransform"
         }
     },
-    "required": ["isExclusive", "uiSelectionGroup"],
+    "oneOf": [
+        {"required": ["isExclusive", "uiSelectionGroup"]},
+        {"required": ["isExclusive", "uiSelectionGroups"]}
+    ],
     "additionalProperties": false
 }
