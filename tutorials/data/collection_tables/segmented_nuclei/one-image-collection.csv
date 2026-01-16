@@ -1,0 +1,3 @@
+uri,type,labels_table,view
+xy_8bit__mitocheck_incenp_t1.tif,intensities,,all
+xy_8bit__mitocheck_incenp_t1_nuclei_labels.tiff,labels,nuclei_t1.tsv,all

@@ -1,5 +1,0 @@
-uri,type,labels_table,grid,grid_position,view 
-xy_8bit__mitocheck_incenp_t1_nuclei_labels.tiff,labels,nuclei_t1.tsv,segmentation,"(0,0)",all
-xy_8bit__mitocheck_incenp_t1.tif,intensities,,data,"(0,0)",all
-xy_8bit__mitocheck_incenp_t70_nuclei_labels.tiff,labels,nuclei_t70.tsv,segmentation,"(1,0)",all
-xy_8bit__mitocheck_incenp_t70.tif,intensities,,data,"(1,0)",all
