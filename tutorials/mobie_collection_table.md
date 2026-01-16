@@ -11,39 +11,66 @@ If you can't wait to try this out, you may skip the explanations and immediately
 Each row specifies one dataset, which are be specified by a number of predefined columns. 
 
 Defined column names:
-- `uri`: **mandatory**, file path or URL to an image
+- `uri` (**mandatory**): file path or URL to an image, label mask, or spots table
+    - defines the absolute or relative location of a dataset that can be visualised with MoBIE
 - `name`: free text
+    - defines the name of the dataset in the MoBIE user interface
+    - necessary if two datasets have the same file name
 - `type`: 
     - `intensities` (default): normal images
     - `labels`: label mask images (aka segmentation images)
     - `spots`: a table with annotated spots 
     - [example collection containing all three types](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=0#gid=0)
-- `channel`: zero based integers; necessary to load an image with multiple channels, please add one row per channel
+- `channel`: zero based integers
+    - necessary to load an image with multiple channels, please add one row per channel
     - [example collection with multiple channels](https://docs.google.com/spreadsheets/d/11dd3WXS1LJRPC4B_omwAPU0JJtFI8WVwdaLJs3L2XSk/edit?usp=sharing)
-- `color`: e.g., `r(0)-g(255)-b(0)-a(255)` or `white`, `red`, etc.
-- `blend`: `sum`, `alpha`
+- `color`: supports various encodings, e.g.
+    - `r(0)-g(255)-b(0)-a(255)`
+    - `white`, `red`, etc.
+- `blend`: 
+    - `sum` (default): image intensities will be displayed in an additive manner
+    - `alpha`: images that are displayed later will be rendered "on top" of the previous images; the corresponding opacity can be configured in the user interface
+    - [example collection with alpha blending](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
 - `affine`: row-packed affine transform.
     - e.g., shift along x-axis: `(1,0,0,-105.34,0,1,0,0,0,0,1,0)`
     - [example table with affine transforms](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
 - `thin_plate_spline`: BigWarp JSON
+    - applies a thin plate spline transformation to the dataset
     - [example colletion with thin plate spline transform](https://docs.google.com/spreadsheets/d/1elair242cN5rbYtlODKu5yIscZHQ9O0Lci598-NoY4I/edit?usp=sharing)
 - `view`: free text
-- `exclusive`: `true`, `false`
+    - datasets that are part of the same view (i.e., same text in the table cell) will be shown together
+- `exclusive`:
+    - `true`: when displaying the dataset all other currently displayed datasets will be removed
+    - `false`: when displaying the dataset it will be shown on top of already displayed datasets
 - `group`: free text
-- `labels_table`: path to a labels table; only valid in conjuction with `type` `labels`
+    - creates a new drop-down in the MoBIE UI
+    - useful to group data together
+- `labels_table`: path to a labels table; only valid in conjuction with `type`: `labels`
     - [example labels table](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=890359520#gid=890359520)
     - [supported labels table column naming schemes](https://github.com/mobie/mobie-viewer-fiji/tree/main/src/main/java/org/embl/mobie/lib/table/columns)
-- `contrast_limits`: e.g., `(10,240)`
-- `grid`: free text; the name of the grid (ignored if empty)
+- `contrast_limits`: `(min, max)`
+    - e.g., `(10,240)` or `(1000, 38000)`
+    - changes the initial display settings
+- `grid`: free text
+    - if non-empty all datasets with the same entry will be layed out into a 2-D grid
     - [example collection with a grid](https://docs.google.com/spreadsheets/d/1trSQFm_4Nc42C_Fum8N_ZzEmPuML6ACKVmLlc862Rp8/edit?usp=sharing)
-- `grid_position`: e.g., `(0,0)`, `(1,0)`, `(5,2)`; only valid in conjuction with a non-empty `grid` table cell.
-    - useful to arrange several images (or labels) into the same grid layout
+- `grid_position`: `(x,y)`
+    - e.g., `(0,0)`, `(1,0)`, `(5,2)`
+    - defines where the dataset is layed out in the grid
+    - only considered in conjuction with a non-empty `grid` entry.
+    - useful to put several datasets (e.g., image and corresponding labels) into the same grid position
     - [example collection with grid positions](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
 - `display`: free text
+    - all datasets that have the same (non-empty) entry will have a shared display settings UI item
+    - useful for `grid` layouts where all images may have been acquired with comparable settings
+    - [example collection with display column](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
 - `format`: `OmeZarr`
     - needed if the path to the OME-Zarr does not contain `.ome.zarr`
-- `spot_radius`: number
+- `spot_radius`: number larger than zero
+    - defines the rendering radius of spots 
+    - only considered in for a dataset of `type` `spots`
 - `bounding_box`: configures the size of a spot image. E.g., `(0.0,0,0)-(200.5,200,50.3)`
+    - only considered in for a dataset of `type` `spots`
 
 
 The only required column is **uri**, which must contain a valid path to that dataset. This path can be local (File system) or in the cloud (S3 or HTTP).
