@@ -1,17 +1,17 @@
 ## MoBIE collection tables 
 
-MoBIE collection tables provide a convenient human editable)way to define large (correlative) image data sets, including images, segmentations, segmentation annotations and annotated spots (e.g. useful for browsing gene locations in [spatial transcriptomics data](https://www.youtube.com/watch?v=1dDaxOAZ9Sg)). 
+MoBIE collection tables provide a convenient human editable way to define large (correlative) image data sets, including images, segmentation images, segmentation annotations and annotated spots (e.g., useful for browsing gene locations in [spatial transcriptomics data](https://www.youtube.com/watch?v=1dDaxOAZ9Sg)). 
 
-Watch the last part of [this talk](https://youtu.be/GT2LS2NxHoY?t=1083) to obatin a short overview (the URL already starts at the relevant time point).
+- If you can't wait to try this out, you may skip the explanations and immediately scroll to the below "Quick start" section.
 
-If you can't wait to try this out, you may skip the explanations and immediately scroll to the below "Quick start" section.
+ - Watch the last part of [this talk](https://youtu.be/GT2LS2NxHoY?t=1083) to obatin a short overview (the URL already starts at the relevant time point).
 
 ### Collection table specification
 
-Each row specifies one dataset, which are be specified by a number of predefined columns. 
+Each row specifies one dataset, which can be further configured by a number of predefined columns. 
 
-Defined column names:
-- `uri` (**mandatory**): file path or URL to an image, label mask, or spots table
+Defined columns:
+- `uri` (mandatory): file path or URL to an image, label mask, or spots table
     - defines the absolute or relative location of a dataset that can be visualised with MoBIE
 - `name`: free text
     - defines the name of the dataset in the MoBIE user interface
@@ -41,18 +41,19 @@ Defined column names:
     - datasets that are part of the same view (i.e., same text in the table cell) will be shown together
 - `exclusive`:
     - `true`: when displaying the dataset all other currently displayed datasets will be removed
-    - `false`: when displaying the dataset it will be shown on top of already displayed datasets
+    - `false` (default): when displaying the dataset it will be shown on top of already displayed datasets
 - `group`: free text
     - creates a new drop-down in the MoBIE UI
     - useful to group data together
-- `labels_table`: path to a labels table; only valid in conjuction with `type`: `labels`
+- `labels_table`: path to a labels table
+    - only considerd in conjuction with `type`: `labels`
     - [example labels table](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=890359520#gid=890359520)
     - [supported labels table column naming schemes](https://github.com/mobie/mobie-viewer-fiji/tree/main/src/main/java/org/embl/mobie/lib/table/columns)
 - `contrast_limits`: `(min, max)`
     - e.g., `(10,240)` or `(1000, 38000)`
     - changes the initial display settings
 - `grid`: free text
-    - if non-empty all datasets with the same entry will be layed out into a 2-D grid
+    - if non-empty, all datasets with the same entry will be layed out into a 2-D grid
     - [example collection with a grid](https://docs.google.com/spreadsheets/d/1trSQFm_4Nc42C_Fum8N_ZzEmPuML6ACKVmLlc862Rp8/edit?usp=sharing)
 - `grid_position`: `(x,y)`
     - e.g., `(0,0)`, `(1,0)`, `(5,2)`
@@ -64,8 +65,9 @@ Defined column names:
     - all datasets that have the same (non-empty) entry will have a shared display settings UI item
     - useful for `grid` layouts where all images may have been acquired with comparable settings
     - [example collection with display column](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
-- `format`: `OmeZarr`
-    - needed if the path to the OME-Zarr does not contain `.ome.zarr`
+- `format`: 
+    - `OmeZarr`: needed if the path to the OME-Zarr does not contain `.ome.zarr`
+    - all other entries will be ignored as the file types will be auto-determined
 - `spot_radius`: number larger than zero
     - defines the rendering radius of spots 
     - only considered in for a dataset of `type` `spots`
