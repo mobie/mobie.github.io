@@ -1,0 +1,4 @@
+﻿uri,name,channel,color,contrast_limits,type,spot_radius,view
+https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.4/idr0138A/TimEmbryos-120919/HybCycle_29/MMStack_Pos10.ome.zarr,membranes,0,green,(0;8500),,,all
+https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.4/idr0138A/TimEmbryos-120919/HybCycle_29/MMStack_Pos10.ome.zarr,nuclei,3,blue,(100;6400),,,all
+https://github.com/mobie/mouse-embryo-spatial-transcriptomics-project/raw/refs/heads/main/data/embryo3/tables/MMStack_Pos10_genes/default.tsv,genes,,,,spots,0.25,all
