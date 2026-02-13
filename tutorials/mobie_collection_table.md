@@ -150,9 +150,19 @@ Here are some Google Sheet collection tables that are pointing to remotely hoste
 
 - In MoBIE collections tables only the `uri` column is mandatory. It can be instructive to remove some or all of the other columns and see what you get. You can then sequentially add back the other columns and observe how the visualisation changes (and/or errors appear).
     - Practically, you can "remove" a column by giving it a name that MoBIE does not recognise, e.g. renaming `affine` (recognised) to `x_affine` (not recognised).
-- For local image data, you can use `Plugins > MoBIE > Create > Create MoBIE Collection Table...` to get started and then modify or add columns
 
-#### Setting up a collection table using python
+### Creating your own MoBIE collection tables
+
+#### Manually
+
+The motivation of using a table format to specify image collections was that it should be very easy to manually create such tables, for example in spreadsheet software like Excel.
+We recommend taking any of the above examples as a starting point and modify them according to your needs.
+
+#### In Fiji
+
+For local image data, you can use `Plugins > MoBIE > Create > Create MoBIE Collection Table...` to get started and then modify or add columns in the table.
+
+#### Using python code
 
 [Here](code/create_mobie_collection_table.py) is a simple example of how to create a MoBIE collection table using pandas in python. 
 The example is intended as an inspiration and does not cover every situation. Feel free to copy and adjust to your needs!
