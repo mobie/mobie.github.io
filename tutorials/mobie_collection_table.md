@@ -46,7 +46,7 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - [example collection with display column](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
 - `affine`: row-packed affine transform.
     - e.g., shift along x-axis: `(1,0,0,-105.34,0,1,0,0,0,0,1,0)`
-    - [xxample table with affine transforms](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
+    - [example table with affine transforms](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
     - example prompt for AI chat models to learn more: "please explain 3d affine transforms in a 3x4 matrix form, give a few simple examples (translation, rotation, scaling) and explain its row packed serialisation"
 - `thin_plate_spline`: BigWarp JSON
     - applies a thin plate spline transformation to the dataset
