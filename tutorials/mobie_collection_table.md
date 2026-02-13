@@ -127,6 +127,10 @@ A user interface will pop up with the following fields:
 
 #### Remote data
 
+For remote data it is convenient to use Google Sheets as the collection table, as this will allow you to have an entirely cloud based solution that you can readily share with anyone.
+
+Please note that the Google Sheet link must allow **public read access**. 
+
 Here are some Google Sheet collection tables that are pointing to remotely hosted data. They can be opened like this:
 -  `Plugins > MoBIE > Open > Open Collection Table...`
     - `Table Uri`: Paste link to the Google Sheet
