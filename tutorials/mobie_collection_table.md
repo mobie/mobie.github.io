@@ -148,6 +148,11 @@ Here are some Google Sheet collection tables that are pointing to remotely hoste
     - Practically, you can "remove" a column by giving it a name that MoBIE does not recognise, e.g. renaming `affine` (recognised) to `x_affine` (not recognised).
 - For local image data, you can use `Plugins > MoBIE > Create > Create MoBIE Collection Table...` to get started and then modify or add columns
 
+#### Setting up a collection table using python
+
+[Here](code/create_mobie_collection_table.py) is a simple example of how to create a MoBIE collection table using pandas in python. 
+The example is intended as an inspiration and does not cover every situation. Feel free to copy and adjust to your needs!
+
 ### Quick start
 
 Make sure to have [MoBIE installed on your computer](installation.md).
