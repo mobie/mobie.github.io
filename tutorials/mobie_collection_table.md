@@ -46,7 +46,7 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - [example collection with display column](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
 - `affine`: row-packed affine transform.
     - e.g., shift along x-axis: `(1,0,0,-105.34,0,1,0,0,0,0,1,0)`
-    - [xxample table with affine transforms](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
+    - [example table with affine transforms](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
     - example prompt for AI chat models to learn more: "please explain 3d affine transforms in a 3x4 matrix form, give a few simple examples (translation, rotation, scaling) and explain its row packed serialisation"
 - `thin_plate_spline`: BigWarp JSON
     - applies a thin plate spline transformation to the dataset
@@ -151,6 +151,11 @@ Here are some Google Sheet collection tables that are pointing to remotely hoste
 - In MoBIE collections tables only the `uri` column is mandatory. It can be instructive to remove some or all of the other columns and see what you get. You can then sequentially add back the other columns and observe how the visualisation changes (and/or errors appear).
     - Practically, you can "remove" a column by giving it a name that MoBIE does not recognise, e.g. renaming `affine` (recognised) to `x_affine` (not recognised).
 - For local image data, you can use `Plugins > MoBIE > Create > Create MoBIE Collection Table...` to get started and then modify or add columns
+
+#### Setting up a collection table using python
+
+[Here](code/create_mobie_collection_table.py) is a simple example of how to create a MoBIE collection table using pandas in python. 
+The example is intended as an inspiration and does not cover every situation. Feel free to copy and adjust to your needs!
 
 ### Quick start
 
