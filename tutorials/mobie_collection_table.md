@@ -16,18 +16,16 @@ MoBIE collection tables provide a convenient human editable way to define large 
 
 Each row specifies one dataset, which can be  configured by one of these columns:
 
-- `uri` (mandatory): file path or URL to an image, label mask, or spots table
-    - defines the absolute or relative location of a dataset that can be visualised with MoBIE
-- `name`: free text
-    - defines the name of the dataset in the MoBIE user interface
-    - necessary if two datasets have the same file name
-- `type`: 
-    - `intensities` (default): normal images
-    - `labels`: label mask images (aka segmentation images)
-    - `spots`: a table with annotated spots 
+- **`uri` (mandatory)**: defines the location of a dataset
+    - allowed values: absolute or relative file paths or URL to an intensity image, label mask image, or spots table
+- `type`: defines the type of a dataset; this column can be omitted if all data are intensity images.
+    - allowed values:
+        - `intensities` (default): normal images
+        - `labels`: label mask (segmentation) images
+        - `spots`: a table with annotated spots 
     - [example collection containing all three types](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=0#gid=0)
-- `channel`: zero based integers
-    - necessary to load an image with multiple channels, please add one row per channel
+- `channel`: the index of the channel that should be opened; necessary to load an image with multiple channels, please add one row per channel (note that MoBIE works with a single channel data model and thus each channel of an image must be loaded individually); this column can be omitted if all your data only has a single channel (e.g. EM data)
+    - allowed values: zero based integers
     - [example collection with multiple channels](https://docs.google.com/spreadsheets/d/11dd3WXS1LJRPC4B_omwAPU0JJtFI8WVwdaLJs3L2XSk/edit?usp=sharing)
 - `color`: supports various encodings, e.g.
     - `r(0)-g(255)-b(0)-a(255)`
@@ -48,12 +46,21 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - e.g., shift along x-axis: `(1,0,0,-105.34,0,1,0,0,0,0,1,0)`
     - [example table with affine transforms](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
     - example prompt for AI chat models to learn more: "please explain 3d affine transforms in a 3x4 matrix form, give a few simple examples (translation, rotation, scaling) and explain its row packed serialisation"
-- `thin_plate_spline`: BigWarp JSON
+- `thin_plate_spline`: BigWarp JSON text pasted into the table cell
     - applies a thin plate spline transformation to the dataset
     - [example colletion with thin plate spline transform](https://docs.google.com/spreadsheets/d/1elair242cN5rbYtlODKu5yIscZHQ9O0Lci598-NoY4I/edit?usp=sharing)
+- `elastix_bspline_uri`: location of a elastix b-spline transformation file
+    - applies the b-spline transformation to the image
+    - note that this currently will ignore initial transformations that may be specified in this transformation file; if these initial transformations are important, you need to convert them to an affine transformation and add them via the "affine" column.
+- `displacement_field_uri`: location of a displacement field transformation file
+    - applies the displacement field transformation to the image
+    - the specification for this file is currently specific to MoBIE; currently, the only convenient way to create such a file is via the following Fiji menu entry: Plugins > MoBIE > Create > Create Inverse Displacement Field From Elastix BSpline... 
 - `exclusive`:
     - `true`: when displaying the dataset all other currently displayed datasets will be removed
     - `false` (default): when displaying the dataset it will be shown on top of already displayed datasets
+- `name`: free text
+    - defines the name of the dataset in the MoBIE user interface
+    - necessary if two datasets have the same file name
 - `group`: free text
     - creates a new drop-down in the MoBIE UI
     - useful to group data together
@@ -61,9 +68,10 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - only considerd in conjuction with `type`: `labels`
     - [example labels table](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=890359520#gid=890359520)
     - [supported labels table column naming schemes](https://github.com/mobie/mobie-viewer-fiji/tree/main/src/main/java/org/embl/mobie/lib/table/columns)
-- `contrast_limits`: `(min, max)`
-    - e.g., `(10,240)` or `(1000, 38000)`
+- `contrast_limits`: `(min,max)` or `auto`
+    - e.g., `(10,240)` or `(1000,38000)`
     - changes the initial display settings
+    - `auto` will trigger an auto-contrast algorithm
 - `grid`: free text
     - if non-empty, all datasets with the same entry will be layed out into a 2-D grid
     - [example collection with a grid](https://docs.google.com/spreadsheets/d/1trSQFm_4Nc42C_Fum8N_ZzEmPuML6ACKVmLlc862Rp8/edit?usp=sharing)
@@ -111,6 +119,12 @@ A user interface will pop up with the following fields:
     - `TwoDimensional`: Choose this if all your data is 2-D (it will make your life easier, because this mode avoids getting lost in 3-D while browsing in BigDataViewer).
 * `( S3 Access Key )` & `( S3 Secret Key )`: free text
     - These are optional fields. Use those if the `uri` column of the collection table points to data in a protected S3 bucket.
+
+### Defining complex views
+
+The advantage of the collection table is that it is easy to create. A disadvantage as compared to a traditional MoBIE project is that you cannot define very complex views on your data.
+
+However, you can do the following: After opening a collection table, you can configure a complex view and then right click in the BigDataViewer window and say "Save current view...". It will ask you for the name of this view and importantly also for the file in which you want to save it. Please call this file "mobie-views.json" and save it in the same folder as your collection table. The next time you open the collection table, MoBIE will automatically pick it up and then you can look at the views defined in this file. Note that you can add several views to that file. So next time you want to save a view, simply select that file again as the destination. Please note that any changes in your collection table will probably invalidate those views! Thus, in practice, once you created such a mobie-views.json, you may not change the collection table anymore. 
 
 ### Example collection tables
 
