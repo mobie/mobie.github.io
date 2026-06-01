@@ -173,6 +173,183 @@
                     },
                     "required": ["s3Address"],
                     "additionalProperties": false
+                },
+                "tiff": {
+                    "type": "object",
+                    "description": "Data stored in the tiff format on the local filesystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the tiff file, relative to the dataset root location."
+                        },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the tiff file."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the tiff file, in case it contains multiple channels."
+                        }
+                    },
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
+                    "additionalProperties": false
+                },
+                "imagej": {
+                    "type": "object",
+                    "description": "Data stored in an ImageJ-compatible format on the local filesystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the ImageJ file, relative to the dataset root location."
+                        },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the ImageJ file."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the ImageJ file, in case it contains multiple channels."
+                        }
+                    },
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
+                    "additionalProperties": false
+                },
+                "bioformats": {
+                    "type": "object",
+                    "description": "Data read via Bio-Formats on the local filesystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the dataset file, relative to the dataset root location."
+                        },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the dataset file."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the dataset file, in case it contains multiple channels."
+                        }
+                    },
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
+                    "additionalProperties": false
+                },
+                "bioformats.s3": {
+                    "type": "object",
+                    "description": "Data read via Bio-Formats from an s3 object store.",
+                    "properties": {
+                        "s3Address": {
+                            "type": "string",
+                            "description": "The s3 address for this image data."
+                        },
+                        "signingRegion": {
+                            "type": "string",
+                            "description": "The signing region for aws, e.g. us-east-1"
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the dataset, in case it contains multiple channels."
+                        }
+                    },
+                    "required": ["s3Address"],
+                    "additionalProperties": false
+                },
+                "n5": {
+                    "type": "object",
+                    "description": "Data stored in the n5 format on the local filesystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the n5 root folder, relative to the dataset root location."
+                        },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the n5 root folder."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the n5 dataset, in case it contains multiple channels."
+                        }
+                    },
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
+                    "additionalProperties": false
+                },
+                "spimData": {
+                    "type": "object",
+                    "description": "Data stored in the spimData format on the local filesystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the spimData xml, relative to the dataset root location."
+                        },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the spimData xml."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional setup to display from the spimData xml, in case it contains multiple setups."
+                        }
+                    },
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
+                    "additionalProperties": false
+                },
+                "ims": {
+                    "type": "object",
+                    "description": "Data stored in the Imaris (.ims) format on the local filesystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the .ims file, relative to the dataset root location."
+                        },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the .ims file."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "description": "Optional channel to display from the .ims file, in case it contains multiple channels."
+                        }
+                    },
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
+                    "additionalProperties": false
+                },
+                "ilastik": {
+                    "type": "object",
+                    "description": "Data stored in the ilastik format on the local filesystem.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The file path to the ilastik file, relative to the dataset root location."
+                        },
+                        "absolutePath": {
+                            "type": "string",
+                            "description": "The absolute file path to the ilastik file."
+                        }
+                    },
+                    "oneOf": [
+                        {"required": ["relativePath"]},
+                        {"required": ["absolutePath"]}
+                    ],
+                    "additionalProperties": false
                 }
             },
             "additionalProperties": false,
@@ -194,10 +371,56 @@
                     },
                     "additionalProperties": false,
                     "required": ["relativePath"]
+                },
+                "csv": {
+                    "type": "object",
+                    "description": "Table data in csv file format, specified as root location for the folder with tables. The folder MUST contain the table default.csv, which will always be loaded as the first table for this source; this table MUST contain the mandatory columns for the given source type.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The relative path of the table data w.r.t the dataset root location."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["relativePath"]
+                },
+                "parquet": {
+                    "type": "object",
+                    "description": "Table data in parquet file format, specified as root location for the folder with tables. The folder MUST contain the table default.parquet, which will always be loaded as the first table for this source; this table MUST contain the mandatory columns for the given source type.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The relative path of the table data w.r.t the dataset root location."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["relativePath"]
+                },
+                "excel": {
+                    "type": "object",
+                    "description": "Table data in excel file format, specified as root location for the folder with tables. The folder MUST contain the table default.xlsx, which will always be loaded as the first table for this source; this table MUST contain the mandatory columns for the given source type.",
+                    "properties": {
+                        "relativePath": {
+                            "type": "string",
+                            "description": "The relative path of the table data w.r.t the dataset root location."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["relativePath"]
+                },
+                "resultsTable": {
+                    "type": "object",
+                    "description": "In-memory table data represented as an ImageJ ResultsTable.",
+                    "additionalProperties": false
+                },
+                "table": {
+                    "type": "object",
+                    "description": "In-memory table data represented as a Tablesaw table.",
+                    "additionalProperties": false
                 }
             },
             "additionalProperties": false,
-            "required": ["tsv"]
+            "minProperties": 1
         },
 
         "imageSource": {
