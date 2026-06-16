@@ -22,7 +22,7 @@ Similarly, data stored in `ome.zarr` must only contain a single channel, and the
 ### <a name="table"></a>Table Data
 
 MoBIE supports tables associated with segmentations, where each row corresponds to properties of an object in the segmentation.
-The tables should be stored as tab separated values `.tsv` files; they may also be stored as comma separated values (`.csv`).
+The tables should be stored as tab separated values `.tsv` files; they may also be stored as comma separated values (`.csv`). This section describes the default MoBIE table formats; we support more formats for compatibility with other analysis software, see [the table formats section](#table-formats).
 
 The default segmentation table (which must be stored as `default.tsv` in the corresponding table folder, see also [dataset specification](#dataset)) must contain the columns `label_id`, `anchor_x`, `anchor_y`, `anchor_z`,
 `bb_min_x`, `bb_min_y`, `bb_min_z` and `bb_min_x`, `bb_min_y`, `bb_min_z`. For two-dimension data the columns `anchor_z`, `bb_min_z` and `bb_max_z` must be omitted. The `anchor` columns specify a reference point for the object corresponding to this row. It will be centered
@@ -52,6 +52,15 @@ The color scheme used to display the segmentation can also be loaded from a tabl
 Data for a spot source is defined by a table. This table must contain the column `spot_id`, which identifies each spot in the image. It must also contain the columns `x`, `y` and `z` (`z` is omitted in the case of 2d data). These three columns give the coordinates for each spot in the physical coordinate space. Otherwise the spot tables follow the same rules as segmentation tables.
 
 Region tables also have an associated table. It is described in further detail [here](#view-source-annotations) 
+
+#### <a name="table-formats"></a>Table Formats
+
+- MoBIE segmentation table format: lorem ipsum
+    - `label_id`, `anchor_x,y,z`, `bb_min_x,y,z`, `bb_max_x,y,z`, `timepoint`
+- scikit-image table format: lorem ipsum regionprops
+    - `label`, `centroid-0,1,2`, bbox-0,1,2,3,4,5`, `frame`
+- MorphoLibJ: lorem ipsum
+    - `Label`, `Centroid.X,Y,Z`, `Box.X,Y,Z.Min`, `Box.X,Y,Z.Max`, `Timepoint`
 
 
 ### <a name="source-metadata"></a>Source Metadata
