@@ -18,7 +18,7 @@ Each row specifies one dataset, which can be  configured by one of these columns
 
 - **`uri` (mandatory)**: defines the location of a dataset
     - allowed values: absolute or relative file paths or URL to an intensity image, label mask image, or spots table
-- `type`: defines the type of a dataset; this column can be omitted if all data are intensity images.
+- `type`: defines the type of dataset; this column can be omitted if all data are intensity images.
     - allowed values:
         - `intensities` (default): normal images
         - `labels`: label mask (segmentation) images
@@ -30,9 +30,10 @@ Each row specifies one dataset, which can be  configured by one of these columns
 - `color`: supports various encodings, e.g.
     - `r(0)-g(255)-b(0)-a(255)`
     - `white`, `red`, etc.
-- `blend`: 
-    - `sum` (default): image intensities will be displayed in an additive manner
-    - `alpha`: images that are displayed later will be rendered "on top" of the previous images; the corresponding opacity can be configured in the user interface
+- `blend`: defines the blending mode
+    - allowed values:
+        - `sum` (default): image intensities will be displayed in an additive manner
+        - `alpha`: images that are displayed later will be rendered "on top" of the previous images; the corresponding opacity can be configured in the user interface
     - [example collection with alpha blending](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
 - `view`: free text
     - datasets that are part of the same view (i.e., same free text in the table cell) will be shown together
@@ -42,22 +43,33 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - useful if you want show several images together in the same `view` that have been acquired with the same microscope settings, e.g. a tiled acquisition of GFP images (in which case you could use "GFP" as the table cell entry)
     - also useful for `grid` layouts (s.b.) where all images may have been acquired with comparable settings
     - [example collection with display column](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
-- `affine`: row-packed affine transform.
-    - e.g., shift along x-axis: `(1,0,0,-105.34,0,1,0,0,0,0,1,0)`
+- `affine`: additional transformation(s) to apply on display (i.e. where/how the image is rendered in the viewer)
+    - supports two modes:
+        - **single affine transform (inline)**: row-packed 3x4 affine parameters in brackets, preferably semicolon-separated (comma-separated also supported; see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells))
+          - e.g. identity: `(1;0;0;0;0;1;0;0;0;0;1;0)`
+          - e.g. x-shift: `(1;0;0;-105.34;0;1;0;0;0;0;1;0)`
+        - **transform sequence (URI/path)**: points to a transformation table with columns:
+            - `type` (required)
+            - `value` (required)
+            - `name` (optional)
+          supported `type` entries in that table: `affine`, `displacement_field_uri`, `elastix_bspline_uri`, `thin_plate_spline_uri`
+    - default: no additional transformation
+    - if this column is absent, or if its value cannot be parsed/opened, no additional transformation is applied
+    - transformations from this column are applied on top of any transformation already found in the image data
     - [example table with affine transforms](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
-    - example prompt for AI chat models to learn more: "please explain 3d affine transforms in a 3x4 matrix form, give a few simple examples (translation, rotation, scaling) and explain its row packed serialisation"
-- `thin_plate_spline`: BigWarp JSON text pasted into the table cell
-    - applies a thin plate spline transformation to the dataset
-    - [example colletion with thin plate spline transform](https://docs.google.com/spreadsheets/d/1elair242cN5rbYtlODKu5yIscZHQ9O0Lci598-NoY4I/edit?usp=sharing)
-- `elastix_bspline_uri`: location of a elastix b-spline transformation file
-    - applies the b-spline transformation to the image
-    - note that this currently will ignore initial transformations that may be specified in this transformation file; if these initial transformations are important, you need to convert them to an affine transformation and add them via the "affine" column.
-- `displacement_field_uri`: location of a displacement field transformation file
-    - applies the displacement field transformation to the image
-    - the specification for this file is currently specific to MoBIE; currently, the only convenient way to create such a file is via the following Fiji menu entry: Plugins > MoBIE > Create > Create Inverse Displacement Field From Elastix BSpline... 
-- `exclusive`:
-    - `true`: when displaying the dataset all other currently displayed datasets will be removed
-    - `false` (default): when displaying the dataset it will be shown on top of already displayed datasets
+- `thin_plate_spline`: **legacy** column name for inline BigWarp JSON in the collection table cell
+    - preferred approach: use a transformation table referenced via `affine`, with `type = thin_plate_spline_uri`
+- `thin_plate_spline_uri`: transformation-table `type` token
+    - the corresponding `value` is a URI/path to BigWarp landmark JSON
+- `elastix_bspline_uri`: transformation-table `type` token
+    - the corresponding `value` is a URI/path to an Elastix TransformParameters file for a BSpline transform
+    - note: initial transforms in Elastix files are currently ignored; if needed, convert those to an affine and add them explicitly
+- `displacement_field_uri`: transformation-table `type` token
+    - the corresponding `value` is a URI/path to a JSON metadata file for a precomputed 3D inverse displacement field
+    - currently, a convenient way to create such a file is in Fiji via: `Plugins > MoBIE > Create > Create Inverse Displacement Field From Elastix BSpline...`
+- `exclusive`: boolean
+  - `true`: when displaying the dataset all other currently displayed datasets will be removed
+  - `false` (default): when displaying the dataset it will be shown on top of already displayed datasets
 - `name`: free text
     - defines the name of the dataset in the MoBIE user interface
     - necessary if two datasets have the same file name
@@ -65,29 +77,32 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - creates a new drop-down in the MoBIE UI
     - useful to group data together
 - `labels_table`: path to a labels table
-    - only considerd in conjuction with `type`: `labels`
+    - only considered in conjunction with `type`: `labels`
     - [example labels table](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=890359520#gid=890359520)
     - [supported labels table column naming schemes](https://github.com/mobie/mobie-viewer-fiji/tree/main/src/main/java/org/embl/mobie/lib/table/columns)
-- `contrast_limits`: `(min,max)` or `auto`
-    - e.g., `(10,240)` or `(1000,38000)`
+- `contrast_limits`: `(min;max)` or `auto`
+    - list syntax: see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells)
+    - e.g., `(10;240)` or `(1000;38000)` or `auto`
     - changes the initial display settings
     - `auto` will trigger an auto-contrast algorithm
 - `grid`: free text
     - if non-empty, all datasets with the same entry will be layed out into a 2-D grid
     - [example collection with a grid](https://docs.google.com/spreadsheets/d/1trSQFm_4Nc42C_Fum8N_ZzEmPuML6ACKVmLlc862Rp8/edit?usp=sharing)
-- `grid_position`: `(x,y)`
-    - e.g., `(0,0)`, `(1,0)`, `(5,2)`
+- `grid_position`: `(x;y)`
+    - list syntax: see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells)
+    - e.g., `(0;0)`, `(1;0)`, `(5;2)`
     - defines where the dataset is layed out in the grid
     - only considered in conjuction with a non-empty `grid` entry.
     - useful to put several datasets (e.g., image and corresponding labels) into the same grid position
     - [example collection with grid positions](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
 - `format`: 
-    - `OmeZarr`: needed if the path to the OME-Zarr does not contain `.ome.zarr`
+    - `OmeZarr`: needed if the path to an OME-Zarr does not contain `.ome.zarr`
     - all other entries will be ignored as the file types will be auto-determined
 - `spot_radius`: number larger than zero
     - defines the rendering radius of spots 
     - only considered in for a dataset of `type` `spots`
-- `bounding_box`: configures the size of a spot image. E.g., `(0.0,0,0)-(200.5,200,50.3)`
+- `bounding_box`: configures the size of a spot image. E.g., `(0.0;0;0)-(200.5;200;50.3)`
+    - list syntax: see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells)
     - only considered in for a dataset of `type` `spots`
 
 
@@ -96,6 +111,54 @@ The only required column is **uri**, which must contain a valid path to that dat
 For a more complete specification of all columns please [read the comments in the code](https://github.com/mobie/mobie-viewer-fiji/blob/main/src/main/java/org/embl/mobie/lib/table/columns/CollectionTableConstants.java). 
 
 In addition to the specified columns, the table may contain an arbitrary number of additional columns, where you can annotate your respective data sets.
+
+#### How to Specify Lists in Table Cells
+
+Several fields in the table accept **list values** (for example numeric lists or group lists).
+
+##### Supported list syntax
+
+You can write list items using:
+
+- **Semicolon-separated** values: `a; b; c`
+- **Comma-separated** values: `a, b, c`
+
+Optional surrounding brackets are accepted and ignored:
+
+- Parentheses: `(a; b; c)` or `(a, b, c)`
+- Square brackets: `[a; b; c]` or `[a, b, c]`
+- Curly braces: `{a; b; c}` or `{a, b, c}`
+
+Whitespace around items is ignored, so these are equivalent:
+
+- `1;2;3`
+- `1; 2; 3`
+- `( 1 ; 2 ; 3 )`
+
+##### Recommendation: prefer semicolon (`;`)
+
+We recommend using **semicolon-separated lists** whenever possible.
+
+Why:
+
+1. A comma can conflict with CSV field separation.
+2. In some spreadsheet locale settings (for example certain Excel regional settings), comma-separated values may be interpreted as a **decimal number** instead of two list entries.
+
+##### If you use commas, be careful
+
+If you choose comma-separated lists in a CSV file, make sure the full cell is quoted:
+
+- Correct CSV cell content: `"1,2"` or `"(1, 2)"`
+- Without quotes, commas may be treated as column delimiters and break the file.
+
+As an alternative, consider using **tab-separated files (TSV)**, which avoids comma ambiguity in list cells.
+
+##### Examples
+
+- Integer pair: `3;5` or `(3; 5)`
+- Integer pair (comma version): `"(3, 5)"` in CSV  
+- Double list: `[0.1; 1.5; 3.0]`  
+- Groups: `views; qc; publication`
 
 ### Opening a collection table in Fiji/MoBIE
 
