@@ -1,6 +1,6 @@
 ## Installation of MoBIE
 
-1. [Install Fiji](https://fiji.sc) on your computer.  
+1. [Install Fiji](https://fiji.sc) (stable) on your computer. Fiji latest might contain breaking changes
 2. Open Fiji and go to `Help > Update...` in the menu.  
 3. Click `[ Manage Update Sites ]`.  
 4. Scroll down to click the checkbox next to `MoBIE`.
