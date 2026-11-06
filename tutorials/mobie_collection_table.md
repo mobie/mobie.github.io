@@ -45,9 +45,9 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - [example collection with display column](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
 - `affine`: additional transformation(s) to apply on display (i.e. where/how the image is rendered in the viewer)
     - supports two modes:
-        - **single affine transform (inline)**: row-packed 3x4 affine parameters in brackets, preferably semicolon-separated (comma-separated also supported; see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells))
-          - e.g. identity: `(1;0;0;0;0;1;0;0;0;0;1;0)`
-          - e.g. x-shift: `(1;0;0;-105.34;0;1;0;0;0;0;1;0)`
+                - **single affine transform (inline)**: row-packed 3x4 affine parameters, preferably semicolon-separated without brackets (comma-separated and/or bracketed forms also supported; see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells))
+                    - e.g. identity: `1;0;0;0;0;1;0;0;0;0;1;0`
+                    - e.g. x-shift: `1;0;0;-105.34;0;1;0;0;0;0;1;0`
         - **transform sequence (URI/path)**: points to a transformation table with columns:
             - `type` (required)
             - `value` (required)
@@ -80,17 +80,17 @@ Each row specifies one dataset, which can be  configured by one of these columns
     - only considered in conjunction with `type`: `labels`
     - [example labels table](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=890359520#gid=890359520)
     - [supported labels table column naming schemes](https://github.com/mobie/mobie-viewer-fiji/tree/main/src/main/java/org/embl/mobie/lib/table/columns)
-- `contrast_limits`: `(min;max)` or `auto`
+- `contrast_limits`: `min;max` or `auto`
     - list syntax: see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells)
-    - e.g., `(10;240)` or `(1000;38000)` or `auto`
+    - e.g., `10;240` or `1000;38000` or `auto`
     - changes the initial display settings
     - `auto` will trigger an auto-contrast algorithm
 - `grid`: free text
     - if non-empty, all datasets with the same entry will be layed out into a 2-D grid
     - [example collection with a grid](https://docs.google.com/spreadsheets/d/1trSQFm_4Nc42C_Fum8N_ZzEmPuML6ACKVmLlc862Rp8/edit?usp=sharing)
-- `grid_position`: `(x;y)`
+- `grid_position`: `x;y`
     - list syntax: see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells)
-    - e.g., `(0;0)`, `(1;0)`, `(5;2)`
+    - e.g., `0;0`, `1;0`, `5;2`
     - defines where the dataset is layed out in the grid
     - only considered in conjuction with a non-empty `grid` entry.
     - useful to put several datasets (e.g., image and corresponding labels) into the same grid position
@@ -101,7 +101,7 @@ Each row specifies one dataset, which can be  configured by one of these columns
 - `spot_radius`: number larger than zero
     - defines the rendering radius of spots 
     - only considered in for a dataset of `type` `spots`
-- `bounding_box`: configures the size of a spot image. E.g., `(0.0;0;0)-(200.5;200;50.3)`
+- `bounding_box`: configures the size of a spot image. E.g., `0.0;0;0-200.5;200;50.3`
     - list syntax: see [How to Specify Lists in Table Cells](#how-to-specify-lists-in-table-cells)
     - only considered in for a dataset of `type` `spots`
 
@@ -120,14 +120,14 @@ Several fields in the table accept **list values** (for example numeric lists or
 
 You can write list items using:
 
-- **Semicolon-separated** values: `a; b; c`
+- **Semicolon-separated** values (recommended): `a;b;c`
 - **Comma-separated** values: `a, b, c`
 
 Optional surrounding brackets are accepted and ignored:
 
-- Parentheses: `(a; b; c)` or `(a, b, c)`
-- Square brackets: `[a; b; c]` or `[a, b, c]`
-- Curly braces: `{a; b; c}` or `{a, b, c}`
+- Parentheses: `(a;b;c)` or `(a, b, c)`
+- Square brackets: `[a;b;c]` or `[a, b, c]`
+- Curly braces: `{a;b;c}` or `{a, b, c}`
 
 Whitespace around items is ignored, so these are equivalent:
 
@@ -135,9 +135,16 @@ Whitespace around items is ignored, so these are equivalent:
 - `1; 2; 3`
 - `( 1 ; 2 ; 3 )`
 
-##### Recommendation: prefer semicolon (`;`)
+##### Recommendation: prefer semicolon (`;`) without brackets
 
-We recommend using **semicolon-separated lists** whenever possible.
+We recommend using **semicolon-separated lists without enclosing brackets** whenever possible.
+
+Recommended style:
+
+- `1;2;3`
+- `views;qc;publication`
+
+Brackets remain optional and equivalent when you prefer them.
 
 Why:
 
@@ -155,10 +162,12 @@ As an alternative, consider using **tab-separated files (TSV)**, which avoids co
 
 ##### Examples
 
-- Integer pair: `3;5` or `(3; 5)`
+- Integer pair (recommended): `3;5`
+- Integer pair (optional bracket form): `(3;5)`
 - Integer pair (comma version): `"(3, 5)"` in CSV  
-- Double list: `[0.1; 1.5; 3.0]`  
-- Groups: `views; qc; publication`
+- Double list (recommended): `0.1;1.5;3.0`  
+- Double list (optional bracket form): `[0.1;1.5;3.0]`  
+- Groups (recommended): `views;qc;publication`
 
 ### Opening a collection table in Fiji/MoBIE
 
@@ -170,16 +179,6 @@ A user interface will pop up with the following fields:
     - This may be a path to a file on your computer or to a "cloud resource" such as an S3 object store, a GitHub URL, or a Google Sheet URL. 
     - The collection table can be provided in a number of formats, including EXCEL, CSV, TSV and Google Sheets. 
     - For Google Sheets simply copy and paste the link that shows in your browser or use the link that you obtain when using Google's sharing functionality. 
-* `Data Root`:
-    - `PathsInTableAreAbsolute`: Choose this if the `uri` column in the table contains absolute paths (for cloud resources that is always the case, for files on your computer it may be the case)
-    - `UseTableFolder`: Choose this option if the paths in the `uri` column are relative to the location of the collection table. This supports the scenario, where you have all your data organised within some folder structure and the collection table is at the root of this folder structure. This is a very useful setup because it allows you to move or copy the whole folder structure and opening the data via the collection table will still work.
-    - `UseBelowRootDataFolder`: Choose this option if the paths in the `uri` column are relative to the location of the root data folder that you can specify below. This supports the scenario, where you have all your data organised within some folder structure and the collection table is, for some reason, not at the root of this folder structure.
-    - *Note that in principle we could probably support a mix of local relative and cloud absolute paths; if you need this please [get in touch](https://forum.image.sc/).*
-* `( Data Root Folder )`: path to a folder
-    - This is an optional field. It is only considered if you chose `UseBelowRootDataFolder` above.
-* `Viewing mode`: 
-    - `ThreeDimensional`: Choose this is your data also contains 3-D images.
-    - `TwoDimensional`: Choose this if all your data is 2-D (it will make your life easier, because this mode avoids getting lost in 3-D while browsing in BigDataViewer).
 * `( S3 Access Key )` & `( S3 Secret Key )`: free text
     - These are optional fields. Use those if the `uri` column of the collection table points to data in a protected S3 bucket.
 
@@ -215,11 +214,14 @@ Here are some Google Sheet collection tables that are pointing to remotely hoste
     - `Viewing Mode`: `ThreeDimensional`
     - *Leave all other fields empty*
 
+
+- [IDR hosted multi-channel OME-Zarr v0.5](https://docs.google.com/spreadsheets/d/14HsoEGXnMwzZM_bLASYym8fT7Sq5-THmioytGvQMa7s/edit?gid=0#gid=0)
 - [BioImage Archive hosted multi-channel OME-Zarr](https://docs.google.com/spreadsheets/d/11dd3WXS1LJRPC4B_omwAPU0JJtFI8WVwdaLJs3L2XSk/edit?usp=sharing)
 - [Correlative 2-D EM, fluorescence and 3-D tomography data](https://docs.google.com/spreadsheets/d/1hj_JKnBLp1nJzeSG6mcL6INIsFH2meKzNx59vmYL53Y/edit?gid=0#gid=0)
+    - The same data [as an OME-Zarr Scene](https://ome.github.io/ome-ngff-validator/?source=https://livingobjects.ebi.ac.uk/idr/mobie/clem-scene.ome.zarr)
 - [Grid view of OpenOrganelle EM volumes](https://docs.google.com/spreadsheets/d/1trSQFm_4Nc42C_Fum8N_ZzEmPuML6ACKVmLlc862Rp8/edit?usp=sharing)
 - [Grid view of OpenOrganelle EM volumes and organelle segmentations](https://docs.google.com/spreadsheets/d/1jEnl-0_pcOFQo8mm8SUtszoWewvjyFXY0icO7gPUaQk/edit?gid=0#gid=0)
-- [Large volume EM data, annotated cell segmentation, and some annotated spots](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=0#gid=0)
+- [Large volume EM data with annotated cell segmentation](https://docs.google.com/spreadsheets/d/1xZ4Zfpg0RUwhPZVCUrX_whB0QGztLN_VVNLx89_rZs4/edit?gid=0#gid=0)
 - [3-D spatial transcriptomics](https://docs.google.com/spreadsheets/d/1BhIzNYZXoSST38vbOrMEMCwrM3y2nyPl9t_9RKOzFbk/edit?usp=sharing) (The genes are initially not visible, because they are in a different z-plane; click on one gene in the table to move the view.)
 - [ThinPlateSpline transformed EM volume](https://docs.google.com/spreadsheets/d/1elair242cN5rbYtlODKu5yIscZHQ9O0Lci598-NoY4I/edit?usp=sharing)
 
